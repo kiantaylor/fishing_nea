@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://chwq2bqh0vl1f"]
+
+[ext_resource type="PackedScene" uid="uid://15mvfimwbv2w" path="res://scene.gltf" id="1_ydxnw"]
+[ext_resource type="Script" path="res://scene.gd" id="2_j6vya"]
+
+[node name="scene" instance=ExtResource("1_ydxnw")]
+script = ExtResource("2_j6vya")
+
+[node name="Skeleton3D" parent="Sketchfab_model/root/GLTF_SceneRootNode/clay-palm-tree_14/GLTF_created_0" index="0"]
+bones/2/rotation = Quaternion(-0.0087265, 2.39624e-05, -0.00274582, 0.999958)
+bones/3/rotation = Quaternion(-0.00436331, 1.1921e-07, 1.10223e-09, 0.999991)
+bones/4/rotation = Quaternion(-0.00436331, 2.5459e-11, 9.31331e-10, 0.999991)
+bones/6/rotation = Quaternion(0.631528, 1.71133e-07, 3.08455e-07, 0.775353)
+bones/7/rotation = Quaternion(-0.523196, 0.104224, 0.382844, 0.754211)
+bones/8/rotation = Quaternion(-0.486372, -0.0958455, -0.393677, 0.774128)
+bones/9/rotation = Quaternion(-0.849438, -0.0210956, 0.0315385, 0.526322)
+bones/10/rotation = Quaternion(-0.327297, 0.209312, 0.78504, 0.482471)
+bones/11/rotation = Quaternion(0.0349525, -0.339472, -0.84869, 0.404056)
+bones/12/rotation = Quaternion(-0.786787, -0.0444281, -0.545251, 0.285819)
+bones/13/rotation = Quaternion(0.950113, 9.17365e-08, 5.56866e-07, 0.311906)

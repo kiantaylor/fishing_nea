@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bkk5perpw0map"]
+
+[ext_resource type="Shader" path="res://toon.gdshader" id="1_itsnv"]
+[ext_resource type="Texture2D" uid="uid://4sqvo5wk8w3b" path="res://sand.png" id="2_a6ns7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_itsnv")
+shader_parameter/RimPower = 3.0
+shader_parameter/RimCutOff = 0.5
+shader_parameter/RimSmoothness = 0.05
+shader_parameter/RimLightBrightness = 20.0
+shader_parameter/SubSurfDistortion = 1.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 3.0
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
+shader_parameter/Texture = ExtResource("2_a6ns7")
+shader_parameter/ToonRampOffset = 0.317
+shader_parameter/ToonRampSmoothness = 0.439
+shader_parameter/ToonRampTinting = Color(1, 1, 1, 1)

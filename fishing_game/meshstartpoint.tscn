@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw48jjfcndm3b"]
+
+[ext_resource type="Material" uid="uid://gxo2u0cg6b0i" path="res://RoystanToonWaterShader.tres" id="1_mgmlj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nece4"]
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="waterplain" type="MeshInstance3D"]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
+mesh = SubResource("PlaneMesh_nece4")
+surface_material_override/0 = ExtResource("1_mgmlj")
