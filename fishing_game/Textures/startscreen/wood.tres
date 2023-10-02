@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://drv8ds6pnb48s"]
+
+[ext_resource type="Texture2D" uid="uid://cwhx2k01v5sd2" path="res://Textures/startscreen/desk.jpg" id="1_3devl"]
+
+[resource]
+albedo_texture = ExtResource("1_3devl")
+roughness = 0.66

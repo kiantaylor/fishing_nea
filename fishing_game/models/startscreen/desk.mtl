@@ -1,0 +1,13 @@
+# Blender MTL File: 'desk.blend'
+# Material Count: 1
+
+newmtl Material.007
+Ns 120.532362
+Ka 1.000000 1.000000 1.000000
+Kd 0.429226 0.309787 0.223938
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd E:\\school\\fishing_nea\\blender\\frontend-large.jpg

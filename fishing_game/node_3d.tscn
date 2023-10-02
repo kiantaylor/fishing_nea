@@ -78,7 +78,7 @@ mesh = SubResource("BoxMesh_tua4r")
 surface_material_override/0 = ExtResource("2_jxdi3")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -4.86576, -0.225823, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -4.86576, 1.37983, 0)
 mesh = SubResource("SphereMesh_cfj7c")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]

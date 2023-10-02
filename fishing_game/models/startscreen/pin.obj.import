@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b50kyimk06xbx"
+path="res://.godot/imported/pin.obj-a7f3de83b3093d32e72070a61484c1f2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pin.obj-a7f3de83b3093d32e72070a61484c1f2.mesh"]
+
+source_file="res://models/startscreen/pin.obj"
+dest_files=["res://.godot/imported/pin.obj-a7f3de83b3093d32e72070a61484c1f2.mesh", "res://.godot/imported/pin.obj-a7f3de83b3093d32e72070a61484c1f2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

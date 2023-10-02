@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dj682gfkhbma8"
+path="res://.godot/imported/rope.obj-7f51a953865f058c5fcb6d04864c2dae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rope.obj-7f51a953865f058c5fcb6d04864c2dae.mesh"]
+
+source_file="res://models/startscreen/rope.obj"
+dest_files=["res://.godot/imported/rope.obj-7f51a953865f058c5fcb6d04864c2dae.mesh", "res://.godot/imported/rope.obj-7f51a953865f058c5fcb6d04864c2dae.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

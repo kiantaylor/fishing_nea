@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhsm0x08d6tlj"
+path="res://.godot/imported/lightglass.obj-310ec12647abe701e5c320ed0a059759.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lightglass.obj-310ec12647abe701e5c320ed0a059759.mesh"]
+
+source_file="res://models/startscreen/lightglass.obj"
+dest_files=["res://.godot/imported/lightglass.obj-310ec12647abe701e5c320ed0a059759.mesh", "res://.godot/imported/lightglass.obj-310ec12647abe701e5c320ed0a059759.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

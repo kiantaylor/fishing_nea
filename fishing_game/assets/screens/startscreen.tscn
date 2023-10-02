@@ -1,0 +1,936 @@
+[gd_scene load_steps=30 format=3 uid="uid://qwawf1driwdk"]
+
+[ext_resource type="Script" path="res://startscreen.gd" id="1_5augg"]
+[ext_resource type="ArrayMesh" uid="uid://oy8c0fffe4oh" path="res://models/startscreen/board.obj" id="2_b6ijo"]
+[ext_resource type="Material" uid="uid://csxt3q32qipah" path="res://Textures/startscreen/cork.tres" id="3_net4h"]
+[ext_resource type="ArrayMesh" uid="uid://bah7jwg3q50o4" path="res://models/startscreen/desk.obj" id="4_42ctj"]
+[ext_resource type="ArrayMesh" uid="uid://hkgktihf2dx0" path="res://models/startscreen/sign.obj" id="4_jn5wg"]
+[ext_resource type="Material" uid="uid://4yafjsccnui8" path="res://Textures/startscreen/sign.tres" id="5_3wjbh"]
+[ext_resource type="Material" uid="uid://drv8ds6pnb48s" path="res://Textures/startscreen/wood.tres" id="5_8234u"]
+[ext_resource type="Material" uid="uid://cd0wlxfo5lyxk" path="res://Textures/startscreen/blackrubber.tres" id="5_p1m6w"]
+[ext_resource type="ArrayMesh" uid="uid://b7oawk2u3pyl7" path="res://models/startscreen/picture.obj" id="6_733o5"]
+[ext_resource type="ArrayMesh" uid="uid://b50kyimk06xbx" path="res://models/startscreen/pin.obj" id="6_w8aci"]
+[ext_resource type="Material" uid="uid://lx7no4dbdbie" path="res://Textures/startscreen/blueplastic.tres" id="7_3xkst"]
+[ext_resource type="Material" uid="uid://vam3itrhjjob" path="res://Textures/startscreen/blueglow.tres" id="7_s2njj"]
+[ext_resource type="Material" uid="uid://b342bo758c713" path="res://Textures/startscreen/redplastic.tres" id="8_bdq8c"]
+[ext_resource type="Material" uid="uid://dprr1l6ks4dsc" path="res://Textures/startscreen/yellowglow.tres" id="8_giv1y"]
+[ext_resource type="ArrayMesh" uid="uid://dj682gfkhbma8" path="res://models/startscreen/rope.obj" id="8_px6nu"]
+[ext_resource type="ArrayMesh" uid="uid://bhsm0x08d6tlj" path="res://models/startscreen/lightglass.obj" id="9_b6biu"]
+[ext_resource type="Material" uid="uid://cby2lu80aqsqi" path="res://Textures/startscreen/whiteplastic.tres" id="9_tm0w1"]
+[ext_resource type="Material" uid="uid://bnc57lyagpfja" path="res://Textures/startscreen/photos/photobase.tres" id="9_waifr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_in1wh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5lv0"]
+albedo_color = Color(0.862745, 1, 1, 1)
+roughness = 0.39
+clearcoat_enabled = true
+clearcoat_roughness = 0.28
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jbb05"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pa7a8"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+roughness = 0.52
+refraction_enabled = true
+refraction_scale = 0.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pubdr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_535oy"]
+albedo_color = Color(0.180392, 0.32549, 0.6, 1)
+
+[sub_resource type="Environment" id="Environment_t8xt1"]
+glow_enabled = true
+glow_intensity = 7.75
+glow_strength = 1.18
+
+[sub_resource type="Animation" id="Animation_8rbvt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.41547, 7.33696, -9.53674e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7gufl"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.451, 9.528, 0), Vector3(5.22758, 7.38749, -9.53674e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-1.5708, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ce58h"]
+resource_name = "startup"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.02235, 13.7164, -9.53674e-07), Vector3(3.41547, 9.52779, -9.53674e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wi88s"]
+_data = {
+"RESET": SubResource("Animation_8rbvt"),
+"open": SubResource("Animation_7gufl"),
+"startup": SubResource("Animation_ce58h")
+}
+
+[node name="startscreen" type="Node3D"]
+script = ExtResource("1_5augg")
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 40, 0, 0, 0, 26.912, -0.343417, 2.76695, 0)
+mesh = SubResource("BoxMesh_in1wh")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5lv0")
+
+[node name="board" type="MeshInstance3D" parent="wall"]
+transform = Transform3D(-6.2036e-08, 0, 1, 0, 0.0326793, 0, -0.0527356, 0, -1.62423e-09, -3.29752, 0.0101146, 0)
+mesh = ExtResource("2_b6ijo")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_net4h")
+
+[node name="cable" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(1.6167, -0.000323981, 0.33233, -0.332323, -0.0126419, 1.61665, 0.00222816, -1.65045, -0.0124477, -1.81087, 3.46058, 3.87863)
+mesh = ExtResource("8_px6nu")
+skeleton = NodePath("../pin1")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="bluelight" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0484348, 0.00158623, 4.65661e-10, -0.00162359, 0.00471622, -0.0462162, -0.00487983, 0.014175, 0.0153768, 0.136854, -0.00995037, -0.0207214)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/bluelight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/bluelight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight2" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0482887, -0.00196479, 9.31323e-10, 0.00201106, 0.00470199, -0.0462162, 0.00604442, 0.0141322, 0.0153768, 0.628386, -0.0288133, -0.0696738)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/bluelight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/bluelight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight3" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0480153, -0.00252293, 1.39698e-09, 0.00258235, 0.00467537, -0.0462162, 0.00776149, 0.0140522, 0.0153768, 1.25463, -0.0241003, -0.082335)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/bluelight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/bluelight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="yellowlight" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0486923, -0.000369401, 2.56114e-09, 0.000378102, 0.0047413, -0.0462162, 0.00113642, 0.0142504, 0.0153768, 0.378663, -0.0129244, -0.0498593)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/yellowlight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/yellowlight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight2" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0482887, -0.00196478, 9.31323e-10, 0.00201106, 0.00470199, -0.0462162, 0.00604442, 0.0141322, 0.0153768, 0.940069, -0.023349, -0.0864322)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/yellowlight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/yellowlight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight3" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0480153, -0.00252293, 4.19095e-09, 0.00258235, 0.00467537, -0.0462162, 0.0077615, 0.0140522, 0.0153768, 1.60222, 0.00595273, -0.0573852)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/yellowlight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/yellowlight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="bluelight4" type="MeshInstance3D" parent="wall/board/cable"]
+transform = Transform3D(0.0470861, -0.00384338, 1.39698e-09, 0.00393389, 0.0045849, -0.0462162, 0.0118237, 0.0137803, 0.0153768, 1.93933, 0.0234134, -0.0226471)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable/bluelight4"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable/bluelight4/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="cable2" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(1.44351, -0.00031199, -0.710899, 0.665201, -0.012174, 1.54258, -0.00537855, -1.58937, -0.0116755, 1.40778, 2.78884, 3.8862)
+mesh = ExtResource("8_px6nu")
+skeleton = NodePath("../pin1")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="bluelight" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.045993, 0.00494476, 9.31323e-10, -0.00506121, 0.00447846, -0.0462162, -0.0152119, 0.0134604, 0.0153768, 0.136854, -0.00995037, -0.0207214)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/bluelight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/bluelight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight2" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.0475739, 0.00322161, 9.31323e-10, -0.00329747, 0.0046324, -0.0462162, -0.00991084, 0.0139231, 0.0153768, 0.628386, -0.0288133, -0.0696735)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/bluelight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/bluelight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight3" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.0483631, 0.00178217, 9.31323e-10, -0.00182413, 0.00470924, -0.0462162, -0.00548258, 0.014154, 0.0153768, 1.25463, -0.0241003, -0.082335)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/bluelight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/bluelight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="yellowlight" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.04813, 0.00230556, 2.79397e-09, -0.00235985, 0.00468655, -0.0462162, -0.00709273, 0.0140858, 0.0153768, 0.376554, -0.012821, -0.0495484)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/yellowlight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/yellowlight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight2" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.0484732, 0.00147042, 9.31323e-10, -0.00150505, 0.00471996, -0.0462162, -0.00452355, 0.0141862, 0.0153768, 0.940069, -0.023349, -0.086432)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/yellowlight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/yellowlight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight3" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.0479403, 0.00265518, 4.65661e-09, -0.00271771, 0.00466807, -0.0462162, -0.00816829, 0.0140303, 0.0153768, 1.60222, 0.00595273, -0.0573854)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/yellowlight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/yellowlight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="bluelight4" type="MeshInstance3D" parent="wall/board/cable2"]
+transform = Transform3D(0.0478866, 0.00274571, 9.31323e-10, -0.00281037, 0.00466284, -0.0462162, -0.00844681, 0.0140146, 0.0153768, 1.93933, -0.00215307, -0.0141411)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable2/bluelight4"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable2/bluelight4/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="cable3" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.540104, -0.0095143, 1.27467, -1.19281, -0.00106554, 0.577197, -0.00295385, -1.30936, -0.00973147, -2.85498, 5.81898, 3.88213)
+mesh = ExtResource("8_px6nu")
+skeleton = NodePath("../pin1")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="bluelight" type="MeshInstance3D" parent="wall/board/cable3"]
+transform = Transform3D(0.0337665, -0.00990248, -0.0141927, -0.00540447, 0.00453509, -0.0461191, 0.0346842, 0.0103471, 0.00663094, 0.136854, -0.00995028, -0.0207218)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable3/bluelight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable3/bluelight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight2" type="MeshInstance3D" parent="wall/board/cable3"]
+transform = Transform3D(0.0235253, -0.0123038, -0.0150879, -0.00363271, 0.00471728, -0.0461006, 0.042494, 0.00721482, 0.00441186, 0.627619, -0.0288851, -0.0597833)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable3/bluelight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable3/bluelight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight3" type="MeshInstance3D" parent="wall/board/cable3"]
+transform = Transform3D(0.0243999, -0.0122128, -0.014463, -0.00212373, 0.00479161, -0.0461143, 0.0421012, 0.00731967, 0.00605593, 1.25463, -0.0241003, -0.0823351)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable3/bluelight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable3/bluelight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="yellowlight" type="MeshInstance3D" parent="wall/board/cable3"]
+transform = Transform3D(0.0263149, -0.0118383, -0.014378, -0.00266733, 0.00476423, -0.0461158, 0.0408997, 0.0079275, 0.00624333, 0.376553, -0.012821, -0.0495485)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable3/yellowlight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable3/yellowlight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight2" type="MeshInstance3D" parent="wall/board/cable3"]
+transform = Transform3D(0.0238138, -0.0123265, -0.0144258, -0.00179854, 0.00480361, -0.046115, 0.0424505, 0.00711842, 0.00613877, 0.941606, -0.0234187, -0.0775172)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable3/yellowlight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable3/yellowlight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight3" type="MeshInstance3D" parent="wall/board/cable3"]
+transform = Transform3D(0.0242987, -0.0121927, -0.0148075, -0.00303801, 0.004751, -0.0461073, 0.0421037, 0.00737941, 0.00521879, 1.60222, 0.00595276, -0.0573854)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable3/yellowlight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable3/yellowlight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="cable4" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(1.11647, -0.000266791, -0.82832, 0.775076, -0.0104103, 1.19309, -0.00615598, -1.35911, -0.00897558, -4.00466, 1.96365, 3.91368)
+mesh = ExtResource("8_px6nu")
+skeleton = NodePath("../pin1")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="bluelight" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.045993, 0.00494476, 9.31323e-10, -0.00506121, 0.00447846, -0.0462162, -0.0152119, 0.0134604, 0.0153768, 0.136854, -0.00995037, -0.0207214)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/bluelight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/bluelight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight2" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.0490786, 0.0089161, 0.00600766, -0.00372999, 0.00543809, -0.0543661, -0.0292887, 0.014248, 0.0169906, 0.628386, -0.0288133, -0.0696745)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/bluelight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/bluelight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight3" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.0476963, 0.00949798, 0.00844335, -0.00193969, 0.00553451, -0.0544864, -0.0318717, 0.013877, 0.0159516, 1.25463, -0.0241003, -0.0823362)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/bluelight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/bluelight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="yellowlight" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.04813, 0.00230556, 2.79397e-09, -0.00235985, 0.00468655, -0.0462162, -0.00709273, 0.0140858, 0.0153768, 0.376554, -0.012821, -0.0495484)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/yellowlight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/yellowlight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight2" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.0474378, 0.0100886, 0.0094526, -0.00156716, 0.00564183, -0.0554304, -0.0340112, 0.0138112, 0.0157383, 0.940068, -0.023349, -0.0864329)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/yellowlight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/yellowlight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight3" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.049355, 0.0100809, 0.00794762, -0.00313485, 0.00571235, -0.0566965, -0.03349, 0.0143217, 0.0170197, 1.60222, 0.0059527, -0.0573866)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/yellowlight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/yellowlight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="bluelight4" type="MeshInstance3D" parent="wall/board/cable4"]
+transform = Transform3D(0.0500241, 0.00962603, 0.00730362, -0.0032475, 0.0056762, -0.0563964, -0.0318875, 0.0145229, 0.0172012, 1.93933, -0.0021531, -0.0141435)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable4/bluelight4"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable4/bluelight4/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="cable5" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(1.15447, -0.000238401, 0.403055, -0.377151, -0.00930252, 1.2337, 0.00266225, -1.21448, -0.00952839, -4.00466, 1.96365, 3.89914)
+mesh = ExtResource("8_px6nu")
+skeleton = NodePath("../pin1")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="bluelight" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.045993, 0.00494476, 9.31323e-10, -0.00506121, 0.00447846, -0.0462162, -0.0152119, 0.0134604, 0.0153768, 0.136854, -0.00995037, -0.0207214)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/bluelight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/bluelight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight2" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.0475739, 0.00322161, 9.31323e-10, -0.00329747, 0.0046324, -0.0462162, -0.00991084, 0.0139231, 0.0153768, 0.628386, -0.0288133, -0.0696735)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/bluelight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/bluelight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="bluelight3" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.0483631, 0.00178217, 9.31323e-10, -0.00182413, 0.00470924, -0.0462162, -0.00548258, 0.014154, 0.0153768, 1.25463, -0.0241003, -0.082335)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/bluelight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/bluelight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="yellowlight" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.04813, 0.00230556, 2.79397e-09, -0.00235985, 0.00468655, -0.0462162, -0.00709273, 0.0140858, 0.0153768, 0.376554, -0.012821, -0.0495484)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/yellowlight"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/yellowlight/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight2" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.0484732, 0.00147042, 9.31323e-10, -0.00150505, 0.00471996, -0.0462162, -0.00452355, 0.0141862, 0.0153768, 0.940069, -0.023349, -0.086432)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/yellowlight2"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/yellowlight2/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="yellowlight3" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.0479403, 0.00265518, 4.65661e-09, -0.00271771, 0.00466807, -0.0462162, -0.00816829, 0.0140303, 0.0153768, 1.60222, 0.00595273, -0.0573854)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/yellowlight3"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/yellowlight3/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("8_giv1y")
+
+[node name="bluelight4" type="MeshInstance3D" parent="wall/board/cable5"]
+transform = Transform3D(0.0478866, 0.00274571, 9.31323e-10, -0.00281037, 0.00466284, -0.0462162, -0.00844681, 0.0140146, 0.0153768, 1.93933, -0.00215307, -0.0141411)
+mesh = SubResource("CylinderMesh_jbb05")
+surface_material_override/0 = ExtResource("5_p1m6w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="wall/board/cable5/bluelight4"]
+transform = Transform3D(0.615927, -0.00030908, -4.09633e-05, 0.00100434, 1.99654, 0.0398559, 3.47868e-05, -0.0122929, 0.615804, 0.0138474, -6.90656, 0.0901127)
+mesh = ExtResource("9_b6biu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pa7a8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall/board/cable5/bluelight4/MeshInstance3D2"]
+transform = Transform3D(0.860541, -2.98023e-08, -9.31323e-10, -1.49012e-08, 0.860541, 5.47152e-09, 2.98023e-08, -3.241e-07, 0.860541, 0, 0.921505, 0)
+mesh = SubResource("CylinderMesh_pubdr")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("7_s2njj")
+
+[node name="pin1" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.999672, 0.00845718, -0.0241824, -0.0256186, 0.330011, -0.943631, 2.3016e-08, 0.943939, 0.330119, -1.81093, 3.46659, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("7_3xkst")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin1"]
+transform = Transform3D(1, -3.0268e-09, 3.72529e-09, 1.86265e-09, 0.967462, -0.253015, 7.45058e-09, 0.253015, 0.967462, -0.00838435, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin5" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.999672, 0.00845718, -0.0241824, -0.0256186, 0.330011, -0.943631, 2.3016e-08, 0.943939, 0.330119, 1.42935, 8.01849, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("8_bdq8c")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin5"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin6" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.951562, 0.0870237, -0.294883, -0.307456, 0.269336, -0.912652, 2.0406e-08, 0.959106, 0.283044, -2.86337, 5.81092, 3.83866)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("8_bdq8c")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin6"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin7" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.983436, -0.0598367, 0.171096, 0.181257, 0.324652, -0.928306, 1.85647e-08, 0.943939, 0.330119, 4.26205, 4.11328, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("9_tm0w1")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin7"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin8" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.99917, 0.0134497, -0.0384582, -0.0407422, 0.329846, -0.943158, 2.73338e-08, 0.943939, 0.330119, -3.98624, 1.97854, 3.86942)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("8_bdq8c")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin8"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin9" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.966895, -0.0842387, 0.240871, 0.255176, 0.319191, -0.912693, 2.46856e-08, 0.943939, 0.330119, -1.71096, 1.1896, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("9_tm0w1")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin9"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin10" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.999102, -0.0139852, 0.039989, 0.042364, 0.329824, -0.943096, 2.94354e-08, 0.943939, 0.330119, 2.1371, 0.670185, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("7_3xkst")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin10"]
+transform = Transform3D(1, 4.65661e-10, -2.98023e-08, 9.31323e-10, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.0184345, -0.0748635, 0.398342)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin11" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.992442, -0.0405118, 0.115839, 0.122718, 0.327625, -0.936808, 2.99225e-08, 0.943939, 0.330119, -0.792424, 10.1758, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("7_3xkst")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin11"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin2" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.995304, -0.031956, 0.0913747, 0.0968012, 0.328569, -0.939508, 3.01127e-08, 0.94394, 0.330119, 2.11479, 5.45105, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("7_3xkst")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin2"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin3" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.956798, -0.0959831, 0.274453, 0.290752, 0.315858, -0.903161, 2.45822e-08, 0.943939, 0.330119, -1.38413, 7.35842, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("9_tm0w1")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin3"]
+transform = Transform3D(1, 7.45058e-09, 8.9407e-08, 1.49012e-08, 0.967462, -0.253015, 2.98023e-08, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin4" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.985322, 0.0563542, -0.161139, -0.170708, 0.325274, -0.930086, 2.14196e-08, 0.943939, 0.330119, 1.40931, 2.80325, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("8_bdq8c")
+
+[node name="picture1" type="MeshInstance3D" parent="wall/board/pin4"]
+transform = Transform3D(1, -2.79397e-09, 0, 3.72529e-09, 0.967462, -0.253015, 0, 0.253015, 0.967462, -0.00838423, -0.0929873, 0.450164)
+mesh = ExtResource("6_733o5")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("9_waifr")
+
+[node name="pin12" type="MeshInstance3D" parent="wall/board"]
+transform = Transform3D(0.985322, 0.0563542, -0.161139, -0.170708, 0.325274, -0.930087, 2.14196e-08, 0.943939, 0.330119, -0.0478362, 6.25342, 3.85201)
+mesh = ExtResource("6_w8aci")
+surface_material_override/0 = ExtResource("9_tm0w1")
+
+[node name="sign" type="MeshInstance3D" parent="wall/board/pin12"]
+transform = Transform3D(-0.985321, -0.170605, 0.00594263, -0.0563537, 0.292215, -0.954691, 0.161138, -0.94101, -0.297541, 1.06381, 1.73028, 6.8132)
+mesh = ExtResource("4_jn5wg")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_3wjbh")
+surface_material_override/1 = SubResource("StandardMaterial3D_535oy")
+
+[node name="desk" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.79223e-08, 0, 1.78266, 0, 1.78266, 0, -1.78266, 0, -7.79223e-08, 8.74495, 1.75075, -3.99844e-08)
+mesh = ExtResource("4_42ctj")
+surface_material_override/0 = ExtResource("5_8234u")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96311, 16.6842, 0)
+light_color = Color(1, 0.733333, 0.478431, 1)
+light_energy = 6.0
+shadow_enabled = true
+omni_range = 13.4568
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96311, 16.6842, 3.54766)
+light_color = Color(1, 0.733333, 0.478431, 1)
+light_energy = 6.0
+shadow_enabled = true
+omni_range = 13.4568
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96311, 16.6842, -3.51268)
+light_color = Color(1, 0.733333, 0.478431, 1)
+light_energy = 6.0
+shadow_enabled = true
+omni_range = 28.3285
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t8xt1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wi88s")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 3.41547, 7.33696, -9.53674e-07)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-2.62268e-08, 0, 1.09812, 0, 0.6, 0, -0.6, 0, -4.80001e-08, 1.382, 8.42278, 0)
+outline_modulate = Color(1, 1, 1, 1)
+text = "Press Space to Start"
+outline_size = 0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
