@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chukr8ql1o0j5"
-path="res://.godot/imported/MAT4K.002_normal.jpeg-6e7b0179760924e54368cc0d0851f0ab.ctex"
+path.s3tc="res://.godot/imported/MAT4K.002_normal.jpeg-6e7b0179760924e54368cc0d0851f0ab.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/MAT4K.002_normal.jpeg"
-dest_files=["res://.godot/imported/MAT4K.002_normal.jpeg-6e7b0179760924e54368cc0d0851f0ab.ctex"]
+dest_files=["res://.godot/imported/MAT4K.002_normal.jpeg-6e7b0179760924e54368cc0d0851f0ab.s3tc.ctex"]
 
 [params]
 
