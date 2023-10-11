@@ -1,92 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://ui82g8unxvd1"]
+[gd_scene load_steps=4 format=3 uid="uid://ui82g8unxvd1"]
 
-[ext_resource type="PackedScene" uid="uid://dw48jjfcndm3b" path="res://meshstartpoint.tscn" id="1_sdb3a"]
-[ext_resource type="Material" uid="uid://bkk5perpw0map" path="res://toonsand.tres" id="2_jxdi3"]
+[ext_resource type="ArrayMesh" uid="uid://cbwgn5jpclqqg" path="res://models/island.obj" id="1_gwi1b"]
+[ext_resource type="Material" uid="uid://gxo2u0cg6b0i" path="res://RoystanToonWaterShader.tres" id="2_ybq7e"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_cixx7"]
-lightmap_size_hint = Vector2i(12, 12)
-subdivide_width = 1280
-subdivide_depth = 1280
-
-[sub_resource type="BoxMesh" id="BoxMesh_bpjlr"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_imeth"]
-
-[sub_resource type="Sky" id="Sky_bowdh"]
-sky_material = SubResource("ProceduralSkyMaterial_imeth")
-
-[sub_resource type="Environment" id="Environment_netth"]
-background_mode = 2
-sky = SubResource("Sky_bowdh")
-glow_enabled = true
-glow_intensity = 2.6
-glow_strength = 0.72
-volumetric_fog_density = 0.0282
-volumetric_fog_emission = Color(0.0666667, 0.580392, 0.576471, 1)
-volumetric_fog_emission_energy = 0.1
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_s1fko"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_tua4r"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_cfj7c"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_guqk4"]
+subdivide_width = 30
+subdivide_depth = 30
 
 [node name="Node3D" type="Node3D"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -50, 0)
-
-[node name="waterplain" parent="." instance=ExtResource("1_sdb3a")]
-transform = Transform3D(120, 0, 0, 0, 12, 0, 0, 0, 120, 0, 0.551361, 0)
-mesh = SubResource("PlaneMesh_cixx7")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0206686, 0, -7.15631, 0, 1.01423, 0, 0.974523, 0, 0.151778, -98.908, -96.6561, -4.86104)
-mesh = SubResource("BoxMesh_bpjlr")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_netth")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.00707107, -0.005, 0.005, 0, 0.00707107, 0.00707107, -0.00707107, 0.005, -0.005, -48.5856, 27.3691, 73.8833)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.992988, -0.0752516, 0.0911673, 7.17858e-09, 0.771213, 0.636577, -0.118213, 0.632114, -0.765806, -98.5856, -93.5683, -1.88124)
-shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, 0, -2.57033, 0)
-mesh = SubResource("CylinderMesh_s1fko")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, 1.99531, 0, 0)
-mesh = SubResource("CylinderMesh_s1fko")
-
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, -1.9103, 0, 0)
-mesh = SubResource("CylinderMesh_s1fko")
-
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.482595, 0, -0.875844, 0, 10, 0, 0.875844, 0, -0.482595, -0.899906, 0, 1.71035)
-mesh = SubResource("CylinderMesh_s1fko")
-
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.482595, 0, -0.875844, 0.679975, -6.30283, -0.37467, -0.552029, -7.76365, 0.304171, 0.98492, 3.05066, 5.87984)
-mesh = SubResource("CylinderMesh_s1fko")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(11.8954, 0, 0, 0, -0.232693, 0, 0, 0, 11.8215, 0.262116, -0.145804, 0)
-mesh = SubResource("BoxMesh_tua4r")
-surface_material_override/0 = ExtResource("2_jxdi3")
+transform = Transform3D(8.51549, 0, 0, 0, 8.51549, 0, 0, 0, 8.51549, 0, -75.9833, 0)
+mesh = ExtResource("1_gwi1b")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -4.86576, 1.37983, 0)
-mesh = SubResource("SphereMesh_cfj7c")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.00552836, 0, -11.8214, 0, 7.12899, 0, 1.20438, 0, -0.054263, 0.258703, 0, 5.14803)
-visible = false
-mesh = SubResource("BoxMesh_tua4r")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.00552836, 0, -11.8214, 0, 7.12899, 0, 1.20438, 0, -0.054263, 0.305964, 0, -5.14803)
-visible = false
-mesh = SubResource("BoxMesh_tua4r")
+transform = Transform3D(512.97, 0, 0, 0, 110.256, 0, 0, 0, 435.665, 0, -114.807, 0)
+mesh = SubResource("PlaneMesh_guqk4")
+surface_material_override/0 = ExtResource("2_ybq7e")
