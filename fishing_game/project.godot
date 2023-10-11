@@ -12,8 +12,13 @@ config_version=5
 
 config/name="waterthingymbob"
 run/main_scene="res://assets/screens/startscreen.tscn"
-config/features=PackedStringArray("4.0", "Forward Plus")
+config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+BoatTraitData="*res://scripts/dataHandling/boatTraitData.gd"
+BoatData="*res://scripts/dataHandling/boatData.gd"
 
 [display]
 

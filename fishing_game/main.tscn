@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://dps1jhxete1qd"]
+
+[ext_resource type="Script" path="res://assets/main.gd" id="1_8wdcq"]
+[ext_resource type="Script" path="res://scripts/mainScreen/cameraPivot.gd" id="1_oop5o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lfdwy"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_emwse"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1hbj"]
+albedo_color = Color(0, 0.376471, 1, 1)
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.14
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cuhmp"]
+sky_top_color = Color(0, 0.431373, 1, 1)
+sky_horizon_color = Color(0.262745, 0.654902, 1, 1)
+sky_curve = 0.6
+ground_bottom_color = Color(0.249608, 0.478028, 0.99686, 1)
+ground_horizon_color = Color(0.258824, 0.654902, 1, 1)
+
+[sub_resource type="Sky" id="Sky_nkngf"]
+sky_material = SubResource("ProceduralSkyMaterial_cuhmp")
+
+[sub_resource type="Environment" id="Environment_dlm0c"]
+background_mode = 2
+sky = SubResource("Sky_nkngf")
+ambient_light_color = Color(0.12549, 0.12549, 0.12549, 1)
+ambient_light_sky_contribution = 0.18
+ambient_light_energy = 2.7
+glow_enabled = true
+fog_light_color = Color(0.662745, 0.694118, 0.741176, 1)
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_8wdcq")
+
+[node name="island" type="Marker3D" parent="."]
+
+[node name="tier1" type="MeshInstance3D" parent="island"]
+transform = Transform3D(4, 0, 0, 0, 0.383, 0, 0, 0, 4, 0, 0, 0)
+mesh = SubResource("BoxMesh_lfdwy")
+skeleton = NodePath("../..")
+
+[node name="tier2" type="MeshInstance3D" parent="island"]
+transform = Transform3D(2.5, 0, 0, 0, 0.383, 0, 0, 0, 2.5, 0, 0.306349, 0)
+mesh = SubResource("BoxMesh_lfdwy")
+skeleton = NodePath("../..")
+
+[node name="tier3" type="MeshInstance3D" parent="island"]
+transform = Transform3D(1, 0, 0, 0, 0.38, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_lfdwy")
+skeleton = NodePath("../..")
+
+[node name="cameraPivot" type="Marker3D" parent="."]
+script = ExtResource("1_oop5o")
+
+[node name="camera" type="Camera3D" parent="cameraPivot"]
+transform = Transform3D(1, -7.45058e-09, 2.98023e-08, 0, 0.978556, 0.205982, 0, -0.205982, 0.978556, 2.38419e-07, 1.19622, 4.98419)
+current = true
+
+[node name="buildCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 3.13939, 0)
+
+[node name="water" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, -0.124807, 0)
+mesh = SubResource("PlaneMesh_emwse")
+surface_material_override/0 = SubResource("StandardMaterial3D_o1hbj")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.579103, -0.405758, -5.96046e-08, -0.573829, 0.818975, -0.707107, -0.579103, -0.405758, 0, 5.79523, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dlm0c")

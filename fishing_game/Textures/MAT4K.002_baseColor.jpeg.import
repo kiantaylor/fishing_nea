@@ -3,15 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu1ocbx2skbkr"
-path="res://.godot/imported/MAT4K.002_baseColor.jpeg-4949fed68e0ff36a351bbfc687195114.ctex"
+path.s3tc="res://.godot/imported/MAT4K.002_baseColor.jpeg-4949fed68e0ff36a351bbfc687195114.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Textures/MAT4K.002_baseColor.jpeg"
-dest_files=["res://.godot/imported/MAT4K.002_baseColor.jpeg-4949fed68e0ff36a351bbfc687195114.ctex"]
+dest_files=["res://.godot/imported/MAT4K.002_baseColor.jpeg-4949fed68e0ff36a351bbfc687195114.s3tc.ctex"]
 
 [params]
 

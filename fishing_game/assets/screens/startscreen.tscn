@@ -891,7 +891,7 @@ surface_material_override/0 = ExtResource("5_3wjbh")
 surface_material_override/1 = SubResource("StandardMaterial3D_535oy")
 
 [node name="desk" type="MeshInstance3D" parent="."]
-transform = Transform3D(-7.79223e-08, 0, 1.78266, 0, 1.78266, 0, -1.78266, 0, -7.79223e-08, 8.74495, 1.75075, -3.99844e-08)
+transform = Transform3D(-7.79225e-08, 6.21768e-16, 1.78266, 6.21768e-16, 1.78266, -6.21768e-16, -1.78266, 6.21768e-16, -7.79225e-08, 8.74495, 1.75075, -3.99844e-08)
 mesh = ExtResource("4_42ctj")
 surface_material_override/0 = ExtResource("5_8234u")
 
