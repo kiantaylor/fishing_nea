@@ -10,7 +10,8 @@ var boat_type=''
 var speed:float
 var base_speed:float
 var size:int
-
+var base_price=0
+var price=0
 var base_durability:float
 var durability:float
 var crew_slots=[]
@@ -29,8 +30,11 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	base_durability=boat_management.type_dictionary[boat_type][2]
 	durability=base_durability
 	crew_slots=boat_management.type_dictionary[boat_type][3]
+	base_price=boat_management.type_dictionary[boat_type][4]
+	price=calculate_cost(base_price,boat_trait)
 	apply_condition()
 	apply_trait(boat_trait)
+	
 # get methods :
 
 func get_condition():
@@ -56,6 +60,7 @@ func debug_stat_display():
 	print('Stats for ',boat_name,' :')
 	print('-----------------------------')
 	print('Type : ',boat_type)
+	print('Price : ',price)
 	print('Trait code : ',boat_trait)
 	print('Condition : ',condition)
 	print('Condition Rating : ',condition_rating)
@@ -133,3 +138,18 @@ func apply_trait(trait1):
 		speed+=change_list[0]*speed
 		durability+=change_list[1]*durability
 	debug_stat_display()
+
+#cost and pricing
+
+func calculate_cost(price1,trait1):
+	var con_mod=price1*(0.2*condition_rating)
+	price1+=con_mod
+	if calculate_trait(trait1):
+		var trait_values=calculate_trait(trait1)
+		var sum=0
+		for i in trait_values:
+			sum+=i
+		var trait_mod=price1*sum	
+		return int(price1+trait_mod)
+	else:
+		return price1
