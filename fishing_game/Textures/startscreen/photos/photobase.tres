@@ -1,6 +1,9 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bnc57lyagpfja"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnc57lyagpfja"]
+
+[ext_resource type="Texture2D" uid="uid://c08v4orl6p6ro" path="res://icon.svg" id="1_2n4jq"]
 
 [resource]
+albedo_texture = ExtResource("1_2n4jq")
 roughness = 0.0
 clearcoat_enabled = true
 clearcoat_roughness = 0.31

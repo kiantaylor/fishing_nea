@@ -94,7 +94,13 @@ func set_condition(new_condition):
 		
 	else:
 		return false
-	
+
+func set_boat_name(new_name):
+	if len(new_name)<=30 and len(new_name)>0:
+		boat_name=new_name
+	else:
+		return false
+
 # traits and conditions
 
 func apply_condition():
