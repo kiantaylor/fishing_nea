@@ -137,7 +137,7 @@ func apply_trait(trait1):
 	
 		speed+=change_list[0]*speed
 		durability+=change_list[1]*durability
-	debug_stat_display()
+	
 
 #cost and pricing
 

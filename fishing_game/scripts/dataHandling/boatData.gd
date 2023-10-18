@@ -150,8 +150,9 @@ func boatGenerate():
 	var boat_type='bt1'
 	var boat1=BoatClass.new(condition,boat_trait,boat_name,boat_type)
 	
-	boats.append(boat1)
+	return boat1
 	
 func test1():
-	for i in range(1,300):
-		boatGenerate()
+	pass
+#	for i in range(1,300):
+#		boatGenerate()

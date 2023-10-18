@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dodttvxcupy3g"]
+
+[ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
+[ext_resource type="PackedScene" uid="uid://ddkutwpv2lk3d" path="res://assets/screens/menus/boat_purchase/boat_container.tscn" id="1_cooa7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
+
+[node name="boat_purchase_menu" type="Control"]
+material = SubResource("CanvasItemMaterial_3eccs")
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.219
+offset_left = -3.0
+offset_right = -3.0
+offset_bottom = -85.912
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a1kp3")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 783.0
+color = Color(0.780392, 0.623529, 0.341176, 1)
+
+[node name="navbar" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 99.0
+color = Color(0.74902, 0.505882, 0.054902, 1)
+
+[node name="shadow" type="ColorRect" parent="navbar"]
+modulate = Color(1, 1, 1, 0.27451)
+z_index = -1
+layout_mode = 0
+offset_top = 80.0
+offset_right = 1150.0
+offset_bottom = 107.0
+color = Color(0, 0, 0, 1)
+
+[node name="boat_container" parent="." instance=ExtResource("1_cooa7")]
+position = Vector2(172, 266)
+
+[node name="boat_container2" parent="." instance=ExtResource("1_cooa7")]
+position = Vector2(574, 266)
+
+[node name="boat_container3" parent="." instance=ExtResource("1_cooa7")]
+position = Vector2(974, 266)

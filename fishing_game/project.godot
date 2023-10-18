@@ -24,6 +24,7 @@ BoatData="*res://scripts/dataHandling/boatData.gd"
 
 window/size/mode=3
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [editor]
 

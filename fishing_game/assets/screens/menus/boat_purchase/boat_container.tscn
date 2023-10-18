@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddkutwpv2lk3d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lwovi"]
+
+[node name="boat_container" type="Marker2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(300, 144.459)
+mesh = SubResource("CapsuleMesh_lwovi")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+modulate = Color(0.486275, 0.537255, 0.619608, 1)
+scale = Vector2(280, 134.828)
+mesh = SubResource("CapsuleMesh_lwovi")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 43.0
+offset_right = 83.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "thriving whelk"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
