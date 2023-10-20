@@ -1,19 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://ui82g8unxvd1"]
+[gd_scene load_steps=7 format=3 uid="uid://ui82g8unxvd1"]
 
-[ext_resource type="ArrayMesh" uid="uid://cbwgn5jpclqqg" path="res://models/island.obj" id="1_gwi1b"]
-[ext_resource type="Material" uid="uid://gxo2u0cg6b0i" path="res://RoystanToonWaterShader.tres" id="2_ybq7e"]
+[ext_resource type="Script" path="res://node_3d.gd" id="1_tbgt5"]
+[ext_resource type="PackedScene" uid="uid://dod2qx81ggeqi" path="res://assets/testing stuff/player.tscn" id="2_f43np"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_guqk4"]
-subdivide_width = 30
-subdivide_depth = 30
+[sub_resource type="BoxMesh" id="BoxMesh_piowv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkwij"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6x1r"]
+size = Vector3(5.40127, 0.395397, 5.64)
+
+[sub_resource type="Environment" id="Environment_jhkv6"]
+glow_enabled = true
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_tbgt5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.51549, 0, 0, 0, 8.51549, 0, 0, 0, 8.51549, 0, -75.9833, 0)
-mesh = ExtResource("1_gwi1b")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(8.91835, 0, 0, 0, 1, 0, 0, 0, 5.81322, 0, 0, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(512.97, 0, 0, 0, 110.256, 0, 0, 0, 435.665, 0, -114.807, 0)
-mesh = SubResource("PlaneMesh_guqk4")
-surface_material_override/0 = ExtResource("2_ybq7e")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(5.4067, 0, 0, 0, 0.367318, 0, 0, 0, 5.62171, 0, 0, 0)
+mesh = SubResource("BoxMesh_piowv")
+surface_material_override/0 = SubResource("StandardMaterial3D_lkwij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_v6x1r")
+
+[node name="player" parent="." instance=ExtResource("2_f43np")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.373716, 0.927543, 0, -0.927543, 0.373716, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jhkv6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

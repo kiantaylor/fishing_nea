@@ -1,16 +1,13 @@
-extends Control
+extends Marker2D
 
-var stock=[]
+var boat
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	refresh_stock()
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-func refresh_stock():
-	for i in get_node("boats").get_children():
-		i.boat=BoatData.boatGenerate()
+	if boat :
+		visible=true
+		get_node("name_label").text=boat.get_boat_name()

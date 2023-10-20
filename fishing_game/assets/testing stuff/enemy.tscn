@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://dch8am7xacdn8"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_cr8wb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7lkli"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yauln"]
+
+[sub_resource type="Animation" id="Animation_13ffe"]
+resource_name = "squigle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.307771, 0), Vector3(0, 0.307178, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D/Marker3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.714712, 0), Vector3(0, -0.715585, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgf5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker3D/Marker3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8300r"]
+_data = {
+"RESET": SubResource("Animation_rgf5a"),
+"squigle": SubResource("Animation_13ffe")
+}
+
+[node name="enemy" type="CharacterBody3D"]
+script = ExtResource("1_cr8wb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_7lkli")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yauln")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.394816)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Marker3D"]
+transform = Transform3D(0.110672, 0, 0, 0, 1, 0, 0, 0, 0.719943, 0, 0, 0.417735)
+mesh = SubResource("BoxMesh_yauln")
+skeleton = NodePath("../..")
+
+[node name="Marker3D2" type="Marker3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.753273)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Marker3D/Marker3D2"]
+transform = Transform3D(0.110672, 0, 0, 0, 1, 0, 0, 0, 0.719943, 0, 0, 0.321007)
+mesh = SubResource("BoxMesh_yauln")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8300r")
+}
