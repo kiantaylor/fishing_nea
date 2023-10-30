@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv7vjsu7kf3c0"]
+
+[ext_resource type="Script" path="res://scripts/menus/player_overlay.gd" id="1_qe6r0"]
+[ext_resource type="Texture2D" uid="uid://dd523l00o8u42" path="res://Textures/overlays/player data/xpbarUnder.png" id="2_6wsvk"]
+[ext_resource type="Texture2D" uid="uid://da34frugku6ja" path="res://Textures/overlays/player data/xpbarOutline.png" id="3_8em5p"]
+[ext_resource type="Texture2D" uid="uid://gvi5i2ljg2qx" path="res://Textures/overlays/player data/xpbarProgress.png" id="4_ikxjn"]
+
+[node name="player_overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -557.0
+offset_bottom = -560.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qe6r0")
+
+[node name="money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 52.0
+offset_right = 132.0
+offset_bottom = 85.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="level" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 7.0
+offset_right = 572.0
+offset_bottom = 29.0
+scale = Vector2(1, 1.8)
+value = 56.0
+texture_under = ExtResource("2_6wsvk")
+texture_over = ExtResource("3_8em5p")
+texture_progress = ExtResource("4_ikxjn")
+
+[node name="title" type="Label" parent="level"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = 0.555555
+offset_right = -17.0
+offset_bottom = 26.5556
+scale = Vector2(1, 0.711111)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "level : "
+
+[node name="xp" type="Label" parent="level"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 59.0
+offset_bottom = 26.0
+scale = Vector2(1.32511, 0.733722)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "xp"

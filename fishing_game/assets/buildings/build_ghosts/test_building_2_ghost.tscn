@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgsnbduevakc8"]
+
+[ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_bg3a6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
+size = Vector3(2.25069, 1.12242, 2.4304)
+
+[sub_resource type="PrismMesh" id="PrismMesh_w5rcy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c14nk"]
+
+[node name="test_building_2_ghost" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_bg3a6")
+metadata/building_type = "test_building_2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494607, 0)
+shape = SubResource("BoxShape3D_q1rev")
+
+[node name="meshes" type="Marker3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(2.2543, 0, 0, 0, 0.403418, 0, 0, 0, 2.2941, 0, 1.1802, 0)
+mesh = SubResource("PrismMesh_w5rcy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(1.45523, 0, 0, 0, 0.260421, 0, 0, 0, 1.48093, 0, 2.71138, 0)
+mesh = SubResource("PrismMesh_w5rcy")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(2.13253, 0, 0, 0, 1, 0, 0, 0, 2.18517, 0, 0.494607, 0)
+mesh = SubResource("BoxMesh_c14nk")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(1.29156, 0, 0, 0, 1.66959, 0, 0, 0, 1.24455, 0, 1.74813, 0)
+mesh = SubResource("BoxMesh_c14nk")
+skeleton = NodePath("../..")
+
+[node name="land_sense" type="RayCast3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

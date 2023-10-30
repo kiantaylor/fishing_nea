@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5umwv6aukv3q"]
+
+[ext_resource type="PackedScene" uid="uid://cw1rd3krffxa7" path="res://assets/screens/menus/build_overlay.tscn" id="1_k2af2"]
+[ext_resource type="Script" path="res://assets/testing stuff/build_test_area.gd" id="1_m0cww"]
+[ext_resource type="Script" path="res://scripts/mainScreen/cameraPivot.gd" id="3_rni4h"]
+[ext_resource type="PackedScene" uid="uid://dv7vjsu7kf3c0" path="res://assets/screens/menus/player_overlay.tscn" id="4_y7pim"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ob0d0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgxcv"]
+albedo_color = Color(0.188235, 0.541176, 0.654902, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nng87"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3vxf"]
+albedo_color = Color(0.380392, 0.588235, 0.423529, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5nnbv"]
+height = 1.51802
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xbtq4"]
+
+[sub_resource type="Sky" id="Sky_lq3s6"]
+sky_material = SubResource("ProceduralSkyMaterial_xbtq4")
+
+[sub_resource type="Environment" id="Environment_g4tvb"]
+background_mode = 2
+sky = SubResource("Sky_lq3s6")
+glow_enabled = true
+fog_light_color = Color(0.639216, 0.670588, 0.717647, 1)
+fog_sun_scatter = 0.27
+fog_height = 301.81
+fog_height_density = -2.6947
+volumetric_fog_emission = Color(0.517647, 0.517647, 0.517647, 1)
+volumetric_fog_detail_spread = 2.73208
+
+[node name="build_test_area" type="Node3D"]
+script = ExtResource("1_m0cww")
+
+[node name="sea" type="MeshInstance3D" parent="."]
+transform = Transform3D(900, 0, 0, 0, 17.832, 0, 0, 0, 900, 0, -1.38661, 0)
+mesh = SubResource("PlaneMesh_ob0d0")
+skeleton = NodePath("../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_jgxcv")
+
+[node name="floor" type="StaticBody3D" parent="."]
+transform = Transform3D(48, 0, 0, 0, 0.951, 0, 0, 0, 48, 0, -0.933302, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+mesh = SubResource("CylinderMesh_nng87")
+surface_material_override/0 = SubResource("StandardMaterial3D_k3vxf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("CylinderShape3D_5nnbv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.62272, 0.782445, 0, -0.782445, 0.62272, 0, 51.725, 63.6627)
+shadow_enabled = true
+
+[node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g4tvb")
+
+[node name="camera_pivot" type="Marker3D" parent="."]
+script = ExtResource("3_rni4h")
+
+[node name="free_cam" type="Camera3D" parent="camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.998929, 0.0462696, 0, -0.0462696, 0.998929, 3.4129, 5.67666, 48.3542)
+
+[node name="build_cam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 56.9979, 8.75)
+
+[node name="player_overlay" parent="." instance=ExtResource("4_y7pim")]
+
+[connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

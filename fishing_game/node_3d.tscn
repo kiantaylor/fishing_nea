@@ -41,4 +41,8 @@ autostart = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jhkv6")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.44118, 0)
+current = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
