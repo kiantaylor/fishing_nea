@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://7kt5c68hh255"]
+
+[ext_resource type="Script" path="res://scripts/menus/building_edit_overlay.gd" id="1_xecwt"]
+
+[sub_resource type="Animation" id="Animation_rc0lh"]
+resource_name = "open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(578, 1305), Vector2(578, 1050)]
+}
+
+[sub_resource type="Animation" id="Animation_7qwxs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(578, 1305)]
+}
+
+[sub_resource type="Animation" id="Animation_w1ebd"]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(578, 1050), Vector2(578, 1305)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btoie"]
+_data = {
+"RESET": SubResource("Animation_7qwxs"),
+"close": SubResource("Animation_w1ebd"),
+"open": SubResource("Animation_rc0lh")
+}
+
+[node name="building_edit_overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 578.0
+offset_top = 1305.0
+offset_right = 6186.0
+offset_bottom = 4138.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xecwt")
+
+[node name="movement" type="Button" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 250.0
+offset_bottom = 233.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "move"
+
+[node name="demolish" type="Button" parent="."]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 24.0
+offset_right = 492.0
+offset_bottom = 233.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "destroy"
+
+[node name="upgrade" type="Button" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 24.0
+offset_right = 738.0
+offset_bottom = 233.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "upgrade"
+
+[node name="access" type="Button" parent="."]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 24.0
+offset_right = 983.0
+offset_bottom = 233.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "access"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_btoie")
+}
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -15.0
+offset_right = 613.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 30
+text = "test build"
+
+[connection signal="pressed" from="movement" to="." method="_on_movement_pressed"]
+[connection signal="pressed" from="demolish" to="." method="_on_demolish_pressed"]
+[connection signal="pressed" from="upgrade" to="." method="_on_upgrade_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

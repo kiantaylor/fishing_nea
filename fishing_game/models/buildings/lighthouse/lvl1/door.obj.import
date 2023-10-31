@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkcnvq5elxrql"
+path="res://.godot/imported/door.obj-7bc54b63344ab622f51b0b3b4acf511d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/door.obj-7bc54b63344ab622f51b0b3b4acf511d.mesh"]
+
+source_file="res://models/buildings/lighthouse/lvl1/door.obj"
+dest_files=["res://.godot/imported/door.obj-7bc54b63344ab622f51b0b3b4acf511d.mesh", "res://.godot/imported/door.obj-7bc54b63344ab622f51b0b3b4acf511d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

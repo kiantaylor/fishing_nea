@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://7pleonqc0g8s"]
+
+[ext_resource type="Script" path="res://scripts/building/building_selection_box.gd" id="1_hw8f5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_45sgh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wy8ne"]
+transparency = 1
+albedo_color = Color(0, 0.701961, 1, 0.490196)
+roughness = 0.39
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wfebu"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="building_selection_box" type="Area3D"]
+script = ExtResource("1_hw8f5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_45sgh")
+surface_material_override/0 = SubResource("StandardMaterial3D_wy8ne")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_wfebu")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

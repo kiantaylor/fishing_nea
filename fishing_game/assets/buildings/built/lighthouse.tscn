@@ -1,0 +1,88 @@
+[gd_scene load_steps=19 format=3 uid="uid://dte3f444wakqv"]
+
+[ext_resource type="ArrayMesh" uid="uid://ba5ffl844rscp" path="res://models/buildings/lighthouse/lvl1/base.obj" id="1_miw8j"]
+[ext_resource type="Texture2D" uid="uid://dy6lcfsmw87ru" path="res://Textures/buildings/lighthouse/lvl1/base.png" id="2_0bfgc"]
+[ext_resource type="ArrayMesh" uid="uid://bkcnvq5elxrql" path="res://models/buildings/lighthouse/lvl1/door.obj" id="3_qc616"]
+[ext_resource type="Texture2D" uid="uid://bmmix6vulfbc6" path="res://Textures/buildings/lighthouse/lvl1/door.png" id="4_jtx6a"]
+[ext_resource type="ArrayMesh" uid="uid://cey0qedlaipjr" path="res://models/buildings/lighthouse/lvl1/tower.obj" id="5_01bti"]
+[ext_resource type="Texture2D" uid="uid://p4o3p43h4g6h" path="res://Textures/buildings/lighthouse/lvl1/tower.png" id="6_n3rl5"]
+[ext_resource type="ArrayMesh" uid="uid://r50hubv7jr6w" path="res://models/buildings/lighthouse/lvl1/roof.obj" id="7_5k4k3"]
+[ext_resource type="Texture2D" uid="uid://230pvgxq0uqp" path="res://Textures/buildings/lighthouse/lvl1/roof.png" id="8_1iw6i"]
+[ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="9_qjbp0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lywi6"]
+albedo_texture = ExtResource("2_0bfgc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1yna"]
+albedo_texture = ExtResource("4_jtx6a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfjwa"]
+albedo_texture = ExtResource("6_n3rl5")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_inmu5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qhcq"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.188235)
+roughness = 0.5
+refraction_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_a053b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wud8i"]
+albedo_color = Color(1, 0.439216, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.482353, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbrt0"]
+albedo_texture = ExtResource("8_1iw6i")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fecrk"]
+height = 4.45397
+radius = 1.26866
+
+[node name="lighthouse" type="StaticBody3D"]
+metadata/building_type = "lighthouse"
+
+[node name="base" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_miw8j")
+skeleton = NodePath("../tower")
+surface_material_override/0 = SubResource("StandardMaterial3D_lywi6")
+
+[node name="door" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_qc616")
+skeleton = NodePath("../tower")
+surface_material_override/0 = SubResource("StandardMaterial3D_i1yna")
+
+[node name="tower" type="MeshInstance3D" parent="."]
+mesh = ExtResource("5_01bti")
+surface_material_override/0 = SubResource("StandardMaterial3D_hfjwa")
+
+[node name="lamp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2297, 0)
+mesh = SubResource("CylinderMesh_inmu5")
+surface_material_override/0 = SubResource("StandardMaterial3D_8qhcq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lamp"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.618818, 0)
+mesh = SubResource("SphereMesh_a053b")
+surface_material_override/0 = SubResource("StandardMaterial3D_wud8i")
+
+[node name="roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0310416, 0)
+mesh = ExtResource("7_5k4k3")
+surface_material_override/0 = SubResource("StandardMaterial3D_jbrt0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.01243, 0)
+light_color = Color(1, 1, 0.278431, 1)
+light_energy = 16.0
+shadow_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45378, 0)
+shape = SubResource("CylinderShape3D_fecrk")
+
+[node name="building_selection_box" parent="." instance=ExtResource("9_qjbp0")]
+transform = Transform3D(2.6, 0, 0, 0, 4.9, 0, 0, 0, 2.53, 0, 1.67049, 0)
+metadata/building_type = "lighthouse"

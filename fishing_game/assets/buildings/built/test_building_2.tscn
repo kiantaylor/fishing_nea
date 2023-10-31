@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0hukip7e2vat"]
+[gd_scene load_steps=6 format=3 uid="uid://d0hukip7e2vat"]
+
+[ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_kribn"]
+[ext_resource type="Texture2D" uid="uid://c08v4orl6p6ro" path="res://icon.svg" id="2_v71rv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c14nk"]
 
@@ -7,8 +10,9 @@ size = Vector3(2.25069, 1.12242, 2.4304)
 
 [sub_resource type="PrismMesh" id="PrismMesh_w5rcy"]
 
-[node name="test_building1" type="StaticBody3D"]
+[node name="test_building_2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+metadata/building_type = "test_building_2"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.13253, 0, 0, 0, 1, 0, 0, 0, 2.18517, 0, 0.494607, 0)
@@ -29,3 +33,12 @@ mesh = SubResource("PrismMesh_w5rcy")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.45523, 0, 0, 0, 0.260421, 0, 0, 0, 1.48093, 0, 2.71138, 0)
 mesh = SubResource("PrismMesh_w5rcy")
+
+[node name="building_selection_box" parent="." instance=ExtResource("1_kribn")]
+transform = Transform3D(2.44536, 0, 0, 0, 3.1459, 0, 0, 0, 2.33422, 0, 1.50459, 0)
+
+[node name="icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.793904, 0, 0, 0, 0.793904, 0, 0, 0, 0.793904, 0, 3.8301, 0)
+visible = false
+billboard = 1
+texture = ExtResource("2_v71rv")
