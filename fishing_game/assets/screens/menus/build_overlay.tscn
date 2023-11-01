@@ -31,35 +31,6 @@ tracks/1/keys = {
 "values": [Vector2(0, 698)]
 }
 
-[sub_resource type="Animation" id="Animation_mqucr"]
-resource_name = "pop_up"
-length = 0.3
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("pop_up_button:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.09, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1101, -85), Vector2(1101, 13.3), Vector2(1101, 13)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1398), Vector2(0, 893)]
-}
-
 [sub_resource type="Animation" id="Animation_xxvjc"]
 resource_name = "close"
 length = 0.3
@@ -89,6 +60,35 @@ tracks/1/keys = {
 "values": [Vector2(0, 893), Vector2(0, 1398)]
 }
 
+[sub_resource type="Animation" id="Animation_mqucr"]
+resource_name = "pop_up"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pop_up_button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1101, -85), Vector2(1101, 13.3), Vector2(1101, 13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1398), Vector2(0, 893)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p1e5"]
 _data = {
 "RESET": SubResource("Animation_i0kh6"),
@@ -102,8 +102,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 698.0
-offset_right = 20736.0
-offset_bottom = 11921.0
+offset_right = 25344.0
+offset_bottom = 14513.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -138,6 +138,14 @@ offset_right = 303.0
 offset_bottom = 60.0
 focus_mode = 0
 text = "test bulding 2"
+
+[node name="harbour" type="Button" parent="scrolled/testing"]
+offset_left = 311.0
+offset_top = -60.0
+offset_right = 442.0
+offset_bottom = 60.0
+focus_mode = 0
+text = "harbour"
 
 [node name="backgroundOutline" type="Sprite2D" parent="."]
 z_index = 2
@@ -195,6 +203,7 @@ libraries = {
 
 [connection signal="pressed" from="scrolled/testing/test_building_1" to="." method="_on_test_building_1_pressed"]
 [connection signal="pressed" from="scrolled/testing/test_building_2" to="." method="_on_test_building_2_pressed"]
+[connection signal="pressed" from="scrolled/testing/harbour" to="." method="_on_harbour_pressed"]
 [connection signal="pressed" from="testing" to="." method="_on_testing_pressed"]
 [connection signal="pressed" from="boats" to="." method="_on_boats_pressed"]
 [connection signal="toggled" from="build_camera_check" to="." method="_on_build_camera_check_toggled"]

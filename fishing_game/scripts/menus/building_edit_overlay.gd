@@ -56,3 +56,7 @@ func _on_movement_pressed():
 		BuildingData.selected_building.queue_free()
 		emit_signal("generate_ghost",BuildingData.selected_building.get_meta('building_type'),true,BuildingData.selected_building.position,BuildingData.selected_building.rotation)
 		print(backup)
+
+
+func _on_access_pressed():
+	BuildingData.selected_building.open_access()

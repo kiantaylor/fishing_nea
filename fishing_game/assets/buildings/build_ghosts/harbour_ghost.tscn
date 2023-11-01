@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c156s7j4iexvh"]
+
+[ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_3krsk"]
+[ext_resource type="ArrayMesh" uid="uid://dk2bwt508git6" path="res://models/buildings/harbour/level1/main.obj" id="2_14x6u"]
+[ext_resource type="Material" uid="uid://bhptm6jva6oja" path="res://Textures/buildings/ghosts/green_ghost.tres" id="2_gfocv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
+size = Vector3(12.4094, 2.22809, 16.3789)
+
+[node name="harbour_ghost" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_3krsk")
+metadata/building_type = "harbour"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.03141, -0.825744, 7.11436)
+shape = SubResource("BoxShape3D_q1rev")
+
+[node name="meshes" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147842, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="meshes"]
+mesh = ExtResource("2_14x6u")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_gfocv")
+
+[node name="land_sense" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0782106, 0.71111, 0)
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

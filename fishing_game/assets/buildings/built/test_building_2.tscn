@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0hukip7e2vat"]
+[gd_scene load_steps=7 format=3 uid="uid://d0hukip7e2vat"]
 
+[ext_resource type="Script" path="res://scripts/building/base_building.gd" id="1_a5ty5"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_kribn"]
-[ext_resource type="Texture2D" uid="uid://c08v4orl6p6ro" path="res://icon.svg" id="2_v71rv"]
+[ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="2_s07jt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c14nk"]
 
@@ -12,6 +13,7 @@ size = Vector3(2.25069, 1.12242, 2.4304)
 
 [node name="test_building_2" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_a5ty5")
 metadata/building_type = "test_building_2"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -41,4 +43,4 @@ transform = Transform3D(2.44536, 0, 0, 0, 3.1459, 0, 0, 0, 2.33422, 0, 1.50459, 
 transform = Transform3D(0.793904, 0, 0, 0, 0.793904, 0, 0, 0, 0.793904, 0, 3.8301, 0)
 visible = false
 billboard = 1
-texture = ExtResource("2_v71rv")
+texture = ExtResource("2_s07jt")

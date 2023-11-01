@@ -51,7 +51,10 @@ func get_boat_trait():
 
 func get_boat_type():
 	return boat_type
-
+func get_speed():
+	return speed
+func get_durability():
+	return durability
 func get_stats():
 	return [base_speed,speed,size,durability,crew_slots]
 

@@ -14,11 +14,15 @@ func _ready():
 func _process(delta):
 	if land and not get_node("land_sense").is_colliding():
 		for i in get_node("meshes").get_children():
-			i.set_surface_override_material(0,load("res://Textures/buildings/ghosts/red_ghost.tres"))
+			var mats=i.get_surface_override_material_count()
+			for j in range(mats):
+				i.set_surface_override_material(j,load("res://Textures/buildings/ghosts/red_ghost.tres"))
 		land=false
 	if not land and  get_node("land_sense").is_colliding():
 		for i in get_node("meshes").get_children():
-			i.set_surface_override_material(0,load("res://Textures/buildings/ghosts/green_ghost.tres"))
+			var mats=i.get_surface_override_material_count()
+			for j in range(mats):
+				i.set_surface_override_material(j,load("res://Textures/buildings/ghosts/green_ghost.tres"))
 		land=true
 	if Input.is_action_pressed('build_up'):
 		position.z-=0.1
@@ -55,14 +59,18 @@ func _on_body_entered(body):
 	print('hit')
 	colliding=true
 	for i in get_node("meshes").get_children():
-		i.set_surface_override_material(0,load("res://Textures/buildings/ghosts/red_ghost.tres"))
+		var mats=i.get_surface_override_material_count()
+		for j in range(mats):
+			i.set_surface_override_material(j,load("res://Textures/buildings/ghosts/red_ghost.tres"))
 
 
 func _on_body_exited(body):
 	colliding=false
 	check()
 	for i in get_node("meshes").get_children():
-		i.set_surface_override_material(0,load("res://Textures/buildings/ghosts/green_ghost.tres"))
+		var mats=i.get_surface_override_material_count()
+		for j in range(mats):
+			i.set_surface_override_material(j,load("res://Textures/buildings/ghosts/green_ghost.tres"))
 func check():
 	get_node("CollisionShape3D").disabled=true
 	get_node("CollisionShape3D").disabled=false

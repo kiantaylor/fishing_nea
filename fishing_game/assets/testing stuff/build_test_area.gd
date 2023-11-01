@@ -4,6 +4,7 @@ var ghost_present=false
 var ghost
 var ghost_type=''
 var build_camera=false
+var menu_accessed=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -11,8 +12,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("camera_pivot/free_cam").current=not build_camera
-	get_node("build_cam").current=build_camera
+	BuildingData.ghost_present=ghost_present
+	if not menu_accessed:
+		get_node("camera_pivot/free_cam").current=not build_camera
+		get_node("build_cam").current=build_camera
 
 
 func _on_build_overlay_generate_ghost(building,relocating,ghost_position,ghost_rotation):

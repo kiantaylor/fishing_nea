@@ -38,19 +38,10 @@ func _on_boats_pressed():
 
 func _on_build_camera_check_toggled(button_pressed):
 	get_parent().build_camera=button_pressed
-func _on_test_building_1_pressed():
-	var requirements=BuildingData.build_requirements['test_building_1']
-	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1]:
-		emit_signal('generate_ghost','test_building_1',false,Vector3(0,0,0),Vector3(0,0,0))
-
-func _on_test_building_2_pressed():
-	var requirements=BuildingData.build_requirements['test_building_2']
-	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1]:
-		emit_signal('generate_ghost','test_building_2',false,Vector3(0,0,0),Vector3(0,0,0))
 
 
 func _on_pop_up_button_pressed():
-	if not BuildingData.editing:
+	if not BuildingData.editing and not BuildingData.accessing:
 		if up:
 			get_node("AnimationPlayer").play('close')
 			up=false
@@ -63,3 +54,21 @@ func _on_pop_up_button_pressed():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name=='close':
 		BuildingData.building_open=false
+func _on_test_building_1_pressed():
+	var requirements=BuildingData.build_requirements['test_building_1']
+	var map_segment=BuildingData.build_map['test_building_1']
+	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1] and len(map_segment)<requirements[2]:
+		emit_signal('generate_ghost','test_building_1',false,Vector3(0,0,0),Vector3(0,0,0))
+
+func _on_test_building_2_pressed():
+	var requirements=BuildingData.build_requirements['test_building_2']
+	var map_segment=BuildingData.build_map['test_building_2']
+	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1] and len(map_segment)<requirements[2]:
+		emit_signal('generate_ghost','test_building_2',false,Vector3(0,0,0),Vector3(0,0,0))
+
+
+func _on_harbour_pressed():
+	var requirements=BuildingData.build_requirements['harbour']
+	var map_segment=BuildingData.build_map['harbour']
+	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1] and len(map_segment)<requirements[2]:
+		emit_signal('generate_ghost','harbour',false,Vector3(0,0,0),Vector3(0,0,0))

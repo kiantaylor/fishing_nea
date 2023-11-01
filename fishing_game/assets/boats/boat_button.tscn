@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsf34t8fqxyeu"]
+
+[ext_resource type="Script" path="res://scripts/menus/boat_management/boat_button.gd" id="1_giucr"]
+
+[node name="boat_button" type="Button"]
+offset_right = 362.0
+offset_bottom = 50.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+script = ExtResource("1_giucr")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
