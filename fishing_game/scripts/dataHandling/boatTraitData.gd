@@ -14,7 +14,20 @@ var engineering=[
 	[0.0,1.0]
 ]
 var fishing=[]
-
+var engineering_name=[
+	'Swift',
+	'Quick',
+	'Speedy',
+	'Roving',
+	'Rambling',
+	'Reliable',
+	'Toughened',
+	'Sturdy',
+	'Armoured',
+	'Tanky',
+	'Juggernaught'
+	
+]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -25,9 +38,9 @@ func _process(delta):
 	pass
 func traitGenerate():
 	var trait_str=''
-	var choice=randf_range(0,190)
+	var choice=randf_range(50,190)
 	
-	var num=2.718**(0.04*choice-3)+1
+	var num=2.718**(0.08*choice-3)+1
 	if len(str(int(num+1.0)))==1:
 		trait_str+='0'
 	trait_str+=str(int(num+1.0))

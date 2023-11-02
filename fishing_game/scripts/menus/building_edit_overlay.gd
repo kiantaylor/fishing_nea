@@ -1,6 +1,9 @@
 extends Control
 var movement=false
 signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
+var shop_buildings=[
+	'harbour'
+]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	BuildingData.build_edit_overlay=self
@@ -14,6 +17,10 @@ func _process(delta):
 		
 func open():
 	get_node("title").text=BuildingData.selected_building.get_meta('building_type')
+	if BuildingData.selected_building.get_meta('building_type') in shop_buildings:
+		get_node("shop").visible=true
+	else:
+		get_node("shop").visible=false
 	get_node("AnimationPlayer").play('open')
 	
 
@@ -60,3 +67,8 @@ func _on_movement_pressed():
 
 func _on_access_pressed():
 	BuildingData.selected_building.open_access()
+
+
+func _on_shop_pressed():
+	BuildingData.editing=false
+	BuildingData.selected_building.open_shop()

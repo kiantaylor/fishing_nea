@@ -4,6 +4,7 @@ var money=2500
 var lvl=1
 var xp_threshold=0.0
 var xp=30
+var boat_space=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	xp_threshold=(2**((lvl-20)/3)+1)*100

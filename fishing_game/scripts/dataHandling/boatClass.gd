@@ -12,9 +12,12 @@ var base_speed:float
 var size:int
 var base_price=0
 var price=0
+var vis_name=''
+var dis_name=''
 var base_durability:float
 var durability:float
 var crew_slots=[]
+var trait_name='fishing'
 
 # class definition
 
@@ -31,6 +34,9 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	durability=base_durability
 	crew_slots=boat_management.type_dictionary[boat_type][3]
 	base_price=boat_management.type_dictionary[boat_type][4]
+	if bt=='bt1':
+		vis_name='boat_1_visual.tscn'
+		dis_name='Testing Boat'
 	price=calculate_cost(base_price,boat_trait)
 	apply_condition()
 	apply_trait(boat_trait)
@@ -48,7 +54,8 @@ func get_boat_name():
 	
 func get_boat_trait():
 	return boat_trait
-
+func get_size():
+	return size
 func get_boat_type():
 	return boat_type
 func get_speed():
@@ -78,7 +85,7 @@ func debug_stat_display():
 # set methods :
 
 func rename(new_name):
-	if len(new_name)<=30 and len(new_name)>0:
+	if len(new_name)<=30 and len(new_name)>=3:
 		boat_name=new_name
 
 		return true
@@ -103,11 +110,7 @@ func set_condition(new_condition):
 	else:
 		return false
 
-func set_boat_name(new_name):
-	if len(new_name)<=30 and len(new_name)>0:
-		boat_name=new_name
-	else:
-		return false
+
 
 # traits and conditions
 
@@ -121,7 +124,7 @@ func calculate_trait(trait1):
 		var ratio_place=int(trait1[2])
 
 		var ratio=BoatTraitData.engineering[ratio_place]
-
+		trait_name=BoatTraitData.engineering_name[ratio_place]
 		var percentage_change=int(trait1.substr(0,2))
 
 		var speed_change=percentage_change*ratio[0]
@@ -141,7 +144,9 @@ func apply_trait(trait1):
 		speed+=change_list[0]*speed
 		durability+=change_list[1]*durability
 	
-
+func upgrade():
+	set_condition(get_condition()+1.0)
+	apply_condition()
 #cost and pricing
 
 func calculate_cost(price1,trait1):

@@ -5,6 +5,7 @@ var tab='testing'
 var up=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	up=false
 	position=Vector2(0,1398)
 
 

@@ -63,8 +63,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 578.0
 offset_top = 1305.0
-offset_right = 15402.0
-offset_bottom = 9322.0
+offset_right = 17706.0
+offset_bottom = 10618.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xecwt")
@@ -109,6 +109,16 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "access"
 
+[node name="shop" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 24.0
+offset_right = 1230.0
+offset_bottom = 233.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "shop"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_btoie")
@@ -127,4 +137,5 @@ text = "test build"
 [connection signal="pressed" from="demolish" to="." method="_on_demolish_pressed"]
 [connection signal="pressed" from="upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="access" to="." method="_on_access_pressed"]
+[connection signal="pressed" from="shop" to="." method="_on_shop_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

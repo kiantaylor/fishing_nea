@@ -177,65 +177,6 @@ offset_bottom = 517.0
 theme_override_font_sizes/font_size = 25
 autowrap_mode = 2
 
-[node name="condition" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 726.0
-offset_right = -32.0
-offset_bottom = 782.0
-theme_override_font_sizes/font_size = 25
-autowrap_mode = 2
-
-[node name="size" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 834.0
-offset_right = -32.0
-offset_bottom = 890.0
-theme_override_font_sizes/font_size = 25
-autowrap_mode = 2
-
-[node name="upgrade" type="Button" parent="ui/right"]
-offset_left = -393.0
-offset_top = 1013.0
-offset_right = -42.0
-offset_bottom = 1094.0
-focus_mode = 0
-text = "upgrade"
-
-[node name="rename" type="Button" parent="ui/right"]
-offset_left = -393.0
-offset_top = 1136.0
-offset_right = -42.0
-offset_bottom = 1217.0
-focus_mode = 0
-text = "rename"
-
-[node name="rename_text_edit" type="TextEdit" parent="ui"]
-visible = false
-layout_mode = 0
-offset_left = 916.0
-offset_top = 609.0
-offset_right = 1291.0
-offset_bottom = 709.0
-placeholder_text = "add new name here must be over 3 characters and under 30"
-wrap_mode = 1
-
-[node name="cancel" type="Button" parent="ui/rename_text_edit"]
-layout_mode = 0
-offset_left = 347.0
-offset_right = 374.0
-offset_bottom = 31.0
-focus_mode = 0
-text = "X"
-
-[node name="confirm" type="Button" parent="ui/rename_text_edit"]
-layout_mode = 0
-offset_left = -5.0
-offset_top = 69.0
-offset_right = 379.0
-offset_bottom = 103.0
-focus_mode = 0
-text = "confirm"
-
 [node name="warning" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -245,8 +186,4 @@ libraries = {
 "": SubResource("AnimationLibrary_4auct")
 }
 
-[connection signal="pressed" from="ui/right/upgrade" to="." method="_on_upgrade_pressed"]
-[connection signal="pressed" from="ui/right/rename" to="." method="_on_rename_pressed"]
-[connection signal="pressed" from="ui/rename_text_edit/cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="ui/rename_text_edit/confirm" to="." method="_on_confirm_pressed"]
 [connection signal="timeout" from="warning" to="." method="_on_warning_timeout"]

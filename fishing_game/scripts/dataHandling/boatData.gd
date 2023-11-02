@@ -124,7 +124,7 @@ var boats=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('<boat data initiated>')
-	for i in range(15):
+	for i in range(5):
 		boats.append(boatGenerate())
 	print(boats)
 	
@@ -145,15 +145,15 @@ func nameGenerate():
 		boat_name=name_starts.pick_random()+' '+name_ends.pick_random()
 	return boat_name
 func boatGenerate():
-	var condition=randi_range(1,5)
-	var boat_trait=BoatTraitData.traitGenerate()
-	
-	var boat_name=nameGenerate()
-	var boat_type='bt1'
-	var boat1=BoatClass.new(condition,boat_trait,boat_name,boat_type)
-	
-	return boat1
-	
+
+		var condition=randi_range(1,5)
+		var boat_trait=BoatTraitData.traitGenerate()
+		
+		var boat_name=nameGenerate()
+		var boat_type='bt1'
+		var boat1=BoatClass.new(condition,boat_trait,boat_name,boat_type)
+		
+		return boat1
 func test1():
 	pass
 #	for i in range(1,300):

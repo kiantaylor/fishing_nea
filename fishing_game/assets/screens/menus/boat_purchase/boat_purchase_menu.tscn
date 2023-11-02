@@ -1,9 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=7 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
-[ext_resource type="PackedScene" uid="uid://ddkutwpv2lk3d" path="res://assets/screens/menus/boat_purchase/boat_container.tscn" id="1_cooa7"]
+[ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h6kwp"]
+sky_top_color = Color(0.388235, 0.537255, 1, 1)
+sky_horizon_color = Color(0, 0.423529, 0.717647, 1)
+sky_curve = 1.0815
+ground_bottom_color = Color(0.109804, 0.262745, 0.486275, 1)
+ground_horizon_color = Color(0, 0.423529, 0.737255, 1)
+ground_curve = 0.787933
+sun_angle_max = 0.0
+sun_curve = 5.70819
+
+[sub_resource type="Sky" id="Sky_lfpn6"]
+sky_material = SubResource("ProceduralSkyMaterial_h6kwp")
+
+[sub_resource type="Environment" id="Environment_vr6ro"]
+background_mode = 2
+background_color = Color(0.0666667, 0.152941, 0.254902, 1)
+sky = SubResource("Sky_lfpn6")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.34
+glow_enabled = true
 
 [node name="boat_purchase_menu" type="Control"]
 material = SubResource("CanvasItemMaterial_3eccs")
@@ -17,47 +39,178 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a1kp3")
 
-[node name="background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 783.0
+[node name="boats" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = -108.0
+offset_right = 60.0
+offset_bottom = -68.0
+scale = Vector2(2, 2)
+
+[node name="left" type="Marker2D" parent="."]
+
+[node name="exit" type="Button" parent="left"]
+z_index = 2
+offset_left = 634.0
+offset_top = 1246.0
+offset_right = 664.0
+offset_bottom = 1277.0
+text = "X"
+
+[node name="background" type="ColorRect" parent="left"]
+offset_right = 561.0
+offset_bottom = 1325.0
 color = Color(0.780392, 0.623529, 0.341176, 1)
 
-[node name="navbar" type="ColorRect" parent="."]
+[node name="navbar" type="ColorRect" parent="left"]
 z_index = 1
-layout_mode = 0
-offset_right = 1150.0
+offset_right = 561.0
 offset_bottom = 99.0
 color = Color(0.74902, 0.505882, 0.054902, 1)
 
-[node name="shadow" type="ColorRect" parent="navbar"]
+[node name="shadow" type="ColorRect" parent="left/navbar"]
 modulate = Color(1, 1, 1, 0.27451)
 z_index = -1
 layout_mode = 0
 offset_top = 80.0
-offset_right = 1150.0
-offset_bottom = 107.0
+offset_right = 561.0
+offset_bottom = 120.0
 color = Color(0, 0, 0, 1)
 
-[node name="boats" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="boat_list" type="Marker2D" parent="left"]
+position = Vector2(57, 173)
 
-[node name="boat_container" parent="boats" instance=ExtResource("1_cooa7")]
-position = Vector2(172, 266)
+[node name="scroll" type="VScrollBar" parent="left"]
+offset_left = 515.0
+offset_top = 173.0
+offset_right = 534.0
+offset_bottom = 1244.0
+max_value = 800.0
 
-[node name="boat_container2" parent="boats" instance=ExtResource("1_cooa7")]
-position = Vector2(574, 266)
+[node name="money" type="Label" parent="left"]
+z_index = 1
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 312.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 40
+text = "money moebny"
 
-[node name="boat_container3" parent="boats" instance=ExtResource("1_cooa7")]
-position = Vector2(974, 266)
+[node name="right" type="Marker2D" parent="."]
+position = Vector2(2297, 0)
 
-[node name="boat_container4" parent="boats" instance=ExtResource("1_cooa7")]
-position = Vector2(172, 560)
+[node name="background2" type="ColorRect" parent="right"]
+offset_left = -552.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 1326.0
+color = Color(0.780392, 0.623529, 0.341176, 1)
 
-[node name="boat_container5" parent="boats" instance=ExtResource("1_cooa7")]
-position = Vector2(574, 560)
+[node name="navbar2" type="ColorRect" parent="right"]
+z_index = 1
+offset_left = -552.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 100.0
+color = Color(0.74902, 0.505882, 0.054902, 1)
 
-[node name="boat_container6" parent="boats" instance=ExtResource("1_cooa7")]
-position = Vector2(982, 560)
+[node name="shadow" type="ColorRect" parent="right/navbar2"]
+modulate = Color(1, 1, 1, 0.27451)
+z_index = -1
+layout_mode = 0
+offset_top = 80.0
+offset_right = 561.0
+offset_bottom = 120.0
+color = Color(0, 0, 0, 1)
+
+[node name="title" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 14.0
+offset_right = 2.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="type" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 137.0
+offset_right = 2.0
+offset_bottom = 211.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="speed" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 360.0
+offset_right = 2.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
+
+[node name="condition" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 244.0
+offset_right = 2.0
+offset_bottom = 318.0
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
+
+[node name="durability" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 467.0
+offset_right = 2.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
+
+[node name="size" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 691.0
+offset_right = 2.0
+offset_bottom = 765.0
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
+
+[node name="price" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 844.0
+offset_right = 2.0
+offset_bottom = 918.0
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
+
+[node name="purchase" type="Button" parent="right"]
+offset_left = -452.0
+offset_top = 1038.0
+offset_right = -85.0
+offset_bottom = 1271.0
+theme_override_font_sizes/font_size = 80
+text = "purchase"
+
+[node name="3dSpace" type="Node3D" parent="."]
+script = ExtResource("2_bhmld")
+
+[node name="Camera3D" type="Camera3D" parent="3dSpace"]
+transform = Transform3D(1, 0, 0, 0, 0.983201, 0.182527, 0, -0.182527, 0.983201, 0, 1.80855, 7.41053)
+current = true
+
+[node name="pivot" type="Marker3D" parent="3dSpace"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.77283, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="3dSpace"]
+transform = Transform3D(0.731032, -0.563608, 0.384626, -4.15804e-08, 0.563685, 0.82599, -0.682343, -0.603825, 0.412072, 0, 6.63234, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3dSpace"]
+environment = SubResource("Environment_vr6ro")
+
+[connection signal="pressed" from="left/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="right/purchase" to="." method="_on_purchase_pressed"]

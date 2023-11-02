@@ -1,6 +1,6 @@
-extends StaticBody3D
-var level=1
+extends Marker3D
 
+var boat
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,5 +9,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-func open_access():
-	print('opening placeholder')

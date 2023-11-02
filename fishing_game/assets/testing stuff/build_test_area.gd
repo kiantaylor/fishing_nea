@@ -7,7 +7,7 @@ var build_camera=false
 var menu_accessed=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	load_build_map()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,7 +17,15 @@ func _process(delta):
 		get_node("camera_pivot/free_cam").current=not build_camera
 		get_node("build_cam").current=build_camera
 
-
+func load_build_map():
+	for i in BuildingData.build_map:
+		for building in BuildingData.build_map[i]:
+			var build_load=load(str('res://assets/buildings/built/'+i+'.tscn'))
+			var build_new=build_load.instantiate()
+			build_new.position=building[1]
+			build_new.rotation=building[2]
+			build_new.level=building[0]
+			add_child(build_new)
 func _on_build_overlay_generate_ghost(building,relocating,ghost_position,ghost_rotation):
 	print(building,ghost_type)
 	if not ghost_present:
