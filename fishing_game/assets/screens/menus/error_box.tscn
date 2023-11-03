@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://3jkve0f4hvp"]
+
+[ext_resource type="Script" path="res://scripts/menus/error_box.gd" id="1_1ew4h"]
+
+[node name="error_box" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2308.0
+offset_bottom = 1305.0
+script = ExtResource("1_1ew4h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 910.0
+offset_top = 582.0
+offset_right = 1342.0
+offset_bottom = 662.0
+color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 908.0
+offset_top = 585.0
+offset_right = 1342.0
+offset_bottom = 657.0
+theme_override_font_sizes/font_size = 30
+text = "no space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit" type="Button" parent="."]
+offset_left = 1308.0
+offset_top = 583.0
+offset_right = 1341.0
+offset_bottom = 614.0
+text = "X"
+
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

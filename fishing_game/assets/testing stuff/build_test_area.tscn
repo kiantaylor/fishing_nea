@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5umwv6aukv3q"]
+[gd_scene load_steps=13 format=3 uid="uid://b5umwv6aukv3q"]
 
 [ext_resource type="PackedScene" uid="uid://cw1rd3krffxa7" path="res://assets/screens/menus/build_overlay.tscn" id="1_k2af2"]
 [ext_resource type="Script" path="res://assets/testing stuff/build_test_area.gd" id="1_m0cww"]
 [ext_resource type="Script" path="res://scripts/mainScreen/cameraPivot.gd" id="3_rni4h"]
-[ext_resource type="PackedScene" uid="uid://dv7vjsu7kf3c0" path="res://assets/screens/menus/player_overlay.tscn" id="4_y7pim"]
 [ext_resource type="PackedScene" uid="uid://7kt5c68hh255" path="res://assets/screens/menus/building_edit_overlay.tscn" id="6_3qfhk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ob0d0"]
@@ -70,15 +69,13 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="build_cam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 56.9979, 8.75)
 
-[node name="player_overlay" parent="." instance=ExtResource("4_y7pim")]
-
 [node name="building_edit_overlay" parent="." instance=ExtResource("6_3qfhk")]
-offset_right = 20010.0
-offset_bottom = 11914.0
+offset_right = 29226.0
+offset_bottom = 17098.0
 
 [node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
-offset_right = 36864.0
-offset_bottom = 20993.0
+offset_right = 46080.0
+offset_bottom = 26177.0
 
 [connection signal="generate_ghost" from="building_edit_overlay" to="." method="_on_build_overlay_generate_ghost"]
 [connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

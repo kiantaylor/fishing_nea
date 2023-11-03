@@ -6,16 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://gvi5i2ljg2qx" path="res://Textures/overlays/player data/xpbarProgress.png" id="4_ikxjn"]
 
 [node name="player_overlay" type="Control"]
+z_index = 12
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1700.0
+offset_right = -1711.0
 offset_bottom = -1205.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.32986, 1.29114)
 script = ExtResource("1_qe6r0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 595.0
+offset_bottom = 89.0
+color = Color(0, 0, 0, 1)
 
 [node name="money" type="Label" parent="."]
 layout_mode = 0

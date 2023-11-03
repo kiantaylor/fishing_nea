@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://7kt5c68hh255"]
+[gd_scene load_steps=7 format=3 uid="uid://7kt5c68hh255"]
 
 [ext_resource type="Script" path="res://scripts/menus/building_edit_overlay.gd" id="1_xecwt"]
+[ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="2_lgfq0"]
 
 [sub_resource type="Animation" id="Animation_7qwxs"]
 length = 0.001
@@ -63,8 +64,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 578.0
 offset_top = 1305.0
-offset_right = 17706.0
-offset_bottom = 10618.0
+offset_right = 24618.0
+offset_bottom = 14506.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xecwt")
@@ -96,7 +97,7 @@ offset_top = 24.0
 offset_right = 738.0
 offset_bottom = 233.0
 focus_mode = 0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 20
 text = "upgrade"
 
 [node name="access" type="Button" parent="."]
@@ -132,6 +133,13 @@ offset_right = 613.0
 offset_bottom = 30.0
 theme_override_font_sizes/font_size = 30
 text = "test build"
+
+[node name="error_box" parent="." instance=ExtResource("2_lgfq0")]
+visible = false
+offset_left = -581.0
+offset_top = -1051.0
+offset_right = 1727.0
+offset_bottom = 254.0
 
 [connection signal="pressed" from="movement" to="." method="_on_movement_pressed"]
 [connection signal="pressed" from="demolish" to="." method="_on_demolish_pressed"]

@@ -6,9 +6,11 @@ var accessing=false
 func _ready():
 	get_node('ui/right').position.x=2785
 	
-	PlayerData.boat_space+=size_slots
+	
 	update_boat_list()
-	boat_selected(BoatData.boats[0])
+
+		
+
 	#open_access()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,11 +33,12 @@ func open_access():
 		print('opening harbour')
 		get_node("access_camera").current=true
 		if len(BoatData.boats)==0:
-			get_node("ui/warning").visible=true
-			get_node('warning').start()
+			_on_harbour_stats_pressed()
 		else:
-			get_node("AnimationPlayer").play('open_ui')
+			
 			update_boat_list()
+			boat_selected(BoatData.boats[0])
+		get_node("AnimationPlayer").play('open_ui')
 func close_access():
 	accessing=false
 	BuildingData.accessing=false
@@ -62,9 +65,9 @@ func update_boat_list():
 		var button_new=button_load.instantiate()
 		button_new.boat=i
 		if get_node('ui/left/boat_list').get_child_count()==0:
-			button_new.position=Vector2(40,148)
+			button_new.position=Vector2(40,350)
 		else:
-			button_new.position=Vector2(40,(57*get_node('ui/left/boat_list').get_child_count())+148)
+			button_new.position=Vector2(40,(57*get_node('ui/left/boat_list').get_child_count())+350)
 		button_new.true_parent=self
 		get_node("ui/left/boat_list").add_child(button_new)
 		var boat_load=load(str("res://assets/boats/"+i.vis_name))
@@ -78,6 +81,16 @@ func update_boat_list():
 		boat_new.boat=i
 		get_node("boats").add_child(boat_new)
 func boat_selected(boat_select):
+	get_node("ui/right/condition").visible=true
+	get_node("ui/right/title").visible=true
+	get_node("ui/right/speed").visible=true
+	get_node("ui/right/durability").visible=true
+	get_node("ui/right/size").visible=true
+	get_node("ui/right/upgrade").visible=true
+	get_node("ui/right/rename").visible=true
+	get_node("ui/right/title2").visible=false
+	get_node("ui/right/level").visible=false
+	get_node("ui/right/space").visible=false
 	print(boat_select.get_boat_name())
 	var vis
 	for i in get_node("boats").get_children():
@@ -122,3 +135,19 @@ func _on_confirm_pressed():
 		get_node("ui/rename_text_edit").text=''
 	else:
 		get_node("ui/rename_text_edit").text='try again'
+
+
+func _on_harbour_stats_pressed():
+	get_node("access_camera").current=true
+	get_node("ui/right/condition").visible=false
+	get_node("ui/right/title").visible=false
+	get_node("ui/right/speed").visible=false
+	get_node("ui/right/durability").visible=false
+	get_node("ui/right/size").visible=false
+	get_node("ui/right/upgrade").visible=false
+	get_node("ui/right/rename").visible=false
+	get_node("ui/right/title2").visible=true
+	get_node("ui/right/level").visible=true
+	get_node("ui/right/space").visible=true
+	get_node("ui/right/level").text='Level '+str(level)
+	get_node("ui/right/space").text='Space: '+str(2*level+14)

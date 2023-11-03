@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=11 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
 [ext_resource type="ArrayMesh" uid="uid://dk2bwt508git6" path="res://models/buildings/harbour/level1/main.obj" id="1_rhw1d"]
 [ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="2_kj1ae"]
+[ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="5_ttg8u"]
+[ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(13.455, 1.96665, 14.538)
@@ -104,16 +106,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="warning" type="Label" parent="ui"]
-visible = false
-layout_mode = 0
-offset_left = 777.0
-offset_top = 570.0
-offset_right = 1463.0
-offset_bottom = 661.0
-theme_override_font_sizes/font_size = 50
-text = "you do not posses any boats"
-
 [node name="left" type="Marker2D" parent="ui"]
 position = Vector2(-469, 0)
 
@@ -123,24 +115,41 @@ offset_bottom = 1295.0
 color = Color(0, 0, 0, 1)
 
 [node name="scroll" type="VScrollBar" parent="ui/left"]
-offset_left = 409.0
-offset_top = 135.0
-offset_right = 423.0
-offset_bottom = 1241.0
+offset_left = 407.0
+offset_top = 321.0
+offset_right = 421.0
+offset_bottom = 1247.0
 
 [node name="boat_list" type="Marker2D" parent="ui/left"]
+position = Vector2(-2, 186)
 
 [node name="ColorRect2" type="ColorRect" parent="ui/left"]
-offset_right = 448.0
-offset_bottom = 79.0
+offset_left = -2.0
+offset_top = 186.0
+offset_right = 446.0
+offset_bottom = 265.0
 color = Color(0, 0.152941, 0.247059, 1)
 
+[node name="ColorRect3" type="ColorRect" parent="ui/left"]
+offset_left = 1.0
+offset_top = 75.0
+offset_right = 449.0
+offset_bottom = 189.0
+color = Color(0, 0, 0, 1)
+
 [node name="Label" type="Label" parent="ui/left"]
-offset_left = 48.0
-offset_top = 22.0
-offset_right = 88.0
-offset_bottom = 45.0
+offset_left = 46.0
+offset_top = 208.0
+offset_right = 94.0
+offset_bottom = 234.0
 text = "boats:"
+
+[node name="harbour_stats" type="Button" parent="ui/left"]
+offset_left = 4.0
+offset_top = 129.0
+offset_right = 449.0
+offset_bottom = 184.0
+text = "harbour stats"
 
 [node name="right" type="Marker2D" parent="ui"]
 position = Vector2(2301, 0)
@@ -209,6 +218,25 @@ offset_bottom = 1217.0
 focus_mode = 0
 text = "rename"
 
+[node name="title2" type="Label" parent="ui/right"]
+offset_left = -390.0
+offset_top = 17.0
+offset_right = -57.0
+offset_bottom = 77.0
+text = "Harbour Stats:"
+
+[node name="level" type="Label" parent="ui/right"]
+offset_left = -390.0
+offset_top = 139.0
+offset_right = -57.0
+offset_bottom = 199.0
+
+[node name="space" type="Label" parent="ui/right"]
+offset_left = -390.0
+offset_top = 204.0
+offset_right = -57.0
+offset_bottom = 264.0
+
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false
 layout_mode = 0
@@ -236,6 +264,16 @@ offset_bottom = 103.0
 focus_mode = 0
 text = "confirm"
 
+[node name="error_box" parent="ui" instance=ExtResource("5_ttg8u")]
+visible = false
+
+[node name="crew_button" parent="ui" instance=ExtResource("6_ygu2a")]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 278.0
+offset_right = 1218.0
+offset_bottom = 406.0
+
 [node name="warning" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -245,6 +283,7 @@ libraries = {
 "": SubResource("AnimationLibrary_4auct")
 }
 
+[connection signal="pressed" from="ui/left/harbour_stats" to="." method="_on_harbour_stats_pressed"]
 [connection signal="pressed" from="ui/right/upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="ui/right/rename" to="." method="_on_rename_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/cancel" to="." method="_on_cancel_pressed"]

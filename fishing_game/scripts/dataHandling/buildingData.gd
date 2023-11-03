@@ -11,7 +11,7 @@ var accessing=false
 var build_requirements={
 	'test_building_1':[1000,1,5],
 	'test_building_2':[1700,2,3],
-	'harbour':[0,1,1]
+	'harbour':[2000,1,1]
 }
 
 var build_map={

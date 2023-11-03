@@ -1,5 +1,6 @@
 extends Control
 var movement=false
+var upgrade_cost=0
 signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var shop_buildings=[
 	'harbour'
@@ -16,11 +17,13 @@ func _process(delta):
 		
 		
 func open():
+	upgrade_cost=int(BuildingData.selected_building.level*0.5*BuildingData.build_requirements[BuildingData.selected_building.get_meta('building_type')][0])
 	get_node("title").text=BuildingData.selected_building.get_meta('building_type')
 	if BuildingData.selected_building.get_meta('building_type') in shop_buildings:
 		get_node("shop").visible=true
 	else:
 		get_node("shop").visible=false
+	get_node('upgrade').text='Upgrade costs: '+str(upgrade_cost)
 	get_node("AnimationPlayer").play('open')
 	
 
@@ -45,10 +48,19 @@ func _on_demolish_pressed():
 
 
 func _on_upgrade_pressed():
-	for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:
-		if i[1]==BuildingData.selected_building.position and i[2]==BuildingData.selected_building.rotation:
-			i[0]+=1
-	print( BuildingData.build_map)
+	if PlayerData.money>=upgrade_cost:
+		for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:
+			if i[1]==BuildingData.selected_building.position and i[2]==BuildingData.selected_building.rotation:
+				i[0]+=1
+		BuildingData.selected_building.level+=1
+		print( BuildingData.build_map)
+		PlayerData.money-=upgrade_cost
+		upgrade_cost=int(BuildingData.selected_building.level*0.5*BuildingData.build_requirements[BuildingData.selected_building.get_meta('building_type')][0])
+		get_node('upgrade').text='Upgrade costs: '+str(upgrade_cost)
+		
+	else:
+		get_node("error_box").text='Not enough money'
+		get_node("error_box").visible=true
 	
 
 

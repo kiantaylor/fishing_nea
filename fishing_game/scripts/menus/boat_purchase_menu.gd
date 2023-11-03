@@ -51,17 +51,29 @@ func boat_selected(boat_select):
 
 
 func _on_purchase_pressed():
+	print('space  ',PlayerData.boat_space)
 	if PlayerData.money>=price:
-		BoatData.boats.append(selected_boat)
-		PlayerData.money-=price
-		var count=0
-		for i in stock:
-			if i==selected_boat:
-				stock.remove_at(count)
-			count+=1
-		refresh_stock()		
-		if len(stock)>0:
-			boat_selected(stock[0])
+		if PlayerData.boat_space_used+selected_boat.get_size()<=PlayerData.boat_space:
+			print('space  ',PlayerData.boat_space,'  total space ',PlayerData.boat_space_used+selected_boat.get_size(),' current used  ',PlayerData.boat_space_used)
+			BoatData.boats.append(selected_boat)
+			PlayerData.boat_space_used+=selected_boat.get_size()
+			PlayerData.money-=price
+			var count=0
+			for i in stock:
+				if i==selected_boat:
+					stock.remove_at(count)
+				count+=1
+			refresh_stock()		
+			if len(stock)>0:
+				boat_selected(stock[0])
+		else:
+			print('space  ',PlayerData.boat_space)
+			get_node('error_box').text='No space available'
+			get_node('error_box').visible=true
+	else:
+		print('money')
+		get_node('error_box').text='Not enough money'
+		get_node('error_box').visible=true
 		
 		#get_tree().change_scene_to_file("res://assets/testing stuff/build_test_area.tscn")
 

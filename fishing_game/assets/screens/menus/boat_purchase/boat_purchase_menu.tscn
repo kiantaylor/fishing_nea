@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=8 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
+[ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="3_fhh2t"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
 
@@ -211,6 +212,9 @@ transform = Transform3D(0.731032, -0.563608, 0.384626, -4.15804e-08, 0.563685, 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="3dSpace"]
 environment = SubResource("Environment_vr6ro")
+
+[node name="error_box" parent="." instance=ExtResource("3_fhh2t")]
+visible = false
 
 [connection signal="pressed" from="left/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="right/purchase" to="." method="_on_purchase_pressed"]
