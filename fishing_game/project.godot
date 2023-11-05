@@ -22,6 +22,7 @@ BoatData="*res://scripts/dataHandling/boatData.gd"
 BuildingData="*res://scripts/dataHandling/buildingData.gd"
 PlayerData="*res://scripts/dataHandling/player_data.gd"
 PlayerOverlay="*res://assets/screens/menus/player_overlay.tscn"
+CrewData="*res://scripts/dataHandling/CrewData.gd"
 
 [display]
 
