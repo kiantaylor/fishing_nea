@@ -10,9 +10,9 @@ var type_traits={
 }
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	for i in range(10):
-		crew_generate()
+#func _ready():
+	#for i in range(10):
+	#	crew_generate()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,3 +33,4 @@ func crew_generate():
 	var type=type_traits.keys()[randi_range(0,4)]
 	var crew_trait=trait_generate(type)
 	var experience=randi_range(1,5)
+	var crew1=CrewMemberClass.new(type,crew_generate(),5,experience)

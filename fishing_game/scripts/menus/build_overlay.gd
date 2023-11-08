@@ -73,3 +73,10 @@ func _on_harbour_pressed():
 	var map_segment=BuildingData.build_map['harbour']
 	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1] and len(map_segment)<requirements[2]:
 		emit_signal('generate_ghost','harbour',false,Vector3(0,0,0),Vector3(0,0,0))
+
+
+func _on_anchor_pressed():
+	var requirements=BuildingData.build_requirements['anchor']
+	var map_segment=BuildingData.build_map['anchor']
+	if PlayerData.money>=requirements[0] and PlayerData.lvl>=requirements[1] and len(map_segment)<requirements[2]:
+		emit_signal('generate_ghost','anchor',false,Vector3(0,0,0),Vector3(0,0,0))

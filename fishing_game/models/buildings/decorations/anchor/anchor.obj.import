@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3owgf8ieh3ua"
+path="res://.godot/imported/anchor.obj-d709eba39bfdf4d823fdc66fa0229dbf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/anchor.obj-d709eba39bfdf4d823fdc66fa0229dbf.mesh"]
+
+source_file="res://models/buildings/decorations/anchor/anchor.obj"
+dest_files=["res://.godot/imported/anchor.obj-d709eba39bfdf4d823fdc66fa0229dbf.mesh", "res://.godot/imported/anchor.obj-d709eba39bfdf4d823fdc66fa0229dbf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

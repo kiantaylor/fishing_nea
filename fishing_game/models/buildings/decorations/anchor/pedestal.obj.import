@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cp6tfs82m7rc5"
+path="res://.godot/imported/pedestal.obj-30d2d3e723443e94e50b557c7283547a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pedestal.obj-30d2d3e723443e94e50b557c7283547a.mesh"]
+
+source_file="res://models/buildings/decorations/anchor/pedestal.obj"
+dest_files=["res://.godot/imported/pedestal.obj-30d2d3e723443e94e50b557c7283547a.mesh", "res://.godot/imported/pedestal.obj-30d2d3e723443e94e50b557c7283547a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

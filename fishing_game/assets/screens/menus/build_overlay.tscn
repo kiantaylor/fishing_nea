@@ -102,8 +102,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 698.0
-offset_right = 25344.0
-offset_bottom = 14513.0
+offset_right = 27648.0
+offset_bottom = 15809.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -146,6 +146,14 @@ offset_right = 442.0
 offset_bottom = 60.0
 focus_mode = 0
 text = "harbour"
+
+[node name="anchor" type="Button" parent="scrolled/testing"]
+offset_left = 451.0
+offset_top = -60.0
+offset_right = 582.0
+offset_bottom = 60.0
+focus_mode = 0
+text = "anchor"
 
 [node name="backgroundOutline" type="Sprite2D" parent="."]
 z_index = 2
@@ -204,6 +212,7 @@ libraries = {
 [connection signal="pressed" from="scrolled/testing/test_building_1" to="." method="_on_test_building_1_pressed"]
 [connection signal="pressed" from="scrolled/testing/test_building_2" to="." method="_on_test_building_2_pressed"]
 [connection signal="pressed" from="scrolled/testing/harbour" to="." method="_on_harbour_pressed"]
+[connection signal="pressed" from="scrolled/testing/anchor" to="." method="_on_anchor_pressed"]
 [connection signal="pressed" from="testing" to="." method="_on_testing_pressed"]
 [connection signal="pressed" from="boats" to="." method="_on_boats_pressed"]
 [connection signal="toggled" from="build_camera_check" to="." method="_on_build_camera_check_toggled"]
