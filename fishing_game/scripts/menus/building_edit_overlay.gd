@@ -4,6 +4,15 @@ var upgrade_cost=0
 signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var shop_buildings=[
 	'harbour'
+]#
+var access_buildings=[
+	'harbour'
+
+]
+var upgrade_buildings=[
+	'harbour',
+	'test_building_1',
+	'test_building_2'
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +32,14 @@ func open():
 		get_node("shop").visible=true
 	else:
 		get_node("shop").visible=false
+	if BuildingData.selected_building.get_meta('building_type') in access_buildings:
+		get_node("access").visible=true
+	else:
+		get_node("access").visible=false
+	if BuildingData.selected_building.get_meta('building_type') in upgrade_buildings:
+		get_node("upgrade").visible=true
+	else:
+		get_node("upgrade").visible=false
 	get_node('upgrade').text='Upgrade costs: '+str(upgrade_cost)
 	get_node("AnimationPlayer").play('open')
 	
@@ -36,7 +53,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_demolish_pressed():
-	if BuildingData.editing:
+	if BuildingData.editing and not movement:
 		var count=0
 		for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:
 			if i[1]==BuildingData.selected_building.position and i[2]==BuildingData.selected_building.rotation:
@@ -48,7 +65,7 @@ func _on_demolish_pressed():
 
 
 func _on_upgrade_pressed():
-	if PlayerData.money>=upgrade_cost:
+	if PlayerData.money>=upgrade_cost and not movement:
 		for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:
 			if i[1]==BuildingData.selected_building.position and i[2]==BuildingData.selected_building.rotation:
 				i[0]+=1
@@ -58,7 +75,7 @@ func _on_upgrade_pressed():
 		upgrade_cost=int(BuildingData.selected_building.level*0.5*BuildingData.build_requirements[BuildingData.selected_building.get_meta('building_type')][0])
 		get_node('upgrade').text='Upgrade costs: '+str(upgrade_cost)
 		
-	else:
+	elif not movement:
 		get_node("error_box").text='Not enough money'
 		get_node("error_box").visible=true
 	
@@ -78,9 +95,11 @@ func _on_movement_pressed():
 
 
 func _on_access_pressed():
-	BuildingData.selected_building.open_access()
+	if not movement:
+		BuildingData.selected_building.open_access()
 
 
 func _on_shop_pressed():
-	BuildingData.editing=false
-	BuildingData.selected_building.open_shop()
+	if not movement:
+		BuildingData.editing=false
+		BuildingData.selected_building.open_shop()

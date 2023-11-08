@@ -44,5 +44,6 @@ metadata/building_type = ""
 
 [node name="icon" type="Sprite3D" parent="."]
 transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 0, 2.3158, 0)
+visible = false
 billboard = 1
 texture = ExtResource("3_pib4k")
