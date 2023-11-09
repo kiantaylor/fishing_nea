@@ -25,7 +25,7 @@ var build_map={
 signal open_edit_menu
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print('<building data initiated>')
 		
 
 

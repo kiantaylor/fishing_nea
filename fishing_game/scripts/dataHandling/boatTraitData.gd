@@ -13,7 +13,26 @@ var engineering=[
 	[0.1,0.9],
 	[0.0,1.0]
 ]
-var fishing=[]
+# ratio oder is small,medium,large
+var fishing=[
+	[1.0,0.0,0.0],
+	[0.0,1.0,0.0],
+	[0.0,0.0,1.0],
+	[0.5,0.5,0.0],
+	[0.0,0.5,0.5],
+	[0.5,0.0,0.5],
+	[0.33,0.33,0.33],
+	[0.5,0.25,0.25],
+	[0.25,0.5,0.25],
+	[0.25,0.25,0.5],
+	[1.0,1.0,1.0]
+]
+var fishing_name=[
+	'',
+	'Decent',
+	'Beast Hunting',
+	''
+]
 var engineering_name=[
 	'Swift',
 	'Quick',
@@ -30,7 +49,7 @@ var engineering_name=[
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	print('<boat trait data initiated>')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
