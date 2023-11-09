@@ -28,10 +28,17 @@ var fishing=[
 	[1.0,1.0,1.0]
 ]
 var fishing_name=[
-	'',
-	'Decent',
+	'Delicate',
+	'Hearty',
 	'Beast Hunting',
-	''
+	'Delectable',
+	'Premium',
+	'Absolutist',
+	'Equal',
+	'Generous',
+	'Sensible',
+	'Hungry',
+	'Lucky'
 ]
 var engineering_name=[
 	'Swift',

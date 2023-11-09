@@ -135,7 +135,21 @@ func calculate_trait(trait1):
 	
 		return [speed_change,durability_change]
 	else:
-		return false
+		var ratio_place=int(trait1[2])
+
+		var ratio=BoatTraitData.fishing[ratio_place]
+		trait_name=BoatTraitData.fishing_name[ratio_place]
+		var percentage_change=int(trait1.substr(0,2))
+
+		var small_change=percentage_change*ratio[0]
+		var medium_change=percentage_change*ratio[2]
+		var large_change=percentage_change*ratio[2]
+		small_change/=100.0
+		medium_change/=100.0
+		large_change/=100.0
+	
+	
+		return [small_change,medium_change,large_change]
 
 func apply_trait(trait1):
 	if calculate_trait(trait1):
