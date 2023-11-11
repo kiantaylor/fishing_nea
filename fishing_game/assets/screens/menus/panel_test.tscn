@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://f4rnkors1ame"]
+
+[ext_resource type="Texture2D" uid="uid://bieyftntb5w2u" path="res://colour pallete.png" id="1_vjj17"]
+
+[node name="panelTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1653.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 635.0
+offset_bottom = 1317.0
+color = Color(0.733333, 0.847059, 0.917647, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(940, 2123)
+texture = ExtResource("1_vjj17")
+
+[node name="red_stripe" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 589.0
+offset_right = 635.0
+offset_bottom = 1317.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="white_stripe" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 589.0
+offset_right = 605.0
+offset_bottom = 1317.0
+color = Color(0.988235, 0.988235, 0.929412, 1)

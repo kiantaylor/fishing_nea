@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://y4jaogs3dvof"]
+
+[node name="panel_top" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 648.0
+offset_bottom = 182.0
+
+[node name="title_box" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 646.0
+offset_bottom = 181.0
+color = Color(0.152941, 0.192157, 0.403922, 1)
+
+[node name="title_red_stripe" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 1.0
+offset_right = 650.0
+offset_bottom = 182.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="shadow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 181.0
+offset_right = 635.0
+offset_bottom = 214.0
+color = Color(0, 0, 0, 0.466667)
+
+[node name="title_bottom_red_stripe" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 167.0
+offset_right = 650.0
+offset_bottom = 182.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="title_white_stripe" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 1.0
+offset_right = 619.0
+offset_bottom = 182.0
+color = Color(0.988235, 0.988235, 0.929412, 1)

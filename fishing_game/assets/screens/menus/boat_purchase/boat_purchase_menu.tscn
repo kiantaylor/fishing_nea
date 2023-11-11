@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=10 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
+[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_p4wxw"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="3_fhh2t"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_tyg2v"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
 
@@ -50,6 +52,9 @@ scale = Vector2(2, 2)
 
 [node name="left" type="Marker2D" parent="."]
 
+[node name="bg" parent="left" instance=ExtResource("2_p4wxw")]
+offset_right = 0.0
+
 [node name="exit" type="Button" parent="left"]
 z_index = 2
 offset_left = 634.0
@@ -58,34 +63,14 @@ offset_right = 664.0
 offset_bottom = 1277.0
 text = "X"
 
-[node name="background" type="ColorRect" parent="left"]
-offset_right = 561.0
-offset_bottom = 1325.0
-color = Color(0.780392, 0.623529, 0.341176, 1)
-
-[node name="navbar" type="ColorRect" parent="left"]
-z_index = 1
-offset_right = 561.0
-offset_bottom = 99.0
-color = Color(0.74902, 0.505882, 0.054902, 1)
-
-[node name="shadow" type="ColorRect" parent="left/navbar"]
-modulate = Color(1, 1, 1, 0.27451)
-z_index = -1
-layout_mode = 0
-offset_top = 80.0
-offset_right = 561.0
-offset_bottom = 120.0
-color = Color(0, 0, 0, 1)
-
 [node name="boat_list" type="Marker2D" parent="left"]
 position = Vector2(57, 173)
 
 [node name="scroll" type="VScrollBar" parent="left"]
-offset_left = 515.0
-offset_top = 173.0
-offset_right = 534.0
-offset_bottom = 1244.0
+offset_left = 519.0
+offset_top = 242.0
+offset_right = 553.0
+offset_bottom = 1230.0
 max_value = 800.0
 
 [node name="money" type="Label" parent="left"]
@@ -97,32 +82,15 @@ offset_bottom = 77.0
 theme_override_font_sizes/font_size = 40
 text = "money moebny"
 
+[node name="panel_top" parent="left" instance=ExtResource("3_tyg2v")]
+
 [node name="right" type="Marker2D" parent="."]
 position = Vector2(2297, 0)
 
-[node name="background2" type="ColorRect" parent="right"]
-offset_left = -552.0
-offset_top = 1.0
-offset_right = 9.0
-offset_bottom = 1326.0
-color = Color(0.780392, 0.623529, 0.341176, 1)
-
-[node name="navbar2" type="ColorRect" parent="right"]
-z_index = 1
-offset_left = -552.0
-offset_top = 1.0
-offset_right = 9.0
-offset_bottom = 100.0
-color = Color(0.74902, 0.505882, 0.054902, 1)
-
-[node name="shadow" type="ColorRect" parent="right/navbar2"]
-modulate = Color(1, 1, 1, 0.27451)
-z_index = -1
-layout_mode = 0
-offset_top = 80.0
-offset_right = 561.0
-offset_bottom = 120.0
-color = Color(0, 0, 0, 1)
+[node name="bg" parent="right" instance=ExtResource("2_p4wxw")]
+offset_left = 10.0
+offset_right = 10.0
+scale = Vector2(-1, 1)
 
 [node name="title" type="Label" parent="right"]
 z_index = 1
@@ -196,6 +164,11 @@ offset_right = -85.0
 offset_bottom = 1271.0
 theme_override_font_sizes/font_size = 80
 text = "purchase"
+
+[node name="panel_top" parent="right" instance=ExtResource("3_tyg2v")]
+offset_left = 9.0
+offset_right = 657.0
+scale = Vector2(-1, 1)
 
 [node name="3dSpace" type="Node3D" parent="."]
 script = ExtResource("2_bhmld")
