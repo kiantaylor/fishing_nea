@@ -4,7 +4,7 @@ var selected_boat
 var accessing=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node('ui/right').position.x=2785
+	get_node('ui/right').position.x=2885
 	
 	
 	update_boat_list()
@@ -65,9 +65,9 @@ func update_boat_list():
 		var button_new=button_load.instantiate()
 		button_new.boat=i
 		if get_node('ui/left/boat_list').get_child_count()==0:
-			button_new.position=Vector2(40,350)
+			button_new.position=Vector2(20,450)
 		else:
-			button_new.position=Vector2(40,(57*get_node('ui/left/boat_list').get_child_count())+350)
+			button_new.position=Vector2(20,(100*get_node('ui/left/boat_list').get_child_count())+450)
 		button_new.true_parent=self
 		get_node("ui/left/boat_list").add_child(button_new)
 		var boat_load=load(str("res://assets/boats/"+i.vis_name))
@@ -86,6 +86,9 @@ func boat_selected(boat_select):
 	get_node("ui/right/speed").visible=true
 	get_node("ui/right/durability").visible=true
 	get_node("ui/right/size").visible=true
+	get_node("ui/right/small").visible=true
+	get_node("ui/right/medium").visible=true
+	get_node("ui/right/large").visible=true
 	get_node("ui/right/upgrade").visible=true
 	get_node("ui/right/rename").visible=true
 	get_node("ui/right/title2").visible=false
@@ -146,7 +149,10 @@ func _on_harbour_stats_pressed():
 	get_node("ui/right/size").visible=false
 	get_node("ui/right/upgrade").visible=false
 	get_node("ui/right/rename").visible=false
-	get_node("ui/right/title2").visible=true
+	get_node("ui/right/small").visible=false
+	get_node("ui/right/medium").visible=false
+	get_node("ui/right/large").visible=false
+	get_node("ui/right/title2").visible=false
 	get_node("ui/right/level").visible=true
 	get_node("ui/right/space").visible=true
 	get_node("ui/right/level").text='Level '+str(level)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=11 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
@@ -7,6 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_tyg2v"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrnpe"]
+bg_color = Color(0.733333, 0.847059, 0.917647, 1)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.92549, 0.262745, 0.372549, 1)
+shadow_size = 1
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h6kwp"]
 sky_top_color = Color(0.388235, 0.537255, 1, 1)
@@ -68,9 +77,10 @@ position = Vector2(57, 173)
 
 [node name="scroll" type="VScrollBar" parent="left"]
 offset_left = 519.0
-offset_top = 242.0
-offset_right = 553.0
+offset_top = 233.0
+offset_right = 552.0
 offset_bottom = 1230.0
+theme_override_styles/grabber = SubResource("StyleBoxFlat_rrnpe")
 max_value = 800.0
 
 [node name="money" type="Label" parent="left"]

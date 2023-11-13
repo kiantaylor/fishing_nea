@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=13 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
 [ext_resource type="ArrayMesh" uid="uid://dk2bwt508git6" path="res://models/buildings/harbour/level1/main.obj" id="1_rhw1d"]
 [ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="2_kj1ae"]
+[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="5_8hwdq"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="5_ttg8u"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
 [ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
@@ -22,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-469, 0)]
+"values": [Vector2(-550, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -34,7 +36,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2301, 0)]
+"values": [Vector2(2867, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sv6lu"]
@@ -50,7 +52,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-469, 0), Vector2(0, 0)]
+"values": [Vector2(-550, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -62,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2785, 0), Vector2(2301, 0)]
+"values": [Vector2(2889, 0), Vector2(2301, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4auct"]
@@ -107,54 +109,88 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="left" type="Marker2D" parent="ui"]
-position = Vector2(-469, 0)
+position = Vector2(-550, 0)
 
-[node name="ColorRect" type="ColorRect" parent="ui/left"]
-offset_right = 448.0
-offset_bottom = 1295.0
-color = Color(0, 0, 0, 1)
+[node name="panelTest" parent="ui/left" instance=ExtResource("5_8hwdq")]
+offset_left = -130.0
+offset_right = -130.0
 
 [node name="scroll" type="VScrollBar" parent="ui/left"]
 offset_left = 407.0
-offset_top = 321.0
-offset_right = 421.0
-offset_bottom = 1247.0
+offset_top = 415.0
+offset_right = 430.0
+offset_bottom = 1271.0
 
 [node name="boat_list" type="Marker2D" parent="ui/left"]
-position = Vector2(-2, 186)
+position = Vector2(18, 531)
 
 [node name="ColorRect2" type="ColorRect" parent="ui/left"]
-offset_left = -2.0
-offset_top = 186.0
-offset_right = 446.0
-offset_bottom = 265.0
-color = Color(0, 0.152941, 0.247059, 1)
+offset_left = -161.0
+offset_top = 301.0
+offset_right = 459.0
+offset_bottom = 364.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="ui/left"]
+offset_left = -161.0
+offset_top = 364.0
+offset_right = 459.0
+offset_bottom = 403.0
+color = Color(0, 0, 0, 0.580392)
 
 [node name="ColorRect3" type="ColorRect" parent="ui/left"]
-offset_left = 1.0
-offset_top = 75.0
-offset_right = 449.0
-offset_bottom = 189.0
-color = Color(0, 0, 0, 1)
+offset_left = -170.0
+offset_top = 166.0
+offset_right = 459.0
+offset_bottom = 283.0
+color = Color(0.152941, 0.192157, 0.403922, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ui/left"]
+offset_left = -170.0
+offset_top = 291.0
+offset_right = 459.0
+offset_bottom = 304.0
+color = Color(0.988235, 0.988235, 0.929412, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="ui/left"]
+offset_left = -169.0
+offset_top = 277.0
+offset_right = 459.0
+offset_bottom = 293.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
 
 [node name="Label" type="Label" parent="ui/left"]
-offset_left = 46.0
-offset_top = 208.0
-offset_right = 94.0
-offset_bottom = 234.0
+offset_left = 27.0
+offset_top = 319.0
+offset_right = 75.0
+offset_bottom = 345.0
 text = "boats:"
 
 [node name="harbour_stats" type="Button" parent="ui/left"]
-offset_left = 4.0
-offset_top = 129.0
-offset_right = 449.0
-offset_bottom = 184.0
+offset_left = -132.0
+offset_top = 204.0
+offset_right = 457.0
+offset_bottom = 275.0
+focus_mode = 0
 text = "harbour stats"
+flat = true
+
+[node name="panel_top" parent="ui/left" instance=ExtResource("6_5xrls")]
+offset_left = -130.0
+offset_top = 2.0
+offset_right = 518.0
+offset_bottom = 184.0
 
 [node name="right" type="Marker2D" parent="ui"]
-position = Vector2(2301, 0)
+position = Vector2(2867, 0)
+
+[node name="panelTest" parent="ui/right" instance=ExtResource("5_8hwdq")]
+offset_left = 122.0
+offset_right = 122.0
+scale = Vector2(-1, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="ui/right"]
+visible = false
 offset_left = -449.0
 offset_top = -3.0
 offset_right = -1.0
@@ -176,30 +212,61 @@ offset_top = 327.0
 offset_right = -32.0
 offset_bottom = 383.0
 theme_override_font_sizes/font_size = 25
+text = "speed"
 autowrap_mode = 2
 
 [node name="durability" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 461.0
+offset_top = 405.0
 offset_right = -32.0
-offset_bottom = 517.0
+offset_bottom = 461.0
 theme_override_font_sizes/font_size = 25
+text = "durability"
 autowrap_mode = 2
 
 [node name="condition" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 726.0
+offset_top = 474.0
 offset_right = -32.0
-offset_bottom = 782.0
+offset_bottom = 530.0
 theme_override_font_sizes/font_size = 25
+text = "condition"
 autowrap_mode = 2
 
 [node name="size" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 834.0
+offset_top = 545.0
 offset_right = -32.0
-offset_bottom = 890.0
+offset_bottom = 601.0
 theme_override_font_sizes/font_size = 25
+text = "size"
+autowrap_mode = 2
+
+[node name="small" type="Label" parent="ui/right"]
+offset_left = -423.0
+offset_top = 608.0
+offset_right = -32.0
+offset_bottom = 664.0
+theme_override_font_sizes/font_size = 25
+text = "small fish"
+autowrap_mode = 2
+
+[node name="medium" type="Label" parent="ui/right"]
+offset_left = -423.0
+offset_top = 671.0
+offset_right = -32.0
+offset_bottom = 727.0
+theme_override_font_sizes/font_size = 25
+text = "medium fish"
+autowrap_mode = 2
+
+[node name="large" type="Label" parent="ui/right"]
+offset_left = -423.0
+offset_top = 743.0
+offset_right = -32.0
+offset_bottom = 799.0
+theme_override_font_sizes/font_size = 25
+text = "large fish"
 autowrap_mode = 2
 
 [node name="upgrade" type="Button" parent="ui/right"]
@@ -236,6 +303,11 @@ offset_left = -390.0
 offset_top = 204.0
 offset_right = -57.0
 offset_bottom = 264.0
+
+[node name="panel_top" parent="ui/right" instance=ExtResource("6_5xrls")]
+offset_left = 121.0
+offset_right = 771.0
+scale = Vector2(-1, 1)
 
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false

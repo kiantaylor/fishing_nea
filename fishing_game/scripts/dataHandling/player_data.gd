@@ -3,7 +3,7 @@ extends Node
 var money=2500
 var lvl=1
 var xp_threshold=0.0
-var xp=30
+var xp=0
 var boat_space=0
 var boat_space_used=0
 # Called when the node enters the scene tree for the first time.

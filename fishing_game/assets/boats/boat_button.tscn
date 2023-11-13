@@ -2,11 +2,61 @@
 
 [ext_resource type="Script" path="res://scripts/menus/boat_management/boat_button.gd" id="1_giucr"]
 
-[node name="boat_button" type="Button"]
-offset_right = 362.0
-offset_bottom = 50.0
-focus_mode = 0
-theme_override_font_sizes/font_size = 20
+[node name="boat_button" type="Marker2D"]
 script = ExtResource("1_giucr")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -328.0
+offset_top = -2.0
+offset_right = 368.0
+offset_bottom = 52.0
+color = Color(0.152941, 0.192157, 0.403922, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -107.0
+offset_right = 343.0
+offset_bottom = -53.0
+color = Color(0.988235, 0.988235, 0.929412, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+offset_left = -29.0
+offset_top = -166.0
+offset_right = 334.0
+offset_bottom = -112.0
+color = Color(0.733333, 0.847059, 0.917647, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+visible = false
+offset_left = 350.0
+offset_top = -166.0
+offset_right = 713.0
+offset_bottom = -112.0
+color = Color(0.152941, 0.192157, 0.403922, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+offset_left = -322.0
+offset_top = 52.0
+offset_right = 363.0
+offset_bottom = 60.0
+color = Color(0.988235, 0.988235, 0.929412, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = -312.0
+offset_top = 60.0
+offset_right = 363.0
+offset_bottom = 73.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="Button" type="Button" parent="."]
+offset_right = 362.0
+offset_bottom = 51.0
+focus_mode = 0
+text = "bigboat"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

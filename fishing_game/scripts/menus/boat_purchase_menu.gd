@@ -25,9 +25,9 @@ func refresh_stock():
 		var button_new=button_load.instantiate()
 		button_new.boat=i
 		if get_node('left/boat_list').get_child_count()==0:
-			button_new.position=Vector2(40,150)
+			button_new.position=Vector2(40,250)
 		else:
-			button_new.position=Vector2(40,(90*get_node('left/boat_list').get_child_count())+150)
+			button_new.position=Vector2(40,(100*get_node('left/boat_list').get_child_count())+250)
 		button_new.true_parent=self
 		get_node("left/boat_list").add_child(button_new)
 func boat_selected(boat_select):

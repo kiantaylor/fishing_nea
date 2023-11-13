@@ -1,8 +1,8 @@
 extends Node
 
-# order of attributes: size,speed,durability,crewslots>
+# order of attributes: size,speed,durability,crewslots,base price,small, medium, large>
 var type_dictionary={
-	'bt1':[3,5.0,8.0,['skp','dek'],650]
+	'bt1':[3,5.0,8.0,['skp','dek'],650,0.0,0.0,0.0]
 }
 var name_starts=[
 	'Golden',
@@ -124,7 +124,7 @@ var boats=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('<boat data initiated>')
-
+	boats.append(boatGenerate())
 	print(boats)
 	
 

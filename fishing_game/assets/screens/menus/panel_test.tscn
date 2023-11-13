@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://f4rnkors1ame"]
-
-[ext_resource type="Texture2D" uid="uid://bieyftntb5w2u" path="res://colour pallete.png" id="1_vjj17"]
+[gd_scene format=3 uid="uid://f4rnkors1ame"]
 
 [node name="panelTest" type="Control"]
 layout_mode = 3
@@ -19,7 +17,6 @@ color = Color(0.733333, 0.847059, 0.917647, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(940, 2123)
-texture = ExtResource("1_vjj17")
 
 [node name="red_stripe" type="ColorRect" parent="."]
 layout_mode = 0

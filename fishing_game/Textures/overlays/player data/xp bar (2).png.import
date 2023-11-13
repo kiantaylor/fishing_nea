@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da34frugku6ja"
-path="res://.godot/imported/xpbarOutline.png-73ff8c4bef5dfe2db5b335c42ed2b2b0.ctex"
+uid="uid://b8qk4fijblrno"
+path="res://.godot/imported/xp bar (2).png-9ae34fb3e4a4d659aae7d50c62439cb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/overlays/player data/xpbarOutline.png"
-dest_files=["res://.godot/imported/xpbarOutline.png-73ff8c4bef5dfe2db5b335c42ed2b2b0.ctex"]
+source_file="res://Textures/overlays/player data/xp bar (2).png"
+dest_files=["res://.godot/imported/xp bar (2).png-9ae34fb3e4a4d659aae7d50c62439cb4.ctex"]
 
 [params]
 

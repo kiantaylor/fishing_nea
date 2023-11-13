@@ -18,6 +18,12 @@ var base_durability:float
 var durability:float
 var crew_slots=[]
 var trait_name='fishing'
+var base_small_fish
+var small_fish
+var base_medium_fish
+var medium_fish
+var base_large_fish
+var large_fish
 
 # class definition
 
@@ -32,6 +38,9 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	speed=base_speed
 	base_durability=boat_management.type_dictionary[boat_type][2]
 	durability=base_durability
+	base_small_fish=boat_management.type_dictionary[boat_type][5]
+	base_medium_fish=boat_management.type_dictionary[boat_type][6]
+	base_large_fish=boat_management.type_dictionary[boat_type][7]
 	crew_slots=boat_management.type_dictionary[boat_type][3]
 	base_price=boat_management.type_dictionary[boat_type][4]
 	if bt=='bt1':
@@ -117,7 +126,11 @@ func set_condition(new_condition):
 func apply_condition():
 	var percentage_change = (0.1*(1.5**(condition)))+0.5
 	speed=percentage_change*base_speed
-	durability=percentage_change*base_speed
+	durability=percentage_change*base_durability
+	small_fish=percentage_change*base_small_fish
+	medium_fish=percentage_change*base_medium_fish
+	large_fish=percentage_change*base_large_fish
+	apply_trait(boat_trait)
 
 func calculate_trait(trait1):
 	if int(trait1[3])==1:
@@ -152,11 +165,17 @@ func calculate_trait(trait1):
 		return [small_change,medium_change,large_change]
 
 func apply_trait(trait1):
-	if calculate_trait(trait1):
+	if len(calculate_trait(trait1))==2:
 		var change_list=calculate_trait(trait1)
 	
 		speed+=change_list[0]*speed
 		durability+=change_list[1]*durability
+	else:
+		var change_list=calculate_trait(trait1)
+	
+		small_fish+=change_list[0]*small_fish
+		medium_fish+=change_list[1]*medium_fish
+		large_fish+=change_list[1]*large_fish
 	
 func upgrade():
 	set_condition(get_condition()+1.0)
