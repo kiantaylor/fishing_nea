@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=12 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_p4wxw"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="3_fhh2t"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_tyg2v"]
+[ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_qx1ud"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
 
@@ -115,9 +116,9 @@ autowrap_mode = 2
 [node name="type" type="Label" parent="right"]
 z_index = 1
 offset_left = -541.0
-offset_top = 137.0
+offset_top = 88.0
 offset_right = 2.0
-offset_bottom = 211.0
+offset_bottom = 162.0
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -125,11 +126,89 @@ autowrap_mode = 2
 [node name="speed" type="Label" parent="right"]
 z_index = 1
 offset_left = -541.0
-offset_top = 360.0
+offset_top = 387.0
 offset_right = 2.0
-offset_bottom = 434.0
+offset_bottom = 461.0
 theme_override_font_sizes/font_size = 30
+text = "speed"
 autowrap_mode = 2
+
+[node name="value_bar" parent="right/speed" instance=ExtResource("4_qx1ud")]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 353.0
+offset_bottom = 30.0
+
+[node name="durability" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 473.0
+offset_right = 2.0
+offset_bottom = 547.0
+theme_override_font_sizes/font_size = 30
+text = "durability"
+autowrap_mode = 2
+
+[node name="value_bar" parent="right/durability" instance=ExtResource("4_qx1ud")]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 353.0
+offset_bottom = 30.0
+scale = Vector2(1.75, 1.99)
+
+[node name="small" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 558.0
+offset_right = 2.0
+offset_bottom = 632.0
+theme_override_font_sizes/font_size = 30
+text = "small fish"
+autowrap_mode = 2
+
+[node name="value_bar" parent="right/small" instance=ExtResource("4_qx1ud")]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 353.0
+offset_bottom = 30.0
+scale = Vector2(1.75, 1.91)
+
+[node name="medium" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 638.0
+offset_right = 2.0
+offset_bottom = 712.0
+theme_override_font_sizes/font_size = 30
+text = "medium fish"
+autowrap_mode = 2
+
+[node name="value_bar" parent="right/medium" instance=ExtResource("4_qx1ud")]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 353.0
+offset_bottom = 30.0
+
+[node name="large" type="Label" parent="right"]
+z_index = 1
+offset_left = -541.0
+offset_top = 726.0
+offset_right = 2.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 30
+text = "large fish"
+autowrap_mode = 2
+
+[node name="value_bar" parent="right/large" instance=ExtResource("4_qx1ud")]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 17.0
+offset_right = 353.0
+offset_bottom = 30.0
 
 [node name="condition" type="Label" parent="right"]
 z_index = 1
@@ -138,24 +217,17 @@ offset_top = 244.0
 offset_right = 2.0
 offset_bottom = 318.0
 theme_override_font_sizes/font_size = 30
-autowrap_mode = 2
-
-[node name="durability" type="Label" parent="right"]
-z_index = 1
-offset_left = -541.0
-offset_top = 467.0
-offset_right = 2.0
-offset_bottom = 541.0
-theme_override_font_sizes/font_size = 30
+text = "condition"
 autowrap_mode = 2
 
 [node name="size" type="Label" parent="right"]
 z_index = 1
 offset_left = -541.0
-offset_top = 691.0
+offset_top = 288.0
 offset_right = 2.0
-offset_bottom = 765.0
+offset_bottom = 362.0
 theme_override_font_sizes/font_size = 30
+text = "size"
 autowrap_mode = 2
 
 [node name="price" type="Label" parent="right"]

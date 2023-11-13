@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=14 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="5_ttg8u"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
 [ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
+[ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="7_8nwqa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(13.455, 1.96665, 14.538)
@@ -74,7 +75,6 @@ _data = {
 }
 
 [node name="harbour" type="StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_3l5pk")
 metadata/building_type = "harbour"
 
@@ -197,47 +197,52 @@ offset_right = -1.0
 offset_bottom = 1295.0
 color = Color(0, 0, 0, 1)
 
-[node name="title" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 60.0
-offset_right = -32.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 25
-horizontal_alignment = 1
-autowrap_mode = 2
-
 [node name="speed" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 327.0
+offset_top = 439.0
 offset_right = -32.0
-offset_bottom = 383.0
+offset_bottom = 495.0
 theme_override_font_sizes/font_size = 25
 text = "speed"
 autowrap_mode = 2
 
+[node name="value_bar" parent="ui/right/speed" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+
 [node name="durability" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 405.0
+offset_top = 517.0
 offset_right = -32.0
-offset_bottom = 461.0
+offset_bottom = 573.0
 theme_override_font_sizes/font_size = 25
 text = "durability"
 autowrap_mode = 2
 
+[node name="value_bar" parent="ui/right/durability" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+
 [node name="condition" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 474.0
+offset_top = 287.0
 offset_right = -32.0
-offset_bottom = 530.0
+offset_bottom = 343.0
 theme_override_font_sizes/font_size = 25
 text = "condition"
 autowrap_mode = 2
 
 [node name="size" type="Label" parent="ui/right"]
 offset_left = -423.0
-offset_top = 545.0
+offset_top = 352.0
 offset_right = -32.0
-offset_bottom = 601.0
+offset_bottom = 408.0
 theme_override_font_sizes/font_size = 25
 text = "size"
 autowrap_mode = 2
@@ -251,14 +256,29 @@ theme_override_font_sizes/font_size = 25
 text = "small fish"
 autowrap_mode = 2
 
+[node name="value_bar" parent="ui/right/small" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 24.0
+
 [node name="medium" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 671.0
-offset_right = -32.0
-offset_bottom = 727.0
+offset_left = -453.0
+offset_top = 672.0
+offset_right = -62.0
+offset_bottom = 728.0
 theme_override_font_sizes/font_size = 25
 text = "medium fish"
 autowrap_mode = 2
+
+[node name="value_bar" parent="ui/right/medium" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 8.0
+offset_right = 325.0
+offset_bottom = 22.0
+scale = Vector2(1.75, 1.95)
 
 [node name="large" type="Label" parent="ui/right"]
 offset_left = -423.0
@@ -268,6 +288,13 @@ offset_bottom = 799.0
 theme_override_font_sizes/font_size = 25
 text = "large fish"
 autowrap_mode = 2
+
+[node name="value_bar" parent="ui/right/large" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 11.0
+offset_right = 293.0
+offset_bottom = 24.0
 
 [node name="upgrade" type="Button" parent="ui/right"]
 offset_left = -393.0
@@ -308,6 +335,24 @@ offset_bottom = 264.0
 offset_left = 121.0
 offset_right = 771.0
 scale = Vector2(-1, 1)
+
+[node name="title" type="Label" parent="ui/right"]
+offset_left = -423.0
+offset_top = 18.0
+offset_right = -32.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="type" type="Label" parent="ui/right"]
+offset_left = -423.0
+offset_top = 102.0
+offset_right = -32.0
+offset_bottom = 158.0
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false

@@ -8,7 +8,6 @@
 size = Vector3(12.4094, 2.22809, 16.3789)
 
 [node name="harbour_ghost" type="Area3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_3krsk")
 metadata/building_type = "harbour"
 

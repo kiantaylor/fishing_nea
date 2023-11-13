@@ -18,7 +18,7 @@ var build_requirements={
 var build_map={
 	'test_building_1':[],
 	'test_building_2':[],
-	'harbour':[[1, Vector3(22.40005, 0, 0), Vector3(0, 0, 0)]],
+	'harbour':[],
 	'anchor':[]
 }
 

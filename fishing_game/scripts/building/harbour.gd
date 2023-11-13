@@ -94,6 +94,7 @@ func boat_selected(boat_select):
 	get_node("ui/right/title2").visible=false
 	get_node("ui/right/level").visible=false
 	get_node("ui/right/space").visible=false
+	get_node("ui/right/type").visible=true
 	print(boat_select.get_boat_name())
 	var vis
 	for i in get_node("boats").get_children():
@@ -103,10 +104,17 @@ func boat_selected(boat_select):
 	print(vis,' vis')
 	vis.get_node('Camera3D').current=true
 	get_node("ui/right/title").text=boat_select.get_boat_name()
-	get_node("ui/right/speed").text='Speed: '+str(boat_select.get_speed())
-	get_node("ui/right/durability").text='Durability: '+str(boat_select.get_durability())
+	get_node("ui/right/speed/value_bar").value=boat_select.get_speed()
+	get_node("ui/right/durability/value_bar").value=boat_select.get_durability()
+	get_node("ui/right/small/value_bar").value=boat_select.get_small()
+	get_node("ui/right/medium/value_bar").value=boat_select.get_medium()
+	get_node("ui/right/large/value_bar").value=boat_select.get_large()
+	get_node("ui/right/large/value_bar").max_value=100
+	get_node("ui/right/medium/value_bar").max_value=100
+	get_node("ui/right/small/value_bar").max_value=100
 	get_node("ui/right/condition").text='Condition: '+str(boat_select.get_condition())
 	get_node("ui/right/size").text='Size: '+str(boat_select.get_size())
+	get_node("ui/right/type").text=boat_select.trait_name+' '+boat_select.dis_name
 	selected_boat=boat_select
 
 
@@ -154,6 +162,7 @@ func _on_harbour_stats_pressed():
 	get_node("ui/right/large").visible=false
 	get_node("ui/right/title2").visible=false
 	get_node("ui/right/level").visible=true
+	get_node("ui/right/type").visible=false
 	get_node("ui/right/space").visible=true
 	get_node("ui/right/level").text='Level '+str(level)
 	get_node("ui/right/space").text='Space: '+str(2*level+14)

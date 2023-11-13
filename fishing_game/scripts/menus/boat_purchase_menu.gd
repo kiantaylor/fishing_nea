@@ -40,8 +40,14 @@ func boat_selected(boat_select):
 	get_node('3dSpace/pivot').rotation_degrees.y=-90.0
 	get_node("right/title").text=boat_select.get_boat_name()
 	get_node("right/type").text=boat_select.trait_name+' '+boat_select.dis_name
-	get_node("right/speed").text='Speed: '+str(boat_select.get_speed())
-	get_node("right/durability").text='Durability: '+str(boat_select.get_durability())
+	get_node("right/speed/value_bar").value=boat_select.get_speed()
+	get_node("right/durability/value_bar").value=boat_select.get_durability()
+	get_node("right/small/value_bar").value=boat_select.get_small()
+	get_node("right/medium/value_bar").value=boat_select.get_medium()
+	get_node("right/large/value_bar").value=boat_select.get_large()
+	get_node("right/large/value_bar").max_value=100
+	get_node("right/medium/value_bar").max_value=100
+	get_node("right/small/value_bar").max_value=100
 	get_node("right/condition").text='Condition: '+str(boat_select.get_condition())
 	get_node("right/size").text='Size: '+str(boat_select.get_size())
 	price=boat_select.price

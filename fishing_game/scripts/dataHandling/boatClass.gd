@@ -41,6 +41,9 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	base_small_fish=boat_management.type_dictionary[boat_type][5]
 	base_medium_fish=boat_management.type_dictionary[boat_type][6]
 	base_large_fish=boat_management.type_dictionary[boat_type][7]
+	small_fish=base_small_fish
+	medium_fish=base_medium_fish
+	large_fish=base_large_fish
 	crew_slots=boat_management.type_dictionary[boat_type][3]
 	base_price=boat_management.type_dictionary[boat_type][4]
 	if bt=='bt1':
@@ -48,7 +51,7 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 		dis_name='Testing Boat'
 	price=calculate_cost(base_price,boat_trait)
 	apply_condition()
-	apply_trait(boat_trait)
+	
 	
 # get methods :
 
@@ -73,7 +76,13 @@ func get_durability():
 	return durability
 func get_stats():
 	return [base_speed,speed,size,durability,crew_slots]
-
+	
+func get_small():
+	return small_fish
+func get_medium():
+	return medium_fish
+func get_large():
+	return large_fish
 func debug_stat_display():
 	print('-----------------------------')	
 	print('Stats for ',boat_name,' :')
@@ -86,6 +95,10 @@ func debug_stat_display():
 	print('Size : ',size)
 	print('Speed : ',speed)
 	print('Durability : ',durability)
+	print('Small : ',small_fish)
+	print('Medium : ',medium_fish)
+	print('Large : ',large_fish)
+	
 	print('Crew slots : ')
 	var count=1
 	for i in crew_slots:
@@ -127,9 +140,9 @@ func apply_condition():
 	var percentage_change = (0.1*(1.5**(condition)))+0.5
 	speed=percentage_change*base_speed
 	durability=percentage_change*base_durability
-	small_fish=percentage_change*base_small_fish
-	medium_fish=percentage_change*base_medium_fish
-	large_fish=percentage_change*base_large_fish
+	small_fish=percentage_change*small_fish
+	medium_fish=percentage_change*medium_fish
+	large_fish=percentage_change*large_fish
 	apply_trait(boat_trait)
 
 func calculate_trait(trait1):
@@ -155,7 +168,7 @@ func calculate_trait(trait1):
 		var percentage_change=int(trait1.substr(0,2))
 
 		var small_change=percentage_change*ratio[0]
-		var medium_change=percentage_change*ratio[2]
+		var medium_change=percentage_change*ratio[1]
 		var large_change=percentage_change*ratio[2]
 		small_change/=100.0
 		medium_change/=100.0
@@ -173,10 +186,10 @@ func apply_trait(trait1):
 	else:
 		var change_list=calculate_trait(trait1)
 	
-		small_fish+=change_list[0]*small_fish
-		medium_fish+=change_list[1]*medium_fish
-		large_fish+=change_list[1]*large_fish
-	
+		small_fish+=change_list[0]*100
+		medium_fish+=change_list[1]*100
+		large_fish+=change_list[2]*100
+	debug_stat_display()
 func upgrade():
 	set_condition(get_condition()+1.0)
 	apply_condition()
