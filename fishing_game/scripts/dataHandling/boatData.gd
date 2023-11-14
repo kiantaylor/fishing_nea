@@ -2,7 +2,7 @@ extends Node
 
 # order of attributes: size,speed,durability,crewslots,base price,small, medium, large>
 var type_dictionary={
-	'bt1':[3,5.0,8.0,['skp','dek'],650,0.0,0.0,0.0]
+	'bt1':[3,5.0,8.0,['skp','dek'],650,0.0,15.0,0.0]
 }
 var name_starts=[
 	'Golden',

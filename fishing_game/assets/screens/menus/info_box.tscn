@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl5jr7rguooq5"]
+
+[ext_resource type="Script" path="res://scripts/building/info_box.gd" id="1_qktlq"]
+
+[node name="info_box" type="Marker2D"]
+script = ExtResource("1_qktlq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -226.0
+offset_right = 153.0
+offset_bottom = 40.0
+color = Color(0.639216, 0.866667, 0.972549, 1)
+
+[node name="title" type="Label" parent="."]
+offset_left = 11.0
+offset_top = -217.0
+offset_right = 51.0
+offset_bottom = -194.0
+
+[node name="price" type="Label" parent="."]
+offset_left = 11.0
+offset_top = -141.0
+offset_right = 51.0
+offset_bottom = -118.0
+text = "jjjjj"
+
+[node name="limit" type="Label" parent="."]
+offset_left = 11.0
+offset_top = -108.0
+offset_right = 51.0
+offset_bottom = -85.0
+
+[node name="level" type="Label" parent="."]
+offset_left = 12.0
+offset_top = -77.0
+offset_right = 52.0
+offset_bottom = -54.0
+
+[node name="info" type="Label" parent="."]
+offset_left = 12.0
+offset_top = -77.0
+offset_right = 52.0
+offset_bottom = -54.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 151.0
+offset_bottom = 26.0
+focus_mode = 0
+text = "Build"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

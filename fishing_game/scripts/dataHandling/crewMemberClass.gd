@@ -4,12 +4,12 @@ extends Node
 class_name CrewMemberClass
 
 # Effect
-var speed_effect
-var durability_effect
-var morale_effect
-var large_fish_effect
-var medium_fish_effect
-var small_fish_effect
+var speed_effect=0
+var durability_effect=0
+var morale_effect=0
+var large_fish_effect=0
+var medium_fish_effect=0
+var small_fish_effect=0
 
 # Useful attributes
 var crew_type
@@ -18,16 +18,18 @@ var salary:int
 var experience:int
 var crew_name
 
-func _init(ct='skp',ctr=[],sal=100,exp=1,cn='erik'):
+func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	crew_type=ct
 	crew_trait=ctr
+	#crew_type='skp'
+	#crew_trait=[0,25]
 	experience=exp
 	crew_name=cn
 	salary=salary_calculate()
 	
 	
 	apply_trait()
-	debug_stat_display()
+	#debug_stat_display()
 	
 func debug_stat_display():
 	print('-----------------------------')	

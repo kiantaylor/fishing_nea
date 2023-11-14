@@ -24,6 +24,13 @@ var base_medium_fish
 var medium_fish
 var base_large_fish
 var large_fish
+var crew=[]
+var speed_boost=0
+var durability_boost=0
+var small_boost=0
+var medium_boost=0
+var large_boost=0
+var morale=0
 
 # class definition
 
@@ -50,6 +57,7 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 		vis_name='boat_1_visual.tscn'
 		dis_name='Testing Boat'
 	price=calculate_cost(base_price,boat_trait)
+	
 	apply_condition()
 	
 	
@@ -191,8 +199,9 @@ func apply_trait(trait1):
 		large_fish+=change_list[2]*100
 	debug_stat_display()
 func upgrade():
-	set_condition(get_condition()+1.0)
-	apply_condition()
+	if condition<5.0:
+		set_condition(get_condition()+1.0)
+		apply_condition()
 #cost and pricing
 
 func calculate_cost(price1,trait1):
@@ -207,3 +216,27 @@ func calculate_cost(price1,trait1):
 		return int(price1+trait_mod)
 	else:
 		return price1
+
+#crew members
+
+func add_crew(crew_member):
+	var count=0
+	for i in crew_slots:
+		if i==crew_member.crew_type:
+			count+=1
+	var count2=0
+	if len(crew)>0:
+		for i in crew:
+			if i.crew_type==crew_member.crew_type:
+				count2+=1
+	if count-count2>0:
+		crew.append(crew_member)
+		apply_crew(crew_member)
+	
+func apply_crew(crew_member):
+	speed_boost+=crew_member.speed_effect/100.0
+	durability_boost+=crew_member.durability_effect/100.0
+	morale+=crew_member.morale_effect/100.0
+	small_boost+=crew_member.small_fish_effect/100.0
+	large_boost+=crew_member.large_fish_effect/100.0
+	medium_boost+=crew_member.medium_fish_effect/100.0

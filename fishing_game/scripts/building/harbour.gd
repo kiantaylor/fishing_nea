@@ -105,13 +105,27 @@ func boat_selected(boat_select):
 	vis.get_node('Camera3D').current=true
 	get_node("ui/right/title").text=boat_select.get_boat_name()
 	get_node("ui/right/speed/value_bar").value=boat_select.get_speed()
+	get_node("ui/right/speed/crew_value").value=boat_select.get_speed()+(boat_select.speed_boost*boat_select.get_speed())
+	get_node("ui/right/speed/morale_value").value=boat_select.get_speed()+(boat_select.speed_boost*boat_select.get_speed())+(boat_select.speed_boost*boat_select.get_speed()*boat_select.morale)
 	get_node("ui/right/durability/value_bar").value=boat_select.get_durability()
+	get_node("ui/right/durability/crew_value").value=boat_select.get_durability()+(boat_select.durability_boost*boat_select.get_durability())
+	get_node("ui/right/durability/morale_value").value=boat_select.get_durability()+(boat_select.durability_boost*boat_select.get_durability())+(boat_select.durability_boost*boat_select.get_durability()*boat_select.morale)
+	
 	get_node("ui/right/small/value_bar").value=boat_select.get_small()
+	get_node("ui/right/small/crew_value").value=boat_select.get_small()+(boat_select.small_boost*boat_select.get_small())
+	get_node("ui/right/small/morale_value").value=boat_select.get_small()+(boat_select.small_boost*boat_select.get_small())+(boat_select.small_boost*boat_select.get_small()*boat_select.morale)
+	
 	get_node("ui/right/medium/value_bar").value=boat_select.get_medium()
+	get_node("ui/right/medium/crew_value").value=boat_select.get_medium()+(boat_select.medium_boost*boat_select.get_medium())
+	get_node("ui/right/medium/morale_value").value=boat_select.get_medium()+(boat_select.medium_boost*boat_select.get_medium())+(boat_select.medium_boost*boat_select.get_medium()*boat_select.morale)
+	
 	get_node("ui/right/large/value_bar").value=boat_select.get_large()
-	get_node("ui/right/large/value_bar").max_value=100
-	get_node("ui/right/medium/value_bar").max_value=100
-	get_node("ui/right/small/value_bar").max_value=100
+	get_node("ui/right/large/crew_value").value=boat_select.get_large()+(boat_select.large_boost*boat_select.get_large())
+	get_node("ui/right/large/morale_value").value=boat_select.get_large()+(boat_select.large_boost*boat_select.get_large())+(boat_select.large_boost*boat_select.get_large()*boat_select.morale)
+	
+	get_node("ui/right/large/value_bar").max_value=200
+	get_node("ui/right/medium/value_bar").max_value=200
+	get_node("ui/right/small/value_bar").max_value=200
 	get_node("ui/right/condition").text='Condition: '+str(boat_select.get_condition())
 	get_node("ui/right/size").text='Size: '+str(boat_select.get_size())
 	get_node("ui/right/type").text=boat_select.trait_name+' '+boat_select.dis_name

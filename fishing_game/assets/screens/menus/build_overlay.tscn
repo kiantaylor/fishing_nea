@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw1rd3krffxa7"]
+[gd_scene load_steps=9 format=3 uid="uid://cw1rd3krffxa7"]
 
 [ext_resource type="Script" path="res://scripts/menus/build_overlay.gd" id="1_2yxod"]
-[ext_resource type="Texture2D" uid="uid://c6uyywjl7gvs4" path="res://Textures/buildings/guibg.png" id="2_6jmqm"]
-[ext_resource type="Texture2D" uid="uid://277mmay2iia7" path="res://Textures/buildings/guibg2.png" id="3_th3lj"]
+[ext_resource type="PackedScene" uid="uid://dl5jr7rguooq5" path="res://assets/screens/menus/info_box.tscn" id="3_ophdk"]
+[ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="4_cxp3j"]
 
 [sub_resource type="Animation" id="Animation_i0kh6"]
 length = 0.001
@@ -29,6 +29,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 698)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("info_box:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-160, -53)]
 }
 
 [sub_resource type="Animation" id="Animation_xxvjc"]
@@ -89,10 +101,27 @@ tracks/1/keys = {
 "values": [Vector2(0, 1398), Vector2(0, 893)]
 }
 
+[sub_resource type="Animation" id="Animation_5x4hu"]
+resource_name = "info_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("info_box:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-160, -99.5), Vector2(0, -99.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7p1e5"]
 _data = {
 "RESET": SubResource("Animation_i0kh6"),
 "close": SubResource("Animation_xxvjc"),
+"info_open": SubResource("Animation_5x4hu"),
 "pop_up": SubResource("Animation_mqucr")
 }
 
@@ -102,12 +131,30 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 698.0
-offset_right = 36864.0
-offset_bottom = 20993.0
+offset_right = 52992.0
+offset_bottom = 30065.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_2yxod")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -174.0
+offset_top = 45.0
+offset_right = 1211.0
+offset_bottom = 251.0
+scale = Vector2(0.96, 0.82)
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="background2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -174.0
+offset_top = 35.0
+offset_right = 1211.0
+offset_bottom = 47.0
+scale = Vector2(0.96, 0.82)
+color = Color(0.988235, 0.988235, 0.929412, 1)
 
 [node name="scroll_bar" type="HScrollBar" parent="."]
 modulate = Color(0, 1, 1, 1)
@@ -123,49 +170,7 @@ position = Vector2(0, 122)
 
 [node name="testing" type="Marker2D" parent="scrolled"]
 
-[node name="test_building_1" type="Button" parent="scrolled/testing"]
-offset_left = 32.0
-offset_top = -60.0
-offset_right = 163.0
-offset_bottom = 60.0
-focus_mode = 0
-text = "test bulding 1"
-
-[node name="test_building_2" type="Button" parent="scrolled/testing"]
-offset_left = 172.0
-offset_top = -60.0
-offset_right = 303.0
-offset_bottom = 60.0
-focus_mode = 0
-text = "test bulding 2"
-
-[node name="harbour" type="Button" parent="scrolled/testing"]
-offset_left = 311.0
-offset_top = -60.0
-offset_right = 442.0
-offset_bottom = 60.0
-focus_mode = 0
-text = "harbour"
-
-[node name="anchor" type="Button" parent="scrolled/testing"]
-offset_left = 451.0
-offset_top = -60.0
-offset_right = 582.0
-offset_bottom = 60.0
-focus_mode = 0
-text = "anchor"
-
-[node name="backgroundOutline" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(576, 123)
-scale = Vector2(0.96, 0.82)
-texture = ExtResource("2_6jmqm")
-
-[node name="background" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(576, 123)
-scale = Vector2(0.96, 0.82)
-texture = ExtResource("3_th3lj")
+[node name="decor" type="Marker2D" parent="scrolled"]
 
 [node name="testing" type="Button" parent="."]
 layout_mode = 0
@@ -176,15 +181,14 @@ offset_bottom = 41.0
 focus_mode = 0
 text = "testing"
 
-[node name="boats" type="Button" parent="."]
+[node name="decor" type="Button" parent="."]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 10.0
 offset_right = 192.0
 offset_bottom = 41.0
 focus_mode = 0
-text = "boats
-"
+text = "decor"
 
 [node name="build_camera_check" type="CheckButton" parent="."]
 layout_mode = 0
@@ -209,12 +213,17 @@ libraries = {
 "": SubResource("AnimationLibrary_7p1e5")
 }
 
-[connection signal="pressed" from="scrolled/testing/test_building_1" to="." method="_on_test_building_1_pressed"]
-[connection signal="pressed" from="scrolled/testing/test_building_2" to="." method="_on_test_building_2_pressed"]
-[connection signal="pressed" from="scrolled/testing/harbour" to="." method="_on_harbour_pressed"]
-[connection signal="pressed" from="scrolled/testing/anchor" to="." method="_on_anchor_pressed"]
+[node name="error_box" parent="." instance=ExtResource("4_cxp3j")]
+visible = false
+offset_top = -450.0
+offset_bottom = 855.0
+scale = Vector2(0.5, 0.5)
+
+[node name="info_box" parent="." instance=ExtResource("3_ophdk")]
+position = Vector2(-160, -53)
+
 [connection signal="pressed" from="testing" to="." method="_on_testing_pressed"]
-[connection signal="pressed" from="boats" to="." method="_on_boats_pressed"]
+[connection signal="pressed" from="decor" to="." method="_on_decor_pressed"]
 [connection signal="toggled" from="build_camera_check" to="." method="_on_build_camera_check_toggled"]
 [connection signal="pressed" from="pop_up_button" to="." method="_on_pop_up_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

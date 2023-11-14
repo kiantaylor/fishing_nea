@@ -54,6 +54,7 @@ func ghost_busted(building_name,build_rotation,build_position,relocation):
 		BuildingData.selected_building=build_instance
 		get_node("building_edit_overlay").movement=false
 	add_child(build_instance)
+	get_node("build_overlay").info_refresh()
 
 
 

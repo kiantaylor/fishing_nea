@@ -37,10 +37,11 @@ theme_override_constants/outline_size = 3
 
 [node name="level" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 161.671
+offset_left = 70.6841
 offset_top = 4.64706
-offset_right = 911.671
+offset_right = 820.684
 offset_bottom = 54.6471
+scale = Vector2(0.434978, 0.590909)
 texture_under = ExtResource("2_o00v8")
 texture_over = ExtResource("3_35k0b")
 texture_progress = ExtResource("4_wybda")

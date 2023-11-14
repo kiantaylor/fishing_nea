@@ -37,7 +37,7 @@ func _process(delta):
 	elif Input.is_action_pressed('build_rotate_right'):
 		rotation.y+=0.1
 	if Input.is_action_just_pressed("build_place") and land and not colliding:
-		emit_signal('corporate',get_meta("building_type"),rotation,position,relocation)
+		
 		
 		if not relocation:
 			BuildingData.build_map[get_meta("building_type")].append([1,position,rotation])
@@ -49,6 +49,7 @@ func _process(delta):
 					i[1]=position
 					i[2]=rotation
 		print(BuildingData.build_map)
+		emit_signal('corporate',get_meta("building_type"),rotation,position,relocation)
 		queue_free()
 	if Input.is_action_just_pressed('ui_cancel'):
 		get_parent().ghost_present=false
