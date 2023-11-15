@@ -66,7 +66,7 @@ func traitGenerate():
 	var trait_str=''
 	var choice=randf_range(50,190)
 	
-	var num=2.718**(0.08*choice-3)+1
+	var num=2.718*choice
 	if len(str(int(num+1.0)))==1:
 		trait_str+='0'
 	trait_str+=str(int(num+1.0))

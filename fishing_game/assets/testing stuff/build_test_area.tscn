@@ -38,7 +38,7 @@ volumetric_fog_detail_spread = 2.73208
 script = ExtResource("1_m0cww")
 
 [node name="sea" type="MeshInstance3D" parent="."]
-transform = Transform3D(900, 0, 0, 0, 17.832, 0, 0, 0, 900, 0, -2.14214, 0)
+transform = Transform3D(900, 0, 0, 0, 17.832, 0, 0, 0, 900, 0, -0.958533, 0)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
 surface_material_override/0 = SubResource("StandardMaterial3D_jgxcv")
@@ -55,7 +55,10 @@ shape = SubResource("CylinderShape3D_5nnbv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.345511, -0.734258, 0.584369, 0, 0.62272, 0.782445, -0.938415, 0.270343, -0.215157, 0, 51.725, 63.6627)
+light_energy = 1.889
 shadow_enabled = true
+shadow_opacity = 0.85
+shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g4tvb")
@@ -70,12 +73,12 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 56.9979, 8.75)
 
 [node name="building_edit_overlay" parent="." instance=ExtResource("6_3qfhk")]
-offset_right = 38442.0
-offset_bottom = 22282.0
+offset_right = 40746.0
+offset_bottom = 23578.0
 
 [node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
-offset_right = 55296.0
-offset_bottom = 31361.0
+offset_right = 57600.0
+offset_bottom = 32657.0
 
 [connection signal="generate_ghost" from="building_edit_overlay" to="." method="_on_build_overlay_generate_ghost"]
 [connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

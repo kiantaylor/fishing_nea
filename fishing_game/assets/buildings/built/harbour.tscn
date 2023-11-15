@@ -206,14 +206,6 @@ theme_override_font_sizes/font_size = 25
 text = "speed"
 autowrap_mode = 2
 
-[node name="morale_value" parent="ui/right/speed" instance=ExtResource("7_8nwqa")]
-modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-
 [node name="crew_value" parent="ui/right/speed" instance=ExtResource("7_8nwqa")]
 modulate = Color(1, 0, 0.392157, 1)
 layout_mode = 0
@@ -239,14 +231,6 @@ offset_bottom = 573.0
 theme_override_font_sizes/font_size = 25
 text = "durability"
 autowrap_mode = 2
-
-[node name="morale_value" parent="ui/right/durability" instance=ExtResource("7_8nwqa")]
-modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
 
 [node name="crew_value" parent="ui/right/durability" instance=ExtResource("7_8nwqa")]
 modulate = Color(1, 0, 0.392157, 1)
@@ -291,14 +275,6 @@ theme_override_font_sizes/font_size = 25
 text = "small fish"
 autowrap_mode = 2
 
-[node name="morale_value" parent="ui/right/small" instance=ExtResource("7_8nwqa")]
-modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-
 [node name="crew_value" parent="ui/right/small" instance=ExtResource("7_8nwqa")]
 modulate = Color(1, 0, 0.392157, 1)
 layout_mode = 0
@@ -323,14 +299,6 @@ offset_bottom = 728.0
 theme_override_font_sizes/font_size = 25
 text = "medium fish"
 autowrap_mode = 2
-
-[node name="morale_value" parent="ui/right/medium" instance=ExtResource("7_8nwqa")]
-modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = 165.0
-offset_top = 8.0
-offset_right = 325.0
-offset_bottom = 18.0
 
 [node name="crew_value" parent="ui/right/medium" instance=ExtResource("7_8nwqa")]
 modulate = Color(1, 0, 0.392157, 1)
@@ -357,14 +325,6 @@ offset_bottom = 799.0
 theme_override_font_sizes/font_size = 25
 text = "large fish"
 autowrap_mode = 2
-
-[node name="morale_value" parent="ui/right/large" instance=ExtResource("7_8nwqa")]
-modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = 133.0
-offset_top = 11.0
-offset_right = 293.0
-offset_bottom = 21.0
 
 [node name="crew_value" parent="ui/right/large" instance=ExtResource("7_8nwqa")]
 modulate = Color(1, 0, 0.392157, 1)

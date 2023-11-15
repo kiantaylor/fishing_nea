@@ -16,7 +16,7 @@ func _process(delta):
 func stock_gen():
 	for i in range(10):
 		stock.append(BoatData.boatGenerate())
-		stock[i].add_crew(CrewData.crew_generate())
+
 func refresh_stock():
 	if  get_node("left/boat_list").get_child_count()>0:
 		for i in get_node("left/boat_list").get_children():

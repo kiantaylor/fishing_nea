@@ -145,7 +145,7 @@ func set_condition(new_condition):
 # traits and conditions
 
 func apply_condition():
-	var percentage_change = (0.1*(1.5**(condition)))+0.5
+	var percentage_change = (0.1*(1.5**(condition)))+1.0
 	speed=percentage_change*base_speed
 	durability=percentage_change*base_durability
 	small_fish=percentage_change*small_fish
@@ -193,10 +193,18 @@ func apply_trait(trait1):
 		durability+=change_list[1]*durability
 	else:
 		var change_list=calculate_trait(trait1)
-	
-		small_fish+=change_list[0]*100
-		medium_fish+=change_list[1]*100
-		large_fish+=change_list[2]*100
+		if small_fish==0.0:
+			small_fish+=change_list[0]*100
+		else:
+			small_fish+=change_list[0]*small_fish
+		if medium_fish==0.0:
+			medium_fish+=change_list[0]*100
+		else:
+			medium_fish+=change_list[0]*medium_fish
+		if large_fish==0.0:
+			large_fish+=change_list[0]*100
+		else:
+			large_fish+=change_list[0]*large_fish
 	debug_stat_display()
 func upgrade():
 	if condition<5.0:
@@ -220,6 +228,7 @@ func calculate_cost(price1,trait1):
 #crew members
 
 func add_crew(crew_member):
+	crew_member.debug_stat_display()
 	var count=0
 	for i in crew_slots:
 		if i==crew_member.crew_type:
@@ -234,9 +243,15 @@ func add_crew(crew_member):
 		apply_crew(crew_member)
 	
 func apply_crew(crew_member):
-	speed_boost+=crew_member.speed_effect/100.0
-	durability_boost+=crew_member.durability_effect/100.0
-	morale+=crew_member.morale_effect/100.0
-	small_boost+=crew_member.small_fish_effect/100.0
-	large_boost+=crew_member.large_fish_effect/100.0
-	medium_boost+=crew_member.medium_fish_effect/100.0
+	speed_boost+=(crew_member.speed_effect/100.0)+1
+	durability_boost+=(crew_member.durability_effect/100.0)+1
+	morale+=(crew_member.morale_effect/100.0)+1
+	small_boost+=(crew_member.small_fish_effect/100.0)+1
+	large_boost+=(crew_member.large_fish_effect/100.0)+1
+	medium_boost+=(crew_member.medium_fish_effect/100.0)+1
+	print(speed_boost,'   speed boost')
+	print(durability_boost,'   durability boost')
+	print(morale,'   morale boost')
+	print(small_boost,'   small boost')
+	print(medium_boost,'   medium boost')
+	print(large_boost,'   large boost')

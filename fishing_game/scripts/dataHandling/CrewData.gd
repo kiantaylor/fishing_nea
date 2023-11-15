@@ -2,11 +2,11 @@ extends Node
 
 # speed, durability , large fish ,medium fish, small fish , morale / strength min ,strength max
 var type_traits={
-	'skp':[[1,1,1,1,1,0],[5,30]],
-	'dek':[[0,0,1,1,1,0],[1,10]],
-	'mte':[[1,1,1,1,1,0],[1,12]],
-	'coo':[[0,0,0,0,0,1],[4,25]],
-	'eng':[[1,1,0,0,0,0],[1,23]]
+	'skp':[[1,1,1,1,1,0],[15,50]],
+	'dek':[[0,0,1,1,1,0],[5,20]],
+	'mte':[[1,1,1,1,1,0],[10,30]],
+	'coo':[[0,0,0,0,0,1],[10,45]],
+	'eng':[[1,1,0,0,0,0],[10,30]]
 }
 var name_starts=[
 	'Gerald',
