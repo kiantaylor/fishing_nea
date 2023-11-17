@@ -64,12 +64,12 @@ func _process(delta):
 	pass
 func traitGenerate():
 	var trait_str=''
-	var choice=randf_range(50,190)
+	var choice=randf_range(50,980)
 	
-	var num=2.718*choice
-	if len(str(int(num+1.0)))==1:
+	
+	if len(str(int(choice+1.0)))==1:
 		trait_str+='0'
-	trait_str+=str(int(num+1.0))
+	trait_str+=str(int(choice+1.0))
 	choice=str(randi_range(0,9))
 	
 	trait_str+=choice

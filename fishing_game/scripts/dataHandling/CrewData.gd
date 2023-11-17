@@ -2,11 +2,18 @@ extends Node
 
 # speed, durability , large fish ,medium fish, small fish , morale / strength min ,strength max
 var type_traits={
-	'skp':[[1,1,1,1,1,0],[15,50]],
-	'dek':[[0,0,1,1,1,0],[5,20]],
-	'mte':[[1,1,1,1,1,0],[10,30]],
-	'coo':[[0,0,0,0,0,1],[10,45]],
-	'eng':[[1,1,0,0,0,0],[10,30]]
+	'skp':[[1,1,1,1,1,0],[30,60]],
+	'dek':[[0,0,1,1,1,0],[15,40]],
+	'mte':[[1,1,1,1,1,0],[20,40]],
+	'coo':[[0,0,0,0,0,1],[20,45]],
+	'eng':[[1,1,0,0,0,0],[20,40]]
+}
+var type_map={
+	'skp':'Captain',
+	'dek':'Deckhand',
+	'eng':'Engineer',
+	'coo':'Cook',
+	'mte':'Mate'
 }
 var name_starts=[
 	'Gerald',
@@ -18,7 +25,9 @@ var name_starts=[
 	'Richmond',
 	'Roy',
 	'Jane',
-	'Miles'
+	'Miles',
+	'Bob',
+	'Ebeneizer'
 ]
 var name_ends=[
 	'Took',
@@ -31,11 +40,20 @@ var name_ends=[
 	'Avenal',
 	'Trenneman',
 	'Bennatar',
-	'Smith'
+	'Smith',
+	'Cratchett',
+	'Scrooge'
 ]
+
+var employees=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('<crew data initiated>')
+	for i in range(100):
+		employees.append(crew_generate())
+		
+	for i in employees:
+		i.debug_stat_display()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,6 +78,6 @@ func crew_generate():
 	var crew_name=name_generate()
 	var type=type_traits.keys()[randi_range(0,4)]
 	var crew_trait=trait_generate(type)
-	var experience=randi_range(1,5)
+	var experience=randi_range(1,15)
 	var crew1=CrewMemberClass.new(type,crew_trait,5,experience,crew_name)
 	return crew1

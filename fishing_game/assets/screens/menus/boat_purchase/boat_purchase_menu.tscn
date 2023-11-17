@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=13 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="3_fhh2t"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_tyg2v"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_qx1ud"]
+[ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_x1utr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
 
@@ -210,22 +211,12 @@ offset_top = 17.0
 offset_right = 353.0
 offset_bottom = 30.0
 
-[node name="condition" type="Label" parent="right"]
-z_index = 1
-offset_left = -541.0
-offset_top = 244.0
-offset_right = 2.0
-offset_bottom = 318.0
-theme_override_font_sizes/font_size = 30
-text = "condition"
-autowrap_mode = 2
-
 [node name="size" type="Label" parent="right"]
 z_index = 1
 offset_left = -541.0
-offset_top = 288.0
+offset_top = 330.0
 offset_right = 2.0
-offset_bottom = 362.0
+offset_bottom = 404.0
 theme_override_font_sizes/font_size = 30
 text = "size"
 autowrap_mode = 2
@@ -251,6 +242,8 @@ text = "purchase"
 offset_left = 9.0
 offset_right = 657.0
 scale = Vector2(-1, 1)
+
+[node name="stars" parent="right" instance=ExtResource("5_x1utr")]
 
 [node name="3dSpace" type="Node3D" parent="."]
 script = ExtResource("2_bhmld")

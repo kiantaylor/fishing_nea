@@ -2,6 +2,10 @@ extends "res://scripts/building/base_building.gd"
 var size_slots=16
 var selected_boat
 var accessing=false
+var gold=Color('ffe15f')
+var silver=Color('bcd2eb')
+var bronze=Color('a5a562')
+var white=Color('ffffff')
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node('ui/right').position.x=2885
@@ -81,7 +85,24 @@ func update_boat_list():
 		boat_new.boat=i
 		get_node("boats").add_child(boat_new)
 func boat_selected(boat_select):
-	get_node("ui/right/condition").visible=true
+	var new_colour
+	var stars=boat_select.get_condition_rating()
+	print('stars:  ',stars)
+	if stars<=5:
+		new_colour=bronze
+	elif stars<=10:
+		stars-=5
+		new_colour=silver
+	else:
+		stars-=10
+		new_colour=gold
+	for i in get_node('ui/right/stars').get_children():
+		if stars>0:
+			i.modulate=new_colour
+		else:
+			i.modulate=white
+		stars-=1
+	get_node('ui/right/stars').visible=true	
 	get_node("ui/right/title").visible=true
 	get_node("ui/right/speed").visible=true
 	get_node("ui/right/durability").visible=true
@@ -119,13 +140,13 @@ func boat_selected(boat_select):
 	get_node("ui/right/large/value_bar").value=boat_select.get_large()
 	get_node("ui/right/large/crew_value").value=boat_select.get_large()*boat_select.large_boost
 
-	get_node("ui/right/large/value_bar").max_value=200
-	get_node("ui/right/medium/value_bar").max_value=200
-	get_node("ui/right/small/value_bar").max_value=200
-	get_node("ui/right/large/crew_value").max_value=200
-	get_node("ui/right/medium/crew_value").max_value=200
-	get_node("ui/right/small/crew_value").max_value=200
-	get_node("ui/right/condition").text='Condition: '+str(boat_select.get_condition())
+	get_node("ui/right/large/value_bar").max_value=100
+	get_node("ui/right/medium/value_bar").max_value=100
+	get_node("ui/right/small/value_bar").max_value=100
+	get_node("ui/right/large/crew_value").max_value=100
+	get_node("ui/right/medium/crew_value").max_value=100
+	get_node("ui/right/small/crew_value").max_value=100
+
 	get_node("ui/right/size").text='Size: '+str(boat_select.get_size())
 	get_node("ui/right/type").text=boat_select.trait_name+' '+boat_select.dis_name
 	selected_boat=boat_select
@@ -163,7 +184,7 @@ func _on_confirm_pressed():
 
 func _on_harbour_stats_pressed():
 	get_node("access_camera").current=true
-	get_node("ui/right/condition").visible=false
+	get_node('ui/right/stars').visible=false
 	get_node("ui/right/title").visible=false
 	get_node("ui/right/speed").visible=false
 	get_node("ui/right/durability").visible=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=15 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
 [ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="7_8nwqa"]
+[ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="8_o5iy3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(13.455, 1.96665, 14.538)
@@ -248,15 +249,6 @@ offset_top = 11.0
 offset_right = 295.0
 offset_bottom = 21.0
 
-[node name="condition" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 287.0
-offset_right = -32.0
-offset_bottom = 343.0
-theme_override_font_sizes/font_size = 25
-text = "condition"
-autowrap_mode = 2
-
 [node name="size" type="Label" parent="ui/right"]
 offset_left = -423.0
 offset_top = 352.0
@@ -399,6 +391,9 @@ offset_bottom = 158.0
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="stars" parent="ui/right" instance=ExtResource("8_o5iy3")]
+position = Vector2(-203, 239)
 
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false

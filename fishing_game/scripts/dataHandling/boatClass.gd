@@ -59,6 +59,7 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	price=calculate_cost(base_price,boat_trait)
 	
 	apply_condition()
+	debug_stat_display()
 	
 	
 # get methods :
@@ -123,7 +124,7 @@ func rename(new_name):
 		return false
 	
 func set_condition(new_condition):
-	if new_condition>=1.0 and new_condition<=5.0:
+	if new_condition>=1.0 and new_condition<=15.0:
 		condition=new_condition
 		if condition ==int(condition):
 			condition_rating=int(condition)
@@ -145,22 +146,23 @@ func set_condition(new_condition):
 # traits and conditions
 
 func apply_condition():
-	var percentage_change = (0.1*(1.5**(condition)))+1.0
+	var percentage_change = 1+(condition/10.0)
 	speed=percentage_change*base_speed
 	durability=percentage_change*base_durability
-	small_fish=percentage_change*small_fish
-	medium_fish=percentage_change*medium_fish
-	large_fish=percentage_change*large_fish
+	small_fish=percentage_change*base_small_fish
+	medium_fish=percentage_change*base_medium_fish
+	large_fish=percentage_change*base_large_fish
 	apply_trait(boat_trait)
 
 func calculate_trait(trait1):
+	print(trait1)
 	if int(trait1[3])==1:
 		var ratio_place=int(trait1[2])
 
 		var ratio=BoatTraitData.engineering[ratio_place]
 		trait_name=BoatTraitData.engineering_name[ratio_place]
 		var percentage_change=int(trait1.substr(0,2))
-
+		percentage_change*=condition/5.0
 		var speed_change=percentage_change*ratio[0]
 		var durability_change=percentage_change*ratio[1]
 		speed_change/=100.0
@@ -170,12 +172,14 @@ func calculate_trait(trait1):
 		return [speed_change,durability_change]
 	else:
 		var ratio_place=int(trait1[2])
-
+	
 		var ratio=BoatTraitData.fishing[ratio_place]
+		
 		trait_name=BoatTraitData.fishing_name[ratio_place]
 		var percentage_change=int(trait1.substr(0,2))
-
+		percentage_change*=condition/5.0
 		var small_change=percentage_change*ratio[0]
+		
 		var medium_change=percentage_change*ratio[1]
 		var large_change=percentage_change*ratio[2]
 		small_change/=100.0
@@ -187,27 +191,31 @@ func calculate_trait(trait1):
 
 func apply_trait(trait1):
 	if len(calculate_trait(trait1))==2:
+
 		var change_list=calculate_trait(trait1)
 	
 		speed+=change_list[0]*speed
 		durability+=change_list[1]*durability
 	else:
+
 		var change_list=calculate_trait(trait1)
 		if small_fish==0.0:
 			small_fish+=change_list[0]*100
+		
 		else:
+			
 			small_fish+=change_list[0]*small_fish
 		if medium_fish==0.0:
-			medium_fish+=change_list[0]*100
+			medium_fish+=change_list[1]*100
 		else:
-			medium_fish+=change_list[0]*medium_fish
+			medium_fish+=change_list[1]*medium_fish
 		if large_fish==0.0:
-			large_fish+=change_list[0]*100
+			large_fish+=change_list[2]*100
 		else:
-			large_fish+=change_list[0]*large_fish
-	debug_stat_display()
+			large_fish+=change_list[2]*large_fish
+	
 func upgrade():
-	if condition<5.0:
+	if condition<15.0:
 		set_condition(get_condition()+1.0)
 		apply_condition()
 #cost and pricing

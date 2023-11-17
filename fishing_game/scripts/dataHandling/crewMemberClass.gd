@@ -3,6 +3,7 @@ extends Node
 
 class_name CrewMemberClass
 
+
 # Effect
 var speed_effect=0
 var durability_effect=0
@@ -21,8 +22,9 @@ var crew_name
 func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	crew_type=ct
 	crew_trait=ctr
-	#crew_type='skp'
+	#crew_type='coo'
 	#crew_trait=[0,25]
+	crew_trait[1]=60
 	experience=exp
 	crew_name=cn
 	salary=salary_calculate()
@@ -30,7 +32,14 @@ func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	
 	apply_trait()
 	#debug_stat_display()
-	
+func get_experience():
+	return experience
+func get_crew_type():
+	return crew_type
+func get_type_name():
+	return CrewData.type_map[get_crew_type()]
+func get_crew_name():
+	return crew_name
 func debug_stat_display():
 	print('-----------------------------')	
 	print('Stats for ',crew_name,' :')
@@ -51,7 +60,7 @@ func salary_calculate():
 	
 	return (strength)**randf_range(1.5,3.0)
 func apply_trait():
-	var strength=crew_trait[1]+experience
+	var strength=crew_trait[1]*((experience/8)+1)
 	
 	if crew_trait[0]==0:
 		speed_effect=strength

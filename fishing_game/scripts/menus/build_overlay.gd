@@ -4,7 +4,7 @@ signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var tab='testing'
 var up=false
 var button_map={
-	'testing':['test_building_1','test_building_2','harbour'],
+	'testing':['test_building_1','test_building_2','harbour','recruitment_building'],
 	'decor':['anchor']
 }
 # Called when the node enters the scene tree for the first time.
@@ -113,6 +113,6 @@ func build(building):
 		get_node("error_box").text='You have not unlocked this yet'
 		get_node("error_box").visible=true
 		
-
-
+func close_info():
+	get_node("AnimationPlayer").play_backwards('info_open')
 

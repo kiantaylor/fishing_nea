@@ -1,0 +1,346 @@
+[gd_scene load_steps=15 format=3 uid="uid://m5i5thbpo3vb"]
+
+[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="1_qgq36"]
+[ext_resource type="Script" path="res://scripts/menus/crew_management/crew_viewport.gd" id="1_waw0f"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_hm3lw"]
+[ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_vsonm"]
+[ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_28ry3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6gndn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wtn2t"]
+
+[sub_resource type="Animation" id="Animation_ut0f4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.333]
+}
+
+[sub_resource type="Animation" id="Animation_my1la"]
+resource_name = "switch"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.29, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [4.333, 0.0, 0.0, 4.333]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6rc6a"]
+_data = {
+"RESET": SubResource("Animation_ut0f4"),
+"switch": SubResource("Animation_my1la")
+}
+
+[sub_resource type="Environment" id="Environment_ydfy4"]
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 2.0
+
+[sub_resource type="Animation" id="Animation_s2ywk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.890861, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.98307, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D7:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.73468, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.42555, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cc8ob"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.890861, 0), Vector3(0, 0.786206, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.98307, 0), Vector3(0, 1.7325, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D7:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.73468, 0), Vector3(0, 1.53622, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.42555, 0), Vector3(0, 1.27492, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbxhj"]
+_data = {
+"RESET": SubResource("Animation_s2ywk"),
+"idle": SubResource("Animation_cc8ob")
+}
+
+[node name="crew_viewport" type="Node3D"]
+script = ExtResource("1_waw0f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.895464, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_6gndn")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.283588, 0, 0, 0, 0.253943, 0, 0, 0, 0.283588, 0, 1.42555, 0)
+mesh = SubResource("BoxMesh_6gndn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.426393, 0, 0, 0, 0.38182, 0, 0, 0, 0.426393, 0, 0.890861, 0)
+mesh = SubResource("BoxMesh_6gndn")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.131744, 0, 0, 0, 0.117972, 0, 0, 0, 0.131744, 0, 1.98307, 0)
+mesh = SubResource("BoxMesh_6gndn")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.198086, 0, 0, 0, 0.177379, 0, 0, 0, 0.198086, 0, 1.73468, 0)
+mesh = SubResource("BoxMesh_6gndn")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -7.36653e-05, 0.000660072, -7.35672e-05, 1, 0.000148637, -0.000660083, 0.000148589, -1, 0, 1.32095, -4.07004)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.7966, 0, 0, 0, 13.7966, 0, 0, 0, 13.7966, 0, -0.359144, 0)
+mesh = SubResource("PlaneMesh_wtn2t")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, -1.33101, 13.7326, 0, -13.7326, -1.33101, 0, -0.359144, 6.12941)
+mesh = SubResource("PlaneMesh_wtn2t")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.130942, 0.99139, 0, -0.99139, -0.130942, 0, 3.72993, -0.972385)
+light_color = Color(1, 0.682353, 0.32549, 1)
+light_energy = 4.333
+shadow_enabled = true
+spot_range = 6.91022
+
+[node name="ui2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6rc6a")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ydfy4")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="left" type="Marker2D" parent="ui"]
+
+[node name="panelTest" parent="ui/left" instance=ExtResource("1_qgq36")]
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="panel_top" parent="ui/left" instance=ExtResource("3_hm3lw")]
+
+[node name="right" type="Marker2D" parent="ui"]
+position = Vector2(2309, 0)
+
+[node name="panelTest" parent="ui/right" instance=ExtResource("1_qgq36")]
+offset_left = 1.0
+offset_right = 1.0
+scale = Vector2(-1, 1)
+
+[node name="panel_top" parent="ui/right" instance=ExtResource("3_hm3lw")]
+scale = Vector2(-1, 1)
+
+[node name="speed" type="Label" parent="ui/right"]
+offset_left = -529.0
+offset_top = 490.0
+offset_right = -389.0
+offset_bottom = 516.0
+text = "speed boost"
+
+[node name="value_bar" parent="ui/right/speed" instance=ExtResource("4_vsonm")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 18.0
+
+[node name="durability" type="Label" parent="ui/right"]
+offset_left = -529.0
+offset_top = 559.0
+offset_right = -389.0
+offset_bottom = 585.0
+text = "durability boost"
+
+[node name="value_bar" parent="ui/right/durability" instance=ExtResource("4_vsonm")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 18.0
+
+[node name="small" type="Label" parent="ui/right"]
+offset_left = -529.0
+offset_top = 624.0
+offset_right = -389.0
+offset_bottom = 650.0
+text = "small fish boost"
+
+[node name="value_bar" parent="ui/right/small" instance=ExtResource("4_vsonm")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 18.0
+
+[node name="medium" type="Label" parent="ui/right"]
+offset_left = -529.0
+offset_top = 688.0
+offset_right = -384.0
+offset_bottom = 714.0
+text = "medium fish boost"
+
+[node name="value_bar" parent="ui/right/medium" instance=ExtResource("4_vsonm")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 18.0
+
+[node name="large" type="Label" parent="ui/right"]
+offset_left = -529.0
+offset_top = 753.0
+offset_right = -384.0
+offset_bottom = 779.0
+text = "large fish boost"
+
+[node name="value_bar" parent="ui/right/large" instance=ExtResource("4_vsonm")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 18.0
+
+[node name="morale" type="Label" parent="ui/right"]
+offset_left = -529.0
+offset_top = 817.0
+offset_right = -384.0
+offset_bottom = 843.0
+text = "morale boost"
+
+[node name="value_bar" parent="ui/right/morale" instance=ExtResource("4_vsonm")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 5.0
+offset_right = 339.0
+offset_bottom = 18.0
+
+[node name="title" type="Label" parent="ui/right"]
+offset_left = -581.0
+offset_top = 27.0
+offset_right = -25.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 50
+text = "..."
+horizontal_alignment = 1
+
+[node name="type" type="Label" parent="ui/right"]
+offset_left = -581.0
+offset_top = 92.0
+offset_right = -25.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 30
+text = "(Engineer)"
+horizontal_alignment = 1
+
+[node name="stars" parent="ui/right" instance=ExtResource("5_28ry3")]
+
+[node name="crew_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nbxhj")
+}

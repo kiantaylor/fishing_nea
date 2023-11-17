@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3kc1gyip1b5k"]
+
+[ext_resource type="Texture2D" uid="uid://bewr3mo6otjws" path="res://Textures/icons/star.png" id="1_hhpyp"]
+
+[node name="stars" type="Marker2D"]
+position = Vector2(-304, 239)
+
+[node name="star1" type="Sprite2D" parent="."]
+modulate = Color(0.647059, 0.647059, 0.384314, 1)
+position = Vector2(-145.703, 32)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_hhpyp")
+
+[node name="star2" type="Sprite2D" parent="."]
+modulate = Color(0.737255, 0.823529, 0.921569, 1)
+position = Vector2(-72.7031, 32)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_hhpyp")
+
+[node name="star3" type="Sprite2D" parent="."]
+modulate = Color(1, 0.882353, 0.372549, 1)
+position = Vector2(-0.703125, 32)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_hhpyp")
+
+[node name="star4" type="Sprite2D" parent="."]
+position = Vector2(72.5938, 31.795)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_hhpyp")
+
+[node name="star5" type="Sprite2D" parent="."]
+position = Vector2(144.594, 31.795)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_hhpyp")

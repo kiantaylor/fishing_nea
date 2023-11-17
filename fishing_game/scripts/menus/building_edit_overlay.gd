@@ -3,14 +3,17 @@ var movement=false
 var upgrade_cost=0
 signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var shop_buildings=[
-	'harbour'
+	'harbour',
+	'recruitment_building'
 ]#
 var access_buildings=[
-	'harbour'
+	'harbour',
+	'recruitment_building'
 
 ]
 var upgrade_buildings=[
 	'harbour',
+	'recruitment_building',
 	'test_building_1',
 	'test_building_2'
 ]

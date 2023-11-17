@@ -3,6 +3,10 @@ extends Control
 var stock=[]
 var price=0
 var selected_boat
+var gold=Color('ffe15f')
+var silver=Color('bcd2eb')
+var bronze=Color('a5a562')
+var white=Color('ffffff')
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stock_gen()
@@ -16,7 +20,7 @@ func _process(delta):
 func stock_gen():
 	for i in range(10):
 		stock.append(BoatData.boatGenerate())
-
+	#	stock[i].add_crew(CrewData.crew_generate())
 func refresh_stock():
 	if  get_node("left/boat_list").get_child_count()>0:
 		for i in get_node("left/boat_list").get_children():
@@ -32,6 +36,23 @@ func refresh_stock():
 		button_new.true_parent=self
 		get_node("left/boat_list").add_child(button_new)
 func boat_selected(boat_select):
+	var new_colour
+	var stars=boat_select.get_condition_rating()
+	print('stars:  ',stars)
+	if stars<=5:
+		new_colour=bronze
+	elif stars<=10:
+		stars-=5
+		new_colour=silver
+	else:
+		stars-=10
+		new_colour=gold
+	for i in get_node('right/stars').get_children():
+		if stars>0:
+			i.modulate=new_colour
+		else:
+			i.modulate=white
+		stars-=1
 	if get_node("3dSpace/pivot").get_child_count()>0:
 		get_node("3dSpace/pivot").get_child(0).queue_free()
 	var boat_load=load(str("res://assets/boats/"+boat_select.vis_name))
@@ -46,10 +67,10 @@ func boat_selected(boat_select):
 	get_node("right/small/value_bar").value=boat_select.get_small()
 	get_node("right/medium/value_bar").value=boat_select.get_medium()
 	get_node("right/large/value_bar").value=boat_select.get_large()
-	get_node("right/large/value_bar").max_value=200
-	get_node("right/medium/value_bar").max_value=200
-	get_node("right/small/value_bar").max_value=200
-	get_node("right/condition").text='Condition: '+str(boat_select.get_condition())
+	get_node("right/large/value_bar").max_value=100
+	get_node("right/medium/value_bar").max_value=100
+	get_node("right/small/value_bar").max_value=100
+	
 	get_node("right/size").text='Size: '+str(boat_select.get_size())
 	price=boat_select.price
 	get_node("right/price").text='Price: '+str(price)
