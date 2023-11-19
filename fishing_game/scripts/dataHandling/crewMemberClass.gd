@@ -24,7 +24,7 @@ func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	crew_trait=ctr
 	#crew_type='coo'
 	#crew_trait=[0,25]
-	crew_trait[1]=60
+	#crew_trait[1]=60
 	experience=exp
 	crew_name=cn
 	salary=salary_calculate()
