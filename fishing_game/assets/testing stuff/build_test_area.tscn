@@ -73,12 +73,12 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 56.9979, 8.75)
 
 [node name="building_edit_overlay" parent="." instance=ExtResource("6_3qfhk")]
-offset_right = 45354.0
-offset_bottom = 26170.0
+offset_right = 47658.0
+offset_bottom = 27466.0
 
 [node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
-offset_right = 62208.0
-offset_bottom = 35249.0
+offset_right = 64512.0
+offset_bottom = 36545.0
 
 [connection signal="generate_ghost" from="building_edit_overlay" to="." method="_on_build_overlay_generate_ghost"]
 [connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

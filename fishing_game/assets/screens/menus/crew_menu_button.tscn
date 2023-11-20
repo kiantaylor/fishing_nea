@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs1baa62dk0hs"]
+
+[ext_resource type="PackedScene" uid="uid://sbhq2jvq6rvb" path="res://assets/screens/item_button.tscn" id="1_2ml08"]
+[ext_resource type="Script" path="res://scripts/menus/crew_management/crew_button.gd" id="2_ta44h"]
+
+[node name="crew_menu_button" instance=ExtResource("1_2ml08")]
+script = ExtResource("2_ta44h")

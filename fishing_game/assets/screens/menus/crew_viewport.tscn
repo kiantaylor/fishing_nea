@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://m5i5thbpo3vb"]
+[gd_scene load_steps=15 format=3 uid="uid://1xmswd4l6qeb"]
 
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="1_qgq36"]
 [ext_resource type="Script" path="res://scripts/menus/crew_management/crew_viewport.gd" id="1_waw0f"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_hm3lw"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_vsonm"]
-[ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_28ry3"]
+[ext_resource type="PackedScene" path="res://assets/screens/menus/stars.tscn" id="5_28ry3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6gndn"]
 
@@ -224,6 +224,9 @@ offset_left = 1.0
 offset_right = 1.0
 
 [node name="panel_top" parent="ui/left" instance=ExtResource("3_hm3lw")]
+
+[node name="crew_list" type="Marker2D" parent="ui/left"]
+position = Vector2(67, 254)
 
 [node name="right" type="Marker2D" parent="ui"]
 position = Vector2(2309, 0)

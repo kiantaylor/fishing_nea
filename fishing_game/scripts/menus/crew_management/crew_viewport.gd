@@ -6,6 +6,7 @@ func _ready():
 	get_node("crew_anim").play('idle')
 	selected_crew_member=CrewData.employees[0]
 	stat_update()
+	refresh_stock()
 var gold=Color('ffe15f')
 var silver=Color('bcd2eb')
 var bronze=Color('a5a562')
@@ -16,7 +17,23 @@ func _process(delta):
 	if Input.is_action_just_pressed("build_place"):
 		selected_crew_member=CrewData.employees[randi_range(0,99)]
 		stat_update()
-
+func refresh_stock():
+	if  get_node("ui/left/crew_list").get_child_count()>0:
+		for i in get_node("ui/left/crew_list").get_children():
+			i.free()
+	for i in CrewData.employees:
+		var button_load=load("res://assets/screens/menus/crew_menu_button.tscn")
+		var button_new=button_load.instantiate()
+		button_new.item=i
+		if get_node('ui/left/crew_list').get_child_count()==0:
+			button_new.position=Vector2(40,250)
+		else:
+			button_new.position=Vector2(40,(100*get_node('ui/left/crew_list').get_child_count())+250)
+		button_new.true_parent=self
+		get_node("ui/left/crew_list").add_child(button_new)
+func crew_select(crew_member):
+	selected_crew_member=crew_member
+	stat_update()
 func stat_update():
 	var new_colour
 	var stars=selected_crew_member.get_experience()

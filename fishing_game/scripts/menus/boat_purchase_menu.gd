@@ -28,7 +28,7 @@ func refresh_stock():
 	for i in stock:
 		var button_load=load("res://assets/boats/boat_button.tscn")
 		var button_new=button_load.instantiate()
-		button_new.boat=i
+		button_new.item=i
 		if get_node('left/boat_list').get_child_count()==0:
 			button_new.position=Vector2(40,250)
 		else:
