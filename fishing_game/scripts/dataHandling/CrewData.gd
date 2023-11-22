@@ -49,11 +49,9 @@ var employees=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('<crew data initiated>')
-	for i in range(100):
-		employees.append(crew_generate())
+	
 		
-	for i in employees:
-		i.debug_stat_display()
+	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

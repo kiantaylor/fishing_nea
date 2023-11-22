@@ -12,3 +12,5 @@ func _process(delta):
 
 func open_access():
 	get_tree().change_scene_to_file('res://assets/screens/menus/crew_viewport.tscn')
+func open_shop():
+	get_tree().change_scene_to_file('res://assets/screens/menus/crew_hire.tscn')

@@ -32,6 +32,8 @@ func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	
 	apply_trait()
 	#debug_stat_display()
+func get_salary():
+	return salary
 func get_experience():
 	return experience
 func get_crew_type():
@@ -56,9 +58,9 @@ func debug_stat_display():
 	print('Morale effect: ',morale_effect)
 
 func salary_calculate():
-	var strength=crew_trait[1]+experience
+	var strength=crew_trait[1]*experience
 	
-	return (strength)**randf_range(1.5,3.0)
+	return (strength)
 func apply_trait():
 	var strength=crew_trait[1]*((experience/8)+1)
 	

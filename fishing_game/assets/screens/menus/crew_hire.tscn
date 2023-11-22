@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://1xmswd4l6qeb"]
+[gd_scene load_steps=16 format=3 uid="uid://bo7ft3003pyj3"]
 
-[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="1_qgq36"]
-[ext_resource type="Script" path="res://scripts/menus/crew_management/crew_viewport.gd" id="1_waw0f"]
-[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_hm3lw"]
-[ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_vsonm"]
-[ext_resource type="PackedScene" path="res://assets/screens/menus/stars.tscn" id="5_28ry3"]
+[ext_resource type="Script" path="res://scripts/menus/crew_management/crew_hire.gd" id="1_mqw50"]
+[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_o1ckd"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_gt5sl"]
+[ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_7fn1i"]
+[ext_resource type="PackedScene" path="res://assets/screens/menus/stars.tscn" id="5_3h0wd"]
+[ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="6_phcgc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6gndn"]
 
@@ -162,8 +163,8 @@ _data = {
 "idle": SubResource("Animation_cc8ob")
 }
 
-[node name="crew_viewport" type="Node3D"]
-script = ExtResource("1_waw0f")
+[node name="crew_hire" type="Node3D"]
+script = ExtResource("1_mqw50")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.895464, 0, 0, 0, 1, 0, 0, 0)
@@ -219,11 +220,11 @@ offset_bottom = 40.0
 
 [node name="left" type="Marker2D" parent="ui"]
 
-[node name="panelTest" parent="ui/left" instance=ExtResource("1_qgq36")]
+[node name="panelTest" parent="ui/left" instance=ExtResource("2_o1ckd")]
 offset_left = 1.0
 offset_right = 1.0
 
-[node name="panel_top" parent="ui/left" instance=ExtResource("3_hm3lw")]
+[node name="panel_top" parent="ui/left" instance=ExtResource("3_gt5sl")]
 
 [node name="crew_list" type="Marker2D" parent="ui/left"]
 position = Vector2(67, 254)
@@ -231,12 +232,12 @@ position = Vector2(67, 254)
 [node name="right" type="Marker2D" parent="ui"]
 position = Vector2(2309, 0)
 
-[node name="panelTest" parent="ui/right" instance=ExtResource("1_qgq36")]
+[node name="panelTest" parent="ui/right" instance=ExtResource("2_o1ckd")]
 offset_left = 1.0
 offset_right = 1.0
 scale = Vector2(-1, 1)
 
-[node name="panel_top" parent="ui/right" instance=ExtResource("3_hm3lw")]
+[node name="panel_top" parent="ui/right" instance=ExtResource("3_gt5sl")]
 scale = Vector2(-1, 1)
 
 [node name="speed" type="Label" parent="ui/right"]
@@ -246,7 +247,7 @@ offset_right = -389.0
 offset_bottom = 516.0
 text = "speed boost"
 
-[node name="value_bar" parent="ui/right/speed" instance=ExtResource("4_vsonm")]
+[node name="value_bar" parent="ui/right/speed" instance=ExtResource("4_7fn1i")]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 5.0
@@ -260,7 +261,7 @@ offset_right = -389.0
 offset_bottom = 585.0
 text = "durability boost"
 
-[node name="value_bar" parent="ui/right/durability" instance=ExtResource("4_vsonm")]
+[node name="value_bar" parent="ui/right/durability" instance=ExtResource("4_7fn1i")]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 5.0
@@ -274,7 +275,7 @@ offset_right = -389.0
 offset_bottom = 650.0
 text = "small fish boost"
 
-[node name="value_bar" parent="ui/right/small" instance=ExtResource("4_vsonm")]
+[node name="value_bar" parent="ui/right/small" instance=ExtResource("4_7fn1i")]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 5.0
@@ -288,7 +289,7 @@ offset_right = -384.0
 offset_bottom = 714.0
 text = "medium fish boost"
 
-[node name="value_bar" parent="ui/right/medium" instance=ExtResource("4_vsonm")]
+[node name="value_bar" parent="ui/right/medium" instance=ExtResource("4_7fn1i")]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 5.0
@@ -302,7 +303,7 @@ offset_right = -384.0
 offset_bottom = 779.0
 text = "large fish boost"
 
-[node name="value_bar" parent="ui/right/large" instance=ExtResource("4_vsonm")]
+[node name="value_bar" parent="ui/right/large" instance=ExtResource("4_7fn1i")]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 5.0
@@ -316,7 +317,7 @@ offset_right = -384.0
 offset_bottom = 843.0
 text = "morale boost"
 
-[node name="value_bar" parent="ui/right/morale" instance=ExtResource("4_vsonm")]
+[node name="value_bar" parent="ui/right/morale" instance=ExtResource("4_7fn1i")]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 5.0
@@ -341,21 +342,27 @@ theme_override_font_sizes/font_size = 30
 text = "(Engineer)"
 horizontal_alignment = 1
 
-[node name="stars" parent="ui/right" instance=ExtResource("5_28ry3")]
+[node name="stars" parent="ui/right" instance=ExtResource("5_3h0wd")]
 
-[node name="upgrade" type="Button" parent="ui/right"]
-offset_left = -559.0
-offset_top = 968.0
-offset_right = -65.0
-offset_bottom = 1031.0
-text = "upgrade"
+[node name="hire" type="Button" parent="ui/right"]
+offset_left = -563.0
+offset_top = 939.0
+offset_right = -15.0
+offset_bottom = 1002.0
+text = "hire"
+
+[node name="salary" type="Label" parent="ui/right"]
+offset_left = -528.0
+offset_top = 886.0
+offset_right = -372.0
+offset_bottom = 912.0
+text = "salary: 56666666666"
 
 [node name="exit" type="Button" parent="ui"]
 layout_mode = 0
-offset_left = 2163.0
-offset_top = 5.0
-offset_right = 2307.0
-offset_bottom = 82.0
+offset_left = 2237.0
+offset_right = 2304.0
+offset_bottom = 39.0
 text = "exit"
 
 [node name="crew_anim" type="AnimationPlayer" parent="."]
@@ -363,4 +370,8 @@ libraries = {
 "": SubResource("AnimationLibrary_nbxhj")
 }
 
+[node name="error_box" parent="." instance=ExtResource("6_phcgc")]
+visible = false
+
+[connection signal="pressed" from="ui/right/hire" to="." method="_on_hire_pressed"]
 [connection signal="pressed" from="ui/exit" to="." method="_on_exit_pressed"]

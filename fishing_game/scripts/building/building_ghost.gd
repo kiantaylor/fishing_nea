@@ -52,6 +52,12 @@ func _process(delta):
 		emit_signal('corporate',get_meta("building_type"),rotation,position,relocation)
 		queue_free()
 	if Input.is_action_just_pressed('ui_cancel'):
+		if  relocation:
+			for i in BuildingData.build_map[get_meta("building_type")]:
+				if i==BuildingData.position_backup:
+					position=i[1]
+					rotation=i[2]
+					emit_signal('corporate',get_meta("building_type"),rotation,position,relocation)
 		get_parent().ghost_present=false
 		queue_free()
 
