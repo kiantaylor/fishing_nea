@@ -9,8 +9,8 @@ func _ready():
 	refresh_stock()
 	stat_update()
 var gold=Color('ffe15f')
-var silver=Color('bcd2eb')
-var bronze=Color('a5a562')
+var silver=Color('e7b255')
+var bronze=Color('a3c2cf')
 var white=Color('ffffff')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
