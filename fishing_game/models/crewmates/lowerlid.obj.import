@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dh3bs0ew7524p"
+path="res://.godot/imported/lowerlid.obj-93bc273d43ba4458296158f901d9105d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lowerlid.obj-93bc273d43ba4458296158f901d9105d.mesh"]
+
+source_file="res://models/crewmates/lowerlid.obj"
+dest_files=["res://.godot/imported/lowerlid.obj-93bc273d43ba4458296158f901d9105d.mesh", "res://.godot/imported/lowerlid.obj-93bc273d43ba4458296158f901d9105d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

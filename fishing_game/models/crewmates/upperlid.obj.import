@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://uf2ks7y1loll"
+path="res://.godot/imported/upperlid.obj-fedb930bc6e782ef143390c6447e8376.mesh"
+
+[deps]
+
+files=["res://.godot/imported/upperlid.obj-fedb930bc6e782ef143390c6447e8376.mesh"]
+
+source_file="res://models/crewmates/upperlid.obj"
+dest_files=["res://.godot/imported/upperlid.obj-fedb930bc6e782ef143390c6447e8376.mesh", "res://.godot/imported/upperlid.obj-fedb930bc6e782ef143390c6447e8376.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

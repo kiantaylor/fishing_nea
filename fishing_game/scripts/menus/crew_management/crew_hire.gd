@@ -7,10 +7,7 @@ func _ready():
 	generate_stock()
 	stat_update()
 	
-var gold=Color('ffe15f')
-var silver=Color('bcd2eb')
-var bronze=Color('a5a562')
-var white=Color('ffffff')
+
 var stock=[]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,23 +40,12 @@ func crew_select(crew_member):
 	selected_crew_member=crew_member
 	stat_update()
 func stat_update():
+	get_node('ui2').play('switch')
 	var new_colour
+	get_node("crew_vis").update_skin(selected_crew_member)
 	var stars=selected_crew_member.get_experience()
 	print('stars:  ',stars)
-	if stars<=5:
-		new_colour=bronze
-	elif stars<=10:
-		stars-=5
-		new_colour=silver
-	else:
-		stars-=10
-		new_colour=gold
-	for i in get_node('ui/right/stars').get_children():
-		if stars>0:
-			i.modulate=new_colour
-		else:
-			i.modulate=white
-		stars-=1
+	get_node('ui/right/stars').update_colours(stars)
 	get_node('ui/right/salary').text='salary: '+str(selected_crew_member.get_salary())
 	get_node('ui/right/title').text=selected_crew_member.get_crew_name()
 	get_node('ui/right/type').text=selected_crew_member.get_type_name()

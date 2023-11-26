@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
 [ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="7_8nwqa"]
-[ext_resource type="PackedScene" path="res://assets/screens/menus/stars.tscn" id="8_o5iy3"]
+[ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="8_o5iy3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(13.455, 1.96665, 14.538)

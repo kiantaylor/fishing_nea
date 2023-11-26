@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c3jx7f1faqal8"
+path="res://.godot/imported/brow.obj-fbafcc7b108117d932b46e7f9ade34dc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/brow.obj-fbafcc7b108117d932b46e7f9ade34dc.mesh"]
+
+source_file="res://models/crewmates/brow.obj"
+dest_files=["res://.godot/imported/brow.obj-fbafcc7b108117d932b46e7f9ade34dc.mesh", "res://.godot/imported/brow.obj-fbafcc7b108117d932b46e7f9ade34dc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

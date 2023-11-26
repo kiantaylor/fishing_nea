@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d02poi0lgfrd4"
+path="res://.godot/imported/eyeball.obj-5ccc93f7d1e0d36bf2d8b19c48fe6597.mesh"
+
+[deps]
+
+files=["res://.godot/imported/eyeball.obj-5ccc93f7d1e0d36bf2d8b19c48fe6597.mesh"]
+
+source_file="res://models/crewmates/eyeball.obj"
+dest_files=["res://.godot/imported/eyeball.obj-5ccc93f7d1e0d36bf2d8b19c48fe6597.mesh", "res://.godot/imported/eyeball.obj-5ccc93f7d1e0d36bf2d8b19c48fe6597.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

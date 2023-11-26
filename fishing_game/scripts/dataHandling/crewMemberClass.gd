@@ -19,6 +19,11 @@ var salary:int
 var experience:int
 var crew_name
 
+# Appearence 
+var hair_colour
+var skin_colour
+var hair
+var moustache
 func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	crew_type=ct
 	crew_trait=ctr
@@ -27,6 +32,7 @@ func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	#crew_trait[1]=60
 	experience=exp
 	crew_name=cn
+	generate_appearance()
 	salary=salary_calculate()
 	
 	
@@ -77,4 +83,8 @@ func apply_trait():
 	elif crew_trait[0]==5:
 		morale_effect=strength
 		
-	
+func generate_appearance():
+	hair=randi_range(0,1)
+	hair_colour=randi_range(1,2)
+	skin_colour=randi_range(1,2)
+	moustache=randi_range(1,3)

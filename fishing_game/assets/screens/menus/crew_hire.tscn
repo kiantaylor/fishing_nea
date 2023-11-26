@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo7ft3003pyj3"]
+[gd_scene load_steps=19 format=3 uid="uid://de0rjpjof5mfe"]
 
 [ext_resource type="Script" path="res://scripts/menus/crew_management/crew_hire.gd" id="1_mqw50"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_o1ckd"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_gt5sl"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_7fn1i"]
-[ext_resource type="PackedScene" path="res://assets/screens/menus/stars.tscn" id="5_3h0wd"]
+[ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_3h0wd"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="6_phcgc"]
+[ext_resource type="PackedScene" uid="uid://b78jiiiihqpyh" path="res://assets/crew/crew_vis.tscn" id="7_1w8ga"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6gndn"]
 
@@ -37,10 +38,10 @@ tracks/0/path = NodePath("SpotLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03, 0.29, 0.48),
+"times": PackedFloat32Array(0, 0.03, 0.28, 0.49),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [4.333, 0.0, 0.0, 4.333]
+"values": [1.0, 0.0, 0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6rc6a"]
@@ -49,113 +50,26 @@ _data = {
 "switch": SubResource("Animation_my1la")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5fui"]
+
+[sub_resource type="Sky" id="Sky_exp2v"]
+sky_material = SubResource("ProceduralSkyMaterial_e5fui")
+
 [sub_resource type="Environment" id="Environment_ydfy4"]
+background_mode = 2
+background_energy_multiplier = 1.63
+sky = SubResource("Sky_exp2v")
+ambient_light_energy = 0.0
 glow_enabled = true
 glow_intensity = 8.0
 glow_strength = 2.0
 
 [sub_resource type="Animation" id="Animation_s2ywk"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D4:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.890861, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D6:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.98307, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D7:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.73468, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D5:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.42555, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_cc8ob"]
 resource_name = "idle"
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D4:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.890861, 0), Vector3(0, 0.786206, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D6:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1.98307, 0), Vector3(0, 1.7325, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D7:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1.73468, 0), Vector3(0, 1.53622, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D5:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1.42555, 0), Vector3(0, 1.27492, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nbxhj"]
 _data = {
@@ -168,41 +82,22 @@ script = ExtResource("1_mqw50")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.895464, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_6gndn")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.283588, 0, 0, 0, 0.253943, 0, 0, 0, 0.283588, 0, 1.42555, 0)
-mesh = SubResource("BoxMesh_6gndn")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.426393, 0, 0, 0, 0.38182, 0, 0, 0, 0.426393, 0, 0.890861, 0)
-mesh = SubResource("BoxMesh_6gndn")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.131744, 0, 0, 0, 0.117972, 0, 0, 0, 0.131744, 0, 1.98307, 0)
-mesh = SubResource("BoxMesh_6gndn")
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.198086, 0, 0, 0, 0.177379, 0, 0, 0, 0.198086, 0, 1.73468, 0)
-mesh = SubResource("BoxMesh_6gndn")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, -7.36653e-05, 0.000660072, -7.35672e-05, 1, 0.000148637, -0.000660083, 0.000148589, -1, 0, 1.32095, -4.07004)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(13.7966, 0, 0, 0, 13.7966, 0, 0, 0, 13.7966, 0, -0.359144, 0)
+transform = Transform3D(30, 0, 0, 0, 13.797, 0, 0, 0, 13.797, 0, -12.8644, 0)
 mesh = SubResource("PlaneMesh_wtn2t")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, -1.33101, 13.7326, 0, -13.7326, -1.33101, 0, -0.359144, 6.12941)
+transform = Transform3D(30, 0, 0, 0, -1.33101, 13.7326, 0, -13.7326, -1.33101, 0, -0.359144, 6.12941)
 mesh = SubResource("PlaneMesh_wtn2t")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.130942, 0.99139, 0, -0.99139, -0.130942, 0, 3.72993, -0.972385)
-light_color = Color(1, 0.682353, 0.32549, 1)
+[node name="SpotLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.442614, 0.89579, -0.0406683, 0.560302, -0.240869, 0.792492, 0.700111, -0.373554, -0.608525, 0, 9.37684, -4.60764)
+light_color = Color(1, 1, 0.952941, 1)
 light_energy = 4.333
 shadow_enabled = true
-spot_range = 6.91022
 
 [node name="ui2" type="AnimationPlayer" parent="."]
 libraries = {
@@ -372,6 +267,12 @@ libraries = {
 
 [node name="error_box" parent="." instance=ExtResource("6_phcgc")]
 visible = false
+
+[node name="crew_vis" parent="." instance=ExtResource("7_1w8ga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80623, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.83666, -7.7833)
 
 [connection signal="pressed" from="ui/right/hire" to="." method="_on_hire_pressed"]
 [connection signal="pressed" from="ui/exit" to="." method="_on_exit_pressed"]

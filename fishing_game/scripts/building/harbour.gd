@@ -2,10 +2,7 @@ extends "res://scripts/building/base_building.gd"
 var size_slots=16
 var selected_boat
 var accessing=false
-var gold=Color('ffe15f')
-var silver=Color('bcd2eb')
-var bronze=Color('a5a562')
-var white=Color('ffffff')
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_node('ui/right').position.x=2885
@@ -88,20 +85,7 @@ func boat_selected(boat_select):
 	var new_colour
 	var stars=boat_select.get_condition_rating()
 	print('stars:  ',stars)
-	if stars<=5:
-		new_colour=bronze
-	elif stars<=10:
-		stars-=5
-		new_colour=silver
-	else:
-		stars-=10
-		new_colour=gold
-	for i in get_node('ui/right/stars').get_children():
-		if stars>0:
-			i.modulate=new_colour
-		else:
-			i.modulate=white
-		stars-=1
+	get_node('ui/right/stars').update_colours(stars)
 	get_node('ui/right/stars').visible=true	
 	get_node("ui/right/title").visible=true
 	get_node("ui/right/speed").visible=true

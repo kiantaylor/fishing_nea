@@ -1,0 +1,104 @@
+[gd_scene load_steps=19 format=3 uid="uid://b78jiiiihqpyh"]
+
+[ext_resource type="Script" path="res://scripts/crew/crew_vis.gd" id="1_bgt0k"]
+[ext_resource type="ArrayMesh" uid="uid://8nmqrpyhbsfm" path="res://models/crewmates/head.obj" id="1_ju2ji"]
+[ext_resource type="ArrayMesh" uid="uid://bci6esnwfx3nf" path="res://models/crewmates/nose.obj" id="2_x1hp5"]
+[ext_resource type="Material" uid="uid://cqte0sstjwus8" path="res://Textures/crew/skin2.tres" id="3_3cwiv"]
+[ext_resource type="Material" uid="uid://c0s471xd03mae" path="res://Textures/crew/skin1.tres" id="3_pac2u"]
+[ext_resource type="ArrayMesh" uid="uid://c3jx7f1faqal8" path="res://models/crewmates/brow.obj" id="4_4gllt"]
+[ext_resource type="ArrayMesh" uid="uid://brpo6tcuggffr" path="res://models/crewmates/hair/hair1.obj" id="5_fw5k0"]
+[ext_resource type="ArrayMesh" uid="uid://uf2ks7y1loll" path="res://models/crewmates/upperlid.obj" id="6_adysp"]
+[ext_resource type="ArrayMesh" uid="uid://dh3bs0ew7524p" path="res://models/crewmates/lowerlid.obj" id="7_ij41m"]
+[ext_resource type="Material" uid="uid://bnouja11dtuqn" path="res://Textures/crew/hair2.tres" id="7_nwr13"]
+[ext_resource type="ArrayMesh" uid="uid://d3300w7u8exfq" path="res://models/crewmates/moustache/stache3.obj" id="7_s700k"]
+[ext_resource type="Texture2D" uid="uid://cgqnsicvb2nkf" path="res://Textures/crew/eyes.png" id="10_6n62i"]
+[ext_resource type="Material" uid="uid://bmmcyvjy5lcqc" path="res://Textures/crew/eyelid1.tres" id="11_1o3hq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vo7mw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0ap5"]
+albedo_texture = ExtResource("10_6n62i")
+roughness = 0.51
+clearcoat_enabled = true
+clearcoat_roughness = 0.3
+
+[sub_resource type="Animation" id="Animation_h3ls2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_a82n7"]
+resource_name = "blink"
+length = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_88gjd"]
+_data = {
+"RESET": SubResource("Animation_h3ls2"),
+"blink": SubResource("Animation_a82n7")
+}
+
+[node name="crew_vis" type="Node3D"]
+script = ExtResource("1_bgt0k")
+
+[node name="head" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ju2ji")
+surface_material_override/0 = ExtResource("3_3cwiv")
+
+[node name="nose" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_x1hp5")
+surface_material_override/0 = ExtResource("3_pac2u")
+
+[node name="hair" type="MeshInstance3D" parent="."]
+mesh = ExtResource("5_fw5k0")
+surface_material_override/0 = ExtResource("7_nwr13")
+
+[node name="stache" type="MeshInstance3D" parent="."]
+mesh = ExtResource("7_s700k")
+surface_material_override/0 = ExtResource("7_nwr13")
+
+[node name="brow" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_4gllt")
+surface_material_override/0 = ExtResource("7_nwr13")
+
+[node name="eyeball1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0238846, 0, -0.349184, 0, 0.35, 0, 0.349184, 0, 0.0238846, -0.43, 0.533, -0.865)
+mesh = SubResource("SphereMesh_vo7mw")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ap5")
+
+[node name="lowerlid" type="MeshInstance3D" parent="eyeball1"]
+transform = Transform3D(0.0365053, 0, 2.86114, 0, 2.86138, 0, -2.86114, 0, 0.0365053, 0.0333536, 0, -0.0011158)
+mesh = ExtResource("7_ij41m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_1o3hq")
+
+[node name="upperlid" type="MeshInstance3D" parent="eyeball1"]
+transform = Transform3D(0.00673841, 0.304846, 0.415089, 2.02047e-10, 0.415123, -0.304871, -0.52813, 0.00388954, 0.00529612, -0.0333543, 0, -0.00196743)
+mesh = ExtResource("6_adysp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_1o3hq")
+
+[node name="eyeball2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0238846, 0, -0.349184, 0, 0.35, 0, 0.349184, 0, 0.0238846, 0.43, 0.533, -0.865)
+mesh = SubResource("SphereMesh_vo7mw")
+surface_material_override/0 = SubResource("StandardMaterial3D_l0ap5")
+
+[node name="lowerlid" type="MeshInstance3D" parent="eyeball2"]
+transform = Transform3D(0.0365053, 0, 2.86114, 0, 2.86138, 0, -2.86114, 0, 0.0365053, 0.0333536, 0, -0.0011158)
+mesh = ExtResource("7_ij41m")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_1o3hq")
+
+[node name="upperlid" type="MeshInstance3D" parent="eyeball2"]
+transform = Transform3D(0.00673841, 0.304846, 0.415089, 2.02047e-10, 0.415123, -0.304871, -0.52813, 0.00388954, 0.00529612, -0.0333543, 0, -0.00196743)
+mesh = ExtResource("6_adysp")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_1o3hq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_88gjd")
+}
+
+[node name="blink" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="blink" to="." method="_on_blink_timeout"]

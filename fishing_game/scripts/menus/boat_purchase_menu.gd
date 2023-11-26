@@ -3,10 +3,7 @@ extends Control
 var stock=[]
 var price=0
 var selected_boat
-var gold=Color('ffe15f')
-var silver=Color('bcd2eb')
-var bronze=Color('a5a562')
-var white=Color('ffffff')
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stock_gen()
@@ -39,20 +36,7 @@ func boat_selected(boat_select):
 	var new_colour
 	var stars=boat_select.get_condition_rating()
 	print('stars:  ',stars)
-	if stars<=5:
-		new_colour=bronze
-	elif stars<=10:
-		stars-=5
-		new_colour=silver
-	else:
-		stars-=10
-		new_colour=gold
-	for i in get_node('right/stars').get_children():
-		if stars>0:
-			i.modulate=new_colour
-		else:
-			i.modulate=white
-		stars-=1
+	get_node('right/stars').update_colours(stars)
 	if get_node("3dSpace/pivot").get_child_count()>0:
 		get_node("3dSpace/pivot").get_child(0).queue_free()
 	var boat_load=load(str("res://assets/boats/"+boat_select.vis_name))
