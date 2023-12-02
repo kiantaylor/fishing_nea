@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpp7yxh0x3nui"]
+
+[ext_resource type="Script" path="res://scripts/dataHandling/clock.gd" id="1_vwpi6"]
+
+[node name="clock" type="Node"]
+script = ExtResource("1_vwpi6")
+
+[node name="ecotick" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="ecotick" to="." method="_on_ecotick_timeout"]

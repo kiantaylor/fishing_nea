@@ -4,7 +4,7 @@ class_name Population
 var max=0.0
 var mass=0.0
 var foodLimit=0.0
-var depth=0.0
+var depth=[]
 var max_support=0.0
 var species
 var support=0.0
@@ -38,6 +38,14 @@ func debug_display():
 func get_max_support():
 	return max_support
 func get_mass():
-	return mass
+	if trophic_place==0:
+		return 0
+	else:
+		return mass
+func set_mass(new_mass):
+	if trophic_place!=0:
+		mass=new_mass
 func get_size():
 	return size
+func get_species():
+	return species

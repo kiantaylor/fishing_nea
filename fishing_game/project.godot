@@ -24,6 +24,7 @@ PlayerData="*res://scripts/dataHandling/player_data.gd"
 PlayerOverlay="*res://assets/screens/menus/player_overlay.tscn"
 CrewData="*res://scripts/dataHandling/CrewData.gd"
 FishData="*res://scripts/dataHandling/FishData.gd"
+Clock="*res://assets/clock.tscn"
 
 [display]
 
