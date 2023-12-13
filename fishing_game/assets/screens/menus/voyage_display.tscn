@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8u5vpebrf6qf"]
+
+[ext_resource type="Script" path="res://scripts/menus/voyage_display.gd" id="1_od7cd"]
+[ext_resource type="PackedScene" uid="uid://bx1n2wrst0npe" path="res://assets/screens/menus/ratio_bar.tscn" id="2_64erf"]
+
+[node name="voyage_display" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1915.0
+offset_bottom = -690.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_od7cd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 389.0
+offset_bottom = 606.0
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 22
+text = "fddfff"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="fish_list" type="Marker2D" parent="."]
+position = Vector2(0, 80)
+
+[node name="ratio_bar" parent="fish_list" instance=ExtResource("2_64erf")]
+
+[node name="ratio_bar2" parent="fish_list" instance=ExtResource("2_64erf")]
+position = Vector2(0, 54)
+
+[node name="ratio_bar3" parent="fish_list" instance=ExtResource("2_64erf")]
+position = Vector2(0, 107)
+
+[node name="confirm" type="Button" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 538.0
+offset_right = 386.0
+offset_bottom = 601.0
+focus_mode = 0
+text = "set sail"
+
+[node name="recurring" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 263.0
+offset_right = 282.0
+offset_bottom = 370.0
+focus_mode = 0
+text = "recurring"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="recurring" to="." method="_on_recurring_pressed"]
+[connection signal="toggled" from="recurring" to="." method="_on_recurring_toggled"]

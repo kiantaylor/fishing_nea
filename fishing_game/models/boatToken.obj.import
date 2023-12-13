@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dapv1ncr8dwn7"
+path="res://.godot/imported/boatToken.obj-0b79df573c266aa7231c6893cc0fb315.mesh"
+
+[deps]
+
+files=["res://.godot/imported/boatToken.obj-0b79df573c266aa7231c6893cc0fb315.mesh"]
+
+source_file="res://models/boatToken.obj"
+dest_files=["res://.godot/imported/boatToken.obj-0b79df573c266aa7231c6893cc0fb315.mesh", "res://.godot/imported/boatToken.obj-0b79df573c266aa7231c6893cc0fb315.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

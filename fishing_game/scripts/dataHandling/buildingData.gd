@@ -13,7 +13,8 @@ var build_requirements={
 	'test_building_2':[1700,2,3],
 	'harbour':[2000,1,1],
 	'anchor':[100,1,1],
-	'recruitment_building':[1500,1,1]
+	'recruitment_building':[1500,1,1],
+	'voyage_building':[800,1,1]
 }
 
 var build_map={
@@ -21,7 +22,8 @@ var build_map={
 	'test_building_2':[],
 	'harbour':[],
 	'anchor':[],
-	'recruitment_building':[]
+	'recruitment_building':[],
+	'voyage_building':[]
 }
 
 signal open_edit_menu

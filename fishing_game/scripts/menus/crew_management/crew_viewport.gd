@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("build_place"):
-		selected_crew_member=CrewData.employees[randi_range(0,99)]
+		crew_select(CrewData.employees[randi_range(0,99)])
 		stat_update()
 func refresh_stock():
 	
@@ -32,9 +32,10 @@ func refresh_stock():
 			button_new.true_parent=self
 			get_node("ui/left/crew_list").add_child(button_new)
 		
-		selected_crew_member=CrewData.employees[0]
+		crew_select(CrewData.employees[0])
 func crew_select(crew_member):
 	selected_crew_member=crew_member
+	get_node('wall').set_surface_override_material(0,load(str("res://Textures/crew/wallpaper"+str(crew_member.bg)+".tres")))
 	stat_update()
 func stat_update():
 	if CrewData.employees!=[]:

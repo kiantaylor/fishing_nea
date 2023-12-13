@@ -41,6 +41,7 @@ func boat_selected(boat_select):
 		get_node("3dSpace/pivot").get_child(0).queue_free()
 	var boat_load=load(str("res://assets/boats/"+boat_select.vis_name))
 	var boat_new=boat_load.instantiate()
+	boat_new.boat=boat_select
 	get_node("3dSpace/pivot").add_child(boat_new)
 	get_node('3dSpace').future_rotation=deg_to_rad(-90.0)
 	get_node('3dSpace/pivot').rotation_degrees.y=-90.0

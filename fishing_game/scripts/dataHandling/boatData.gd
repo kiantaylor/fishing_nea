@@ -2,7 +2,8 @@ extends Node
 
 # order of attributes: size,speed,durability,crewslots,base price,small, medium, large>
 var type_dictionary={
-	'bt1':[3,5.0,8.0,['skp','dek'],650,0.0,15.0,0.0]
+	'bt1':[3,5.0,8.0,['skp','dek'],650,0.0,15.0,0.0],
+	'bt2':[6,2.0,12.0,['skp','mte','eng','dek'],1100,30.0,0.0,0.0]
 }
 var name_starts=[
 	'Golden',
@@ -149,7 +150,8 @@ func boatGenerate():
 		var boat_trait=BoatTraitData.traitGenerate()
 		
 		var boat_name=nameGenerate()
-		var boat_type='bt1'
+	
+		var boat_type=type_dictionary.keys().pick_random()
 		var boat1=BoatClass.new(condition,boat_trait,boat_name,boat_type)
 		
 		return boat1

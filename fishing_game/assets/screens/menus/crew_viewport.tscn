@@ -51,7 +51,7 @@ transform = Transform3D(-1, -7.36653e-05, 0.000660072, -7.35672e-05, 1, 0.000148
 transform = Transform3D(13.7966, 0, 0, 0, 13.7966, 0, 0, 0, 13.7966, 0, -10.5066, 0)
 mesh = SubResource("PlaneMesh_wtn2t")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="wall" type="MeshInstance3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, -1.33101, 13.7326, 0, -13.7326, -1.33101, 0, -0.359144, 6.12941)
 mesh = SubResource("PlaneMesh_wtn2t")
 
@@ -195,13 +195,6 @@ horizontal_alignment = 1
 
 [node name="stars" parent="ui/right" instance=ExtResource("5_28ry3")]
 
-[node name="upgrade" type="Button" parent="ui/right"]
-offset_left = -559.0
-offset_top = 968.0
-offset_right = -65.0
-offset_bottom = 1031.0
-text = "upgrade"
-
 [node name="exit" type="Button" parent="ui"]
 layout_mode = 0
 offset_left = 2163.0
@@ -217,5 +210,8 @@ libraries = {
 
 [node name="crew_vis" parent="." instance=ExtResource("6_mip42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.157569, 1.55105)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.35292, 0.935654, 0, -0.935654, -0.35292, 0, 0, 0)
 
 [connection signal="pressed" from="ui/exit" to="." method="_on_exit_pressed"]

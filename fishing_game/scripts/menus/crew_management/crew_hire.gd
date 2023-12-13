@@ -13,7 +13,7 @@ var stock=[]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("build_place"):
-		selected_crew_member=CrewData.employees[randi_range(0,99)]
+		crew_select(CrewData.employees[randi_range(0,99)])
 		
 		stat_update()
 func generate_stock():
@@ -35,9 +35,10 @@ func refresh_stock():
 			button_new.position=Vector2(40,(100*get_node('ui/left/crew_list').get_child_count())+150)
 		button_new.true_parent=self
 		get_node("ui/left/crew_list").add_child(button_new)
-	selected_crew_member=stock[0]
+	crew_select(stock[0])
 func crew_select(crew_member):
 	selected_crew_member=crew_member
+	get_node('wall').set_surface_override_material(0,load(str("res://Textures/crew/wallpaper"+str(crew_member.bg)+".tres")))
 	stat_update()
 func stat_update():
 	get_node('ui2').play('switch')

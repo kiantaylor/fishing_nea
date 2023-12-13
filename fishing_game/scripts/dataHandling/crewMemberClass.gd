@@ -18,12 +18,13 @@ var crew_trait
 var salary:int
 var experience:int
 var crew_name
-
+var assigned=false
 # Appearence 
 var hair_colour
 var skin_colour
 var hair
 var moustache
+var bg
 func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	crew_type=ct
 	crew_trait=ctr
@@ -35,7 +36,7 @@ func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	generate_appearance()
 	salary=salary_calculate()
 	
-	
+	bg=randi_range(1,6)
 	apply_trait()
 	#debug_stat_display()
 func get_salary():

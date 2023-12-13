@@ -89,12 +89,12 @@ mesh = SubResource("BoxMesh_6gndn")
 transform = Transform3D(30, 0, 0, 0, 13.797, 0, 0, 0, 13.797, 0, -12.8644, 0)
 mesh = SubResource("PlaneMesh_wtn2t")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(30, 0, 0, 0, -1.33101, 13.7326, 0, -13.7326, -1.33101, 0, -0.359144, 6.12941)
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(12, 0, 0, 0, -0.00457704, 12, 0, -13.797, -0.00398099, 0, -0.359144, 6.12941)
 mesh = SubResource("PlaneMesh_wtn2t")
 
 [node name="SpotLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.442614, 0.89579, -0.0406683, 0.560302, -0.240869, 0.792492, 0.700111, -0.373554, -0.608525, 0, 9.37684, -4.60764)
+transform = Transform3D(0.442614, 0.89579, -0.040668, 0.560302, -0.240869, 0.792492, 0.700111, -0.373554, -0.608525, 0, 16.6661, -12.7269)
 light_color = Color(1, 1, 0.952941, 1)
 light_energy = 4.333
 shadow_enabled = true

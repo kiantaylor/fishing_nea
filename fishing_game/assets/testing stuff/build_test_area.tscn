@@ -1,22 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5umwv6aukv3q"]
+[gd_scene load_steps=16 format=3 uid="uid://b5umwv6aukv3q"]
 
 [ext_resource type="PackedScene" uid="uid://cw1rd3krffxa7" path="res://assets/screens/menus/build_overlay.tscn" id="1_k2af2"]
 [ext_resource type="Script" path="res://assets/testing stuff/build_test_area.gd" id="1_m0cww"]
+[ext_resource type="Material" uid="uid://3tie2t1nkhpn" path="res://Textures/RoystanToonWaterShader.tres" id="2_twf1i"]
 [ext_resource type="Script" path="res://scripts/mainScreen/cameraPivot.gd" id="3_rni4h"]
 [ext_resource type="PackedScene" uid="uid://7kt5c68hh255" path="res://assets/screens/menus/building_edit_overlay.tscn" id="6_3qfhk"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_be6sf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7psnv"]
+albedo_color = Color(0.858824, 0.87451, 0.678431, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qn1lx"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_ob0d0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgxcv"]
-albedo_color = Color(0.188235, 0.541176, 0.654902, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_nng87"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_lgcx1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3vxf"]
 albedo_color = Color(0.380392, 0.588235, 0.423529, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5nnbv"]
 height = 1.51802
+radius = 0.477825
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xbtq4"]
 
@@ -37,17 +43,30 @@ volumetric_fog_detail_spread = 2.73208
 [node name="build_test_area" type="Node3D"]
 script = ExtResource("1_m0cww")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(143.72, 0, 0, 0, 25.7406, 0, 0, 0, 143.72, -0.339416, -16.7891, 0)
+mesh = SubResource("SphereMesh_be6sf")
+skeleton = NodePath("../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_7psnv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(324.771, 0, 0, 0, 123.543, 0, 0, 0, 324.771, -0.339416, -8.04294, 0)
+mesh = SubResource("PlaneMesh_qn1lx")
+skeleton = NodePath("../floor")
+surface_material_override/0 = SubResource("StandardMaterial3D_7psnv")
+
 [node name="sea" type="MeshInstance3D" parent="."]
-transform = Transform3D(900, 0, 0, 0, 17.832, 0, 0, 0, 900, 0, -0.958533, 0)
+transform = Transform3D(57.1275, 0, 0, 0, 0.115037, 0, 0, 0, 54.4017, 0, -1.84982, 0)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_jgxcv")
+surface_material_override/0 = ExtResource("2_twf1i")
 
 [node name="floor" type="StaticBody3D" parent="."]
-transform = Transform3D(48, 0, 0, 0, 0.951, 0, 0, 0, 48, -0.339416, -0.933302, 0)
+transform = Transform3D(48, 0, 0, 0, 0.951, 0, 0, 0, 48, -0.339416, -0.96239, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
-mesh = SubResource("CylinderMesh_nng87")
+transform = Transform3D(1, 0, 0, 0, 7.72742, 0, 0, 0, 1, 0, -6.44745, 0)
+mesh = SubResource("CylinderMesh_lgcx1")
 surface_material_override/0 = SubResource("StandardMaterial3D_k3vxf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
@@ -73,12 +92,12 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 56.9979, 8.75)
 
 [node name="building_edit_overlay" parent="." instance=ExtResource("6_3qfhk")]
-offset_right = 68394.0
-offset_bottom = 39130.0
+offset_right = 105258.0
+offset_bottom = 59866.0
 
 [node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
-offset_right = 85248.0
-offset_bottom = 48209.0
+offset_right = 122112.0
+offset_bottom = 68945.0
 
 [connection signal="generate_ghost" from="building_edit_overlay" to="." method="_on_build_overlay_generate_ghost"]
 [connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

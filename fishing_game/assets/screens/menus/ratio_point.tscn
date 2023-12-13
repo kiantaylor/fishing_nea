@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt78nf60es74i"]
+
+[ext_resource type="Script" path="res://scripts/menus/ratio_point.gd" id="1_ta4bp"]
+
+[node name="ratio_point" type="ColorRect"]
+offset_right = 36.0
+offset_bottom = 36.0
+color = Color(0.14902, 0.14902, 0.14902, 1)
+script = ExtResource("1_ta4bp")

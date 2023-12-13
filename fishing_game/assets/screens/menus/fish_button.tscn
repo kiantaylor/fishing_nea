@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bksf2lpgm68lr"]
+
+[ext_resource type="PackedScene" uid="uid://sbhq2jvq6rvb" path="res://assets/screens/item_button.tscn" id="1_t0g15"]
+[ext_resource type="Script" path="res://scripts/menus/fish_button.gd" id="2_m8du4"]
+
+[node name="fish_button" instance=ExtResource("1_t0g15")]
+script = ExtResource("2_m8du4")

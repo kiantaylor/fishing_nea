@@ -2,39 +2,51 @@ extends Node
 # min depth,maxdepth, size , biome, max_support
 var fish_stats={
 	#open
-	'cod':[[1,2],2,'open',400],
-	'csq':[[2,5],1,'open',1200],
-	'mck':[[1,2],2,'open',800],
-	'bls':[[1,2],3,'open',100],
-	'tun':[[1],3,'open',150],
-	'csh':[[4,5],1,'open',1700],
-	'sbs':[[1,2],2,'open',300],
+	'Atlantic Cod':[[1,2],2,'open',400,3],
+	'Common Squid':[[2,5],1,'open',1200,0.5],
+	'Mackeral':[[1,2],2,'open',800,1],
+	'Blueshark':[[1,2],3,'open',100,40],
+	'Yellowfin Tuna':[[1],3,'open',150,25],
+	'Common Shrimp':[[4,5],1,'open',1700,0.3],
+	'Seabass':[[1,2],2,'open',300,6],
 	#shallows
-	'ecr':[[1],1,'shallows',200],
+	'Edible Crab':[[1],1,'shallows',200,0.6],
 	#kelp
-	'grp':[[2],2,'kelp',300],
-	'ggr':[[2],3,'kelp',80],
-	'kfs':[[2,3],1,'kelp',500],
-	'kcr':[[3],1,'kelp',900],
-	'dcr':[[3],1,'kelp',700],
+	'Grouper':[[2],2,'kelp',300,7],
+	'Goliath Grouper':[[2],3,'kelp',120,20],
+	'Kelp Fish':[[2,3],1,'kelp',500,4],
+	'Kelp Crab':[[3],1,'kelp',900,0.5],
+	'Decorator Crab':[[3],1,'kelp',700,0.8],
 	#seagrass
-	'cuf':[[2],1,'seagrass',200],
-	'cra':[[2],1,'seagrass',400]
-	
+	'Cuttlefish':[[2],1,'seagrass',200,0.5],
+	'Crayfish':[[2],1,'seagrass',400,0.4],
+	#depths
+	'Angler Fish':[[4,7],2,'depths',400, 8],
+	'Monkfish':[[5,8],2,'depths',800,6]
 }
 var biome_stats={
 	'open':[5,2000],
 	'kelp':[3,1000],
 	'seagrass':[2,750],
-	'shallows':[1,400]
+	'shallows':[1,400],
+	'depths':[8,3000]
 }
-var map=[]
+var map={}
+var inventory={}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
-	for biome in biome_stats.keys():
-		map.append(ecosystem_generate(biome,1))
-
+	
+	ecosystem_generate('shallows',1,'the_shallows',1)
+	ecosystem_generate('kelp',5,'kelp_forest',2)
+	ecosystem_generate('seagrass',2,'seagrass_meadows',2)
+	ecosystem_generate('open',7,'southern_waters',3)
+	ecosystem_generate('open',6,'northern_waters',3)
+	ecosystem_generate('open',5,'eastern_waters',3)
+	ecosystem_generate('depths',2,'northern_depths',4)
+	ecosystem_generate('depths',2,'eastern_depths',4)
+	ecosystem_generate('depths',2,'western_depths',4)
+	ecosystem_generate('depths',2,'southern_depths',4)
 	
 
 
@@ -43,18 +55,18 @@ func _process(delta):
 	pass
 func tick():
 	for i in map:
-		i.tick()
-func ecosystem_generate(biome,size):
+		map[i].tick()
+func ecosystem_generate(biome,size,nm,dis):
 	var levels=[]
 	
-	levels.append(Population.new(biome_stats[biome][0],biome_stats[biome][1]*(size/2.0),biome,0,0))
+	levels.append(Population.new(biome_stats[biome][0],biome_stats[biome][1]*(size/2.0),biome,0,0,0))
 	levels[0].debug_display()
 	levels=fish_select(biome,size,levels)
 	levels.sort_custom(sort_size)
 	for i in range(len(levels)):
 		levels[i].trophic_place=i
-		
-	return Ecosystem.new(levels,biome_stats[biome][0],size)
+	map[nm]=Ecosystem.new(levels,biome_stats[biome][0],size,dis)
+
 func sort_size(a,b):
 	if a.get_size()<b.get_size():
 		return true
@@ -76,7 +88,7 @@ func fish_select(biome,count,levels):
 			if i.get_species()==species:
 				dupe=true
 		if not dupe:
-			levels.append(Population.new(fish_stats[species][0],fish_stats[species][3],species,fish_stats[species][1],0))
+			levels.append(Population.new(fish_stats[species][0],fish_stats[species][3],species,fish_stats[species][1],0,fish_stats[species][4]))
 			count-=1
 	if count>0:
 		fish_select(biome,count,levels)

@@ -1,0 +1,435 @@
+[gd_scene load_steps=16 format=3 uid="uid://dd7gwn5nb2c36"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0vmihqs5fte" path="res://models/map.obj" id="1_p02qx"]
+[ext_resource type="Script" path="res://scripts/menus/voyage_menu.gd" id="1_tdils"]
+[ext_resource type="Texture2D" uid="uid://bbve7lvx67tk7" path="res://Textures/Capture.JPG" id="2_mlyoh"]
+[ext_resource type="Texture2D" uid="uid://dcrde2i038iyj" path="res://Textures/map.png" id="2_p3s8h"]
+[ext_resource type="Script" path="res://scripts/menus/map_button.gd" id="5_bbmkt"]
+[ext_resource type="PackedScene" uid="uid://drpmejgxjajox" path="res://assets/boats/boat_1_visual.tscn" id="5_tpnc2"]
+[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="6_iiilq"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="9_0rsbw"]
+[ext_resource type="PackedScene" uid="uid://b8u5vpebrf6qf" path="res://assets/screens/menus/voyage_display.tscn" id="10_it618"]
+
+[sub_resource type="Environment" id="Environment_w2dlx"]
+glow_enabled = true
+glow_intensity = 1.32
+glow_strength = 0.83
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itxb0"]
+albedo_texture = ExtResource("2_p3s8h")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.26
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a3wa"]
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
+roughness = 0.73
+rim_enabled = true
+rim = 0.35
+clearcoat_enabled = true
+clearcoat_roughness = 0.41
+
+[sub_resource type="Animation" id="Animation_siwow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2u8qh"]
+resource_name = "voyage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bl723"]
+_data = {
+"RESET": SubResource("Animation_siwow"),
+"voyage": SubResource("Animation_2u8qh")
+}
+
+[node name="voyage_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tdils")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1156, 642)
+scale = Vector2(1.19231, 1.18883)
+texture = ExtResource("2_mlyoh")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_w2dlx")
+
+[node name="map_section" type="Marker3D" parent="Node3D"]
+
+[node name="map" type="MeshInstance3D" parent="Node3D/map_section"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_p02qx")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_itxb0")
+surface_material_override/1 = SubResource("StandardMaterial3D_3a3wa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D/map_section"]
+transform = Transform3D(0.25149, -0.55425, 0.793448, -0.0412777, 0.812909, 0.580927, -0.966979, -0.178849, 0.18156, 0, 1.22974, 0)
+light_color = Color(0.792157, 0.678431, 0.588235, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/map_section"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.68756, 0)
+
+[node name="boat_section" type="Marker3D" parent="Node3D"]
+visible = false
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D/boat_section"]
+transform = Transform3D(0.108613, -0.933671, -0.341264, 0.230552, -0.310276, 0.922266, -0.966979, -0.178849, 0.18156, 0, 1.22974, 0)
+light_color = Color(0.788235, 0.788235, 0.788235, 1)
+light_energy = 4.282
+shadow_enabled = true
+
+[node name="boat_1_visual" parent="Node3D/boat_section" instance=ExtResource("5_tpnc2")]
+
+[node name="the_shallows" type="Area2D" parent="."]
+position = Vector2(1127, 652)
+scale = Vector2(1.01, 1.01)
+script = ExtResource("5_bbmkt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="the_shallows"]
+position = Vector2(-81, 71)
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(24.5958, -27.8137, 17.17, -47.6156, 20.4703, -77.3186, 22.9456, -105.371, 27.8961, -126.824, 56.774, -149.101, 74.9258, -151.576, 86.4769, -144.975, 115.355, -140.025, 126.906, -130.124, 141.757, -127.649, 147.533, -127.649, 155.784, -119.398, 169.81, -114.447, 168.985, -63.2922, 163.21, -56.6915, 160.734, -48.4407, 155.784, -42.6651, 151.658, -30.2889, 145.058, -26.1635, 141.757, -18.7377, 134.332, -2.23608, 119.48, -1.41101, 107.104, 3.53949, 93.0776, 1.88934, 80.7014, 9.31506, 69.1502, 9.31506, 49.3482, 6.83984, 29.5463, -10.4869)
+
+[node name="ColorRect" type="ColorRect" parent="the_shallows"]
+visible = false
+offset_left = -4.95691
+offset_top = -33.7776
+offset_right = 35.0431
+offset_bottom = 6.22235
+scale = Vector2(1.2, 1.2)
+
+[node name="kelp_forest" type="Area2D" parent="."]
+position = Vector2(914, 515)
+scale = Vector2(1.01, 1.01)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="kelp_forest"]
+position = Vector2(-1143, -614)
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(1108.44, 540.545, 1106.79, 533.944, 1097.71, 532.294, 1091.94, 528.993, 1087.81, 519.917, 1082.04, 516.617, 1083.69, 507.541, 1079.56, 499.29, 1072.14, 495.165, 1070.49, 485.264, 1060.59, 478.663, 1061.41, 473.713, 1053.99, 469.587, 1050.68, 464.637, 1039.96, 459.686, 1039.96, 453.086, 1053.16, 447.31, 1083.69, 446.485, 1102.66, 448.96, 1120.82, 444.835, 1130.72, 445.66, 1140.62, 453.086, 1200.02, 453.086, 1214.88, 454.736, 1223.95, 462.987, 1234.68, 462.162, 1240.45, 464.637, 1243.75, 470.413, 1255.31, 475.363, 1256.96, 477.838, 1267.68, 477.838, 1272.63, 486.914, 1294.08, 492.69, 1296.56, 495.99, 1317.19, 509.191, 1322.96, 510.842, 1331.21, 526.518, 1333.69, 537.244, 1337.81, 542.195, 1343.59, 545.495, 1341.94, 561.172, 1343.59, 572.723, 1340.29, 599.951, 1336.16, 612.327, 1335.34, 637.904, 1332.86, 647.805, 1322.14, 665.957, 1319.66, 684.934, 1313.89, 692.36, 1311.41, 709.686, 1306.46, 716.287, 1304.81, 727.013, 1292.43, 740.215, 1280.88, 738.564, 1270.16, 725.363, 1259.43, 722.063, 1254.48, 715.462, 1239.63, 706.386, 1227.25, 692.36, 1218.18, 675.033, 1203.32, 666.782, 1205.8, 658.531, 1213.23, 653.581, 1217.35, 642.03, 1222.3, 636.254, 1224.78, 628.003, 1231.38, 620.578, 1232.2, 569.422, 1217.35, 563.647, 1209.1, 555.396, 1195, 553, 1188.47, 552.921, 1176.92, 543.02, 1148.04, 538.069, 1136.49, 531.469, 1116.69, 533.944)
+
+[node name="ColorRect" type="ColorRect" parent="kelp_forest"]
+visible = false
+offset_left = 388.119
+offset_top = 42.5742
+offset_right = 428.119
+offset_bottom = 82.5742
+scale = Vector2(1.2, 1.2)
+
+[node name="seagrass_meadows" type="Area2D" parent="."]
+position = Vector2(913, 515)
+scale = Vector2(1.01, 1.01)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="seagrass_meadows"]
+position = Vector2(-1144, -613)
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(1204.16, 668.424, 1218.18, 676.675, 1227.26, 693.177, 1238.81, 706.378, 1254.49, 715.454, 1260.26, 722.88, 1270.99, 726.18, 1281.72, 739.381, 1294.92, 741.856, 1290.79, 757.533, 1275.94, 771.559, 1264.39, 787.236, 1256.14, 788.061, 1247.06, 791.361, 1241.29, 802.913, 1225.61, 802.087, 1223.96, 807.038, 1218.18, 803.738, 1206.63, 802.087, 1202.51, 807.863, 1198.38, 809.513, 1190.13, 802.913, 1183.53, 805.388, 1169.5, 803.738, 1160.43, 807.038, 1153, 807.863, 1145.58, 804.563, 1124.95, 799.612, 1109.27, 798.787, 1105.15, 803.738, 1092.77, 802.913, 1081.22, 799.612, 1074.62, 797.137, 1068.02, 796.312, 1061.42, 797.962, 1054.82, 797.962, 1049.04, 794.662, 1043.27, 795.487, 1041.62, 788.886, 1025.12, 778.985, 1015.21, 774.86, 1011.91, 764.959, 1013.56, 741.031, 1009.44, 731.955, 1010.26, 726.18, 1005.31, 722.054, 1002.01, 703.078, 1002.84, 689.876, 996.238, 678.325, 995.412, 665.949, 989.637, 661.823, 989.637, 643.672, 985.511, 642.021, 986.337, 623.045, 983.036, 620.569, 987.987, 609.843, 988.812, 592.516, 993.762, 575.19, 995.412, 558.688, 997.063, 547.137, 998.713, 523.21, 1005.31, 514.134, 1013.56, 500.932, 1011.09, 492.681, 1019.34, 486.906, 1020.99, 477.005, 1022.64, 469.579, 1027.59, 467.104, 1030.89, 462.153, 1039.14, 458.028, 1050.69, 464.629, 1053.17, 469.579, 1060.59, 473.705, 1061.42, 479.48, 1071.32, 486.081, 1072.97, 495.157, 1080.4, 500.107, 1084.52, 506.708, 1084.52, 517.434, 1089.47, 520.734, 1092.77, 528.985, 1099.37, 533.111, 1107.62, 534.761, 1108.45, 539.711, 1088.65, 557.038, 1084.52, 575.19, 1078.75, 636.246, 1086.17, 655.223, 1091.12, 674.2, 1111.75, 691.526, 1131.55, 693.177, 1143.93, 693.177, 1156.3, 685.751, 1171.16, 687.401, 1181.88, 683.276, 1199.21, 681.625)
+
+[node name="ColorRect" type="ColorRect" parent="seagrass_meadows"]
+visible = false
+offset_left = 125.742
+offset_top = 280.198
+offset_right = 165.742
+offset_bottom = 320.198
+scale = Vector2(1.2, 1.2)
+
+[node name="southern_waters" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="southern_waters"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(1229, 839, 1230, 851, 1233, 855, 1230.83, 890.833, 1234.17, 895, 1237.5, 910, 1240.83, 919.167, 1241.67, 931.667, 1244, 945, 1246.67, 947.5, 1247.5, 960, 1245.83, 964.167, 1248.33, 968.333, 1250, 979.167, 1244.17, 981.667, 1237.5, 981.667, 1230, 980, 1225, 979.167, 1219.17, 981.667, 1200, 982.5, 1189.17, 981.667, 1184.17, 987.5, 1176.67, 988.333, 1172.5, 985, 1150.83, 985.833, 1143.33, 985, 1138.33, 982.5, 1125.83, 982.5, 1119.17, 986.667, 1088.33, 986.667, 1083.33, 984.167, 1080, 980.833, 1075, 980, 1067.5, 983.333, 1055.83, 983.333, 1052.5, 980, 1032.5, 980.833, 1017.5, 977.5, 1015, 972.5, 1010, 949.167, 1007.5, 945, 1001.67, 940.833, 996.667, 935.833, 994.167, 931.667, 988.333, 930, 977.5, 917.5, 964.167, 916.667, 950, 913.333, 942.5, 905.833, 935.833, 889.167, 925, 888.333, 922.5, 871.667, 923.333, 865.833, 909.167, 855, 900, 842.5, 897.5, 772.5, 875.833, 757.5, 867.5, 752.5, 860.833, 740, 858.333, 722.5, 857.5, 714.167, 859.167, 707.5, 863.333, 703.334, 861.667, 687.5, 860, 680, 855, 672.5, 859.167, 662.5, 850.833, 658.334, 845.833, 656.667, 843.333, 625.834, 837.5, 623.334, 833.333, 615.834, 834.167, 609.167, 836.667, 600.834, 837.5, 590.834, 845.833, 591.667, 853.333, 589.167, 866.667, 592.5, 900.833, 593.334, 908.333, 593.334, 911.667, 596.667, 922.5, 596.667, 933.333, 595, 935.833, 599.167, 958.333, 599.167, 965, 600, 975, 600, 982.5, 598.334, 989.167, 598.334, 994.167, 605, 990, 621.667, 989.167, 639.167, 984.167, 650, 987.5, 654.167, 985.833, 672.5, 991.667, 675.834, 991.667, 694.167, 997.5, 698.334, 997.5, 711.667, 1005, 721.667, 1003.33, 734.167, 1006.67, 753.334, 1012.5, 758.334, 1010.83, 764.167, 1015.83, 774.167, 1012.5, 795, 1014.17, 798.334, 1013, 804, 1034.17, 816.667, 1040, 820.834, 1045, 825, 1050.83, 826.667, 1057.5, 832.5, 1072.5, 830, 1081, 832, 1109.17, 837.5, 1115, 832.5, 1125, 832.5, 1146, 838, 1158.33, 840.834, 1173.33, 837.5, 1187, 839, 1194.17, 836.667, 1203, 842, 1207, 841, 1213, 835, 1227, 836)
+
+[node name="ColorRect" type="ColorRect" parent="southern_waters"]
+visible = false
+offset_left = -174.167
+offset_top = 205.833
+offset_right = -134.167
+offset_bottom = 245.833
+
+[node name="eastern_waters" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="eastern_waters"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(1233.33, 837.5, 1230.83, 840, 1230.83, 850, 1234.17, 854.167, 1232.5, 890, 1235.83, 894.167, 1239.17, 910, 1242.5, 918.334, 1243.33, 932.5, 1245.83, 943.334, 1248.33, 946.667, 1249.17, 960.834, 1247.5, 963.334, 1249.17, 966.667, 1251.67, 978.334, 1265.83, 975, 1275, 974.167, 1277.5, 976.667, 1300.83, 976.667, 1312.5, 969.167, 1322.5, 974.167, 1335, 969.167, 1343.33, 963.334, 1359.17, 960, 1365.83, 954.167, 1375.83, 947.5, 1383.33, 947.5, 1390, 933.334, 1395.83, 931.667, 1395, 929.167, 1400, 925.834, 1413.33, 916.667, 1415.83, 905.834, 1426.67, 893.334, 1430, 880, 1430.83, 871.667, 1435.83, 862.5, 1445, 845, 1456.67, 835, 1464.17, 812.5, 1464.17, 800.834, 1468.33, 790, 1475, 783.334, 1486.67, 743.334, 1489.17, 733.334, 1496.67, 725, 1500.83, 712.5, 1501.67, 680.834, 1502.5, 651.667, 1510, 634.167, 1513.33, 624.167, 1513.33, 606.667, 1509.17, 602.5, 1510.83, 581.667, 1520.83, 561.667, 1521.67, 535.834, 1515.83, 527.5, 1514.17, 514.167, 1510.83, 505.834, 1511.67, 487.5, 1512.5, 484.167, 1511.67, 480, 1490.83, 464.167, 1490, 443.334, 1479.17, 439.167, 1475, 425, 1457.5, 420.834, 1447.5, 415, 1438.33, 425.834, 1430, 429.167, 1415, 450, 1401.67, 455, 1398.33, 460, 1395.83, 465.834, 1379.17, 475, 1372.5, 484.167, 1370.83, 489.167, 1359.17, 493.334, 1350, 503.334, 1335, 505, 1325.83, 518.334, 1322.5, 520, 1315.83, 529.167, 1324.17, 535.834, 1330.83, 537.5, 1338.33, 550, 1342.5, 564.167, 1346.67, 570, 1352.5, 574.167, 1350.83, 589.167, 1353.33, 602.5, 1349.17, 630.834, 1345, 641.667, 1344.17, 666.667, 1342.5, 675.834, 1331.67, 696.667, 1329.17, 715.834, 1323.33, 723.334, 1320, 739.167, 1315, 746.667, 1314.17, 759.167, 1302.5, 770.834, 1298.33, 788.334, 1281.67, 805, 1273.33, 818.334, 1267.5, 820.834, 1253.33, 824.167, 1248.33, 835.834, 1240, 835.834)
+
+[node name="ColorRect" type="ColorRect" parent="eastern_waters"]
+visible = false
+offset_left = 262.5
+offset_top = -31.6667
+offset_right = 302.5
+offset_bottom = 8.33331
+
+[node name="northern_waters" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="northern_waters"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(995, 601.667, 989.167, 596.667, 970, 599.167, 938.333, 598.334, 934.167, 593.334, 913.333, 595, 910, 590.834, 869.167, 590.834, 854.167, 585.834, 843.333, 590, 836.667, 589.167, 839.167, 580.834, 849.167, 570.834, 866.667, 550.834, 870, 543.334, 872.5, 519.167, 870, 509.167, 876.667, 506.667, 876.667, 494.167, 874.167, 480.834, 874.167, 469.167, 888.333, 455.834, 903.333, 445, 910, 438.334, 909.167, 433.334, 906.667, 430, 910, 418.334, 912.5, 415.834, 915.833, 400.834, 925, 387.5, 925, 380.834, 925, 374.167, 936.667, 368.334, 940, 362.5, 991.667, 345.834, 1000.83, 336.667, 1004.17, 324.167, 1018.33, 320.834, 1020, 309.167, 1027.5, 303.334, 1057.5, 301.667, 1066.67, 287.5, 1082.5, 286.667, 1086.67, 293.334, 1115.83, 294.167, 1126.67, 289.167, 1153.33, 288.334, 1162.5, 290.834, 1170, 298.334, 1176.67, 295, 1211.67, 295, 1218.33, 290.834, 1226.67, 290, 1254.17, 304.167, 1265.83, 300, 1290.83, 300, 1310.83, 305.834, 1330, 316.667, 1346.67, 340, 1352.5, 346.667, 1378.33, 346.667, 1385.83, 351.667, 1388.33, 363.334, 1400, 375.834, 1423.33, 388.334, 1435, 391.667, 1441.67, 408.334, 1445, 411.667, 1438.33, 424.167, 1427.5, 428.334, 1414.17, 448.334, 1400, 455, 1395, 465, 1376.67, 474.167, 1369.17, 487.5, 1359.17, 490.834, 1350, 500.834, 1334.17, 504.167, 1326.67, 514.167, 1320.83, 517.5, 1315, 527.5, 1305.83, 524.167, 1303.33, 519.167, 1280, 513.334, 1275.83, 503.334, 1266.67, 505, 1260.83, 500, 1252.5, 496.667, 1250, 490.834, 1243.33, 488.334, 1231.67, 487.5, 1222.5, 480.834, 1172.5, 479.167, 1147.5, 479.167, 1138.33, 472.5, 1126.67, 471.667, 1109.17, 475, 1087.5, 472.5, 1057.5, 473.334, 1042.5, 480.834, 1041.67, 485, 1032.5, 490.834, 1030, 495, 1025.83, 497.5, 1024.17, 502.5, 1021.67, 515, 1012.5, 521.667, 1015, 530, 1000, 553.334, 998.333, 578.334)
+
+[node name="ColorRect" type="ColorRect" parent="northern_waters"]
+visible = false
+offset_left = -60.0
+offset_top = -282.5
+offset_right = -20.0
+offset_bottom = -242.5
+
+[node name="northern_depths" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="northern_depths"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(935.833, 362.5, 940, 357.5, 990, 343.334, 998.333, 335.834, 1002.5, 323.334, 1015.83, 316.667, 1019.17, 303.334, 1057.5, 297.5, 1068.33, 284.167, 1079.17, 283.334, 1087.5, 289.167, 1113.33, 290, 1127.5, 285, 1155.83, 285, 1163.33, 288.334, 1170.83, 295, 1180, 291.667, 1210.83, 293.334, 1218.33, 289.167, 1227.5, 288.334, 1253.33, 301.667, 1263.33, 299.167, 1290, 298.334, 1311.67, 305, 1331.67, 315.834, 1352.5, 345, 1379.17, 345.834, 1384.17, 347.5, 1404.17, 330, 1404.17, 297.5, 1425, 277.5, 1430, 269.167, 1431.67, 262.5, 1441.67, 256.667, 1456.67, 250, 1465.83, 239.167, 1475, 228.334, 1494.17, 225.834, 1513.33, 222.5, 1525.83, 203.334, 1540.83, 188.334, 1565.83, 184.167, 1585.83, 181.667, 1597.5, 172.5, 1604.17, 160.834, 1620.83, 155, 1628.33, 136.667, 1638.33, 130.834, 1647.5, 125.834, 1650, 115.834, 1649.17, 110.834, 830.833, 110.834, 835.833, 124.167, 837.5, 139.167, 845.833, 149.167, 849.167, 165.834, 856.667, 188.334, 856.667, 222.5, 879.167, 239.167, 885, 254.167, 885, 265.834, 889.167, 275, 900.833, 285, 904.167, 295.834, 904.167, 321.667, 915, 335.834, 930, 345)
+
+[node name="ColorRect" type="ColorRect" parent="northern_depths"]
+visible = false
+offset_left = -24.1667
+offset_top = -455.833
+offset_right = 15.8333
+offset_bottom = -415.833
+
+[node name="eastern_depths" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="eastern_depths"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(1698.33, 1140.83, 1692.5, 1116.67, 1698.33, 1116.67, 1684.17, 1113.33, 1681.67, 1096.67, 1670.83, 1086.67, 1645, 1079.17, 1631.67, 1067.5, 1613.33, 1061.67, 1603.33, 1035, 1565.83, 1005.83, 1557.5, 990.834, 1536.67, 981.667, 1510.83, 950.834, 1495, 945.834, 1475, 920, 1460.83, 917.5, 1453.33, 905, 1430.83, 893.334, 1434.17, 877.5, 1449.17, 847.5, 1465.83, 830, 1469.17, 800.834, 1483.33, 784.167, 1495, 734.167, 1505.83, 721.667, 1507.5, 655, 1517.5, 625.834, 1514.17, 585, 1522.5, 563.334, 1524.17, 536.667, 1520, 525.834, 1516.67, 497.5, 1518.33, 475, 1496.67, 460, 1494.17, 440, 1482.5, 435.834, 1478.33, 420.834, 1459.17, 419.167, 1445.83, 407.5, 1439.17, 389.167, 1417.5, 381.667, 1399.17, 371.667, 1391.67, 360.834, 1388.33, 347.5, 1405.83, 330.834, 1406.67, 298.334, 1427.5, 278.334, 1432.5, 263.334, 1459.17, 251.667, 1475.83, 229.167, 1515, 223.334, 1527.5, 204.167, 1541.67, 189.167, 1586.67, 182.5, 1598.33, 172.5, 1605, 162.5, 1621.67, 156.667, 1629.17, 136.667, 1648.33, 125.834, 1650.83, 115, 1649.17, 110, 1689.17, 120.834, 1700, 1185.83, 1696.67, 1161.67)
+
+[node name="ColorRect" type="ColorRect" parent="eastern_depths"]
+visible = false
+offset_left = 486.667
+offset_top = -156.667
+offset_right = 526.667
+offset_bottom = -116.667
+
+[node name="western_depths" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="western_depths"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(827.5, 112.5, 834.167, 125, 836.667, 140.834, 845, 150.834, 855, 189.167, 855, 222.5, 878.333, 240, 883.333, 254.167, 884.167, 265, 889.167, 275.834, 900, 285, 903.333, 295.834, 903.333, 321.667, 915, 336.667, 930, 345.834, 935, 362.5, 924.167, 374.167, 924.167, 387.5, 915, 401.667, 911.667, 415.834, 909.167, 418.334, 905.833, 430, 908.333, 434.167, 909.167, 437.5, 903.333, 444.167, 873.333, 468.334, 873.333, 481.667, 875.833, 493.334, 875.833, 506.667, 870, 509.167, 871.667, 519.167, 869.167, 543.334, 865.833, 550.834, 838.333, 580, 835.833, 590.834, 835.833, 600.834, 833.333, 609.167, 832.5, 615.834, 836.667, 624.167, 842.5, 626.667, 845, 657.5, 858.333, 662.5, 854.167, 672.5, 859.167, 680.834, 862.5, 703.334, 858.333, 706.667, 856.667, 713.334, 860, 740, 866.667, 753.334, 883.333, 765.834, 825, 790, 817.5, 795.834, 806.667, 815, 778.333, 824.167, 760.833, 838.334, 746.667, 840, 729.167, 855.834, 705.833, 857.5, 694.167, 870, 689.167, 872.5, 676.667, 875.834, 675, 878.334, 674.167, 885, 666.667, 890, 655.833, 890.834, 648.333, 899.167, 645, 907.5, 638.333, 911.667, 627.5, 912.5, 621.667, 919.167, 620, 921.667, 620, 927.5, 615, 932.5, 604.167, 933.334, 595.833, 937.5, 590.833, 941.667, 590, 945.834, 576.667, 949.167, 577.5, 929.167, 583.333, 126.667)
+
+[node name="ColorRect" type="ColorRect" parent="western_depths"]
+visible = false
+offset_left = -472.5
+offset_top = -51.6667
+offset_right = -432.5
+offset_bottom = -11.6667
+
+[node name="southern_depths" type="Area2D" parent="."]
+position = Vector2(1143, 637)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("5_bbmkt")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="southern_depths"]
+position = Vector2(-1147.5, -641.667)
+polygon = PackedVector2Array(580, 987.5, 576.667, 954.167, 592.5, 949.167, 594.167, 942.5, 606.667, 936.667, 614.167, 935, 622.5, 928.334, 621.667, 920.834, 627.5, 913.334, 640, 913.334, 646.667, 909.167, 650.833, 897.5, 656.667, 892.5, 668.333, 890.834, 675, 886.667, 677.5, 876.667, 693.333, 872.5, 707.5, 859.167, 730, 856.667, 746.667, 840.834, 761.667, 839.167, 780, 825, 809.167, 815.834, 819.167, 797.5, 825.833, 791.667, 885.833, 766.667, 895, 772.5, 897.5, 840, 906.667, 855.834, 920.833, 866.667, 921.667, 870.834, 923.333, 889.167, 935, 890, 940.833, 906.667, 948.333, 914.167, 964.167, 919.167, 975, 919.167, 987.5, 931.667, 993.333, 933.334, 1004.17, 945, 1008.33, 949.167, 1015, 978.334, 1030.83, 983.334, 1051.67, 982.5, 1054.17, 985, 1068.33, 985, 1075.83, 980.834, 1078.33, 981.667, 1086.67, 988.334, 1120, 988.334, 1125.83, 984.167, 1136.67, 984.167, 1144.17, 986.667, 1171.67, 985.834, 1176.67, 989.167, 1185, 989.167, 1189.17, 983.334, 1219.17, 983.334, 1225, 980, 1237.5, 982.5, 1248.33, 981.667, 1260.83, 977.5, 1274.17, 975, 1280, 979.167, 1300.83, 978.334, 1312.5, 971.667, 1321.67, 975.834, 1335.83, 970, 1344.17, 964.167, 1360, 960.834, 1376.67, 949.167, 1383.33, 949.167, 1390.83, 934.167, 1398.33, 932.5, 1397.5, 929.167, 1413.33, 918.334, 1417.5, 906.667, 1430, 894.167, 1451.67, 905.834, 1458.33, 920, 1473.33, 922.5, 1492.5, 947.5, 1510, 954.167, 1534.17, 984.167, 1555.83, 993.334, 1565, 1009.17, 1600.83, 1037.5, 1609.17, 1062.5, 1631.67, 1069.17, 1644.17, 1080.83, 1669.17, 1089.17, 1695.83, 1105, 1697.5, 1113.33, 1695, 1118.33, 1692.5, 1121.67, 1692.5, 1139.17, 1690.83, 1146.67, 1696.67, 1200.83, 581.667, 1200.83)
+
+[node name="ColorRect" type="ColorRect" parent="southern_depths"]
+visible = false
+offset_left = -160.833
+offset_top = 395.833
+offset_right = -120.833
+offset_bottom = 435.833
+
+[node name="left" type="Marker2D" parent="."]
+
+[node name="panelTest" parent="left" instance=ExtResource("6_iiilq")]
+offset_left = -155.0
+offset_right = -155.0
+
+[node name="panel_top" parent="left" instance=ExtResource("9_0rsbw")]
+offset_left = -154.0
+offset_right = 494.0
+
+[node name="voyage_display" parent="left" instance=ExtResource("10_it618")]
+offset_left = 20.0
+offset_top = 485.0
+offset_right = 20.0
+offset_bottom = 485.0
+
+[node name="right" type="Marker2D" parent="."]
+position = Vector2(2304, 0)
+
+[node name="panelTest" parent="right" instance=ExtResource("6_iiilq")]
+offset_left = 112.0
+offset_top = -3.0
+offset_right = 112.0
+offset_bottom = -3.0
+scale = Vector2(-1, 1)
+
+[node name="panel_top" parent="right" instance=ExtResource("9_0rsbw")]
+offset_left = 112.0
+offset_top = -3.0
+offset_right = 760.0
+offset_bottom = 179.0
+scale = Vector2(-1, 1)
+
+[node name="title" type="Label" parent="right"]
+offset_left = -406.0
+offset_top = 38.0
+offset_right = -366.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 30
+
+[node name="fish_list" type="Marker2D" parent="right"]
+position = Vector2(-452, 619)
+
+[node name="selected" type="Marker2D" parent="right"]
+position = Vector2(-452, 224)
+
+[node name="title" type="Label" parent="right/selected"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+
+[node name="HSlider" type="HSlider" parent="right/selected"]
+offset_top = 329.0
+offset_right = 424.0
+offset_bottom = 345.0
+max_value = 6.0
+
+[node name="assign" type="Button" parent="right/selected"]
+offset_top = 244.0
+offset_right = 75.0
+offset_bottom = 314.0
+text = "assign"
+
+[node name="remove" type="Button" parent="right/selected"]
+offset_left = 81.0
+offset_top = 244.0
+offset_right = 156.0
+offset_bottom = 314.0
+text = "remove"
+
+[node name="block" type="ColorRect" parent="right"]
+offset_left = -476.0
+offset_top = 177.0
+offset_right = 212.0
+offset_bottom = 1452.0
+color = Color(0, 0, 0, 0.34902)
+
+[node name="ColorRect" type="ColorRect" parent="right"]
+offset_left = -523.0
+offset_top = 603.0
+offset_right = 119.0
+offset_bottom = 608.0
+color = Color(0.152941, 0.192157, 0.403922, 1)
+
+[node name="select_zone" type="Button" parent="right"]
+offset_left = -486.0
+offset_top = 113.0
+offset_right = -14.0
+offset_bottom = 159.0
+focus_mode = 0
+text = "select zone"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bl723")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 2485.0
+offset_bottom = 1420.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="mouse_entered" from="the_shallows" to="the_shallows" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="the_shallows" to="the_shallows" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="kelp_forest" to="kelp_forest" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="kelp_forest" to="kelp_forest" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="seagrass_meadows" to="seagrass_meadows" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="seagrass_meadows" to="seagrass_meadows" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="southern_waters" to="southern_waters" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="southern_waters" to="southern_waters" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="eastern_waters" to="eastern_waters" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="eastern_waters" to="eastern_waters" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="northern_waters" to="northern_waters" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="northern_waters" to="northern_waters" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="northern_depths" to="northern_depths" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="northern_depths" to="northern_depths" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="eastern_depths" to="eastern_depths" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="eastern_depths" to="eastern_depths" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="western_depths" to="western_depths" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="western_depths" to="western_depths" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="southern_depths" to="southern_depths" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="southern_depths" to="southern_depths" method="_on_mouse_exited"]
+[connection signal="set_sail" from="left/voyage_display" to="." method="_on_voyage_display_set_sail"]
+[connection signal="value_changed" from="right/selected/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="right/selected/assign" to="." method="_on_assign_pressed"]
+[connection signal="pressed" from="right/selected/remove" to="." method="_on_remove_pressed"]
+[connection signal="pressed" from="right/select_zone" to="." method="_on_select_zone_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

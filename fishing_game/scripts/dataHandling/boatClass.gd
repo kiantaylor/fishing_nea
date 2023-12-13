@@ -25,13 +25,15 @@ var medium_fish
 var base_large_fish
 var large_fish
 var crew=[]
-var speed_boost=0
-var durability_boost=0
-var small_boost=0
-var medium_boost=0
-var large_boost=0
-var morale=0
-
+var speed_boost=1
+var durability_boost=1
+var small_boost=1
+var medium_boost=1
+var large_boost=1
+var morale=1
+var on_voyage=false
+var time_left
+var total_time
 # class definition
 
 func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
@@ -56,6 +58,9 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	if bt=='bt1':
 		vis_name='boat_1_visual.tscn'
 		dis_name='Testing Boat'
+	if bt=='bt2':
+		vis_name='boat_2_visual.tscn'
+		dis_name='Snazzy Boat'
 	price=calculate_cost(base_price,boat_trait)
 	
 	apply_condition()
@@ -237,6 +242,7 @@ func calculate_cost(price1,trait1):
 
 func add_crew(crew_member):
 	crew_member.debug_stat_display()
+	crew_member.assigned=true
 	var count=0
 	for i in crew_slots:
 		if i==crew_member.crew_type:
@@ -249,14 +255,23 @@ func add_crew(crew_member):
 	if count-count2>0:
 		crew.append(crew_member)
 		apply_crew(crew_member)
-	
+		return true
+	else:
+		return false
+func remove_crew(crew_member):
+	var count=0
+	for i in crew:
+		if i==crew_member:
+			crew.remove_at(count)
+			break
+		count+=1
 func apply_crew(crew_member):
-	speed_boost+=(crew_member.speed_effect/100.0)+1
-	durability_boost+=(crew_member.durability_effect/100.0)+1
-	morale+=(crew_member.morale_effect/100.0)+1
-	small_boost+=(crew_member.small_fish_effect/100.0)+1
-	large_boost+=(crew_member.large_fish_effect/100.0)+1
-	medium_boost+=(crew_member.medium_fish_effect/100.0)+1
+	speed_boost+=(crew_member.speed_effect/100.0)
+	durability_boost+=(crew_member.durability_effect/100.0)
+	morale+=(crew_member.morale_effect/100.0)
+	small_boost+=(crew_member.small_fish_effect/100.0)
+	large_boost+=(crew_member.large_fish_effect/100.0)
+	medium_boost+=(crew_member.medium_fish_effect/100.0)
 	print(speed_boost,'   speed boost')
 	print(durability_boost,'   durability boost')
 	print(morale,'   morale boost')

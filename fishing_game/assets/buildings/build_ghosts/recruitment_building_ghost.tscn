@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_bomx3"]
 [ext_resource type="Material" uid="uid://bhptm6jva6oja" path="res://Textures/buildings/ghosts/green_ghost.tres" id="2_f37da"]
+[ext_resource type="ArrayMesh" uid="uid://bqlhxgnwv54vb" path="res://models/buildings/recruitment/recruitment.obj" id="2_x8alk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
-size = Vector3(2.71145, 1.76108, 3.07148)
+size = Vector3(5.1727, 2.22058, 1.85735)
 
-[sub_resource type="SphereMesh" id="SphereMesh_ip1w0"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_c14nk"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wye2l"]
+size = Vector3(1.58154, 2.18707, 1.58154)
 
 [node name="recruitment_building_ghost" type="Area3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -16,21 +16,19 @@ script = ExtResource("1_bomx3")
 metadata/building_type = "recruitment_building"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.857715, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07176, 0)
 shape = SubResource("BoxShape3D_q1rev")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07176, 1.47452)
+shape = SubResource("BoxShape3D_wye2l")
 
 [node name="meshes" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52019, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(2.61167, 0, 0, 0, 0.845964, 0, 0, 0, 3.09717, -0.0425496, 0.847636, 0)
-mesh = SubResource("SphereMesh_ip1w0")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_f37da")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(2.68725, 0, 0, 0, 1.4175, 0, 0, 0, 3.09749, 0, 0.188433, 0)
-mesh = SubResource("BoxMesh_c14nk")
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0425496, 0.264964, 0)
+mesh = ExtResource("2_x8alk")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_f37da")
 

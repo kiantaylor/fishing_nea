@@ -8,11 +8,13 @@ var shop_buildings=[
 ]#
 var access_buildings=[
 	'harbour',
-	'recruitment_building'
+	'recruitment_building',
+	'voyage_building'
 
 ]
 var upgrade_buildings=[
 	'harbour',
+	'voyage_building',
 	'recruitment_building',
 	'test_building_1',
 	'test_building_2'

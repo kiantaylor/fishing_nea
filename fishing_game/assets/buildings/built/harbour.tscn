@@ -1,15 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=28 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
 [ext_resource type="ArrayMesh" uid="uid://dk2bwt508git6" path="res://models/buildings/harbour/level1/main.obj" id="1_rhw1d"]
-[ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="2_kj1ae"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="5_8hwdq"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="5_ttg8u"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
 [ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="7_8nwqa"]
+[ext_resource type="Script" path="res://scripts/menus/assign_button.gd" id="7_18h2e"]
+[ext_resource type="Script" path="res://scripts/menus/remove_button.gd" id="8_7b2jb"]
 [ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="8_o5iy3"]
+[ext_resource type="PackedScene" uid="uid://b78jiiiihqpyh" path="res://assets/crew/crew_vis.tscn" id="11_5phhk"]
+[ext_resource type="Material" uid="uid://dgnb8wumcg65a" path="res://Textures/crew/wallpaper3.tres" id="12_o6b7w"]
+[ext_resource type="Texture2D" uid="uid://c7c8ojlwjjlhm" path="res://Textures/overlays/player data/xp bar (3).png" id="13_8o1hp"]
+[ext_resource type="ArrayMesh" uid="uid://be80egekinmua" path="res://models/crewmates/lamp.obj" id="13_dh3re"]
+[ext_resource type="Texture2D" uid="uid://b8qk4fijblrno" path="res://Textures/overlays/player data/xp bar (2).png" id="14_bqis8"]
+[ext_resource type="Material" uid="uid://dq6y8m01x8fhy" path="res://Textures/crew/brass.tres" id="14_byars"]
+[ext_resource type="Texture2D" uid="uid://djy4lcpkwndmi" path="res://Textures/overlays/player data/xp bar (1).png" id="15_6si83"]
+[ext_resource type="PackedScene" uid="uid://urw8au1lgs" path="res://assets/buildings/particle_icon.tscn" id="19_ismw6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(13.455, 1.96665, 14.538)
@@ -40,6 +49,50 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(2867, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ui/bottom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-25, 1319)]
+}
+
+[sub_resource type="Animation" id="Animation_1bk5f"]
+resource_name = "close_bottom"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ui/bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, 936), Vector2(-25, 1319)]
+}
+
+[sub_resource type="Animation" id="Animation_jq6d2"]
+resource_name = "open_bottom"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ui/bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, 1319), Vector2(-25, 936)]
+}
 
 [sub_resource type="Animation" id="Animation_sv6lu"]
 resource_name = "open_ui"
@@ -68,12 +121,37 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(2889, 0), Vector2(2301, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ui/bottom:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, 1319), Vector2(-25, 1319)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4auct"]
 _data = {
 "RESET": SubResource("Animation_r2x8f"),
+"close_bottom": SubResource("Animation_1bk5f"),
+"open_bottom": SubResource("Animation_jq6d2"),
 "open_ui": SubResource("Animation_sv6lu")
 }
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_07nat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8tf1"]
+transparency = 1
+albedo_color = Color(0.137255, 0.137255, 0.137255, 0.239216)
+roughness = 0.73
+emission_enabled = true
+emission = Color(1, 0.87451, 0.415686, 1)
+refraction_enabled = true
+refraction_scale = 0.28
 
 [node name="harbour" type="StaticBody3D"]
 script = ExtResource("1_3l5pk")
@@ -91,12 +169,6 @@ shape = SubResource("BoxShape3D_q1rev")
 transform = Transform3D(13.8416, 0, 0, 0, 2.15156, 0, 0, 0, 14.6632, 6.54317, -0.97218, 6.17014)
 metadata/building_type = ""
 
-[node name="icon" type="Sprite3D" parent="."]
-transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 7.0858, 2.16665, 6.99515)
-visible = false
-billboard = 1
-texture = ExtResource("2_kj1ae")
-
 [node name="access_camera" type="Camera3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 9.1, 7.005, 4.5)
 
@@ -108,6 +180,207 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="bottom" type="Marker2D" parent="ui"]
+position = Vector2(-25, 1319)
+
+[node name="ColorRect" type="ColorRect" parent="ui/bottom"]
+modulate = Color(0.858824, 0.858824, 0.858824, 1)
+offset_right = 2434.0
+offset_bottom = 379.0
+color = Color(0.733333, 0.847059, 0.917647, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ui/bottom"]
+offset_right = 2434.0
+offset_bottom = 24.0
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ui/bottom"]
+modulate = Color(0.788235, 0.788235, 0.788235, 1)
+offset_top = -11.0
+offset_right = 2434.0
+offset_bottom = 11.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="ui/bottom"]
+offset_left = 263.0
+offset_top = 26.0
+offset_right = 1840.0
+offset_bottom = 382.0
+color = Color(0.243137, 0.317647, 0.458824, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ui/bottom"]
+offset_left = 263.0
+offset_top = 26.0
+offset_right = 906.0
+offset_bottom = 382.0
+color = Color(0.211765, 0.278431, 0.407843, 1)
+
+[node name="portrait" type="Sprite2D" parent="ui/bottom"]
+position = Vector2(727, 194)
+scale = Vector2(0.15, 0.15)
+
+[node name="ColorRect7" type="ColorRect" parent="ui/bottom"]
+offset_left = 263.0
+offset_top = 280.0
+offset_right = 891.0
+offset_bottom = 366.0
+color = Color(0.243137, 0.317647, 0.458824, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="ui/bottom"]
+offset_left = 402.0
+offset_top = 26.0
+offset_right = 891.0
+offset_bottom = 63.0
+color = Color(0.243137, 0.317647, 0.458824, 1)
+
+[node name="stars" parent="ui/bottom" instance=ExtResource("8_o5iy3")]
+position = Vector2(727, 287)
+scale = Vector2(0.75, 0.75)
+
+[node name="ColorRect5" type="ColorRect" parent="ui/bottom"]
+offset_left = 523.0
+offset_top = -11.0
+offset_right = 569.0
+offset_bottom = 410.0
+color = Color(0, 0, 0, 0.580392)
+
+[node name="ColorRect6" type="ColorRect" parent="ui/bottom"]
+offset_left = 1774.0
+offset_top = -11.0
+offset_right = 1813.0
+offset_bottom = 400.0
+color = Color(0, 0, 0, 0.580392)
+
+[node name="speed_boost" type="Label" parent="ui/bottom"]
+offset_left = 915.0
+offset_top = 44.0
+offset_right = 1306.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 25
+text = "Speed boost"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/bottom/speed_boost" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 11.0
+offset_right = 364.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="durability_boost" type="Label" parent="ui/bottom"]
+offset_left = 915.0
+offset_top = 91.0
+offset_right = 1306.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 25
+text = "Durability boost"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/bottom/durability_boost" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 11.0
+offset_right = 364.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="small_boost" type="Label" parent="ui/bottom"]
+offset_left = 915.0
+offset_top = 137.0
+offset_right = 1306.0
+offset_bottom = 193.0
+theme_override_font_sizes/font_size = 25
+text = "Small boost"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/bottom/small_boost" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 11.0
+offset_right = 364.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="medium_boost" type="Label" parent="ui/bottom"]
+offset_left = 915.0
+offset_top = 180.0
+offset_right = 1306.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 25
+text = "Medium boost"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/bottom/medium_boost" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 11.0
+offset_right = 364.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="large_boost" type="Label" parent="ui/bottom"]
+offset_left = 915.0
+offset_top = 224.0
+offset_right = 1306.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 25
+text = "Large boost"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/bottom/large_boost" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 11.0
+offset_right = 364.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="morale" type="Label" parent="ui/bottom"]
+offset_left = 915.0
+offset_top = 269.0
+offset_right = 1306.0
+offset_bottom = 325.0
+theme_override_font_sizes/font_size = 25
+text = "Morale boost"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/bottom/morale" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 11.0
+offset_right = 364.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="title" type="Label" parent="ui/bottom"]
+offset_left = 572.0
+offset_top = 24.0
+offset_right = 888.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 27
+text = "bob cratchet"
+horizontal_alignment = 1
+
+[node name="assign" type="Button" parent="ui/bottom"]
+offset_left = 1447.0
+offset_top = 65.0
+offset_right = 1732.0
+offset_bottom = 121.0
+focus_mode = 0
+text = "Assign"
+script = ExtResource("7_18h2e")
+
+[node name="remove" type="Button" parent="ui/bottom"]
+visible = false
+offset_left = 1447.0
+offset_top = 65.0
+offset_right = 1732.0
+offset_bottom = 121.0
+focus_mode = 0
+text = "Remove"
+script = ExtResource("8_7b2jb")
 
 [node name="left" type="Marker2D" parent="ui"]
 position = Vector2(-550, 0)
@@ -198,183 +471,28 @@ offset_right = -1.0
 offset_bottom = 1295.0
 color = Color(0, 0, 0, 1)
 
-[node name="speed" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 439.0
-offset_right = -32.0
-offset_bottom = 495.0
-theme_override_font_sizes/font_size = 25
-text = "speed"
-autowrap_mode = 2
-
-[node name="crew_value" parent="ui/right/speed" instance=ExtResource("7_8nwqa")]
-modulate = Color(1, 0, 0.392157, 1)
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-value = 25.0
-
-[node name="value_bar" parent="ui/right/speed" instance=ExtResource("7_8nwqa")]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-value = 20.0
-
-[node name="durability" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 517.0
-offset_right = -32.0
-offset_bottom = 573.0
-theme_override_font_sizes/font_size = 25
-text = "durability"
-autowrap_mode = 2
-
-[node name="crew_value" parent="ui/right/durability" instance=ExtResource("7_8nwqa")]
-modulate = Color(1, 0, 0.392157, 1)
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-value = 25.0
-
-[node name="value_bar" parent="ui/right/durability" instance=ExtResource("7_8nwqa")]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-
-[node name="size" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 352.0
-offset_right = -32.0
-offset_bottom = 408.0
-theme_override_font_sizes/font_size = 25
-text = "size"
-autowrap_mode = 2
-
-[node name="small" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 608.0
-offset_right = -32.0
-offset_bottom = 664.0
-theme_override_font_sizes/font_size = 25
-text = "small fish"
-autowrap_mode = 2
-
-[node name="crew_value" parent="ui/right/small" instance=ExtResource("7_8nwqa")]
-modulate = Color(1, 0, 0.392157, 1)
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 21.0
-value = 25.0
-
-[node name="value_bar" parent="ui/right/small" instance=ExtResource("7_8nwqa")]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 11.0
-offset_right = 295.0
-offset_bottom = 24.0
-
-[node name="medium" type="Label" parent="ui/right"]
-offset_left = -453.0
-offset_top = 672.0
-offset_right = -62.0
-offset_bottom = 728.0
-theme_override_font_sizes/font_size = 25
-text = "medium fish"
-autowrap_mode = 2
-
-[node name="crew_value" parent="ui/right/medium" instance=ExtResource("7_8nwqa")]
-modulate = Color(1, 0, 0.392157, 1)
-layout_mode = 0
-offset_left = 165.0
-offset_top = 8.0
-offset_right = 325.0
-offset_bottom = 18.0
-value = 25.0
-
-[node name="value_bar" parent="ui/right/medium" instance=ExtResource("7_8nwqa")]
-layout_mode = 0
-offset_left = 165.0
-offset_top = 8.0
-offset_right = 325.0
-offset_bottom = 22.0
-scale = Vector2(1.75, 1.95)
-
-[node name="large" type="Label" parent="ui/right"]
-offset_left = -423.0
-offset_top = 743.0
-offset_right = -32.0
-offset_bottom = 799.0
-theme_override_font_sizes/font_size = 25
-text = "large fish"
-autowrap_mode = 2
-
-[node name="crew_value" parent="ui/right/large" instance=ExtResource("7_8nwqa")]
-modulate = Color(1, 0, 0.392157, 1)
-layout_mode = 0
-offset_left = 133.0
-offset_top = 11.0
-offset_right = 293.0
-offset_bottom = 21.0
-value = 25.0
-
-[node name="value_bar" parent="ui/right/large" instance=ExtResource("7_8nwqa")]
-layout_mode = 0
-offset_left = 133.0
-offset_top = 11.0
-offset_right = 293.0
-offset_bottom = 24.0
-
-[node name="upgrade" type="Button" parent="ui/right"]
-offset_left = -393.0
-offset_top = 1013.0
-offset_right = -42.0
-offset_bottom = 1094.0
-focus_mode = 0
-text = "upgrade"
-
-[node name="rename" type="Button" parent="ui/right"]
-offset_left = -393.0
-offset_top = 1136.0
-offset_right = -42.0
-offset_bottom = 1217.0
-focus_mode = 0
-text = "rename"
-
-[node name="title2" type="Label" parent="ui/right"]
-offset_left = -390.0
-offset_top = 17.0
-offset_right = -57.0
-offset_bottom = 77.0
-text = "Harbour Stats:"
-
-[node name="level" type="Label" parent="ui/right"]
-offset_left = -390.0
-offset_top = 139.0
-offset_right = -57.0
-offset_bottom = 199.0
-
-[node name="space" type="Label" parent="ui/right"]
-offset_left = -390.0
-offset_top = 204.0
-offset_right = -57.0
-offset_bottom = 264.0
-
 [node name="panel_top" parent="ui/right" instance=ExtResource("6_5xrls")]
 offset_left = 121.0
 offset_right = 771.0
 scale = Vector2(-1, 1)
 
-[node name="title" type="Label" parent="ui/right"]
+[node name="crew_select" type="Marker2D" parent="ui/right"]
+
+[node name="current" type="Button" parent="ui/right/crew_select"]
+offset_left = -462.0
+offset_top = 328.0
+offset_right = -2.0
+offset_bottom = 360.0
+text = "Current"
+
+[node name="available" type="Button" parent="ui/right/crew_select"]
+offset_left = -462.0
+offset_top = 365.0
+offset_right = -2.0
+offset_bottom = 397.0
+text = "Available"
+
+[node name="title" type="Label" parent="ui/right/crew_select"]
 offset_left = -423.0
 offset_top = 18.0
 offset_right = -32.0
@@ -383,7 +501,95 @@ theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="type" type="Label" parent="ui/right"]
+[node name="crew" type="Label" parent="ui/right/crew_select"]
+offset_left = -423.0
+offset_top = 102.0
+offset_right = -32.0
+offset_bottom = 158.0
+theme_override_font_sizes/font_size = 25
+text = "Crew"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="tabs" type="Marker2D" parent="ui/right/crew_select"]
+position = Vector2(-423, 102)
+
+[node name="skp" type="Button" parent="ui/right/crew_select/tabs"]
+offset_left = -42.0
+offset_top = 78.0
+offset_right = 47.0
+offset_bottom = 222.0
+focus_mode = 0
+text = "Captain"
+
+[node name="coo" type="Button" parent="ui/right/crew_select/tabs"]
+offset_left = 52.0
+offset_top = 78.0
+offset_right = 141.0
+offset_bottom = 222.0
+focus_mode = 0
+text = "Cook"
+
+[node name="eng" type="Button" parent="ui/right/crew_select/tabs"]
+offset_left = 147.0
+offset_top = 78.0
+offset_right = 236.0
+offset_bottom = 222.0
+focus_mode = 0
+text = "Engineer"
+
+[node name="mte" type="Button" parent="ui/right/crew_select/tabs"]
+offset_left = 241.0
+offset_top = 78.0
+offset_right = 330.0
+offset_bottom = 222.0
+focus_mode = 0
+text = "Mate"
+
+[node name="dek" type="Button" parent="ui/right/crew_select/tabs"]
+offset_left = 335.0
+offset_top = 78.0
+offset_right = 424.0
+offset_bottom = 222.0
+focus_mode = 0
+text = "Deckhand"
+
+[node name="crew_list" type="Marker2D" parent="ui/right/crew_select"]
+position = Vector2(-464, 403)
+
+[node name="harbour_stats" type="Marker2D" parent="ui/right"]
+
+[node name="title2" type="Label" parent="ui/right/harbour_stats"]
+offset_left = -390.0
+offset_top = 17.0
+offset_right = -57.0
+offset_bottom = 77.0
+text = "Harbour Stats:"
+
+[node name="level" type="Label" parent="ui/right/harbour_stats"]
+offset_left = -390.0
+offset_top = 139.0
+offset_right = -57.0
+offset_bottom = 199.0
+
+[node name="space" type="Label" parent="ui/right/harbour_stats"]
+offset_left = -390.0
+offset_top = 204.0
+offset_right = -57.0
+offset_bottom = 264.0
+
+[node name="boat_stats" type="Marker2D" parent="ui/right"]
+
+[node name="title" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 18.0
+offset_right = -32.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="type" type="Label" parent="ui/right/boat_stats"]
 offset_left = -423.0
 offset_top = 102.0
 offset_right = -32.0
@@ -392,8 +598,175 @@ theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="stars" parent="ui/right" instance=ExtResource("8_o5iy3")]
+[node name="stars" parent="ui/right/boat_stats" instance=ExtResource("8_o5iy3")]
 position = Vector2(-203, 239)
+
+[node name="speed" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 439.0
+offset_right = -32.0
+offset_bottom = 495.0
+theme_override_font_sizes/font_size = 25
+text = "speed"
+autowrap_mode = 2
+
+[node name="crew_value" parent="ui/right/boat_stats/speed" instance=ExtResource("7_8nwqa")]
+modulate = Color(1, 0, 0.392157, 1)
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+value = 25.0
+
+[node name="value_bar" parent="ui/right/boat_stats/speed" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+value = 20.0
+
+[node name="durability" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 517.0
+offset_right = -32.0
+offset_bottom = 573.0
+theme_override_font_sizes/font_size = 25
+text = "durability"
+autowrap_mode = 2
+
+[node name="crew_value" parent="ui/right/boat_stats/durability" instance=ExtResource("7_8nwqa")]
+modulate = Color(1, 0, 0.392157, 1)
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+value = 25.0
+
+[node name="value_bar" parent="ui/right/boat_stats/durability" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+
+[node name="size" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 352.0
+offset_right = -32.0
+offset_bottom = 408.0
+theme_override_font_sizes/font_size = 25
+text = "size"
+autowrap_mode = 2
+
+[node name="small" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 608.0
+offset_right = -32.0
+offset_bottom = 664.0
+theme_override_font_sizes/font_size = 25
+text = "small fish"
+autowrap_mode = 2
+
+[node name="crew_value" parent="ui/right/boat_stats/small" instance=ExtResource("7_8nwqa")]
+modulate = Color(1, 0, 0.392157, 1)
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+value = 25.0
+
+[node name="value_bar" parent="ui/right/boat_stats/small" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 24.0
+
+[node name="medium" type="Label" parent="ui/right/boat_stats"]
+offset_left = -453.0
+offset_top = 672.0
+offset_right = -62.0
+offset_bottom = 728.0
+theme_override_font_sizes/font_size = 25
+text = "medium fish"
+autowrap_mode = 2
+
+[node name="crew_value" parent="ui/right/boat_stats/medium" instance=ExtResource("7_8nwqa")]
+modulate = Color(1, 0, 0.392157, 1)
+layout_mode = 0
+offset_left = 165.0
+offset_top = 8.0
+offset_right = 325.0
+offset_bottom = 18.0
+value = 25.0
+
+[node name="value_bar" parent="ui/right/boat_stats/medium" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 8.0
+offset_right = 325.0
+offset_bottom = 22.0
+scale = Vector2(1.75, 1.95)
+
+[node name="large" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 743.0
+offset_right = -32.0
+offset_bottom = 799.0
+theme_override_font_sizes/font_size = 25
+text = "large fish"
+autowrap_mode = 2
+
+[node name="crew_value" parent="ui/right/boat_stats/large" instance=ExtResource("7_8nwqa")]
+modulate = Color(1, 0, 0.392157, 1)
+layout_mode = 0
+offset_left = 133.0
+offset_top = 11.0
+offset_right = 293.0
+offset_bottom = 21.0
+value = 25.0
+
+[node name="value_bar" parent="ui/right/boat_stats/large" instance=ExtResource("7_8nwqa")]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 11.0
+offset_right = 293.0
+offset_bottom = 24.0
+
+[node name="upgrade" type="Button" parent="ui/right/boat_stats"]
+offset_left = -393.0
+offset_top = 868.0
+offset_right = -42.0
+offset_bottom = 949.0
+focus_mode = 0
+text = "upgrade"
+
+[node name="rename" type="Button" parent="ui/right/boat_stats"]
+offset_left = -393.0
+offset_top = 976.0
+offset_right = -42.0
+offset_bottom = 1057.0
+focus_mode = 0
+text = "rename"
+
+[node name="crew" type="Button" parent="ui/right/boat_stats"]
+offset_left = -393.0
+offset_top = 1081.0
+offset_right = -42.0
+offset_bottom = 1162.0
+focus_mode = 0
+text = "crew"
+
+[node name="voyage" type="Button" parent="ui/right/boat_stats"]
+offset_left = -391.0
+offset_top = 1194.0
+offset_right = -43.0
+offset_bottom = 1282.0
+text = "send on voyage"
 
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false
@@ -432,6 +805,24 @@ offset_top = 278.0
 offset_right = 1218.0
 offset_bottom = 406.0
 
+[node name="voyage_bar" type="TextureProgressBar" parent="ui"]
+layout_mode = 0
+offset_left = 826.0
+offset_top = 651.0
+offset_right = 1949.0
+offset_bottom = 804.0
+texture_under = ExtResource("13_8o1hp")
+texture_over = ExtResource("14_bqis8")
+texture_progress = ExtResource("15_6si83")
+
+[node name="Label" type="Label" parent="ui/voyage_bar"]
+layout_mode = 0
+offset_left = -94.0
+offset_top = 12.0
+offset_right = -15.0
+offset_bottom = 38.0
+text = "on voyage"
+
 [node name="warning" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -441,9 +832,82 @@ libraries = {
 "": SubResource("AnimationLibrary_4auct")
 }
 
+[node name="crewport" type="SubViewport" parent="."]
+size = Vector2i(2048, 2048)
+
+[node name="Camera3D" type="Camera3D" parent="crewport"]
+transform = Transform3D(1, 0, 0, 0, 0.992185, 0.124779, 0, -0.124779, 0.992185, 0, -20.0242, 8.38148)
+
+[node name="crew_vis" parent="crewport" instance=ExtResource("11_5phhk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -19.8658, 1.22568)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="crewport"]
+transform = Transform3D(1, 0, 0, 0, 0.269424, 0.963022, 0, -0.963022, 0.269424, -9.53674e-07, -6.24387, 8.24775)
+light_color = Color(1, 1, 0.921569, 1)
+light_energy = 11.657
+shadow_enabled = true
+spot_range = 32.0234
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="crewport"]
+transform = Transform3D(10.6839, 0, 0, 0, -3.5613, 0, 0, 0, 10.6839, 0, -10.5654, 0)
+mesh = SubResource("PlaneMesh_07nat")
+
+[node name="wall" type="MeshInstance3D" parent="crewport"]
+transform = Transform3D(-10, 6.40222e-07, 6.60024e-14, 0, 1.85336e-07, -10, 1.50996e-06, 4.24, 4.37114e-07, -0.17417, -20.3749, -2.30404)
+mesh = SubResource("PlaneMesh_07nat")
+surface_material_override/0 = ExtResource("12_o6b7w")
+
+[node name="lamp1" type="MeshInstance3D" parent="crewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.82612, -22.0285, -1.34373)
+mesh = ExtResource("13_dh3re")
+surface_material_override/0 = ExtResource("14_byars")
+surface_material_override/1 = SubResource("StandardMaterial3D_q8tf1")
+surface_material_override/2 = ExtResource("14_byars")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="crewport/lamp1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.845032, 1.80389, 0)
+light_color = Color(1, 0.721569, 0.439216, 1)
+light_energy = 6.24
+shadow_enabled = true
+omni_range = 6.38396
+
+[node name="lamp2" type="MeshInstance3D" parent="crewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.91419, -22.0285, -1.34373)
+mesh = ExtResource("13_dh3re")
+surface_material_override/0 = ExtResource("14_byars")
+surface_material_override/1 = SubResource("StandardMaterial3D_q8tf1")
+surface_material_override/2 = ExtResource("14_byars")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="crewport/lamp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.845032, 1.80389, 0)
+light_color = Color(1, 0.721569, 0.439216, 1)
+light_energy = 6.24
+shadow_enabled = true
+omni_range = 6.38396
+
+[node name="icon" parent="." instance=ExtResource("19_ismw6")]
+transform = Transform3D(0.17425, 0, 0.984702, 0, 1, 0, -0.984702, 0, 0.17425, 6.29295, 7.32997, 6.57898)
+visible = false
+
+[connection signal="no_slot_error" from="ui/bottom/assign" to="." method="_on_assign_no_slot_error"]
+[connection signal="parent_press" from="ui/bottom/assign" to="." method="parent_press"]
+[connection signal="pressed" from="ui/bottom/assign" to="ui/bottom/assign" method="_on_pressed"]
+[connection signal="parent_press" from="ui/bottom/remove" to="." method="parent_press"]
+[connection signal="pressed" from="ui/bottom/remove" to="." method="_on_remove_pressed"]
+[connection signal="pressed" from="ui/bottom/remove" to="ui/bottom/remove" method="_on_pressed"]
 [connection signal="pressed" from="ui/left/harbour_stats" to="." method="_on_harbour_stats_pressed"]
-[connection signal="pressed" from="ui/right/upgrade" to="." method="_on_upgrade_pressed"]
-[connection signal="pressed" from="ui/right/rename" to="." method="_on_rename_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/current" to="." method="_on_current_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/available" to="." method="_on_available_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/tabs/skp" to="." method="_on_skp_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/tabs/coo" to="." method="_on_coo_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/tabs/eng" to="." method="_on_eng_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/tabs/mte" to="." method="_on_mte_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/tabs/dek" to="." method="_on_dek_pressed"]
+[connection signal="pressed" from="ui/right/boat_stats/upgrade" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="ui/right/boat_stats/rename" to="." method="_on_rename_pressed"]
+[connection signal="pressed" from="ui/right/boat_stats/crew" to="." method="_on_crew_pressed"]
+[connection signal="pressed" from="ui/right/boat_stats/voyage" to="." method="_on_voyage_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/confirm" to="." method="_on_confirm_pressed"]
 [connection signal="timeout" from="warning" to="." method="_on_warning_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

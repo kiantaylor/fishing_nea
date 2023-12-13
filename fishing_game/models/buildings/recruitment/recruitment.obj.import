@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqlhxgnwv54vb"
+path="res://.godot/imported/recruitment.obj-b30441baefdb7b4869f72b206f588489.mesh"
+
+[deps]
+
+files=["res://.godot/imported/recruitment.obj-b30441baefdb7b4869f72b206f588489.mesh"]
+
+source_file="res://models/buildings/recruitment/recruitment.obj"
+dest_files=["res://.godot/imported/recruitment.obj-b30441baefdb7b4869f72b206f588489.mesh", "res://.godot/imported/recruitment.obj-b30441baefdb7b4869f72b206f588489.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

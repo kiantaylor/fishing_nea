@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpbdjdjuwnsgn"]
+
+[ext_resource type="Script" path="res://scripts/boats/boat_1_visual.gd" id="1_j8h1o"]
+[ext_resource type="ArrayMesh" uid="uid://c4ehgtj5lks4l" path="res://models/boats/bt1.obj" id="2_g6m37"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xnlqa"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_nb31a"]
+
+[node name="boat_2_visual" type="Marker3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_j8h1o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("2_g6m37")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 2.15104, 0, -0.3, 0, -1.31134e-08, 0.00122356, 2.47072, -1.35734)
+mesh = SubResource("CylinderMesh_xnlqa")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.07924)
+visible = false
+mesh = SubResource("PrismMesh_nb31a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 6.45586, 0)
