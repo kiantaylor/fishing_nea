@@ -352,26 +352,37 @@ position = Vector2(-452, 224)
 [node name="title" type="Label" parent="right/selected"]
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 
 [node name="HSlider" type="HSlider" parent="right/selected"]
-offset_top = 329.0
-offset_right = 424.0
-offset_bottom = 345.0
+offset_left = 161.0
+offset_top = 334.0
+offset_right = 430.0
+offset_bottom = 350.0
 max_value = 6.0
 
 [node name="assign" type="Button" parent="right/selected"]
 offset_top = 244.0
-offset_right = 75.0
+offset_right = 202.0
 offset_bottom = 314.0
+theme_override_font_sizes/font_size = 35
 text = "assign"
 
 [node name="remove" type="Button" parent="right/selected"]
-offset_left = 81.0
+offset_left = 216.0
 offset_top = 244.0
-offset_right = 156.0
+offset_right = 433.0
 offset_bottom = 314.0
+theme_override_font_sizes/font_size = 35
 text = "remove"
+
+[node name="Label" type="Label" parent="right/selected"]
+offset_left = 11.0
+offset_top = 323.0
+offset_right = 101.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 25
+text = "Cargo Bays:"
 
 [node name="block" type="ColorRect" parent="right"]
 offset_left = -476.0
@@ -388,12 +399,20 @@ offset_bottom = 608.0
 color = Color(0.152941, 0.192157, 0.403922, 1)
 
 [node name="select_zone" type="Button" parent="right"]
-offset_left = -486.0
-offset_top = 113.0
-offset_right = -14.0
-offset_bottom = 159.0
+offset_left = -485.0
+offset_top = 103.0
+offset_right = -13.0
+offset_bottom = 160.0
 focus_mode = 0
+theme_override_font_sizes/font_size = 35
 text = "select zone"
+
+[node name="exit" type="Button" parent="right"]
+offset_left = -63.0
+offset_top = 1.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 40
+text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -432,4 +451,5 @@ color = Color(0, 0, 0, 0)
 [connection signal="pressed" from="right/selected/assign" to="." method="_on_assign_pressed"]
 [connection signal="pressed" from="right/selected/remove" to="." method="_on_remove_pressed"]
 [connection signal="pressed" from="right/select_zone" to="." method="_on_select_zone_pressed"]
+[connection signal="pressed" from="right/exit" to="." method="_on_exit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

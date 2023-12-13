@@ -20,13 +20,12 @@ color = Color(0.270588, 0.270588, 0.270588, 1)
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 908.0
-offset_top = 585.0
-offset_right = 1342.0
-offset_bottom = 657.0
-theme_override_font_sizes/font_size = 15
-text = "no space"
+offset_top = 584.0
+offset_right = 1306.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
-vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="exit" type="Button" parent="."]
 layout_mode = 0

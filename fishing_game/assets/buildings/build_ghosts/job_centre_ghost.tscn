@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj1puop16jbo"]
+
+[ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_psonw"]
+[ext_resource type="ArrayMesh" uid="uid://bqlhxgnwv54vb" path="res://models/buildings/recruitment/recruitment.obj" id="2_66sdr"]
+[ext_resource type="Material" uid="uid://bhptm6jva6oja" path="res://Textures/buildings/ghosts/green_ghost.tres" id="3_ed3y2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
+size = Vector3(5.1727, 2.22058, 1.85735)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wye2l"]
+size = Vector3(1.58154, 2.18707, 1.58154)
+
+[node name="job_centre_ghost" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_psonw")
+metadata/building_type = "job_centre"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07176, 0)
+shape = SubResource("BoxShape3D_q1rev")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07176, 1.47452)
+shape = SubResource("BoxShape3D_wye2l")
+
+[node name="meshes" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52019, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0425496, 0.264964, 0)
+mesh = ExtResource("2_66sdr")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_ed3y2")
+
+[node name="land_sense" type="RayCast3D" parent="."]
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

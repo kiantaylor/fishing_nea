@@ -4,7 +4,7 @@ signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var tab='testing'
 var up=false
 var button_map={
-	'testing':['harbour','recruitment_building','voyage_building'],
+	'testing':['harbour','job_centre'],
 	'decor':['anchor']
 }
 # Called when the node enters the scene tree for the first time.

@@ -61,41 +61,6 @@ offset_right = 60.0
 offset_bottom = -68.0
 scale = Vector2(2, 2)
 
-[node name="left" type="Marker2D" parent="."]
-
-[node name="bg" parent="left" instance=ExtResource("2_p4wxw")]
-offset_right = 0.0
-
-[node name="exit" type="Button" parent="left"]
-z_index = 2
-offset_left = 634.0
-offset_top = 1246.0
-offset_right = 664.0
-offset_bottom = 1277.0
-text = "X"
-
-[node name="boat_list" type="Marker2D" parent="left"]
-position = Vector2(57, 173)
-
-[node name="scroll" type="VScrollBar" parent="left"]
-offset_left = 519.0
-offset_top = 233.0
-offset_right = 552.0
-offset_bottom = 1230.0
-theme_override_styles/grabber = SubResource("StyleBoxFlat_rrnpe")
-max_value = 800.0
-
-[node name="money" type="Label" parent="left"]
-z_index = 1
-offset_left = 15.0
-offset_top = 19.0
-offset_right = 312.0
-offset_bottom = 77.0
-theme_override_font_sizes/font_size = 40
-text = "money moebny"
-
-[node name="panel_top" parent="left" instance=ExtResource("3_tyg2v")]
-
 [node name="right" type="Marker2D" parent="."]
 position = Vector2(2297, 0)
 
@@ -236,14 +201,41 @@ offset_top = 1038.0
 offset_right = -85.0
 offset_bottom = 1271.0
 theme_override_font_sizes/font_size = 80
-text = "purchase"
+text = "buy"
 
 [node name="panel_top" parent="right" instance=ExtResource("3_tyg2v")]
 offset_left = 9.0
 offset_right = 657.0
 scale = Vector2(-1, 1)
 
+[node name="exit" type="Button" parent="right"]
+z_index = 2
+offset_left = -55.0
+offset_right = 10.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 40
+text = "X
+"
+
 [node name="stars" parent="right" instance=ExtResource("5_x1utr")]
+
+[node name="left" type="Marker2D" parent="."]
+
+[node name="bg" parent="left" instance=ExtResource("2_p4wxw")]
+offset_right = 0.0
+
+[node name="boat_list" type="Marker2D" parent="left"]
+position = Vector2(57, 173)
+
+[node name="scroll" type="VScrollBar" parent="left"]
+offset_left = 519.0
+offset_top = 233.0
+offset_right = 552.0
+offset_bottom = 1230.0
+theme_override_styles/grabber = SubResource("StyleBoxFlat_rrnpe")
+max_value = 800.0
+
+[node name="panel_top" parent="left" instance=ExtResource("3_tyg2v")]
 
 [node name="3dSpace" type="Node3D" parent="."]
 script = ExtResource("2_bhmld")
@@ -264,5 +256,5 @@ environment = SubResource("Environment_vr6ro")
 [node name="error_box" parent="." instance=ExtResource("3_fhh2t")]
 visible = false
 
-[connection signal="pressed" from="left/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="right/purchase" to="." method="_on_purchase_pressed"]
+[connection signal="pressed" from="right/exit" to="." method="_on_exit_pressed"]

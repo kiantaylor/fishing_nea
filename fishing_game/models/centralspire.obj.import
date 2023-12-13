@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c6hiyp38jjbac"
+path="res://.godot/imported/centralspire.obj-4e93940cb32873e5da4eed720ad6562f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/centralspire.obj-4e93940cb32873e5da4eed720ad6562f.mesh"]
+
+source_file="res://models/centralspire.obj"
+dest_files=["res://.godot/imported/centralspire.obj-4e93940cb32873e5da4eed720ad6562f.mesh", "res://.godot/imported/centralspire.obj-4e93940cb32873e5da4eed720ad6562f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

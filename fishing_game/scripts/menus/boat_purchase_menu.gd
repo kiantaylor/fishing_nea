@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	get_node("left/boat_list").position.y=-get_node('left/scroll').value*10
-	get_node("left/money").text='Money:  '+str(PlayerData.money)
+
 func stock_gen():
 	for i in range(10):
 		stock.append(BoatData.boatGenerate())

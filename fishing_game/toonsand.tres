@@ -6,7 +6,10 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_itsnv")
-shader_parameter/RimPower = 3.0
+shader_parameter/ToonRampOffset = 0.5
+shader_parameter/ToonRampSmoothness = 0.05
+shader_parameter/ToonRampTinting = Color(1, 1, 1, 1)
+shader_parameter/RimPower = 1.0
 shader_parameter/RimCutOff = 0.5
 shader_parameter/RimSmoothness = 0.05
 shader_parameter/RimLightBrightness = 20.0
@@ -16,6 +19,3 @@ shader_parameter/SubSurfBrightness = 3.0
 shader_parameter/SubSurfCutoff = 0.5
 shader_parameter/SubSurfSmoothness = 0.05
 shader_parameter/Texture = ExtResource("2_a6ns7")
-shader_parameter/ToonRampOffset = 0.317
-shader_parameter/ToonRampSmoothness = 0.439
-shader_parameter/ToonRampTinting = Color(1, 1, 1, 1)

@@ -4,18 +4,34 @@ var upgrade_cost=0
 signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var shop_buildings=[
 	'harbour',
-	'recruitment_building'
+	'job_centre'
 ]#
 var access_buildings=[
 	'harbour',
-	'recruitment_building',
-	'voyage_building'
+	'job_centre',
+	'voyage_building',
+	'light_house'
 
 ]
 var upgrade_buildings=[
 	'harbour',
 	'voyage_building',
-	'recruitment_building',
+	'job_centre',
+	'test_building_1',
+	'test_building_2',
+	'light_house'
+]
+var move_buildings=[
+	'harbour',
+	'voyage_building',
+	'job_centre',
+	'test_building_1',
+	'test_building_2'
+]
+var destroy_buildings=[
+	'harbour',
+	'voyage_building',
+	'job_centre',
 	'test_building_1',
 	'test_building_2'
 ]
@@ -37,6 +53,14 @@ func open():
 		get_node("shop").visible=true
 	else:
 		get_node("shop").visible=false
+	if BuildingData.selected_building.get_meta('building_type') in move_buildings:
+		get_node("movement").visible=true
+	else:
+		get_node("movement").visible=false
+	if BuildingData.selected_building.get_meta('building_type') in destroy_buildings:
+		get_node("demolish").visible=true
+	else:
+		get_node("demolish").visible=false
 	if BuildingData.selected_building.get_meta('building_type') in access_buildings:
 		get_node("access").visible=true
 	else:
@@ -45,7 +69,7 @@ func open():
 		get_node("upgrade").visible=true
 	else:
 		get_node("upgrade").visible=false
-	get_node('upgrade').text='Upgrade costs: '+str(upgrade_cost)
+	get_node('upgrade').text='Upgrade\n costs:\n '+str(upgrade_cost)
 	get_node("AnimationPlayer").play('open')
 	
 
@@ -78,7 +102,7 @@ func _on_upgrade_pressed():
 		print( BuildingData.build_map)
 		PlayerData.money-=upgrade_cost
 		upgrade_cost=int(BuildingData.selected_building.level*0.5*BuildingData.build_requirements[BuildingData.selected_building.get_meta('building_type')][0])
-		get_node('upgrade').text='Upgrade costs: '+str(upgrade_cost)
+		get_node('upgrade').text='Upgrade\n costs:\n '+str(upgrade_cost)
 		
 	elif not movement:
 		get_node("error_box").text='Not enough money'

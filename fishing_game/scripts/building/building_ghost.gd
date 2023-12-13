@@ -25,13 +25,13 @@ func _process(delta):
 				i.set_surface_override_material(j,load("res://Textures/buildings/ghosts/green_ghost.tres"))
 		land=true
 	if Input.is_action_pressed('build_up'):
-		position.z-=0.1
+		position.z-=0.5
 	elif Input.is_action_pressed('build_down'):
-		position.z+=0.1
+		position.z+=0.5
 	if Input.is_action_pressed('build_left'):
-		position.x-=0.1
+		position.x-=0.5
 	elif Input.is_action_pressed('build_right'):
-		position.x+=0.1
+		position.x+=0.5
 	if Input.is_action_pressed('build_rotate_left'):
 		rotation.y-=0.1
 	elif Input.is_action_pressed('build_rotate_right'):

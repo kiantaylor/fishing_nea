@@ -86,9 +86,9 @@ func update_boat_list():
 		var boat_load=load(str("res://assets/boats/"+i.vis_name))
 		var boat_new=boat_load.instantiate()
 		if get_node('boats').get_child_count()==0:
-			boat_new.position=Vector3(0,0,1)
+			boat_new.position=Vector3(5,-0.6,1)
 		else:
-			boat_new.position=Vector3((2*get_node('boats').get_child_count()),0,1)
+			boat_new.position=Vector3((2*get_node('boats').get_child_count())+5,-0.6,1)
 		boat_new.rotation_degrees.y=180
 		boat_new.scale=Vector3(0.5,0.5,0.5)
 		boat_new.boat=i
@@ -312,3 +312,17 @@ func _on_assign_no_slot_error():
 func _on_voyage_pressed():
 	VoyageData.new_voyage=VoyageClass.new(selected_boat,'',false)
 	get_tree().change_scene_to_file('res://assets/screens/menus/voyage_menu.tscn')
+
+
+
+
+
+func _on_back_pressed():
+	get_node("ui/right/boat_stats").visible=true
+	get_node("ui/right/harbour_stats").visible=false
+	get_node("ui/right/crew_select").visible=false
+
+
+func _on_exit_pressed():
+	if accessing:
+		close_access()

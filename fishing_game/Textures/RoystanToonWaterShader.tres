@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://3tie2t1nkhpn"]
 
-[ext_resource type="Texture2D" uid="uid://u50eyy22ae11" path="res://Textures/perlinnoise.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://7okp1oefxd5b" path="res://Textures/WaterDistortion.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://wq6neltii7p4" path="res://Textures/perlinnoise-modified (2).png" id="2_htilo"]
 
 [sub_resource type="Shader" id="1"]
 code = "/**
@@ -103,12 +103,12 @@ shader_parameter/foam_max_distance = 0.4
 shader_parameter/foam_min_distance = 0.04
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/surface_noise_tiling = Vector2(1, 4)
-shader_parameter/surface_noise_scroll = Vector3(0.03, 0.03, 0)
+shader_parameter/surface_noise_scroll = Vector3(0.01, 0.01, 0)
 shader_parameter/surface_noise_cutoff = 0.923
 shader_parameter/surface_distortion_amount = 0.0
 shader_parameter/_DepthGradientShallow = Color(0, 0.545098, 0.729412, 0.72549)
 shader_parameter/_DepthGradientDeep = Color(0, 0, 0.823529, 0.760784)
 shader_parameter/_DepthMaxDistance = 1.0
 shader_parameter/_DepthFactor = 1.0
-shader_parameter/surfaceNoise = ExtResource("1")
+shader_parameter/surfaceNoise = ExtResource("2_htilo")
 shader_parameter/distortNoise = ExtResource("2")

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="5_8hwdq"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="5_ttg8u"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
-[ext_resource type="PackedScene" uid="uid://cgh30i5m82ac0" path="res://assets/screens/menus/crew_button.tscn" id="6_ygu2a"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="7_8nwqa"]
 [ext_resource type="Script" path="res://scripts/menus/assign_button.gd" id="7_18h2e"]
 [ext_resource type="Script" path="res://scripts/menus/remove_button.gd" id="8_7b2jb"]
@@ -19,6 +18,9 @@
 [ext_resource type="Material" uid="uid://dq6y8m01x8fhy" path="res://Textures/crew/brass.tres" id="14_byars"]
 [ext_resource type="Texture2D" uid="uid://djy4lcpkwndmi" path="res://Textures/overlays/player data/xp bar (1).png" id="15_6si83"]
 [ext_resource type="PackedScene" uid="uid://urw8au1lgs" path="res://assets/buildings/particle_icon.tscn" id="19_ismw6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orqvv"]
+albedo_color = Color(0.54902, 0.188235, 0.101961, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(13.455, 1.96665, 14.538)
@@ -160,6 +162,7 @@ metadata/building_type = "harbour"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00707743, 0)
 mesh = ExtResource("1_rhw1d")
+surface_material_override/0 = SubResource("StandardMaterial3D_orqvv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43875, -0.992374, 6.14987)
@@ -434,20 +437,21 @@ offset_bottom = 293.0
 color = Color(0.92549, 0.262745, 0.372549, 1)
 
 [node name="Label" type="Label" parent="ui/left"]
-offset_left = 27.0
-offset_top = 319.0
-offset_right = 75.0
-offset_bottom = 345.0
+offset_left = 25.0
+offset_top = 304.0
+offset_right = 143.0
+offset_bottom = 362.0
+theme_override_font_sizes/font_size = 40
 text = "boats:"
 
 [node name="harbour_stats" type="Button" parent="ui/left"]
 offset_left = -132.0
-offset_top = 204.0
+offset_top = 200.0
 offset_right = 457.0
-offset_bottom = 275.0
+offset_bottom = 271.0
 focus_mode = 0
+theme_override_font_sizes/font_size = 40
 text = "harbour stats"
-flat = true
 
 [node name="panel_top" parent="ui/left" instance=ExtResource("6_5xrls")]
 offset_left = -130.0
@@ -483,13 +487,15 @@ offset_left = -462.0
 offset_top = 328.0
 offset_right = -2.0
 offset_bottom = 360.0
+theme_override_font_sizes/font_size = 40
 text = "Current"
 
 [node name="available" type="Button" parent="ui/right/crew_select"]
-offset_left = -462.0
-offset_top = 365.0
-offset_right = -2.0
-offset_bottom = 397.0
+offset_left = -461.0
+offset_top = 396.0
+offset_right = -1.0
+offset_bottom = 459.0
+theme_override_font_sizes/font_size = 40
 text = "Available"
 
 [node name="title" type="Label" parent="ui/right/crew_select"]
@@ -506,7 +512,7 @@ offset_left = -423.0
 offset_top = 102.0
 offset_right = -32.0
 offset_bottom = 158.0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "Crew"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -555,7 +561,15 @@ focus_mode = 0
 text = "Deckhand"
 
 [node name="crew_list" type="Marker2D" parent="ui/right/crew_select"]
-position = Vector2(-464, 403)
+position = Vector2(-458, 475)
+
+[node name="back" type="Button" parent="ui/right/crew_select"]
+offset_left = -140.0
+offset_top = 6.0
+offset_right = -77.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 40
+text = "<"
 
 [node name="harbour_stats" type="Marker2D" parent="ui/right"]
 
@@ -564,28 +578,32 @@ offset_left = -390.0
 offset_top = 17.0
 offset_right = -57.0
 offset_bottom = 77.0
+theme_override_font_sizes/font_size = 40
 text = "Harbour Stats:"
 
 [node name="level" type="Label" parent="ui/right/harbour_stats"]
-offset_left = -390.0
-offset_top = 139.0
-offset_right = -57.0
-offset_bottom = 199.0
+offset_left = -449.0
+offset_top = 205.0
+offset_right = -116.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 40
 
 [node name="space" type="Label" parent="ui/right/harbour_stats"]
-offset_left = -390.0
-offset_top = 204.0
-offset_right = -57.0
-offset_bottom = 264.0
+offset_left = -449.0
+offset_top = 296.0
+offset_right = -116.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 40
 
 [node name="boat_stats" type="Marker2D" parent="ui/right"]
+visible = false
 
 [node name="title" type="Label" parent="ui/right/boat_stats"]
 offset_left = -423.0
 offset_top = 18.0
 offset_right = -32.0
 offset_bottom = 74.0
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -743,6 +761,7 @@ offset_top = 868.0
 offset_right = -42.0
 offset_bottom = 949.0
 focus_mode = 0
+theme_override_font_sizes/font_size = 40
 text = "upgrade"
 
 [node name="rename" type="Button" parent="ui/right/boat_stats"]
@@ -751,6 +770,7 @@ offset_top = 976.0
 offset_right = -42.0
 offset_bottom = 1057.0
 focus_mode = 0
+theme_override_font_sizes/font_size = 40
 text = "rename"
 
 [node name="crew" type="Button" parent="ui/right/boat_stats"]
@@ -759,6 +779,7 @@ offset_top = 1081.0
 offset_right = -42.0
 offset_bottom = 1162.0
 focus_mode = 0
+theme_override_font_sizes/font_size = 40
 text = "crew"
 
 [node name="voyage" type="Button" parent="ui/right/boat_stats"]
@@ -766,7 +787,16 @@ offset_left = -391.0
 offset_top = 1194.0
 offset_right = -43.0
 offset_bottom = 1282.0
-text = "send on voyage"
+theme_override_font_sizes/font_size = 40
+text = "voyage"
+
+[node name="exit" type="Button" parent="ui/right"]
+offset_left = -68.0
+offset_top = 4.0
+offset_right = 3.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 40
+text = "X"
 
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false
@@ -797,13 +827,6 @@ text = "confirm"
 
 [node name="error_box" parent="ui" instance=ExtResource("5_ttg8u")]
 visible = false
-
-[node name="crew_button" parent="ui" instance=ExtResource("6_ygu2a")]
-layout_mode = 0
-offset_left = 1090.0
-offset_top = 278.0
-offset_right = 1218.0
-offset_bottom = 406.0
 
 [node name="voyage_bar" type="TextureProgressBar" parent="ui"]
 layout_mode = 0
@@ -903,10 +926,12 @@ visible = false
 [connection signal="pressed" from="ui/right/crew_select/tabs/eng" to="." method="_on_eng_pressed"]
 [connection signal="pressed" from="ui/right/crew_select/tabs/mte" to="." method="_on_mte_pressed"]
 [connection signal="pressed" from="ui/right/crew_select/tabs/dek" to="." method="_on_dek_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/rename" to="." method="_on_rename_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/crew" to="." method="_on_crew_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/voyage" to="." method="_on_voyage_pressed"]
+[connection signal="pressed" from="ui/right/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/confirm" to="." method="_on_confirm_pressed"]
 [connection signal="timeout" from="warning" to="." method="_on_warning_timeout"]

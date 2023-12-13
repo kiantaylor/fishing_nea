@@ -31,6 +31,7 @@ scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_hhpyp")
 
 [node name="star5" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.266667)
 position = Vector2(144.594, 31.795)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("1_hhpyp")

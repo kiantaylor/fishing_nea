@@ -88,3 +88,7 @@ func _on_voyage_display_set_sail():
 
 func _on_animation_player_animation_finished(anim_name):
 	get_tree().change_scene_to_file("res://assets/testing stuff/build_test_area.tscn")
+
+
+func _on_exit_pressed():
+	get_tree().change_scene_to_file("res://assets/testing stuff/build_test_area.tscn")

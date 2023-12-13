@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://mu4ab2dawn24"]
+
+[ext_resource type="Script" path="res://scripts/building/recruitment_building.gd" id="1_2nh6a"]
+[ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="2_l8f4p"]
+[ext_resource type="ArrayMesh" uid="uid://bqlhxgnwv54vb" path="res://models/buildings/recruitment/recruitment.obj" id="2_o6hcj"]
+[ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="3_25mvd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
+size = Vector3(2.24165, 2.97818, 2.17049)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7vq3"]
+size = Vector3(6.94251, 2.97818, 2.24214)
+
+[node name="job_centre" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_2nh6a")
+metadata/building_type = "job_centre"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.704157, 0, 0, 0, 0.704157, 0, 0, 0, 0.704157, 0, 0.698899, 0.0728565)
+mesh = ExtResource("2_o6hcj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.704157, 0, 0, 0, 0.704157, 0, 0, 0, 0.704157, 0, 1.06456, 0.0728565)
+shape = SubResource("BoxShape3D_q1rev")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.704157, 0, 0, 0, 0.704157, 0, 0, 0, 0.704157, 0, 1.03111, 0.0816606)
+shape = SubResource("BoxShape3D_g7vq3")
+
+[node name="building_selection_box" parent="." instance=ExtResource("2_l8f4p")]
+transform = Transform3D(5.21133, 0, 0, 0, 2.2114, 0, 0, 0, 3.14296, 0, 1.08727, 0.757698)
+metadata/building_type = ""
+
+[node name="icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 0, 2.82465, 0.344706)
+billboard = 1
+texture = ExtResource("3_25mvd")
