@@ -7,14 +7,23 @@ var build_camera=false
 var menu_accessed=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var load_grass=load('res://assets/testing stuff/grass.tscn')
 	load_build_map()
+	for i in range(130):
+		for j in range(144):
+			var ping=randi_range(1,100)
+			if ping==3:
+				var new_grass=load_grass.instantiate()
+				new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
+				new_grass.rotation.y=randf_range(0,6.28)
+				add_child(new_grass)
 	BuildingData.editing=false
 	BuildingData.accessing=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	BuildingData.ghost_present=ghost_present
-	if not menu_accessed:
+	if not menu_accessed and not BuildingData.building_camera:
 		get_node("camera_pivot/free_cam").current=not build_camera
 		get_node("build_cam").current=build_camera
 

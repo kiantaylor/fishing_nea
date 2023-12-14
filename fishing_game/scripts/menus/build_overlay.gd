@@ -4,8 +4,9 @@ signal generate_ghost(building,relocating,ghost_position,ghost_rotation)
 var tab='testing'
 var up=false
 var button_map={
-	'testing':['harbour','job_centre'],
-	'decor':['anchor']
+	'testing':['harbour','job_centre','fish_safe'],
+	'decor':['anchor','palm_tree'],
+	'selling':['market']
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -116,3 +117,8 @@ func build(building):
 func close_info():
 	get_node("AnimationPlayer").play_backwards('info_open')
 
+
+
+func _on_selling_pressed():
+	tab='selling'
+	tab_reset()

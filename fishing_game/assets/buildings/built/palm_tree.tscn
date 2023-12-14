@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://dv38f565xo0oq"]
+
+[ext_resource type="Script" path="res://scripts/building/base_building.gd" id="1_3etcq"]
+[ext_resource type="ArrayMesh" uid="uid://cxospj56ifhyc" path="res://models/buildings/decorations/trees/palm_tree/tree.obj" id="2_2qhw2"]
+[ext_resource type="Material" uid="uid://d1kv136hq363v" path="res://Textures/leaf_green.tres" id="3_rl17l"]
+[ext_resource type="ArrayMesh" uid="uid://d3owgf8ieh3ua" path="res://models/buildings/decorations/anchor/anchor.obj" id="4_lb3il"]
+[ext_resource type="Texture2D" uid="uid://pjx808cm54as" path="res://Textures/buildings/anchor/anchor.png" id="5_hfgpm"]
+[ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="6_4d6fa"]
+[ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="7_c75f0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05eu6"]
+albedo_color = Color(0.517647, 0.345098, 0.227451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eop2i"]
+albedo_color = Color(0.32549, 0.231373, 0.105882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8u6o"]
+albedo_color = Color(0.27451, 0.192157, 0.0823529, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xser"]
+albedo_texture = ExtResource("5_hfgpm")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wxp5c"]
+height = 0.90976
+radius = 0.652547
+
+[node name="palm_tree" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_3etcq")
+metadata/building_type = "palm_tree"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.137085, 0, 0, 0, 0.137085, 0, 0, 0, 0.137085, 0, 0.0454223, -0.124892)
+mesh = ExtResource("2_2qhw2")
+surface_material_override/0 = SubResource("StandardMaterial3D_05eu6")
+surface_material_override/1 = SubResource("StandardMaterial3D_eop2i")
+surface_material_override/2 = SubResource("StandardMaterial3D_f8u6o")
+surface_material_override/3 = ExtResource("3_rl17l")
+surface_material_override/4 = ExtResource("3_rl17l")
+surface_material_override/5 = ExtResource("3_rl17l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.488106, 0, 0, 0, 0.488106, 0, 0, 0, 0.488106, 0, 0.262167, 0)
+visible = false
+mesh = ExtResource("4_lb3il")
+surface_material_override/0 = SubResource("StandardMaterial3D_6xser")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494607, 0)
+shape = SubResource("CylinderShape3D_wxp5c")
+
+[node name="building_selection_box" parent="." instance=ExtResource("6_4d6fa")]
+transform = Transform3D(1.38352, 0, 0, 0, 1.56412, 0, 0, 0, 1.5157, 0, 0.773248, 0)
+metadata/building_type = ""
+
+[node name="icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 0, 2.3158, 0)
+visible = false
+billboard = 1
+texture = ExtResource("7_c75f0")
+
+[node name="pivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.467805, 0.176517, 0, -0.176517, 0.467805, 0, 1.22313, 1.57136)

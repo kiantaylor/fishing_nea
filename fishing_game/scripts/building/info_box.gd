@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 func reload_labels():
-	get_node("title").text=building
+	get_node("title").text=building.capitalize()
 	get_node("price").text='Price: '+str(BuildingData.build_requirements[building][0])
 	get_node("limit").text='Max builds: '+str(len(BuildingData.build_map[building]))+'/'+str(BuildingData.build_requirements[building][2])
 	get_node("level").text='Level unlocked: '+str(BuildingData.build_requirements[building][1])

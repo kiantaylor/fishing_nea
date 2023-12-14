@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://xdc2d27s73tn"]
+
+[ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_n55ta"]
+[ext_resource type="ArrayMesh" uid="uid://cxospj56ifhyc" path="res://models/buildings/decorations/trees/palm_tree/tree.obj" id="2_spf18"]
+[ext_resource type="ArrayMesh" uid="uid://d3owgf8ieh3ua" path="res://models/buildings/decorations/anchor/anchor.obj" id="3_d6v8r"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6nruh"]
+height = 1.75058
+radius = 1.8535
+
+[node name="palm_tree" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_n55ta")
+metadata/building_type = "palm_tree"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.61025, 0, 0, 0, 0.61025, 0, 0, 0, 0.61025, 0, 0.494607, 0)
+shape = SubResource("CylinderShape3D_6nruh")
+
+[node name="meshes" type="Marker3D" parent="."]
+transform = Transform3D(0.484903, 0, 0, 0, 0.484903, 0, 0, 0, 0.484903, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(0.371131, 0, 0, 0, 0.371131, 0, 0, 0, 0.371131, 0, 0.35577, -0.447079)
+mesh = ExtResource("2_spf18")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50336, 0)
+visible = false
+mesh = ExtResource("3_d6v8r")
+skeleton = NodePath("../..")
+
+[node name="land_sense" type="RayCast3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

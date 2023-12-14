@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dwo5bhxj15kyp"
+path="res://.godot/imported/cloud_sphere.obj-d05093c6f091c2af8a842c4fa9f4f77d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cloud_sphere.obj-d05093c6f091c2af8a842c4fa9f4f77d.mesh"]
+
+source_file="res://models/cloud_sphere.obj"
+dest_files=["res://.godot/imported/cloud_sphere.obj-d05093c6f091c2af8a842c4fa9f4f77d.mesh", "res://.godot/imported/cloud_sphere.obj-d05093c6f091c2af8a842c4fa9f4f77d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

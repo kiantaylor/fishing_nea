@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://5ylcv16dxerk"]
+
+[ext_resource type="Script" path="res://scripts/building/base_building.gd" id="1_itkdb"]
+[ext_resource type="ArrayMesh" uid="uid://burc675q4s8m1" path="res://models/buildings/silo/lvl1/main.obj" id="2_fllld"]
+[ext_resource type="Texture2D" uid="uid://bdnj8e510opgn" path="res://Textures/grass.png" id="3_w1u8b"]
+[ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="4_nv7mh"]
+[ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="5_rtbpp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_542el"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b18ak"]
+albedo_texture = ExtResource("3_w1u8b")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hw867"]
+size = Vector3(5.7817, 2.0627, 5.87346)
+
+[node name="fish_safe" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_itkdb")
+metadata/building_type = "fish_safe"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.508, 0, 0, 0, 0.508, 0, 0, 0, 0.508, 0, 0.510552, 0.00673445)
+mesh = ExtResource("2_fllld")
+surface_material_override/0 = SubResource("StandardMaterial3D_542el")
+surface_material_override/5 = SubResource("StandardMaterial3D_b18ak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.704157, 0, 0, 0, 0.704157, 0, 0, 0, 0.704157, 0, 0.739074, -0.00396924)
+shape = SubResource("BoxShape3D_hw867")
+
+[node name="building_selection_box" parent="." instance=ExtResource("4_nv7mh")]
+transform = Transform3D(4.27181, 0, 0, 0, 1.43527, 0, 0, 0, 4.42935, 0, 0.808474, -0.018755)
+metadata/building_type = ""
+
+[node name="icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 0, 2.82465, 0.344706)
+billboard = 1
+texture = ExtResource("5_rtbpp")
+
+[node name="pivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.494618, 0.0731624, 0, -0.0731624, 0.494618, -9.53674e-07, 2.79653, 5.7748)

@@ -912,6 +912,12 @@ omni_range = 6.38396
 transform = Transform3D(0.17425, 0, 0.984702, 0, 1, 0, -0.984702, 0, 0.17425, 6.29295, 7.32997, 6.57898)
 visible = false
 
+[node name="pivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7272, 0, 4.61061)
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.966367, 0.257167, 0, -0.257167, 0.966367, 0, 2.98132, 6.52866)
+
 [connection signal="no_slot_error" from="ui/bottom/assign" to="." method="_on_assign_no_slot_error"]
 [connection signal="parent_press" from="ui/bottom/assign" to="." method="parent_press"]
 [connection signal="pressed" from="ui/bottom/assign" to="ui/bottom/assign" method="_on_pressed"]

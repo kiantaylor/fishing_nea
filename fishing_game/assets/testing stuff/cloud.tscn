@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7m6mbgnlvi0d"]
+
+[ext_resource type="ArrayMesh" uid="uid://dwo5bhxj15kyp" path="res://models/cloud_sphere.obj" id="1_4k6va"]
+
+[node name="cloud" type="CPUParticles3D"]
+lifetime = 3.0
+mesh = ExtResource("1_4k6va")
+gravity = Vector3(0, 0, 1)
+initial_velocity_max = 1.0
+scale_amount_max = 3.0

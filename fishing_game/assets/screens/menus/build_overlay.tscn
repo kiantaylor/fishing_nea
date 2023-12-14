@@ -131,8 +131,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 698.0
-offset_right = 124416.0
-offset_bottom = 70241.0
+offset_right = 135936.0
+offset_bottom = 76721.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -172,6 +172,8 @@ position = Vector2(0, 122)
 
 [node name="decor" type="Marker2D" parent="scrolled"]
 
+[node name="selling" type="Marker2D" parent="scrolled"]
+
 [node name="testing" type="Button" parent="."]
 layout_mode = 0
 offset_left = 29.0
@@ -183,12 +185,21 @@ text = "Fishing"
 
 [node name="decor" type="Button" parent="."]
 layout_mode = 0
+offset_left = 194.5
+offset_top = 10.5
+offset_right = 288.5
+offset_bottom = 41.5
+focus_mode = 0
+text = "Decoration"
+
+[node name="selling" type="Button" parent="."]
+layout_mode = 0
 offset_left = 111.0
 offset_top = 10.0
 offset_right = 192.0
 offset_bottom = 41.0
 focus_mode = 0
-text = "Decoration"
+text = "Selling"
 
 [node name="build_camera_check" type="CheckButton" parent="."]
 layout_mode = 0
@@ -224,6 +235,7 @@ position = Vector2(-160, -53)
 
 [connection signal="pressed" from="testing" to="." method="_on_testing_pressed"]
 [connection signal="pressed" from="decor" to="." method="_on_decor_pressed"]
+[connection signal="pressed" from="selling" to="." method="_on_selling_pressed"]
 [connection signal="toggled" from="build_camera_check" to="." method="_on_build_camera_check_toggled"]
 [connection signal="pressed" from="pop_up_button" to="." method="_on_pop_up_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -61,6 +61,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i1yna")
 mesh = ExtResource("5_lwhnx")
 surface_material_override/0 = SubResource("StandardMaterial3D_hfjwa")
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68678, 0)
+light_color = Color(1, 0.858824, 0.596078, 1)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 26.1168
+
 [node name="lamp" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2297, 0)
 mesh = SubResource("CylinderMesh_inmu5")
@@ -95,3 +102,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.77885, 0)
 visible = false
 billboard = 1
 texture = ExtResource("10_ykpl8")
+
+[node name="pivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.978999, 0.203864, 0, -0.203864, 0.978999, 9.53674e-07, 3.47855, 9.17015)

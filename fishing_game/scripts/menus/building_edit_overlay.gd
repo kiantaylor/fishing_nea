@@ -8,9 +8,10 @@ var shop_buildings=[
 ]#
 var access_buildings=[
 	'harbour',
-	'job_centre',
 	'voyage_building',
-	'light_house'
+	'light_house',
+	'market',
+	'fish_safe'
 
 ]
 var upgrade_buildings=[
@@ -19,21 +20,32 @@ var upgrade_buildings=[
 	'job_centre',
 	'test_building_1',
 	'test_building_2',
-	'light_house'
+	'light_house',
+	'market',
+	'fish_safe'
 ]
 var move_buildings=[
 	'harbour',
+	'anchor',
 	'voyage_building',
 	'job_centre',
 	'test_building_1',
-	'test_building_2'
+	'test_building_2',
+	'palm_tree',
+	'market',
+	'fish_safe'
 ]
 var destroy_buildings=[
 	'harbour',
+	'anchor',
 	'voyage_building',
 	'job_centre',
 	'test_building_1',
-	'test_building_2'
+	'test_building_2',
+	'palm_tree',
+	'market',
+	'fish_safe'
+	
 ]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,6 +102,7 @@ func _on_demolish_pressed():
 			count+=1
 		print( BuildingData.build_map)
 		BuildingData.selected_building.queue_free()
+		BuildingData.building_camera=false
 		get_node("AnimationPlayer").play('close')
 
 
@@ -112,6 +125,7 @@ func _on_upgrade_pressed():
 
 func _on_movement_pressed():
 	if not movement:
+		BuildingData.building_camera=false
 		movement=true
 		var backup
 		for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:

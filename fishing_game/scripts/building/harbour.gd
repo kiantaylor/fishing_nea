@@ -18,6 +18,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_node('pivot').rotation.y=lerp(get_node('pivot').rotation.y,target_rotation,delta*0.3)
+	if cam_open and Input.is_action_pressed('ui_left'):
+		target_rotation-=0.05
+	elif cam_open and Input.is_action_pressed('ui_right'):
+		target_rotation+=0.05
 	if accessing and Input.is_action_just_pressed('ui_cancel'):
 		close_access()
 	get_node("ui/left/boat_list").position.y=-get_node('ui/left/scroll').value*10

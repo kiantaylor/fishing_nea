@@ -36,3 +36,8 @@ metadata/building_type = ""
 transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 0, 2.82465, 0.344706)
 billboard = 1
 texture = ExtResource("3_25mvd")
+
+[node name="pivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.494618, 0.0731624, 0, -0.0731624, 0.494618, -9.53674e-07, 2.79653, 5.7748)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgni084x28re7"]
+
+[ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_lxy4j"]
+[ext_resource type="ArrayMesh" uid="uid://btuy8bd0s4rqk" path="res://models/buildings/market/lvl1/main.obj" id="2_r764r"]
+[ext_resource type="Material" uid="uid://bhptm6jva6oja" path="res://Textures/buildings/ghosts/green_ghost.tres" id="3_rjfyg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpkr8"]
+size = Vector3(2.3293, 1.74436, 1.29542)
+
+[node name="market_ghost" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_lxy4j")
+metadata/building_type = "market"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.829776, -0.112926)
+shape = SubResource("BoxShape3D_gpkr8")
+
+[node name="meshes" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52019, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(0.320636, 0, 0, 0, 0.320636, 0, 0, 0, 0.320636, -0.0425496, -0.202872, 0)
+mesh = ExtResource("2_r764r")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_rjfyg")
+
+[node name="land_sense" type="RayCast3D" parent="."]
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

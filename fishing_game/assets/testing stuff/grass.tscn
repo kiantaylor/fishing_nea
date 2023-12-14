@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdqjk23x8i5rk"]
+
+[ext_resource type="Script" path="res://grass.gd" id="1_2o4ng"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uofcy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4glo"]
+albedo_color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="grass" type="Marker3D"]
+transform = Transform3D(0.099981, -0.00194767, 0, 0.00194767, 0.099981, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_2o4ng")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.35556, 2.86847e-07, 0, -2.08616e-07, 2.31787, 0, 0, 0, 2.59323, 0.0201786, 1.17281, 0)
+mesh = SubResource("SphereMesh_uofcy")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4glo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.44537, 0.00323562, 0.670543, 0.00468365, 1.16442, -0.0130624, -0.867663, 0.0116753, 1.11693, 2.64064, 0.938911, 3.02704)
+mesh = SubResource("SphereMesh_uofcy")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4glo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.125888, 0.0243785, 1.2989, 0.0352922, 1.16401, -0.025303, -1.68073, 0.0226159, -0.0978198, -3.7431, 1.039, -0.0786244)
+mesh = SubResource("SphereMesh_uofcy")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4glo")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.06903, 0.00169119, 0.565635, 0.00244681, 1.51595, -0.0110188, -0.731915, 0.00984858, 1.59894, -1.35673, 1.21204, -2.92876)
+mesh = SubResource("SphereMesh_uofcy")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4glo")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, -5.58794e-09, 0, 5.58794e-09, 1, 0, 0, 0, 1, 0.019904, -0.000388334, 0.00744343)
+hit_from_inside = true
+debug_shape_thickness = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

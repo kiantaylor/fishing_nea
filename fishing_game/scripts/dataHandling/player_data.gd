@@ -17,8 +17,7 @@ func _process(delta):
 		money+=1000000
 	if Input.is_action_just_pressed('level_boost'):
 		level_up()
-	if xp>=xp_threshold:
-		level_up()
+	lvl=BuildingData.build_map['light_house'][0][0]
 	var total=0
 	if len(BuildingData.build_map['harbour'])>0:
 		for i in BuildingData.build_map['harbour']:
