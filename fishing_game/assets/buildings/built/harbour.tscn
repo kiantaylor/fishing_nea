@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=27 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
@@ -10,13 +10,12 @@
 [ext_resource type="Script" path="res://scripts/menus/assign_button.gd" id="7_18h2e"]
 [ext_resource type="Script" path="res://scripts/menus/remove_button.gd" id="8_7b2jb"]
 [ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="8_o5iy3"]
+[ext_resource type="PackedScene" uid="uid://duyiom2a8jtef" path="res://assets/screens/menus/back_button.tscn" id="10_fk4yy"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="11_2io3t"]
 [ext_resource type="PackedScene" uid="uid://b78jiiiihqpyh" path="res://assets/crew/crew_vis.tscn" id="11_5phhk"]
 [ext_resource type="Material" uid="uid://dgnb8wumcg65a" path="res://Textures/crew/wallpaper3.tres" id="12_o6b7w"]
-[ext_resource type="Texture2D" uid="uid://c7c8ojlwjjlhm" path="res://Textures/overlays/player data/xp bar (3).png" id="13_8o1hp"]
 [ext_resource type="ArrayMesh" uid="uid://be80egekinmua" path="res://models/crewmates/lamp.obj" id="13_dh3re"]
-[ext_resource type="Texture2D" uid="uid://b8qk4fijblrno" path="res://Textures/overlays/player data/xp bar (2).png" id="14_bqis8"]
 [ext_resource type="Material" uid="uid://dq6y8m01x8fhy" path="res://Textures/crew/brass.tres" id="14_byars"]
-[ext_resource type="Texture2D" uid="uid://djy4lcpkwndmi" path="res://Textures/overlays/player data/xp bar (1).png" id="15_6si83"]
 [ext_resource type="PackedScene" uid="uid://urw8au1lgs" path="res://assets/buildings/particle_icon.tscn" id="19_ismw6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orqvv"]
@@ -176,6 +175,9 @@ metadata/building_type = ""
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 9.1, 7.005, 4.5)
 
 [node name="boats" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51318, -1.17478, 2.26977)
+
+[node name="icons" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51318, -1.17478, 2.26977)
 
 [node name="ui" type="Control" parent="."]
@@ -563,13 +565,9 @@ text = "Deckhand"
 [node name="crew_list" type="Marker2D" parent="ui/right/crew_select"]
 position = Vector2(-458, 475)
 
-[node name="back" type="Button" parent="ui/right/crew_select"]
-offset_left = -140.0
-offset_top = 6.0
-offset_right = -77.0
-offset_bottom = 69.0
-theme_override_font_sizes/font_size = 40
-text = "<"
+[node name="back_button" parent="ui/right/crew_select" instance=ExtResource("10_fk4yy")]
+offset_left = -131.0
+offset_right = 29.0
 
 [node name="harbour_stats" type="Marker2D" parent="ui/right"]
 
@@ -790,13 +788,11 @@ offset_bottom = 1282.0
 theme_override_font_sizes/font_size = 40
 text = "voyage"
 
-[node name="exit" type="Button" parent="ui/right"]
-offset_left = -68.0
-offset_top = 4.0
-offset_right = 3.0
-offset_bottom = 69.0
-theme_override_font_sizes/font_size = 40
-text = "X"
+[node name="exit_button" parent="ui/right" instance=ExtResource("11_2io3t")]
+offset_left = -65.0
+offset_top = 1.0
+offset_right = 95.0
+offset_bottom = 161.0
 
 [node name="rename_text_edit" type="TextEdit" parent="ui"]
 visible = false
@@ -827,24 +823,6 @@ text = "confirm"
 
 [node name="error_box" parent="ui" instance=ExtResource("5_ttg8u")]
 visible = false
-
-[node name="voyage_bar" type="TextureProgressBar" parent="ui"]
-layout_mode = 0
-offset_left = 826.0
-offset_top = 651.0
-offset_right = 1949.0
-offset_bottom = 804.0
-texture_under = ExtResource("13_8o1hp")
-texture_over = ExtResource("14_bqis8")
-texture_progress = ExtResource("15_6si83")
-
-[node name="Label" type="Label" parent="ui/voyage_bar"]
-layout_mode = 0
-offset_left = -94.0
-offset_top = 12.0
-offset_right = -15.0
-offset_bottom = 38.0
-text = "on voyage"
 
 [node name="warning" type="Timer" parent="."]
 wait_time = 3.0
@@ -932,12 +910,12 @@ transform = Transform3D(1, 0, 0, 0, 0.966367, 0.257167, 0, -0.257167, 0.966367, 
 [connection signal="pressed" from="ui/right/crew_select/tabs/eng" to="." method="_on_eng_pressed"]
 [connection signal="pressed" from="ui/right/crew_select/tabs/mte" to="." method="_on_mte_pressed"]
 [connection signal="pressed" from="ui/right/crew_select/tabs/dek" to="." method="_on_dek_pressed"]
-[connection signal="pressed" from="ui/right/crew_select/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ui/right/crew_select/back_button" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/upgrade" to="." method="_on_upgrade_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/rename" to="." method="_on_rename_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/crew" to="." method="_on_crew_pressed"]
 [connection signal="pressed" from="ui/right/boat_stats/voyage" to="." method="_on_voyage_pressed"]
-[connection signal="pressed" from="ui/right/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ui/right/exit_button" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="ui/rename_text_edit/confirm" to="." method="_on_confirm_pressed"]
 [connection signal="timeout" from="warning" to="." method="_on_warning_timeout"]

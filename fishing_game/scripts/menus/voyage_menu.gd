@@ -4,9 +4,10 @@ var area=''
 var new_voyage
 var selected_fish
 var screen=2
+signal voyage_started(boat,zone)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	connect('voyage_started',VoyageData.voyage_started)
 	new_voyage=VoyageData.new_voyage
 	get_node("left/voyage_display").voyage=new_voyage
 	area_clicked('the_shallows')
@@ -84,11 +85,16 @@ func _on_remove_pressed():
 
 func _on_voyage_display_set_sail():
 	get_node("AnimationPlayer").play('voyage')
-
+	emit_signal('voyage_started',new_voyage.get_boat().get_boat_name(),new_voyage.get_zone())
 
 func _on_animation_player_animation_finished(anim_name):
+	
 	get_tree().change_scene_to_file("res://assets/testing stuff/build_test_area.tscn")
 
 
 func _on_exit_pressed():
 	get_tree().change_scene_to_file("res://assets/testing stuff/build_test_area.tscn")
+
+
+func _on_exitpressed():
+	pass # Replace with function body.

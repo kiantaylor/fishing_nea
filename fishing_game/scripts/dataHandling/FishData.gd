@@ -1,28 +1,29 @@
 extends Node
 # min depth,maxdepth, size , biome, max_support
+
 var fish_stats={
 	#open
-	'Atlantic Cod':[[1,2],2,'open',400,3],
-	'Common Squid':[[2,5],1,'open',1200,0.5],
-	'Mackeral':[[1,2],2,'open',800,1],
-	'Blueshark':[[1,2],3,'open',100,40],
-	'Yellowfin Tuna':[[1],3,'open',150,25],
-	'Common Shrimp':[[4,5],1,'open',1700,0.3],
-	'Seabass':[[1,2],2,'open',300,6],
+	'Atlantic Cod':[[1,2],2,'open',400,3,120],
+	'Common Squid':[[2,5],1,'open',1200,0.5,20],
+	'Mackeral':[[1,2],2,'open',800,1,90],
+	'Blueshark':[[1,2],3,'open',100,40,2500],
+	'Yellowfin Tuna':[[1,1],3,'open',150,25,2000],
+	'Common Shrimp':[[4,5],1,'open',1700,0.3,10],
+	'Seabass':[[1,2],2,'open',300,6,300],
 	#shallows
-	'Edible Crab':[[1],1,'shallows',200,0.6],
+	'Edible Crab':[[1,1],1,'shallows',200,0.6,40],
 	#kelp
-	'Grouper':[[2],2,'kelp',300,7],
-	'Goliath Grouper':[[2],3,'kelp',120,20],
-	'Kelp Fish':[[2,3],1,'kelp',500,4],
-	'Kelp Crab':[[3],1,'kelp',900,0.5],
-	'Decorator Crab':[[3],1,'kelp',700,0.8],
+	'Grouper':[[2,2],2,'kelp',300,7,180],
+	'Goliath Grouper':[[2,3],3,'kelp',120,20,1700],
+	'Kelp Fish':[[2,3],1,'kelp',500,4,30],
+	'Kelp Crab':[[3,3],1,'kelp',900,0.5,25],
+	'Decorator Crab':[[3,3],1,'kelp',700,0.8,30],
 	#seagrass
-	'Cuttlefish':[[2],1,'seagrass',200,0.5],
-	'Crayfish':[[2],1,'seagrass',400,0.4],
+	'Cuttlefish':[[2,2],1,'seagrass',200,0.5,25],
+	'Crayfish':[[2,2],1,'seagrass',400,0.4,35],
 	#depths
-	'Angler Fish':[[4,7],2,'depths',400, 8],
-	'Monkfish':[[5,8],2,'depths',800,6]
+	'Angler Fish':[[4,7],2,'depths',400, 8,140],
+	'Monkfish':[[5,8],2,'depths',800,6,500]
 }
 var biome_stats={
 	'open':[5,2000],
@@ -32,10 +33,12 @@ var biome_stats={
 	'depths':[8,3000]
 }
 var map={}
-var inventory={}
+var inventory={'Mackeral':10}
+var prices={}
+signal fish_added(fish,amount)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	
 	
 	ecosystem_generate('shallows',1,'the_shallows',1)
 	ecosystem_generate('kelp',5,'kelp_forest',2)
@@ -56,6 +59,8 @@ func _process(delta):
 func tick():
 	for i in map:
 		map[i].tick()
+	
+				
 func ecosystem_generate(biome,size,nm,dis):
 	var levels=[]
 	

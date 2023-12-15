@@ -1,0 +1,130 @@
+[gd_scene load_steps=5 format=3 uid="uid://wmc7rf7xqjwd"]
+
+[ext_resource type="Script" path="res://scripts/menus/fish_inventory.gd" id="1_wsaud"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="2_lfd2g"]
+[ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_t5y30"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_a6jty"]
+
+[node name="fish_inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wsaud")
+
+[node name="left" type="Marker2D" parent="."]
+
+[node name="panelTest" parent="left" instance=ExtResource("2_t5y30")]
+offset_left = -1.0
+offset_right = -1.0
+
+[node name="fish_list" type="Marker2D" parent="left"]
+position = Vector2(28, 244)
+
+[node name="panel_top" parent="left" instance=ExtResource("3_a6jty")]
+
+[node name="HScrollBar" type="VScrollBar" parent="left"]
+offset_left = 542.0
+offset_top = 245.0
+offset_right = 564.0
+offset_bottom = 1229.0
+max_value = 2000.0
+
+[node name="right" type="Marker2D" parent="."]
+position = Vector2(2305, 0)
+
+[node name="panelTest" parent="right" instance=ExtResource("2_t5y30")]
+offset_left = -1.0
+offset_right = -1.0
+scale = Vector2(-1, 1)
+
+[node name="panel_top" parent="right" instance=ExtResource("3_a6jty")]
+scale = Vector2(-1, 1)
+
+[node name="exit_button" parent="right" instance=ExtResource("2_lfd2g")]
+offset_left = -64.9998
+offset_right = 95.0002
+
+[node name="count" type="Label" parent="right"]
+offset_left = -568.0
+offset_top = 278.0
+offset_right = -457.0
+offset_bottom = 330.0
+theme_override_font_sizes/font_size = 35
+text = "Count:"
+
+[node name="price" type="Label" parent="right"]
+offset_left = -568.0
+offset_top = 351.0
+offset_right = -457.0
+offset_bottom = 403.0
+theme_override_font_sizes/font_size = 35
+text = "Count:"
+
+[node name="total" type="Label" parent="right"]
+offset_left = -568.0
+offset_top = 425.0
+offset_right = -457.0
+offset_bottom = 477.0
+theme_override_font_sizes/font_size = 35
+text = "Count:"
+
+[node name="inventory_title" type="Label" parent="right"]
+offset_left = -568.0
+offset_top = 214.0
+offset_right = -457.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 40
+text = "Inventory Stats :"
+
+[node name="fish_title" type="Label" parent="right"]
+offset_left = -568.0
+offset_top = 494.0
+offset_right = -257.0
+offset_bottom = 552.0
+theme_override_font_sizes/font_size = 40
+text = "Species Stats :"
+
+[node name="location" type="Label" parent="right"]
+offset_left = -569.0
+offset_top = 563.0
+offset_right = -258.0
+offset_bottom = 621.0
+theme_override_font_sizes/font_size = 35
+text = "Species Stats :"
+
+[node name="min_depth" type="Label" parent="right"]
+offset_left = -569.0
+offset_top = 630.0
+offset_right = -258.0
+offset_bottom = 688.0
+theme_override_font_sizes/font_size = 35
+text = "Species Stats :"
+
+[node name="max_depth" type="Label" parent="right"]
+offset_left = -569.0
+offset_top = 700.0
+offset_right = -258.0
+offset_bottom = 758.0
+theme_override_font_sizes/font_size = 35
+text = "Species Stats :"
+
+[node name="size" type="Label" parent="right"]
+offset_left = -569.0
+offset_top = 769.0
+offset_right = -258.0
+offset_bottom = 827.0
+theme_override_font_sizes/font_size = 35
+text = "Species Stats :"
+
+[node name="Label" type="Label" parent="right"]
+offset_left = -557.0
+offset_top = 31.0
+offset_right = -517.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 40
+text = "Stats"
+
+[connection signal="pressed" from="right/exit_button" to="." method="_on_exit_button_pressed"]

@@ -1,6 +1,6 @@
 extends Node
 
-var money=2500
+var money=10000
 var lvl=1
 var xp_threshold=0.0
 var xp=0

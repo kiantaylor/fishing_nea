@@ -76,6 +76,7 @@ func _on_purchase_pressed():
 				if i==selected_boat:
 					stock.remove_at(count)
 				count+=1
+			Chat.boat_bought(selected_boat.get_boat_name())
 			refresh_stock()		
 			if len(stock)>0:
 				boat_selected(stock[0])

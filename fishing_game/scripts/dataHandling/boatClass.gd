@@ -32,8 +32,8 @@ var medium_boost=1
 var large_boost=1
 var morale=1
 var on_voyage=false
-var time_left
-var total_time
+var time_left=0
+var total_time=0
 # class definition
 
 func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
@@ -122,6 +122,7 @@ func debug_stat_display():
 
 func rename(new_name):
 	if len(new_name)<=30 and len(new_name)>=3:
+		Chat.boat_renamed(boat_name,new_name)
 		boat_name=new_name
 
 		return true
@@ -221,6 +222,7 @@ func apply_trait(trait1):
 	
 func upgrade():
 	if condition<15.0:
+		Chat.boat_upgraded(boat_name,get_condition()+1)
 		set_condition(get_condition()+1.0)
 		apply_condition()
 #cost and pricing

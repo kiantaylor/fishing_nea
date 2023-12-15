@@ -40,7 +40,10 @@ func _process(delta):
 		
 		
 		if not relocation:
-			BuildingData.build_map[get_meta("building_type")].append([1,position,rotation])
+			if get_meta("building_type")!= 'market':
+				BuildingData.build_map[get_meta("building_type")].append([1,position,rotation])
+			else:
+				BuildingData.build_map[get_meta("building_type")].append([1,position,rotation,[]])
 			PlayerData.money-=BuildingData.build_requirements[get_meta("building_type")][0]
 			PlayerData.xp+=10*BuildingData.build_requirements[get_meta("building_type")][1]
 		else:
@@ -49,6 +52,7 @@ func _process(delta):
 					i[1]=position
 					i[2]=rotation
 		print(BuildingData.build_map)
+		Chat.building_built(get_meta("building_type").capitalize())
 		emit_signal('corporate',get_meta("building_type"),rotation,position,relocation)
 		queue_free()
 	if Input.is_action_just_pressed('ui_cancel'):

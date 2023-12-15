@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://duyiom2a8jtef"]
+
+[ext_resource type="Texture2D" uid="uid://lihgrcxt5nj8" path="res://Textures/overlays/boat menu/back.png" id="1_lbmcg"]
+[ext_resource type="Texture2D" uid="uid://d2ynv5jwqc764" path="res://Textures/overlays/boat menu/back_pressed.png" id="2_mydll"]
+
+[node name="back_button" type="TextureButton"]
+offset_right = 160.0
+offset_bottom = 160.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("1_lbmcg")
+texture_pressed = ExtResource("2_mydll")
+stretch_mode = 0

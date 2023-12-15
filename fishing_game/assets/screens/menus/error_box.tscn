@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3jkve0f4hvp"]
+[gd_scene load_steps=3 format=3 uid="uid://3jkve0f4hvp"]
 
 [ext_resource type="Script" path="res://scripts/menus/error_box.gd" id="1_1ew4h"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="2_ja6nv"]
 
 [node name="error_box" type="Control"]
 layout_mode = 3
@@ -27,12 +28,12 @@ theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="exit" type="Button" parent="."]
+[node name="exit_button" parent="." instance=ExtResource("2_ja6nv")]
 layout_mode = 0
-offset_left = 1308.0
-offset_top = 583.0
-offset_right = 1341.0
-offset_bottom = 614.0
-text = "X"
+offset_left = 1310.0
+offset_top = 582.0
+offset_right = 1470.0
+offset_bottom = 742.0
+scale = Vector2(0.2, 0.2)
 
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_pressed"]

@@ -10,6 +10,7 @@ var button_map={
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	BuildingData.build_overlay=self
 	up=false
 	position=Vector2(0,1398)
 	build_button_update()

@@ -26,15 +26,7 @@ func _process(delta):
 	if accessing and Input.is_action_just_pressed('ui_cancel'):
 		close_access()
 	get_node("ui/left/boat_list").position.y=-get_node('ui/left/scroll').value*10
-	if selected_boat:
-		if selected_boat.on_voyage:
-			get_node('ui/voyage_bar').max_value=selected_boat.total_time
-			get_node('ui/voyage_bar').value=selected_boat.time_left
-		elif get_node('ui/voyage_bar').visible:
-		
-			get_node('ui/voyage_bar').visible=false
-	else:
-		get_node('ui/voyage_bar').visible=false
+	
 		
 #shop menu
 
@@ -46,6 +38,7 @@ func open_access():
 		accessing=true
 		get_node("ui").visible=true
 		BuildingData.accessing=true
+		BuildingData.close_info()
 		BuildingData.close_edit()
 		get_parent().menu_accessed=true
 		print('opening harbour')
@@ -88,6 +81,14 @@ func update_boat_list():
 			button_new.position=Vector2(20,(100*get_node('ui/left/boat_list').get_child_count())+450)
 		button_new.true_parent=self
 		get_node("ui/left/boat_list").add_child(button_new)
+		var icon_load=load('res://assets/boats/voyage_icon.tscn')
+		var icon_new=icon_load.instantiate()
+		if get_node('boats').get_child_count()==0:
+			icon_new.position=Vector3(5,1,1)
+		else:
+			icon_new.position=Vector3((2*get_node('boats').get_child_count())+5,1,1)
+		icon_new.boat=i
+		get_node('icons').add_child(icon_new)
 		var boat_load=load(str("res://assets/boats/"+i.vis_name))
 		var boat_new=boat_load.instantiate()
 		if get_node('boats').get_child_count()==0:
@@ -101,7 +102,7 @@ func update_boat_list():
 		
 		get_node("boats").add_child(boat_new)
 func boat_selected(boat_select):
-	get_node('ui/voyage_bar').visible=boat_select.on_voyage
+	
 	if bottom_open:
 		get_node("AnimationPlayer").play('close_bottom')
 		bottom_open=false
@@ -165,8 +166,9 @@ func _on_cancel_pressed():
 
 
 func _on_confirm_pressed():
+	var old_name=selected_boat.get_boat_name()
 	if selected_boat.rename(get_node("ui/rename_text_edit").text):
-	
+		
 		get_node("ui/rename_text_edit").visible=false
 		
 		boat_selected(selected_boat)

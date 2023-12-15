@@ -9,14 +9,14 @@ var menu_accessed=false
 func _ready():
 	var load_grass=load('res://assets/testing stuff/grass.tscn')
 	load_build_map()
-	for i in range(130):
-		for j in range(144):
-			var ping=randi_range(1,100)
-			if ping==3:
-				var new_grass=load_grass.instantiate()
-				new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
-				new_grass.rotation.y=randf_range(0,6.28)
-				add_child(new_grass)
+#	for i in range(130):
+#		for j in range(144):
+#			var ping=randi_range(1,100)
+#			if ping==3:
+#				var new_grass=load_grass.instantiate()
+#				new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
+#				new_grass.rotation.y=randf_range(0,6.28)
+#				add_child(new_grass)
 	BuildingData.editing=false
 	BuildingData.accessing=false
 
@@ -34,6 +34,8 @@ func load_build_map():
 			var build_new=build_load.instantiate()
 			build_new.position=building[1]
 			build_new.rotation=building[2]
+			if i=='market':
+				build_new.stock=building[3]
 			build_new.level=building[0]
 			add_child(build_new)
 func _on_build_overlay_generate_ghost(building,relocating,ghost_position,ghost_rotation):

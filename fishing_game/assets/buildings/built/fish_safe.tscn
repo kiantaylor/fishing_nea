@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://5ylcv16dxerk"]
 
-[ext_resource type="Script" path="res://scripts/building/base_building.gd" id="1_itkdb"]
+[ext_resource type="Script" path="res://scripts/building/fish_safe.gd" id="1_38mxn"]
 [ext_resource type="ArrayMesh" uid="uid://burc675q4s8m1" path="res://models/buildings/silo/lvl1/main.obj" id="2_fllld"]
 [ext_resource type="Texture2D" uid="uid://bdnj8e510opgn" path="res://Textures/grass.png" id="3_w1u8b"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="4_nv7mh"]
@@ -16,7 +16,7 @@ size = Vector3(5.7817, 2.0627, 5.87346)
 
 [node name="fish_safe" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-script = ExtResource("1_itkdb")
+script = ExtResource("1_38mxn")
 metadata/building_type = "fish_safe"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

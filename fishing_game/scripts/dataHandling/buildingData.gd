@@ -4,6 +4,7 @@ var selected_building
 var editing=false
 var building_open=false
 var build_edit_overlay
+var build_overlay
 var position_backup
 var ghost_present
 var building_camera=false
@@ -68,3 +69,5 @@ func open_edit(building):
 func close_edit():
 	editing=false
 	build_edit_overlay.get_node("AnimationPlayer").play('close')
+func close_info():
+	build_overlay.close_info()

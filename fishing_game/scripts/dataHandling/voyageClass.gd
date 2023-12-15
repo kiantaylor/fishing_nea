@@ -10,11 +10,13 @@ var target_fish_ratio=[]
 var recurring=false
 var active=false
 var time=0
-
+signal voyage_ended(boat,location)
+signal voyage_started(boat,location)
 func _init(voyage_boat,voyage_fishing_zone,voyage_recurring):
 	boat=voyage_boat
 	fishing_zone=voyage_fishing_zone
-
+	
+	connect('voyage_ended',VoyageData.voyage_ended)
 	recurring=voyage_recurring
 func get_boat():
 	return boat
@@ -53,7 +55,8 @@ func sum(accum,item):
 	return accum+item
 func activate():
 	active=true
-	
+	print('shjould be emmitting here for start')
+	emit_signal('voyage_start',boat.get_boat_name(),fishing_zone.capitalize())
 	var speed=boat.get_speed()*boat.speed_boost
 	time=(FishData.map[get_zone()].distance/speed+boat.get_size())*10
 	print(time)
@@ -94,18 +97,24 @@ func harvest():
 		target_fish_populations[count].debug_display()
 		
 		print(yield_fish,'    ',target_fish_populations[count].get_species())
-		
+		Chat.fish_added(target_fish_populations[count].get_species(),yield_fish)
 		if target_fish_populations[count].get_species() in FishData.inventory.keys():
 			FishData.inventory[target_fish_populations[count].get_species()]+=yield_fish
 		else:
 			FishData.inventory[target_fish_populations[count].get_species()]=yield_fish
+	
 		count+=1
 	
 	boat.on_voyage=false
 	print(FishData.inventory)
 	if recurring:
+		emit_signal('voyage_end',boat.get_boat_name(),fishing_zone.capitalize())
 		activate()
+		
 	else:
+		print('should be emmitting here for end')
+		VoyageData.voyage_ended(boat.get_boat_name(),fishing_zone.capitalize())
+		
 		VoyageData.current_voyages.remove_at(VoyageData.current_voyages.find(self))
 	print(VoyageData.current_voyages)
 

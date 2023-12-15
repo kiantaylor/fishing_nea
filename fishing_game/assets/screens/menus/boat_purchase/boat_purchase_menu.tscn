@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=14 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_tyg2v"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_qx1ud"]
 [ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_x1utr"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="6_0ru87"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
 
@@ -208,16 +209,11 @@ offset_left = 9.0
 offset_right = 657.0
 scale = Vector2(-1, 1)
 
-[node name="exit" type="Button" parent="right"]
-z_index = 2
-offset_left = -55.0
-offset_right = 10.0
-offset_bottom = 34.0
-theme_override_font_sizes/font_size = 40
-text = "X
-"
-
 [node name="stars" parent="right" instance=ExtResource("5_x1utr")]
+
+[node name="exit_button" parent="right" instance=ExtResource("6_0ru87")]
+offset_left = -58.0
+offset_right = 102.0
 
 [node name="left" type="Marker2D" parent="."]
 
@@ -257,4 +253,4 @@ environment = SubResource("Environment_vr6ro")
 visible = false
 
 [connection signal="pressed" from="right/purchase" to="." method="_on_purchase_pressed"]
-[connection signal="pressed" from="right/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="right/exit_button" to="." method="_on_exit_pressed"]

@@ -26,8 +26,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_mwx2k")
 
 [node name="land_sense" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.168441, 0)
-hit_from_inside = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0701118, 0)
 debug_shape_custom_color = Color(1, 0, 1, 1)
 debug_shape_thickness = 5
 

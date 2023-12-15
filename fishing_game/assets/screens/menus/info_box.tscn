@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl5jr7rguooq5"]
+[gd_scene load_steps=3 format=3 uid="uid://dl5jr7rguooq5"]
 
 [ext_resource type="Script" path="res://scripts/building/info_box.gd" id="1_qktlq"]
+[ext_resource type="PackedScene" uid="uid://duyiom2a8jtef" path="res://assets/screens/menus/back_button.tscn" id="2_ylpv5"]
 
 [node name="info_box" type="Marker2D"]
 script = ExtResource("1_qktlq")
@@ -50,13 +51,12 @@ offset_bottom = 26.0
 focus_mode = 0
 text = "Build"
 
-[node name="close" type="Button" parent="."]
-offset_left = 126.0
-offset_top = -223.0
-offset_right = 150.0
-offset_bottom = -204.0
-focus_mode = 0
-text = "<"
+[node name="back_button" parent="." instance=ExtResource("2_ylpv5")]
+offset_left = 121.0
+offset_top = -226.0
+offset_right = 281.0
+offset_bottom = -66.0
+scale = Vector2(0.2, 0.2)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_close_pressed"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyhrexipmr3f"]
+
+[ext_resource type="Script" path="res://scripts/building/market_stock.gd" id="1_md0rj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ywgm"]
+
+[node name="market_stock" type="Marker3D"]
+script = ExtResource("1_md0rj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.647101, 0, 0, 0, 0.647101, 0, 0, 0, 0.647101, 0, 0, 0.124289)
+mesh = SubResource("SphereMesh_2ywgm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.574219, 0, 0, 0, 0.574219, 0, 0, 0, 0.574219, 0.270512, 0, 0.70918)
+mesh = SubResource("SphereMesh_2ywgm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.364007, 0, 0, 0, 0.364007, 0, 0, 0, 0.364007, -0.248578, 0, 0.701868)
+mesh = SubResource("SphereMesh_2ywgm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.572285, 0, 0.0470906, 0, 0.574219, 0, -0.0470906, 0, -0.572285, -0.247404, 0, -0.474563)
+mesh = SubResource("SphereMesh_2ywgm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.362781, 0, 0.0298516, 0, 0.364007, 0, -0.0298516, 0, -0.362781, 0.269338, 0, -0.424706)
+mesh = SubResource("SphereMesh_2ywgm")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(400, 50)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 400.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 30
+text = "fish"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="name_sprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07563, -0.587258)
+billboard = 1

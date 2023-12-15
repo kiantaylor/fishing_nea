@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dd7gwn5nb2c36"]
+[gd_scene load_steps=17 format=3 uid="uid://dd7gwn5nb2c36"]
 
 [ext_resource type="ArrayMesh" uid="uid://b0vmihqs5fte" path="res://models/map.obj" id="1_p02qx"]
 [ext_resource type="Script" path="res://scripts/menus/voyage_menu.gd" id="1_tdils"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="6_iiilq"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="9_0rsbw"]
 [ext_resource type="PackedScene" uid="uid://b8u5vpebrf6qf" path="res://assets/screens/menus/voyage_display.tscn" id="10_it618"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="10_nptj3"]
 
 [sub_resource type="Environment" id="Environment_w2dlx"]
 glow_enabled = true
@@ -407,12 +408,9 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 35
 text = "select zone"
 
-[node name="exit" type="Button" parent="right"]
-offset_left = -63.0
-offset_top = 1.0
-offset_bottom = 64.0
-theme_override_font_sizes/font_size = 40
-text = "X"
+[node name="exit_button" parent="right" instance=ExtResource("10_nptj3")]
+offset_left = -65.0
+offset_right = 95.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -451,5 +449,5 @@ color = Color(0, 0, 0, 0)
 [connection signal="pressed" from="right/selected/assign" to="." method="_on_assign_pressed"]
 [connection signal="pressed" from="right/selected/remove" to="." method="_on_remove_pressed"]
 [connection signal="pressed" from="right/select_zone" to="." method="_on_select_zone_pressed"]
-[connection signal="pressed" from="right/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="right/exit_button" to="." method="_on_exit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

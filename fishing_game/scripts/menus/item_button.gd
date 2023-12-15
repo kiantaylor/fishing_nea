@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("Button").text=text
+	get_node("Button").text=text.capitalize()
 	
 
 

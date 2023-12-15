@@ -114,6 +114,7 @@ func _on_upgrade_pressed():
 		BuildingData.selected_building.level+=1
 		print( BuildingData.build_map)
 		PlayerData.money-=upgrade_cost
+		Chat.building_upgraded(BuildingData.selected_building.get_meta('building_type').capitalize(),BuildingData.selected_building.level)
 		upgrade_cost=int(BuildingData.selected_building.level*0.5*BuildingData.build_requirements[BuildingData.selected_building.get_meta('building_type')][0])
 		get_node('upgrade').text='Upgrade\n costs:\n '+str(upgrade_cost)
 		

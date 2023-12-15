@@ -79,6 +79,7 @@ func _on_hire_pressed():
 			refresh_stock()
 		else:
 			generate_stock()
+		Chat.crew_hired(selected_crew_member.get_crew_name().capitalize())
 	else:
 		get_node('error_box').text='not enough money'
 		get_node("error_box").visible=true

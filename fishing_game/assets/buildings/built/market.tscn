@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5xoy3wepbh7e"]
+[gd_scene load_steps=12 format=3 uid="uid://c5xoy3wepbh7e"]
 
-[ext_resource type="Script" path="res://scripts/building/base_building.gd" id="1_6aqdk"]
+[ext_resource type="Script" path="res://scripts/building/market.gd" id="1_8ysi7"]
 [ext_resource type="ArrayMesh" uid="uid://btuy8bd0s4rqk" path="res://models/buildings/market/lvl1/main.obj" id="2_wxei4"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="3_iv6io"]
 [ext_resource type="Texture2D" uid="uid://bdnj8e510opgn" path="res://Textures/grass.png" id="3_pwsgf"]
 [ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="4_ta4gr"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="6_tkval"]
+[ext_resource type="PackedScene" uid="uid://dyhrexipmr3f" path="res://assets/buildings/market/market_stock.tscn" id="7_7417j"]
+[ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="7_psvtr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_542el"]
 
@@ -16,7 +19,7 @@ size = Vector3(3.14062, 2.35376, 1.905)
 
 [node name="market" type="StaticBody3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-script = ExtResource("1_6aqdk")
+script = ExtResource("1_8ysi7")
 metadata/building_type = "market"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -42,3 +45,163 @@ texture = ExtResource("4_ta4gr")
 
 [node name="Camera3D" type="Camera3D" parent="pivot"]
 transform = Transform3D(0.5, 0, 0, 0, 0.494618, 0.0731624, 0, -0.0731624, 0.494618, -9.53674e-07, 2.79653, 5.7748)
+
+[node name="access_camera" type="Camera3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.486036, 0.117342, 0, -0.117342, 0.486036, 0, 0.943591, 1.67968)
+
+[node name="ui" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="exit_button" parent="ui" instance=ExtResource("6_tkval")]
+layout_mode = 0
+offset_left = 2239.0
+offset_top = 2.0
+offset_right = 2399.0
+offset_bottom = 162.0
+
+[node name="ColorRect" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_top = 1046.0
+offset_right = 2304.0
+offset_bottom = 1308.0
+color = Color(0.733333, 0.847059, 0.917647, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 468.0
+offset_bottom = 1308.0
+color = Color(0.733333, 0.847059, 0.917647, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_top = 1046.0
+offset_right = 436.0
+offset_bottom = 1308.0
+color = Color(0.254902, 0.462745, 0.580392, 0.454902)
+
+[node name="ColorRect3" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_top = 1023.0
+offset_right = 2304.0
+offset_bottom = 1058.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = -2.0
+offset_right = 483.0
+offset_bottom = 1030.0
+color = Color(0.92549, 0.262745, 0.372549, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_top = 1046.0
+offset_right = 2304.0
+offset_bottom = 1058.0
+color = Color(0.988235, 0.988235, 0.929412, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="ui"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = -41.0
+offset_right = 458.0
+offset_bottom = 1058.0
+color = Color(0.988235, 0.988235, 0.929412, 1)
+
+[node name="slot1" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 941.0
+offset_right = 823.0
+offset_bottom = 1019.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "Slot 1"
+
+[node name="slot2" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 941.0
+offset_right = 1236.0
+offset_bottom = 1019.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "Slot 2"
+
+[node name="slot3" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 1356.0
+offset_top = 941.0
+offset_right = 1636.0
+offset_bottom = 1019.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "Slot 3"
+
+[node name="title" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 1067.0
+offset_right = 1053.0
+offset_bottom = 1122.0
+theme_override_font_sizes/font_size = 40
+
+[node name="price" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 1145.0
+offset_right = 1054.0
+offset_bottom = 1200.0
+theme_override_font_sizes/font_size = 40
+
+[node name="stock" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 1221.0
+offset_right = 1054.0
+offset_bottom = 1276.0
+theme_override_font_sizes/font_size = 40
+
+[node name="fish_list" type="Marker2D" parent="ui"]
+position = Vector2(29, 229)
+
+[node name="panel_top" parent="ui" instance=ExtResource("7_psvtr")]
+offset_left = -152.0
+offset_top = -4.0
+offset_right = 496.0
+offset_bottom = 178.0
+
+[node name="VScrollBar" type="VScrollBar" parent="ui"]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 218.0
+offset_right = 421.0
+offset_bottom = 1001.0
+max_value = 1000.0
+
+[node name="stock" type="Marker3D" parent="."]
+
+[node name="market_stock" parent="stock" instance=ExtResource("7_7417j")]
+transform = Transform3D(0.318686, 0, 0, 0, 0.293347, -0.124531, 0, 0.124531, 0.293347, -0.691956, 0.299156, 0.187798)
+
+[node name="market_stock2" parent="stock" instance=ExtResource("7_7417j")]
+transform = Transform3D(0.318686, 0, 0, 0, 0.293347, -0.124531, 0, 0.124531, 0.293347, -0.0227698, 0.299156, 0.187798)
+
+[node name="market_stock3" parent="stock" instance=ExtResource("7_7417j")]
+transform = Transform3D(0.318686, 0, 0, 0, 0.293347, -0.124531, 0, 0.124531, 0.293347, 0.628655, 0.299156, 0.187798)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="pressed" from="ui/exit_button" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ui/slot1" to="." method="_on_slot_1_pressed"]
+[connection signal="pressed" from="ui/slot2" to="." method="_on_slot_2_pressed"]
+[connection signal="pressed" from="ui/slot3" to="." method="_on_slot_3_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

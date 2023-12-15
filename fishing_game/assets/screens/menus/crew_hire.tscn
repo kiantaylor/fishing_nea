@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://de0rjpjof5mfe"]
+[gd_scene load_steps=20 format=3 uid="uid://de0rjpjof5mfe"]
 
 [ext_resource type="Script" path="res://scripts/menus/crew_management/crew_hire.gd" id="1_mqw50"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_o1ckd"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_gt5sl"]
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_7fn1i"]
 [ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_3h0wd"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="6_0qv2g"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="6_phcgc"]
 [ext_resource type="PackedScene" uid="uid://b78jiiiihqpyh" path="res://assets/crew/crew_vis.tscn" id="7_1w8ga"]
 
@@ -268,13 +269,9 @@ offset_bottom = 448.0
 theme_override_font_sizes/font_size = 35
 text = "Boosts:"
 
-[node name="exit" type="Button" parent="ui"]
-layout_mode = 0
-offset_left = 2237.0
-offset_right = 2304.0
-offset_bottom = 39.0
-theme_override_font_sizes/font_size = 40
-text = "X"
+[node name="exit_button" parent="ui/right" instance=ExtResource("6_0qv2g")]
+offset_left = -68.0
+offset_right = 92.0
 
 [node name="crew_anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -291,4 +288,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80623, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.83666, -7.7833)
 
 [connection signal="pressed" from="ui/right/hire" to="." method="_on_hire_pressed"]
-[connection signal="pressed" from="ui/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ui/right/exit_button" to="." method="_on_exit_pressed"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw2jee0645raw"]
+
+[ext_resource type="Texture2D" uid="uid://bnggauwifld6r" path="res://Textures/overlays/boat menu/exit.png" id="1_wde67"]
+[ext_resource type="Texture2D" uid="uid://dpi4vh061wlt7" path="res://Textures/overlays/boat menu/exit_pressed.png" id="2_bft2t"]
+
+[node name="exit_button" type="TextureButton"]
+offset_right = 160.0
+offset_bottom = 160.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("1_wde67")
+texture_pressed = ExtResource("2_bft2t")
+stretch_mode = 0
