@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo5hhvhv5lmk0"]
+
+[ext_resource type="Script" path="res://Textures/overlays/line_2d.gd" id="1_4kch5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8pv7o"]
+
+[sub_resource type="Curve" id="Curve_cddvr"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.48718, 0.336842), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_i43ne"]
+offsets = PackedFloat32Array(0, 0.521739, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_kggy8"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(-106.252, -43.5836, 106.252, 43.5836, -93, 1, -154.74, -50.8735, 154.74, 50.8735, 201, -2)
+}
+point_count = 2
+
+[node name="Line2D" type="Line2D"]
+material = SubResource("CanvasItemMaterial_8pv7o")
+width_curve = SubResource("Curve_cddvr")
+gradient = SubResource("Gradient_i43ne")
+script = ExtResource("1_4kch5")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(346, 137)
+scale = Vector2(3.3191, 3.17745)
+curve = SubResource("Curve2D_kggy8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -34,6 +34,7 @@ var morale=1
 var on_voyage=false
 var time_left=0
 var total_time=0
+var health
 # class definition
 
 func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
@@ -68,7 +69,8 @@ func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
 	
 	
 # get methods :
-
+func get_health():
+	return health
 func get_condition():
 	return(condition)
 	
@@ -158,6 +160,7 @@ func apply_condition():
 	small_fish=percentage_change*base_small_fish
 	medium_fish=percentage_change*base_medium_fish
 	large_fish=percentage_change*base_large_fish
+	
 	apply_trait(boat_trait)
 
 func calculate_trait(trait1):
@@ -168,7 +171,7 @@ func calculate_trait(trait1):
 		var ratio=BoatTraitData.engineering[ratio_place]
 		trait_name=BoatTraitData.engineering_name[ratio_place]
 		var percentage_change=int(trait1.substr(0,2))
-		percentage_change*=condition/5.0
+		percentage_change*=condition/2.0
 		var speed_change=percentage_change*ratio[0]
 		var durability_change=percentage_change*ratio[1]
 		speed_change/=100.0
@@ -183,7 +186,7 @@ func calculate_trait(trait1):
 		
 		trait_name=BoatTraitData.fishing_name[ratio_place]
 		var percentage_change=int(trait1.substr(0,2))
-		percentage_change*=condition/5.0
+		percentage_change*=condition/2.0
 		var small_change=percentage_change*ratio[0]
 		
 		var medium_change=percentage_change*ratio[1]
@@ -219,7 +222,7 @@ func apply_trait(trait1):
 			large_fish+=change_list[2]*100
 		else:
 			large_fish+=change_list[2]*large_fish
-	
+	health=durability
 func upgrade():
 	if condition<15.0:
 		Chat.boat_upgraded(boat_name,get_condition()+1)
@@ -280,3 +283,14 @@ func apply_crew(crew_member):
 	print(small_boost,'   small boost')
 	print(medium_boost,'   medium boost')
 	print(large_boost,'   large boost')
+func damage(strength):
+	if durability*durability_boost>strength:
+		health-=strength
+		if health==0:
+			return(true)
+		else:
+			return(false)
+	else:
+		health=0
+		return(true)
+		

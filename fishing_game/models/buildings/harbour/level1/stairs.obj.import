@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://08td3m8dgsmo"
+path="res://.godot/imported/stairs.obj-10aa5373ff5cdf4e737ad3574c960671.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stairs.obj-10aa5373ff5cdf4e737ad3574c960671.mesh"]
+
+source_file="res://models/buildings/harbour/level1/stairs.obj"
+dest_files=["res://.godot/imported/stairs.obj-10aa5373ff5cdf4e737ad3574c960671.mesh", "res://.godot/imported/stairs.obj-10aa5373ff5cdf4e737ad3574c960671.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

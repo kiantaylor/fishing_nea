@@ -1,17 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://b5umwv6aukv3q"]
+[gd_scene load_steps=29 format=3 uid="uid://b5umwv6aukv3q"]
 
 [ext_resource type="PackedScene" uid="uid://cw1rd3krffxa7" path="res://assets/screens/menus/build_overlay.tscn" id="1_k2af2"]
 [ext_resource type="Script" path="res://assets/testing stuff/build_test_area.gd" id="1_m0cww"]
-[ext_resource type="Material" uid="uid://3tie2t1nkhpn" path="res://Textures/RoystanToonWaterShader.tres" id="2_twf1i"]
+[ext_resource type="Material" uid="uid://3tie2t1nkhpn" path="res://Textures/sea.tres" id="2_843pl"]
 [ext_resource type="ArrayMesh" uid="uid://crci1t4veqt5u" path="res://models/new_island.obj" id="3_6coc4"]
 [ext_resource type="Script" path="res://scripts/mainScreen/cameraPivot.gd" id="3_rni4h"]
 [ext_resource type="ArrayMesh" uid="uid://c6hiyp38jjbac" path="res://models/centralspire.obj" id="4_83d5i"]
 [ext_resource type="ArrayMesh" uid="uid://d2s8vnk81ogaf" path="res://models/ladders.obj" id="4_bj01a"]
+[ext_resource type="Texture2D" uid="uid://bg5oq2gam6mhb" path="res://Textures/island.png" id="4_s3wyu"]
 [ext_resource type="ArrayMesh" uid="uid://bexcj2j1axqhg" path="res://models/platforms.obj" id="5_2kmwy"]
 [ext_resource type="ArrayMesh" uid="uid://cyhpf8h0jtqx3" path="res://models/boulders.obj" id="5_fsl7d"]
 [ext_resource type="PackedScene" uid="uid://7kt5c68hh255" path="res://assets/screens/menus/building_edit_overlay.tscn" id="6_3qfhk"]
 [ext_resource type="ArrayMesh" uid="uid://c4viehydof2nw" path="res://models/beam.obj" id="6_uly1b"]
 [ext_resource type="Texture2D" uid="uid://cbulsiplx8sdo" path="res://Textures/spire.png" id="7_ayj1a"]
+[ext_resource type="PackedScene" uid="uid://clrpntycshu7j" path="res://assets/screens/wind_sprite.tscn" id="14_xpj1m"]
+[ext_resource type="PackedScene" uid="uid://catw6vg03oob6" path="res://assets/screens/wind_map.tscn" id="15_52xw4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qn1lx"]
 
@@ -19,12 +22,8 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ob0d0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6r2je"]
-transparency = 1
-albedo_color = Color(0, 0.458824, 0.8, 0.976471)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l5e6"]
-albedo_color = Color(0.337255, 0.580392, 0.258824, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jggqq"]
+albedo_texture = ExtResource("4_s3wyu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqc0x"]
 albedo_color = Color(0.65098, 0.486275, 0.376471, 1)
@@ -82,38 +81,38 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uo0ae")
 transform = Transform3D(155.274, 0, 0, 0, 7.76369, 0, 0, 0, 155.274, 0, -1.74605, 0)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
-surface_material_override/0 = ExtResource("2_twf1i")
+surface_material_override/0 = ExtResource("2_843pl")
 
 [node name="sea2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1310.8, 0, 0, 0, 65.5401, 0, 0, 0, 1310.8, 0, -1.746, 1465.66)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_6r2je")
+surface_material_override/0 = ExtResource("2_843pl")
 
 [node name="sea3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1310.8, 0, 0, 0, 65.5401, 0, 0, 0, 1310.8, 0, -1.746, -1465.66)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_6r2je")
+surface_material_override/0 = ExtResource("2_843pl")
 
 [node name="sea4" type="MeshInstance3D" parent="."]
 transform = Transform3D(655.4, 0, 0, 0, 65.54, 0, 0, 0, 155, -808.457, -1.7, 0)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_6r2je")
+surface_material_override/0 = ExtResource("2_843pl")
 
 [node name="sea5" type="MeshInstance3D" parent="."]
 transform = Transform3D(655.4, 0, 0, 0, 65.54, 0, 0, 0, 155, 804.051, -1.7, 0)
 mesh = SubResource("PlaneMesh_ob0d0")
 skeleton = NodePath("../floor")
-surface_material_override/0 = SubResource("StandardMaterial3D_6r2je")
+surface_material_override/0 = ExtResource("2_843pl")
 
 [node name="floor" type="StaticBody3D" parent="."]
 transform = Transform3D(29.7675, 0, 0, 0, 29.7675, 0, 0, 0, 29.7675, -0.339416, -4.61768, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
 mesh = ExtResource("3_6coc4")
-surface_material_override/0 = SubResource("StandardMaterial3D_6l5e6")
+surface_material_override/0 = SubResource("StandardMaterial3D_jggqq")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="floor"]
 mesh = ExtResource("4_bj01a")
@@ -163,12 +162,18 @@ transform = Transform3D(1, 0, 0, 0, 0.897928, 0.440143, 0, -0.440143, 0.897928, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 124.413, 0)
 
 [node name="building_edit_overlay" parent="." instance=ExtResource("6_3qfhk")]
-offset_right = 151338.0
-offset_bottom = 85786.0
+offset_right = 185898.0
+offset_bottom = 105226.0
 
 [node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
-offset_right = 168192.0
-offset_bottom = 94865.0
+offset_right = 202752.0
+offset_bottom = 114305.0
+
+[node name="wind_sprite" parent="." instance=ExtResource("14_xpj1m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 21.6911, 0)
+
+[node name="wind map" parent="." instance=ExtResource("15_52xw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.2782, 0)
 
 [connection signal="generate_ghost" from="building_edit_overlay" to="." method="_on_build_overlay_generate_ghost"]
 [connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

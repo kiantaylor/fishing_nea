@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://begey4jtj5iia"]
+
+[ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="1_oturq"]
+
+[node name="event_box" instance=ExtResource("1_oturq")]
+visible = false
+
+[node name="ColorRect" parent="." index="0"]
+offset_bottom = 750.0

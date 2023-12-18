@@ -6,6 +6,7 @@ var selected_boat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Chat.menu_placement()
 	stock_gen()
 	refresh_stock()
 	boat_selected(stock[0])
@@ -52,9 +53,9 @@ func boat_selected(boat_select):
 	get_node("right/small/value_bar").value=boat_select.get_small()
 	get_node("right/medium/value_bar").value=boat_select.get_medium()
 	get_node("right/large/value_bar").value=boat_select.get_large()
-	get_node("right/large/value_bar").max_value=100
-	get_node("right/medium/value_bar").max_value=100
-	get_node("right/small/value_bar").max_value=100
+	get_node("right/large/value_bar").max_value=300
+	get_node("right/medium/value_bar").max_value=300
+	get_node("right/small/value_bar").max_value=300
 	
 	get_node("right/size").text='Size: '+str(boat_select.get_size())
 	price=boat_select.price

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://djx8lbx0404dj"
+path="res://.godot/imported/main.obj-b1e024af89e61d7ff4ed497681ed1a45.mesh"
+
+[deps]
+
+files=["res://.godot/imported/main.obj-b1e024af89e61d7ff4ed497681ed1a45.mesh"]
+
+source_file="res://models/buildings/attractions/cheese/main.obj"
+dest_files=["res://.godot/imported/main.obj-b1e024af89e61d7ff4ed497681ed1a45.mesh", "res://.godot/imported/main.obj-b1e024af89e61d7ff4ed497681ed1a45.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

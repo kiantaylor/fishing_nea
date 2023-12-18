@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://qwawf1driwdk"]
+[gd_scene load_steps=31 format=3 uid="uid://qwawf1driwdk"]
 
 [ext_resource type="Script" path="res://startscreen.gd" id="1_5augg"]
 [ext_resource type="ArrayMesh" uid="uid://oy8c0fffe4oh" path="res://models/startscreen/board.obj" id="2_b6ijo"]
@@ -134,6 +134,9 @@ _data = {
 "open": SubResource("Animation_7gufl"),
 "startup": SubResource("Animation_ce58h")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dk3tl"]
+size = Vector3(0.744875, 1, 1)
 
 [node name="startscreen" type="Node3D"]
 script = ExtResource("1_5augg")
@@ -933,4 +936,18 @@ outline_modulate = Color(1, 1, 1, 1)
 text = "Press Space to Start"
 outline_size = 0
 
+[node name="start" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68016, 2.55822, 4.76837e-07)
+billboard = 1
+text = "Start"
+font_size = 50
+
+[node name="start_button" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73833, 2.26185, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="start_button"]
+shape = SubResource("BoxShape3D_dk3tl")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="start_button" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="start_button" to="." method="_on_start_button_mouse_exited"]

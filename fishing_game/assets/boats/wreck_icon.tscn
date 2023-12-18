@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbvn4savbpjbh"]
+
+[ext_resource type="Script" path="res://scripts/boats/wreck_icon.gd" id="1_1dd1k"]
+[ext_resource type="Texture2D" uid="uid://dc508lqja5bo" path="res://Textures/icons/broken.png" id="2_5t3mr"]
+
+[node name="wreck_icon" type="Sprite3D"]
+billboard = 1
+texture = ExtResource("2_5t3mr")
+script = ExtResource("1_1dd1k")

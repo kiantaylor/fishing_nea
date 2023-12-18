@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2t5lndke2cm6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2p33f"]
+gravity = Vector3(1, 0, 20)
+angular_velocity_min = -720.0
+angular_velocity_max = -720.0
+
+[sub_resource type="Curve" id="Curve_tgmqd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.490119, 0.168421), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp3g1"]
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_2udvq"]
+material = SubResource("StandardMaterial3D_cp3g1")
+sections = 10
+section_length = 1.0
+curve = SubResource("Curve_tgmqd")
+
+[node name="wind" type="GPUParticles3D"]
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_2p33f")
+draw_pass_1 = SubResource("TubeTrailMesh_2udvq")

@@ -14,4 +14,4 @@ func _process(delta):
 func _on_ecotick_timeout():
 	FishData.tick()
 	VoyageData.tick()
-	
+	EventData.tick()

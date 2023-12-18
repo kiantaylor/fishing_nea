@@ -26,6 +26,9 @@ func _process(delta):
 	if accessing and Input.is_action_just_pressed('ui_cancel'):
 		close_access()
 	get_node("ui/left/boat_list").position.y=-get_node('ui/left/scroll').value*10
+	if selected_boat:
+		get_node('ui/right/boat_stats/disable').visible=selected_boat.on_voyage
+		get_node('ui/right/boat_stats/upgrade').text= 'Upgrade : '+str(selected_boat.price)
 	
 		
 #shop menu
@@ -35,6 +38,7 @@ func open_shop():
 # access menu
 func open_access():
 	if not BuildingData.building_open and BuildingData.editing:
+		Chat.menu_placement2()
 		accessing=true
 		get_node("ui").visible=true
 		BuildingData.accessing=true
@@ -51,6 +55,7 @@ func open_access():
 			boat_selected(BoatData.boats[0])
 		get_node("AnimationPlayer").play('open_ui')
 func close_access():
+	Chat.main_placement()
 	accessing=false
 	BuildingData.accessing=false
 	get_node("access_camera").current=false
@@ -89,6 +94,14 @@ func update_boat_list():
 			icon_new.position=Vector3((2*get_node('boats').get_child_count())+5,1,1)
 		icon_new.boat=i
 		get_node('icons').add_child(icon_new)
+		var icon_load2=load('res://assets/boats/wreck_icon.tscn')
+		var icon_new2=icon_load2.instantiate()
+		if get_node('boats').get_child_count()==0:
+			icon_new2.position=Vector3(5,1,1)
+		else:
+			icon_new2.position=Vector3((2*get_node('boats').get_child_count())+5,1,1)
+		icon_new2.boat=i
+		get_node('icons').add_child(icon_new2)
 		var boat_load=load(str("res://assets/boats/"+i.vis_name))
 		var boat_new=boat_load.instantiate()
 		if get_node('boats').get_child_count()==0:
@@ -136,13 +149,14 @@ func boat_selected(boat_select):
 	
 	get_node("ui/right/boat_stats/large/value_bar").value=boat_select.get_large()
 	get_node("ui/right/boat_stats/large/crew_value").value=boat_select.get_large()*boat_select.large_boost
-
-	get_node("ui/right/boat_stats/large/value_bar").max_value=100
-	get_node("ui/right/boat_stats/medium/value_bar").max_value=100
-	get_node("ui/right/boat_stats/small/value_bar").max_value=100
-	get_node("ui/right/boat_stats/large/crew_value").max_value=100
-	get_node("ui/right/boat_stats/medium/crew_value").max_value=100
-	get_node("ui/right/boat_stats/small/crew_value").max_value=100
+	get_node("ui/right/boat_stats/health/value_bar").value=boat_select.get_health()
+	get_node("ui/right/boat_stats/health/value_bar").max_value=boat_select.get_durability()
+	get_node("ui/right/boat_stats/large/value_bar").max_value=300
+	get_node("ui/right/boat_stats/medium/value_bar").max_value=300
+	get_node("ui/right/boat_stats/small/value_bar").max_value=300
+	get_node("ui/right/boat_stats/large/crew_value").max_value=300
+	get_node("ui/right/boat_stats/medium/crew_value").max_value=300
+	get_node("ui/right/boat_stats/small/crew_value").max_value=300
 
 	get_node("ui/right/boat_stats/size").text='Size: '+str(boat_select.get_size())
 	get_node("ui/right/boat_stats/type").text=boat_select.trait_name+' '+boat_select.dis_name
@@ -202,9 +216,12 @@ func _on_crew_pressed():
 			i.disabled=false
 		else:
 			i.disabled=true
+	get_node('ui/right/crew_select/selected_title').text='Captain'
 	crew_display('skp')
 	
 func crew_display(role):
+	if bottom_open:
+		get_node('AnimationPlayer').play('close_bottom')
 	role_current=role
 	if get_node("ui/right/crew_select/crew_list").get_child_count()>0:
 		for i in get_node('ui/right/crew_select/crew_list').get_children():
@@ -213,6 +230,8 @@ func crew_display(role):
 	if CrewData.employees!=[]:
 		for i in CrewData.employees:
 			if current:
+				get_node('ui/bottom/assign').visible=false
+				get_node('ui/bottom/remove').visible=true
 				if i.crew_type==role and i in selected_boat.crew:
 					var button_load=load("res://assets/screens/menus/crew_menu_button.tscn")
 					var button_new=button_load.instantiate()
@@ -224,6 +243,8 @@ func crew_display(role):
 					button_new.true_parent=self
 					get_node('ui/right/crew_select/crew_list').add_child(button_new)
 			else:
+				get_node('ui/bottom/assign').visible=true
+				get_node('ui/bottom/remove').visible=false
 				if i.crew_type==role and not i.assigned:
 					var button_load=load("res://assets/screens/menus/crew_menu_button.tscn")
 					var button_new=button_load.instantiate()
@@ -261,41 +282,46 @@ func crew_select(crew_member):
 	get_node('ui/bottom/title').text=crew_member.get_crew_name()
 
 func _on_skp_pressed():
+	get_node('ui/right/crew_select/selected_title').text='Captain'
 	crew_display('skp')
 
 func _on_coo_pressed():
+	get_node('ui/right/crew_select/selected_title').text='Cook'
 	crew_display('coo')
 
 
 func _on_eng_pressed():
+	get_node('ui/right/crew_select/selected_title').text='Engineer'
 	crew_display('eng')
 
 
 func _on_mte_pressed():
+	get_node('ui/right/crew_select/selected_title').text='Mate'
 	crew_display('mte')
 
 
 func _on_dek_pressed():
+	get_node('ui/right/crew_select/selected_title').text='Deckhand'
 	crew_display('dek')
 
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name=='open_bottom':
 		bottom_open=true
+	elif anim_name=='close_bottom':
+		bottom_open=false
 
 
 func _on_current_pressed():
 	current=true
-	get_node('ui/bottom/assign').visible=false
-	get_node('ui/bottom/remove').visible=true
+
 	crew_display(role_current)
 	
 
 
 func _on_available_pressed():
 	current=false
-	get_node('ui/bottom/assign').visible=true
-	get_node('ui/bottom/remove').visible=false
+
 	crew_display(role_current)
 
 
@@ -308,6 +334,10 @@ func _on_available_pressed():
 
 
 func parent_press():
+	if current:
+		current=false
+	else:
+		current=true
 	crew_display(role_current)
 
 
@@ -325,9 +355,9 @@ func _on_voyage_pressed():
 
 
 func _on_back_pressed():
-	get_node("ui/right/boat_stats").visible=true
-	get_node("ui/right/harbour_stats").visible=false
-	get_node("ui/right/crew_select").visible=false
+	boat_selected(selected_boat)
+	if bottom_open:
+		get_node('AnimationPlayer').play('close_bottom')
 
 
 func _on_exit_pressed():

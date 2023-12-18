@@ -7,6 +7,7 @@ var screen=2
 signal voyage_started(boat,zone)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Chat.menu_placement2()
 	connect('voyage_started',VoyageData.voyage_started)
 	new_voyage=VoyageData.new_voyage
 	get_node("left/voyage_display").voyage=new_voyage
@@ -49,6 +50,7 @@ func area_clicked(new_area):
 
 	update_fish_list()
 func fish_select(fish):
+	get_node('right/selected/price').text='Price per Unit : '+str(FishData.fish_stats[fish.get_species()][5])
 	get_node('right/selected/title').text=fish.get_species()
 	
 	selected_fish=fish

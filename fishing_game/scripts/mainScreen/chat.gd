@@ -1,5 +1,5 @@
 extends Marker2D
-
+var playing=false
 var chats=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	visible=playing
 func add_chat(text):
 	print(text)
 	var load_chat=load('res://assets/screens/menus/chat_pop_ups.tscn')
@@ -18,12 +18,13 @@ func add_chat(text):
 	add_child(new_chat)
 	chats.append(new_chat)
 	new_chat.position.y=26*chats.find(new_chat)
+	new_chat.target_y=float(26*chats.find(new_chat))
 func chat_death(chat):
 	var place= chats.find(chat)
 	chats.remove_at(place)
 	if get_child_count()>0:
 		for i in get_children():
-			i.position.y=26*chats.find(i)
+			i.target_y=float(26*chats.find(i))
 func voyage_end(boat,zone):
 	var text= boat+"'s voyage to "+zone+' has ended'
 	add_chat(text)
@@ -51,3 +52,9 @@ func boat_bought(boat):
 func crew_hired(crew):
 	var text=crew+' has been hired'
 	add_chat(text)
+func main_placement():
+	position.x=2290
+func menu_placement():
+	position.x=1640
+func menu_placement2():
+	position.x=1750

@@ -26,11 +26,11 @@ var fish_stats={
 	'Monkfish':[[5,8],2,'depths',800,6,500]
 }
 var biome_stats={
-	'open':[5,2000],
-	'kelp':[3,1000],
-	'seagrass':[2,750],
-	'shallows':[1,400],
-	'depths':[8,3000]
+	'open':[5,2000,5],
+	'kelp':[3,1000,2],
+	'seagrass':[2,750,3],
+	'shallows':[1,400,1],
+	'depths':[8,3000,10]
 }
 var map={}
 var inventory={'Mackeral':10}
@@ -70,7 +70,7 @@ func ecosystem_generate(biome,size,nm,dis):
 	levels.sort_custom(sort_size)
 	for i in range(len(levels)):
 		levels[i].trophic_place=i
-	map[nm]=Ecosystem.new(levels,biome_stats[biome][0],size,dis)
+	map[nm]=Ecosystem.new(levels,biome_stats[biome][0],size,dis,biome_stats[biome][2])
 
 func sort_size(a,b):
 	if a.get_size()<b.get_size():

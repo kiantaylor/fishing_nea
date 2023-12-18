@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="waterthingymbob"
-run/main_scene="res://assets/testing stuff/build_test_area.tscn"
+run/main_scene="res://assets/screens/startscreen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,8 @@ FishData="*res://scripts/dataHandling/FishData.gd"
 Clock="*res://assets/clock.tscn"
 VoyageData="*res://scripts/dataHandling/voyageData.gd"
 Chat="*res://assets/screens/menus/chat.tscn"
+EventData="*res://scripts/dataHandling/eventData.gd"
+EventBox="*res://assets/screens/menus/event_box.tscn"
 
 [display]
 

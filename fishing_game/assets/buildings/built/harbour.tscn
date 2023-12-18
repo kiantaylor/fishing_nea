@@ -1,8 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dq5c4dx42frn7"]
+[gd_scene load_steps=33 format=3 uid="uid://dq5c4dx42frn7"]
 
 [ext_resource type="Script" path="res://scripts/building/harbour.gd" id="1_3l5pk"]
 [ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="1_jnw5u"]
-[ext_resource type="ArrayMesh" uid="uid://dk2bwt508git6" path="res://models/buildings/harbour/level1/main.obj" id="1_rhw1d"]
+[ext_resource type="ArrayMesh" uid="uid://cbbfnnymnwfa7" path="res://models/buildings/harbour/level1/main2.obj" id="2_20850"]
+[ext_resource type="Texture2D" uid="uid://bcfg4xoeg0hrq" path="res://Textures/buildings/harbour/harbour.png" id="3_deuiw"]
+[ext_resource type="Material" uid="uid://ce60b4g304kdq" path="res://Textures/buildings/ammonite/ammonite.tres" id="3_yn8sb"]
+[ext_resource type="ArrayMesh" uid="uid://08td3m8dgsmo" path="res://models/buildings/harbour/level1/stairs.obj" id="5_6ryyd"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="5_8hwdq"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="5_ttg8u"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="6_5xrls"]
@@ -18,11 +21,15 @@
 [ext_resource type="Material" uid="uid://dq6y8m01x8fhy" path="res://Textures/crew/brass.tres" id="14_byars"]
 [ext_resource type="PackedScene" uid="uid://urw8au1lgs" path="res://assets/buildings/particle_icon.tscn" id="19_ismw6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orqvv"]
-albedo_color = Color(0.54902, 0.188235, 0.101961, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y542g"]
+albedo_color = Color(0.658824, 0.658824, 0.658824, 1)
+albedo_texture = ExtResource("3_deuiw")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
-size = Vector3(13.455, 1.96665, 14.538)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxokn"]
+albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_546nr"]
+size = Vector3(13.7615, 4.05132, 2.49172)
 
 [sub_resource type="Animation" id="Animation_r2x8f"]
 length = 0.001
@@ -154,18 +161,37 @@ emission = Color(1, 0.87451, 0.415686, 1)
 refraction_enabled = true
 refraction_scale = 0.28
 
+[sub_resource type="BoxMesh" id="BoxMesh_vvr6p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3dwr"]
+albedo_color = Color(0.454902, 0.592157, 0.392157, 1)
+
 [node name="harbour" type="StaticBody3D"]
 script = ExtResource("1_3l5pk")
 metadata/building_type = "harbour"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00707743, 0)
-mesh = ExtResource("1_rhw1d")
-surface_material_override/0 = SubResource("StandardMaterial3D_orqvv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55177, -1.90134, 0)
+mesh = ExtResource("2_20850")
+surface_material_override/0 = SubResource("StandardMaterial3D_y542g")
+surface_material_override/1 = ExtResource("3_yn8sb")
+surface_material_override/2 = ExtResource("3_yn8sb")
+surface_material_override/3 = ExtResource("3_yn8sb")
+surface_material_override/4 = ExtResource("3_yn8sb")
+surface_material_override/5 = ExtResource("3_yn8sb")
+surface_material_override/6 = ExtResource("3_yn8sb")
+surface_material_override/7 = ExtResource("3_yn8sb")
+surface_material_override/8 = ExtResource("3_yn8sb")
+surface_material_override/9 = ExtResource("3_yn8sb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55177, -1.90134, 0)
+mesh = ExtResource("5_6ryyd")
+surface_material_override/0 = SubResource("StandardMaterial3D_pxokn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43875, -0.992374, 6.14987)
-shape = SubResource("BoxShape3D_q1rev")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83462, -0.992374, -0.0624523)
+shape = SubResource("BoxShape3D_546nr")
 
 [node name="building_selection_box" parent="." instance=ExtResource("1_jnw5u")]
 transform = Transform3D(13.8416, 0, 0, 0, 2.15156, 0, 0, 0, 14.6632, 6.54317, -0.97218, 6.17014)
@@ -483,6 +509,7 @@ offset_right = 771.0
 scale = Vector2(-1, 1)
 
 [node name="crew_select" type="Marker2D" parent="ui/right"]
+visible = false
 
 [node name="current" type="Button" parent="ui/right/crew_select"]
 offset_left = -462.0
@@ -509,11 +536,21 @@ theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="selected_title" type="Label" parent="ui/right/crew_select"]
+offset_left = -423.0
+offset_top = 122.0
+offset_right = -32.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 25
+text = "Captain"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="crew" type="Label" parent="ui/right/crew_select"]
 offset_left = -423.0
-offset_top = 102.0
+offset_top = 65.0
 offset_right = -32.0
-offset_bottom = 158.0
+offset_bottom = 123.0
 theme_override_font_sizes/font_size = 40
 text = "Crew"
 horizontal_alignment = 1
@@ -566,10 +603,13 @@ text = "Deckhand"
 position = Vector2(-458, 475)
 
 [node name="back_button" parent="ui/right/crew_select" instance=ExtResource("10_fk4yy")]
-offset_left = -131.0
-offset_right = 29.0
+offset_left = -65.0
+offset_top = 68.0
+offset_right = 95.0
+offset_bottom = 228.0
 
 [node name="harbour_stats" type="Marker2D" parent="ui/right"]
+visible = false
 
 [node name="title2" type="Label" parent="ui/right/harbour_stats"]
 offset_left = -390.0
@@ -594,14 +634,14 @@ offset_bottom = 356.0
 theme_override_font_sizes/font_size = 40
 
 [node name="boat_stats" type="Marker2D" parent="ui/right"]
-visible = false
 
 [node name="title" type="Label" parent="ui/right/boat_stats"]
 offset_left = -423.0
-offset_top = 18.0
+offset_top = 61.0
 offset_right = -32.0
-offset_bottom = 74.0
+offset_bottom = 117.0
 theme_override_font_sizes/font_size = 35
+text = "hhhhhhhhhhhhhhh"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -611,6 +651,7 @@ offset_top = 102.0
 offset_right = -32.0
 offset_bottom = 158.0
 theme_override_font_sizes/font_size = 25
+text = "uuuuuuu"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -668,11 +709,28 @@ offset_top = 11.0
 offset_right = 295.0
 offset_bottom = 21.0
 
+[node name="health" type="Label" parent="ui/right/boat_stats"]
+offset_left = -423.0
+offset_top = 373.0
+offset_right = -32.0
+offset_bottom = 429.0
+theme_override_font_sizes/font_size = 25
+text = "health"
+autowrap_mode = 2
+
+[node name="value_bar" parent="ui/right/boat_stats/health" instance=ExtResource("7_8nwqa")]
+modulate = Color(0.360784, 1, 0.32549, 1)
+layout_mode = 0
+offset_left = 135.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 21.0
+
 [node name="size" type="Label" parent="ui/right/boat_stats"]
 offset_left = -423.0
-offset_top = 352.0
+offset_top = 328.0
 offset_right = -32.0
-offset_bottom = 408.0
+offset_bottom = 384.0
 theme_override_font_sizes/font_size = 25
 text = "size"
 autowrap_mode = 2
@@ -755,30 +813,39 @@ offset_bottom = 24.0
 
 [node name="upgrade" type="Button" parent="ui/right/boat_stats"]
 offset_left = -393.0
-offset_top = 868.0
+offset_top = 808.0
 offset_right = -42.0
-offset_bottom = 949.0
+offset_bottom = 889.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "upgrade"
 
 [node name="rename" type="Button" parent="ui/right/boat_stats"]
 offset_left = -393.0
-offset_top = 976.0
+offset_top = 903.0
 offset_right = -42.0
-offset_bottom = 1057.0
+offset_bottom = 984.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "rename"
 
 [node name="crew" type="Button" parent="ui/right/boat_stats"]
-offset_left = -393.0
-offset_top = 1081.0
-offset_right = -42.0
-offset_bottom = 1162.0
+offset_left = -394.0
+offset_top = 996.0
+offset_right = -43.0
+offset_bottom = 1077.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 40
 text = "crew"
+
+[node name="repair" type="Button" parent="ui/right/boat_stats"]
+offset_left = -394.0
+offset_top = 1095.0
+offset_right = -43.0
+offset_bottom = 1176.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "repair"
 
 [node name="voyage" type="Button" parent="ui/right/boat_stats"]
 offset_left = -391.0
@@ -787,6 +854,13 @@ offset_right = -43.0
 offset_bottom = 1282.0
 theme_override_font_sizes/font_size = 40
 text = "voyage"
+
+[node name="disable" type="ColorRect" parent="ui/right/boat_stats"]
+offset_left = -467.0
+offset_top = 782.0
+offset_right = 340.0
+offset_bottom = 1321.0
+color = Color(0, 0, 0, 0.4)
 
 [node name="exit_button" parent="ui/right" instance=ExtResource("11_2io3t")]
 offset_left = -65.0
@@ -837,29 +911,29 @@ libraries = {
 size = Vector2i(2048, 2048)
 
 [node name="Camera3D" type="Camera3D" parent="crewport"]
-transform = Transform3D(1, 0, 0, 0, 0.992185, 0.124779, 0, -0.124779, 0.992185, 0, -20.0242, 8.38148)
+transform = Transform3D(1, 0, 0, 0, 0.992185, 0.124779, 0, -0.124779, 0.992185, 0, -44.9528, 9.9676)
 
 [node name="crew_vis" parent="crewport" instance=ExtResource("11_5phhk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -19.8658, 1.22568)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -44.7944, 2.8118)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="crewport"]
-transform = Transform3D(1, 0, 0, 0, 0.269424, 0.963022, 0, -0.963022, 0.269424, -9.53674e-07, -6.24387, 8.24775)
+transform = Transform3D(1, 0, 0, 0, 0.269424, 0.963022, 0, -0.963022, 0.269424, -9.53674e-07, -31.1725, 9.83386)
 light_color = Color(1, 1, 0.921569, 1)
 light_energy = 11.657
 shadow_enabled = true
 spot_range = 32.0234
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="crewport"]
-transform = Transform3D(10.6839, 0, 0, 0, -3.5613, 0, 0, 0, 10.6839, 0, -10.5654, 0)
+transform = Transform3D(10.6839, 0, 0, 0, -3.5613, 0, 0, 0, 10.6839, 0, -35.494, 1.58611)
 mesh = SubResource("PlaneMesh_07nat")
 
 [node name="wall" type="MeshInstance3D" parent="crewport"]
-transform = Transform3D(-10, 6.40222e-07, 6.60024e-14, 0, 1.85336e-07, -10, 1.50996e-06, 4.24, 4.37114e-07, -0.17417, -20.3749, -2.30404)
+transform = Transform3D(-10, 6.40222e-07, 6.60024e-14, 0, 1.85336e-07, -10, 1.50996e-06, 4.24, 4.37114e-07, -0.17417, -45.3035, -0.717925)
 mesh = SubResource("PlaneMesh_07nat")
 surface_material_override/0 = ExtResource("12_o6b7w")
 
 [node name="lamp1" type="MeshInstance3D" parent="crewport"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.82612, -22.0285, -1.34373)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.82612, -46.9571, 0.242385)
 mesh = ExtResource("13_dh3re")
 surface_material_override/0 = ExtResource("14_byars")
 surface_material_override/1 = SubResource("StandardMaterial3D_q8tf1")
@@ -873,7 +947,7 @@ shadow_enabled = true
 omni_range = 6.38396
 
 [node name="lamp2" type="MeshInstance3D" parent="crewport"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.91419, -22.0285, -1.34373)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.91419, -46.9571, 0.242385)
 mesh = ExtResource("13_dh3re")
 surface_material_override/0 = ExtResource("14_byars")
 surface_material_override/1 = SubResource("StandardMaterial3D_q8tf1")
@@ -895,6 +969,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7272, 0, 4.61061)
 
 [node name="Camera3D" type="Camera3D" parent="pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.966367, 0.257167, 0, -0.257167, 0.966367, 0, 2.98132, 6.52866)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(20.4234, 0, 0, 0, 24.5507, 0, 0, 0, 2.25151, 1.68917, -15.1591, 0.116557)
+mesh = SubResource("BoxMesh_vvr6p")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3dwr")
 
 [connection signal="no_slot_error" from="ui/bottom/assign" to="." method="_on_assign_no_slot_error"]
 [connection signal="parent_press" from="ui/bottom/assign" to="." method="parent_press"]

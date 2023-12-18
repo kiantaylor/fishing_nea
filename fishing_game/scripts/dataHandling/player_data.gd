@@ -6,6 +6,9 @@ var xp_threshold=0.0
 var xp=0
 var boat_space=0
 var boat_space_used=0
+var selling_speed_boost=0.0
+var tips_boost=0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	xp_threshold=(2**((lvl-20)/3)+1)*100

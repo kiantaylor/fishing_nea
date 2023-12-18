@@ -10,9 +10,11 @@ var area=''
 var size=500
 var testarr=[]
 var distance
-func _init(lv,d,s,dis):
+var storm_rating
+func _init(lv,d,s,dis,st):
 	levels=lv
 	depth=d
+	storm_rating=st
 	distance=dis
 	size=s
 	max_support=levels[0].get_max_support()
@@ -27,7 +29,13 @@ func tick():
 		feed(i)
 		
 		
-			
+func storm(strength):
+	strength*=storm_rating
+	for i in levels:
+		if i.get_mass()>strength:
+			i.set_mass(i.get_mass()-strength)
+		else:
+			i.set_mass(1)
 func sum_mass(accum,item):
 	return accum+item.get_mass()
 

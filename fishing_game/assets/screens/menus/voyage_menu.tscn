@@ -385,6 +385,12 @@ offset_bottom = 349.0
 theme_override_font_sizes/font_size = 25
 text = "Cargo Bays:"
 
+[node name="price" type="Label" parent="right/selected"]
+offset_top = 122.0
+offset_right = 40.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 30
+
 [node name="block" type="ColorRect" parent="right"]
 offset_left = -476.0
 offset_top = 177.0

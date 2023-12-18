@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c156s7j4iexvh"]
+[gd_scene load_steps=7 format=3 uid="uid://c156s7j4iexvh"]
 
 [ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_3krsk"]
-[ext_resource type="ArrayMesh" uid="uid://dk2bwt508git6" path="res://models/buildings/harbour/level1/main.obj" id="2_14x6u"]
+[ext_resource type="ArrayMesh" uid="uid://cbbfnnymnwfa7" path="res://models/buildings/harbour/level1/main2.obj" id="2_g78j7"]
 [ext_resource type="Material" uid="uid://bhptm6jva6oja" path="res://Textures/buildings/ghosts/green_ghost.tres" id="2_gfocv"]
+[ext_resource type="ArrayMesh" uid="uid://08td3m8dgsmo" path="res://models/buildings/harbour/level1/stairs.obj" id="3_hn67h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1rev"]
 size = Vector3(11.0188, 1.6807, 8.48689)
@@ -18,18 +19,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.66665, -0.588981, 3.56064)
 shape = SubResource("BoxShape3D_q1rev")
 
 [node name="meshes" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.775121, 0.147842, 0.0498238)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7943, 0, 0)
-mesh = ExtResource("2_14x6u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.552, -1.901, 0)
+mesh = ExtResource("2_g78j7")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2_gfocv")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7943, 0, 14.2292)
-visible = false
-mesh = ExtResource("2_14x6u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.552, -1.901, 0)
+mesh = ExtResource("3_hn67h")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_gfocv")
 

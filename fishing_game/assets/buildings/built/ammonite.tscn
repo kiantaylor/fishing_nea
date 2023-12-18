@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs3lua0cmsdxg"]
+
+[ext_resource type="Script" path="res://scripts/building/attraction.gd" id="1_acjpq"]
+[ext_resource type="ArrayMesh" uid="uid://eftjkrnka47a" path="res://models/buildings/attractions/ammonite_rock/main.obj" id="2_8tsy5"]
+[ext_resource type="Material" uid="uid://ce60b4g304kdq" path="res://Textures/buildings/ammonite/ammonite.tres" id="3_pldbs"]
+[ext_resource type="ArrayMesh" uid="uid://d3owgf8ieh3ua" path="res://models/buildings/decorations/anchor/anchor.obj" id="4_wbemr"]
+[ext_resource type="Texture2D" uid="uid://pjx808cm54as" path="res://Textures/buildings/anchor/anchor.png" id="5_dh1p8"]
+[ext_resource type="PackedScene" uid="uid://7pleonqc0g8s" path="res://assets/buildings/building_selection_box.tscn" id="6_6afdh"]
+[ext_resource type="Texture2D" uid="uid://byvx5ejj4wy3j" path="res://Textures/buildings/icon.png" id="7_mvjcf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bj3a"]
+albedo_color = Color(0.262745, 0.262745, 0.262745, 1)
+roughness = 0.79
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xser"]
+albedo_texture = ExtResource("5_dh1p8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7xea3"]
+size = Vector3(3.36527, 2.47158, 1)
+
+[node name="ammonite" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_acjpq")
+metadata/building_type = "ammonite"
+metadata/attraction = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0364343, 0)
+mesh = ExtResource("2_8tsy5")
+surface_material_override/0 = SubResource("StandardMaterial3D_4bj3a")
+surface_material_override/1 = ExtResource("3_pldbs")
+surface_material_override/2 = ExtResource("3_pldbs")
+surface_material_override/3 = ExtResource("3_pldbs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.488106, 0, 0, 0, 0.488106, 0, 0, 0, 0.488106, 0, 0.262167, 0)
+visible = false
+mesh = ExtResource("4_wbemr")
+surface_material_override/0 = SubResource("StandardMaterial3D_6xser")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22203, 0)
+shape = SubResource("BoxShape3D_7xea3")
+
+[node name="building_selection_box" parent="." instance=ExtResource("6_6afdh")]
+transform = Transform3D(3.5708, 0, 0, 0, 2.73961, 0, 0, 0, 1.1192, 0, 1.21742, 0)
+metadata/building_type = ""
+
+[node name="icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.544169, 0, 0, 0, 0.544169, 0, 0, 0, 0.544169, 0, 3.03445, 0)
+billboard = 1
+texture = ExtResource("7_mvjcf")
+
+[node name="pivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.471498, 0.166402, 0, -0.166402, 0.471498, 0, 2.16423, 3.3181)

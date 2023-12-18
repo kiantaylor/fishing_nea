@@ -33,7 +33,9 @@ var move_buildings=[
 	'test_building_2',
 	'palm_tree',
 	'market',
-	'fish_safe'
+	'fish_safe',
+	'ammonite',
+	'cheese'
 ]
 var destroy_buildings=[
 	'harbour',
@@ -44,7 +46,9 @@ var destroy_buildings=[
 	'test_building_2',
 	'palm_tree',
 	'market',
-	'fish_safe'
+	'fish_safe',
+	'ammonite',
+	'cheese'
 	
 ]
 # Called when the node enters the scene tree for the first time.

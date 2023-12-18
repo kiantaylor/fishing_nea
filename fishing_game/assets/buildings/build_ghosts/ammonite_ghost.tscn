@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvlxtkjvigm0u"]
+
+[ext_resource type="Script" path="res://scripts/building/building_ghost.gd" id="1_teujv"]
+[ext_resource type="ArrayMesh" uid="uid://eftjkrnka47a" path="res://models/buildings/attractions/ammonite_rock/main.obj" id="2_j3fhq"]
+[ext_resource type="Material" uid="uid://ce60b4g304kdq" path="res://Textures/buildings/ammonite/ammonite.tres" id="3_ahp24"]
+[ext_resource type="ArrayMesh" uid="uid://d3owgf8ieh3ua" path="res://models/buildings/decorations/anchor/anchor.obj" id="3_nsnvy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_014e5"]
+size = Vector3(5.56523, 3.59832, 1.84221)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsr5y"]
+albedo_color = Color(0.439216, 0.439216, 0.439216, 1)
+
+[node name="ammonite_ghost" type="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_teujv")
+metadata/building_type = "ammonite"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.61025, 0, 0, 0, 0.61025, 0, 0, 0, 0.61025, 0, 1.09599, 0)
+shape = SubResource("BoxShape3D_014e5")
+
+[node name="meshes" type="Marker3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.164057, 0)
+mesh = ExtResource("2_j3fhq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hsr5y")
+surface_material_override/1 = ExtResource("3_ahp24")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50336, 0)
+visible = false
+mesh = ExtResource("3_nsnvy")
+skeleton = NodePath("../..")
+
+[node name="land_sense" type="RayCast3D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

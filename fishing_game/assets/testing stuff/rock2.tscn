@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://doqplghlrvavj"]
+
+[ext_resource type="Script" path="res://grass.gd" id="1_dx641"]
+[ext_resource type="ArrayMesh" uid="uid://bab4pjuompm6c" path="res://models/rock2.obj" id="2_7f7n5"]
+[ext_resource type="Texture2D" uid="uid://dmqq5p3uqmv4f" path="res://Textures/rock1.png" id="3_np4jh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ifh8"]
+albedo_texture = ExtResource("3_np4jh")
+
+[node name="rock2" type="Marker3D"]
+transform = Transform3D(0.099981, -0.00194767, 0, 0.00194767, 0.099981, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_dx641")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, -5.58794e-09, 0, 5.58794e-09, 1, 0, 0, 0, 1, 0.019904, -0.000388334, 0.00744343)
+hit_from_inside = true
+debug_shape_thickness = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(36.0423, -5.96046e-08, 0, 1.19209e-07, 9.47383, 0, 0, 0, 28.5531, 1.6585, -0.79248, 1.82998)
+mesh = ExtResource("2_7f7n5")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ifh8")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

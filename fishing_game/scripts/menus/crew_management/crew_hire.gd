@@ -3,6 +3,7 @@ extends Node3D
 var selected_crew_member
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Chat.menu_placement()
 	get_node("crew_anim").play('idle')
 	generate_stock()
 	stat_update()

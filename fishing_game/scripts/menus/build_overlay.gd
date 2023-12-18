@@ -6,7 +6,8 @@ var up=false
 var button_map={
 	'testing':['harbour','job_centre','fish_safe'],
 	'decor':['anchor','palm_tree'],
-	'selling':['market']
+	'selling':['market'],
+	'attractions':['ammonite','cheese']
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -122,4 +123,9 @@ func close_info():
 
 func _on_selling_pressed():
 	tab='selling'
+	tab_reset()
+
+
+func _on_attractions_pressed():
+	tab='attractions'
 	tab_reset()

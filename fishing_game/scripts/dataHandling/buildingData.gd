@@ -20,7 +20,9 @@ var build_requirements={
 	'light_house':[2000,1,1],
 	'palm_tree':[75,2,100],
 	'market':[600,1,5],
-	'fish_safe':[1000,1,1]
+	'fish_safe':[1000,1,1],
+	'ammonite':[2500,2,1],
+	'cheese':[7500,4,1]
 }
 
 var build_map={
@@ -33,7 +35,9 @@ var build_map={
 	'voyage_building':[],
 	'market':[],
 	'fish_safe':[],
-	'light_house':[[1,Vector3(3.76,12.7,0),Vector3(0,-90,0)]]
+	'light_house':[[1,Vector3(3.76,12.7,0),Vector3(0,-90,0)]],
+	'ammonite':[],
+	'cheese':[]
 }
 
 signal open_edit_menu

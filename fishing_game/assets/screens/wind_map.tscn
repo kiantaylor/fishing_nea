@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://catw6vg03oob6"]
+
+[ext_resource type="Script" path="res://assets/screens/wind_map.gd" id="1_1gfd3"]
+
+[node name="wind map" type="Marker3D"]
+script = ExtResource("1_1gfd3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.991296, 0.131651, 0, -0.131651, 0.991296, 0, 0, 2.52444)

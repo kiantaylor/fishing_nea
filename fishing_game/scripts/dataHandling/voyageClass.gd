@@ -10,6 +10,7 @@ var target_fish_ratio=[]
 var recurring=false
 var active=false
 var time=0
+var yield_mod=1.0
 signal voyage_ended(boat,location)
 signal voyage_started(boat,location)
 func _init(voyage_boat,voyage_fishing_zone,voyage_recurring):
@@ -71,9 +72,14 @@ func tick():
 		boat.time_left=boat.total_time-time
 		if time<=0:
 			active=false
-			harvest()
-			
-func harvest():
+			harvest(true)
+func storm_hit(failure):
+	recurring=false
+	if failure:
+		harvest(false)
+	else:
+		yield_mod=randf_range(0.2,0.6)
+func harvest(success):
 	var size=boat.get_size()
 	var small=(boat.get_small()*boat.small_boost)/100
 	var medium=(boat.get_medium()*boat.medium_boost)/100
@@ -81,29 +87,30 @@ func harvest():
 	var harvest_ratio=[0,0,0]
 	var count=0
 	for i in target_fish_ratio:
-		var percent=i/get_ratio().reduce(sum,0)
-		harvest_ratio[count]=size*percent
-	
-		var fish_size=get_populations()[count].get_size()
-		if fish_size==1:
-			harvest_ratio[count]+=(harvest_ratio[count]*small)
-		elif fish_size==2:
-			harvest_ratio[count]+=(harvest_ratio[count]*medium)
-		elif fish_size==3:
-			harvest_ratio[count]+=(harvest_ratio[count]*large)
-		target_fish_populations[count].debug_display()
-		var yield_mass=target_fish_populations[count].fished(harvest_ratio[count]*10)
-		var yield_fish=int(yield_mass/target_fish_populations[count].size_per)*10
-		target_fish_populations[count].debug_display()
+		if success:
+			var percent=i/get_ratio().reduce(sum,0)
+			harvest_ratio[count]=size*percent
 		
-		print(yield_fish,'    ',target_fish_populations[count].get_species())
-		Chat.fish_added(target_fish_populations[count].get_species(),yield_fish)
-		if target_fish_populations[count].get_species() in FishData.inventory.keys():
-			FishData.inventory[target_fish_populations[count].get_species()]+=yield_fish
-		else:
-			FishData.inventory[target_fish_populations[count].get_species()]=yield_fish
+			var fish_size=get_populations()[count].get_size()
+			if fish_size==1:
+				harvest_ratio[count]+=(harvest_ratio[count]*small)
+			elif fish_size==2:
+				harvest_ratio[count]+=(harvest_ratio[count]*medium)
+			elif fish_size==3:
+				harvest_ratio[count]+=(harvest_ratio[count]*large)
+			target_fish_populations[count].debug_display()
+			var yield_mass=target_fish_populations[count].fished(harvest_ratio[count]*10)*yield_mod
+			var yield_fish=int(yield_mass/target_fish_populations[count].size_per)*1
+			target_fish_populations[count].debug_display()
+			
+			print(yield_fish,'    ',target_fish_populations[count].get_species())
+			Chat.fish_added(target_fish_populations[count].get_species(),yield_fish)
+			if target_fish_populations[count].get_species() in FishData.inventory.keys():
+				FishData.inventory[target_fish_populations[count].get_species()]+=yield_fish
+			else:
+				FishData.inventory[target_fish_populations[count].get_species()]=yield_fish
 	
-		count+=1
+			count+=1
 	
 	boat.on_voyage=false
 	print(FishData.inventory)

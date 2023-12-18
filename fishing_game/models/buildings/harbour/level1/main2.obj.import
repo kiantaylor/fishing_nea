@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cbbfnnymnwfa7"
+path="res://.godot/imported/main2.obj-0675b171f75df3f5f521198bf0b15888.mesh"
+
+[deps]
+
+files=["res://.godot/imported/main2.obj-0675b171f75df3f5f521198bf0b15888.mesh"]
+
+source_file="res://models/buildings/harbour/level1/main2.obj"
+dest_files=["res://.godot/imported/main2.obj-0675b171f75df3f5f521198bf0b15888.mesh", "res://.godot/imported/main2.obj-0675b171f75df3f5f521198bf0b15888.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
