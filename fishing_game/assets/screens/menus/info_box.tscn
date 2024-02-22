@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://duyiom2a8jtef" path="res://assets/screens/menus/back_button.tscn" id="2_ylpv5"]
 
 [node name="info_box" type="Marker2D"]
+z_index = 13
 script = ExtResource("1_qktlq")
 
 [node name="ColorRect" type="ColorRect" parent="."]

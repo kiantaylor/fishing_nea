@@ -10,7 +10,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_si18d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-5.83205e-08, 0, 1.33422, 0, 1.33422, 0, -1.33422, 0, -5.83205e-08, 0, 0.180139, -1.99704)
 mesh = ExtResource("1_sdybk")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]

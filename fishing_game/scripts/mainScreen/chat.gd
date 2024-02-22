@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
 	visible=playing
 func add_chat(text):
-	print(text)
+	#(text)
 	var load_chat=load('res://assets/screens/menus/chat_pop_ups.tscn')
 	var new_chat=load_chat.instantiate()
 	new_chat.text=text

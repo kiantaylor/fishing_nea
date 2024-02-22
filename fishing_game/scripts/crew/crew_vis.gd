@@ -20,7 +20,7 @@ func _on_blink_timeout():
 	get_node('blink').start()
 	
 func update_skin(crew_member):
-	print('hair:   ',crew_member.hair)
+	#('hair:   ',crew_member.hair)
 	if crew_member.hair==0:
 		get_node('hair').visible=false
 	else:

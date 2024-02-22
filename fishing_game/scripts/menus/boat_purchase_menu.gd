@@ -36,7 +36,7 @@ func refresh_stock():
 func boat_selected(boat_select):
 	var new_colour
 	var stars=boat_select.get_condition_rating()
-	print('stars:  ',stars)
+	#('stars:  ',stars)
 	get_node('right/stars').update_colours(stars)
 	if get_node("3dSpace/pivot").get_child_count()>0:
 		get_node("3dSpace/pivot").get_child(0).queue_free()
@@ -60,18 +60,21 @@ func boat_selected(boat_select):
 	get_node("right/size").text='Size: '+str(boat_select.get_size())
 	price=boat_select.price
 	get_node("right/price").text='Price: '+str(price)
-	print('hi')
+	#('hi')
 	selected_boat=boat_select
 
 
 func _on_purchase_pressed():
-	print('space  ',PlayerData.boat_space)
+	
+	#('space  ',PlayerData.boat_space)
 	if PlayerData.money>=price:
 		if PlayerData.boat_space_used+selected_boat.get_size()<=PlayerData.boat_space:
-			print('space  ',PlayerData.boat_space,'  total space ',PlayerData.boat_space_used+selected_boat.get_size(),' current used  ',PlayerData.boat_space_used)
+			#('space  ',PlayerData.boat_space,'  total space ',PlayerData.boat_space_used+selected_boat.get_size(),' current used  ',PlayerData.boat_space_used)
 			BoatData.boats.append(selected_boat)
+			BoatData.save_boats()
 			PlayerData.boat_space_used+=selected_boat.get_size()
 			PlayerData.money-=price
+			PlayerData.save_player_data()
 			var count=0
 			for i in stock:
 				if i==selected_boat:
@@ -82,11 +85,11 @@ func _on_purchase_pressed():
 			if len(stock)>0:
 				boat_selected(stock[0])
 		else:
-			print('space  ',PlayerData.boat_space)
+			#('space  ',PlayerData.boat_space)
 			get_node('error_box').text='No space available'
 			get_node('error_box').visible=true
 	else:
-		print('money')
+		#('money')
 		get_node('error_box').text='Not enough money'
 		get_node('error_box').visible=true
 		

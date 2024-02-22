@@ -48,7 +48,7 @@ var name_ends=[
 var employees=[]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print('<crew data initiated>')
+	('<crew data initiated>')
 	
 		
 	
@@ -73,9 +73,30 @@ func trait_generate(type):
 	var strength=randi_range(type_traits[type][1][0],type_traits[type][1][1])
 	return [place,strength]
 func crew_generate():
+	var random_key=randi_range(0,10000)
 	var crew_name=name_generate()
 	var type=type_traits.keys()[randi_range(0,4)]
 	var crew_trait=trait_generate(type)
 	var experience=randi_range(1,15)
-	var crew1=CrewMemberClass.new(type,crew_trait,5,experience,crew_name)
+	var crew1=CrewMemberClass.new(type,crew_trait,5,experience,crew_name,random_key)
 	return crew1
+func save_crew():
+	var file=FileAccess.open('user://crew_data.dat',FileAccess.WRITE)
+	var crew_dict={}
+	for i in employees:
+		
+		crew_dict[i.key]={'name':i.get_crew_name(),'type':i.get_crew_type(),'experience':i.get_experience(),'trait':i.get_crew_trait()}
+	#(crew_dict)
+	file.store_var(crew_dict)
+	file.flush()
+	file.close()
+func load_crew():
+	employees=[]
+	var file=FileAccess.open('user://crew_data.dat',FileAccess.READ)
+	var crew_dict=file.get_var()
+	for i in crew_dict.keys():
+		
+		var crew1=CrewMemberClass.new(crew_dict[i]['type'],crew_dict[i]['trait'],5,crew_dict[i]['experience'],crew_dict[i]['name'],i)
+		employees.append(crew1)
+	
+	file.close()

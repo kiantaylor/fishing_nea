@@ -20,7 +20,7 @@ func _init(lv,d,s,dis,st):
 	max_support=levels[0].get_max_support()
 	for i in levels:
 		i.set_mass(int(levels[i.trophic_place-1].max_support/1.5))
-		print('mass start:  ',i.get_mass())
+		#('mass start:  ',i.get_mass())
 	initial_gen()
 	for i in levels:
 		i.debug_display()

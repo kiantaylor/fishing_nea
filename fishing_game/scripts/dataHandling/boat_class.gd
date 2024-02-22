@@ -1,7 +1,7 @@
 extends Node
 
 class_name  BoatClass
-var boat_management=BoatData
+
 var condition_rating:int
 var condition:float
 var boat_name=''
@@ -37,30 +37,33 @@ var total_time=0
 var health
 # class definition
 
-func _init(cr=5,btr='xex',bn='steve',bt='bt1'):
+func _init(cr=5,btr='xex',bn='steve',bt='bt1',ov=false,tt=0,tl=0):
+	on_voyage=ov
 	condition_rating=cr
 	condition=float(cr)
 	boat_name=bn
 	boat_trait=btr	
+	time_left=tl
+	total_time=tt
 	boat_type=bt
-	size=boat_management.type_dictionary[boat_type][0]
-	base_speed=boat_management.type_dictionary[boat_type][1]
+	size=BoatData.type_dictionary[boat_type][0]
+	base_speed=BoatData.type_dictionary[boat_type][1]
 	speed=base_speed
-	base_durability=boat_management.type_dictionary[boat_type][2]
+	base_durability=BoatData.type_dictionary[boat_type][2]
 	durability=base_durability
-	base_small_fish=boat_management.type_dictionary[boat_type][5]
-	base_medium_fish=boat_management.type_dictionary[boat_type][6]
-	base_large_fish=boat_management.type_dictionary[boat_type][7]
+	base_small_fish=BoatData.type_dictionary[boat_type][5]
+	base_medium_fish=BoatData.type_dictionary[boat_type][6]
+	base_large_fish=BoatData.type_dictionary[boat_type][7]
 	small_fish=base_small_fish
 	medium_fish=base_medium_fish
 	large_fish=base_large_fish
-	crew_slots=boat_management.type_dictionary[boat_type][3]
-	base_price=boat_management.type_dictionary[boat_type][4]
+	crew_slots=BoatData.type_dictionary[boat_type][3]
+	base_price=BoatData.type_dictionary[boat_type][4]
 	if bt=='bt1':
 		vis_name='boat_1_visual.tscn'
 		dis_name='Testing Boat'
 	if bt=='bt2':
-		vis_name='boat_2_visual.tscn'
+		vis_name='boat_3_visual.tscn'
 		dis_name='Snazzy Boat'
 	price=calculate_cost(base_price,boat_trait)
 	
@@ -121,7 +124,8 @@ func debug_stat_display():
 		print('Slot ',count,' : ',i)
 		
 # set methods :
-
+func set_health(new_health):
+	health=new_health
 func rename(new_name):
 	if len(new_name)<=30 and len(new_name)>=3:
 		Chat.boat_renamed(boat_name,new_name)
@@ -164,7 +168,7 @@ func apply_condition():
 	apply_trait(boat_trait)
 
 func calculate_trait(trait1):
-	print(trait1)
+	#(trait1)
 	if int(trait1[3])==1:
 		var ratio_place=int(trait1[2])
 
@@ -224,10 +228,13 @@ func apply_trait(trait1):
 			large_fish+=change_list[2]*large_fish
 	health=durability
 func upgrade():
+	
 	if condition<15.0:
 		Chat.boat_upgraded(boat_name,get_condition()+1)
 		set_condition(get_condition()+1.0)
 		apply_condition()
+		price=calculate_cost(base_price,boat_trait)
+	BoatData.save_boats()
 #cost and pricing
 
 func calculate_cost(price1,trait1):
@@ -246,6 +253,7 @@ func calculate_cost(price1,trait1):
 #crew members
 
 func add_crew(crew_member):
+	#('adding crew',crew_member.key)
 	crew_member.debug_stat_display()
 	crew_member.assigned=true
 	var count=0
@@ -260,9 +268,11 @@ func add_crew(crew_member):
 	if count-count2>0:
 		crew.append(crew_member)
 		apply_crew(crew_member)
+		BoatData.save_boats()
 		return true
 	else:
 		return false
+	
 func remove_crew(crew_member):
 	var count=0
 	for i in crew:
@@ -270,6 +280,7 @@ func remove_crew(crew_member):
 			crew.remove_at(count)
 			break
 		count+=1
+	BoatData.save_boats()
 func apply_crew(crew_member):
 	speed_boost+=(crew_member.speed_effect/100.0)
 	durability_boost+=(crew_member.durability_effect/100.0)
@@ -277,12 +288,12 @@ func apply_crew(crew_member):
 	small_boost+=(crew_member.small_fish_effect/100.0)
 	large_boost+=(crew_member.large_fish_effect/100.0)
 	medium_boost+=(crew_member.medium_fish_effect/100.0)
-	print(speed_boost,'   speed boost')
-	print(durability_boost,'   durability boost')
-	print(morale,'   morale boost')
-	print(small_boost,'   small boost')
-	print(medium_boost,'   medium boost')
-	print(large_boost,'   large boost')
+	#(speed_boost,'   speed boost')
+	#(durability_boost,'   durability boost')
+	#(morale,'   morale boost')
+	#(small_boost,'   small boost')
+	#(medium_boost,'   medium boost')
+	#(large_boost,'   large boost')
 func damage(strength):
 	if durability*durability_boost>strength:
 		health-=strength
@@ -293,4 +304,6 @@ func damage(strength):
 	else:
 		health=0
 		return(true)
-		
+
+func voyage_tick():
+	return time_left

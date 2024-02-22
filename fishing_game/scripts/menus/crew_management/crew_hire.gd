@@ -46,7 +46,7 @@ func stat_update():
 	var new_colour
 	get_node("crew_vis").update_skin(selected_crew_member)
 	var stars=selected_crew_member.get_experience()
-	print('stars:  ',stars)
+	#('stars:  ',stars)
 	get_node('ui/right/stars').update_colours(stars)
 	get_node('ui/right/salary').text='salary: '+str(selected_crew_member.get_salary())
 	get_node('ui/right/title').text=selected_crew_member.get_crew_name()
@@ -68,7 +68,9 @@ func stat_update():
 func _on_hire_pressed():
 	if PlayerData.money>=selected_crew_member.get_salary():
 		PlayerData.money-=selected_crew_member.get_salary()
+		PlayerData.save_player_data()
 		CrewData.employees.append(selected_crew_member)
+		CrewData.save_crew()
 		var count=0
 		for i in stock:
 			if i==selected_crew_member:

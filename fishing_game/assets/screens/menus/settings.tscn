@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba7v3khl4y1bh"]
+
+[ext_resource type="Script" path="res://scripts/menus/settings.gd" id="1_7ku0j"]
+[ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="2_uki73"]
+
+[node name="settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ku0j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2332.0
+offset_bottom = 1323.0
+color = Color(0.207843, 0.509804, 0.670588, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2332.0
+offset_bottom = 136.0
+color = Color(0.133333, 0.356863, 0.482353, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 27.0
+offset_right = 215.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="wind" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 220.0
+offset_right = 149.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 40
+text = "Wind"
+icon_alignment = 2
+
+[node name="grass" type="CheckBox" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 293.0
+offset_right = 154.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 40
+text = "Grass"
+icon_alignment = 2
+
+[node name="exit_button" parent="." instance=ExtResource("2_uki73")]
+layout_mode = 0
+offset_left = 2240.0
+offset_right = 2400.0
+
+[connection signal="toggled" from="wind" to="." method="_on_wind_toggled"]
+[connection signal="toggled" from="grass" to="." method="_on_grass_toggled"]
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

@@ -5,7 +5,7 @@ var relocation=false
 signal corporate(building_name,build_rotation,build_position,relocation)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(name)
+	#(name)
 	check()
 	connect("corporate",get_parent().ghost_busted)
 
@@ -51,7 +51,7 @@ func _process(delta):
 				if i==BuildingData.position_backup:
 					i[1]=position
 					i[2]=rotation
-		print(BuildingData.build_map)
+		#(BuildingData.build_map)
 		Chat.building_built(get_meta("building_type").capitalize())
 		emit_signal('corporate',get_meta("building_type"),rotation,position,relocation)
 		queue_free()
@@ -67,7 +67,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print('hit')
+	#('hit')
 	colliding=true
 	for i in get_node("meshes").get_children():
 		var mats=i.get_surface_override_material_count()

@@ -83,7 +83,7 @@ func sort_size(a,b):
 	else:
 		return false
 func fish_select(biome,count,levels):
-	print(count)
+	#(count)
 	var fish_list=fish_stats.keys()
 	var species=fish_list.pick_random()
 	if fish_stats[species][2]==biome:

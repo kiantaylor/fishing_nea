@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh2bs4thllvj3"]
+
+[ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_7evou"]
+
+[node name="pause_menu" type="Control"]
+z_index = 14
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7evou")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2323.0
+offset_bottom = 1313.0
+color = Color(0, 0, 0, 0.592157)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2323.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 0.592157)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_right = 374.0
+offset_bottom = 86.0
+theme_override_font_sizes/font_size = 60
+text = "Pause Menu"
+
+[node name="save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 125.0
+offset_right = 134.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Save"
+flat = true
+
+[node name="menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 210.0
+offset_right = 406.0
+offset_bottom = 273.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Quit to main menu"
+flat = true
+
+[node name="desktop" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 303.0
+offset_right = 343.0
+offset_bottom = 366.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Quit to desktop"
+flat = true
+
+[node name="settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 396.0
+offset_right = 343.0
+offset_bottom = 459.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+flat = true
+alignment = 0
+
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 475.0
+offset_right = 343.0
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.694118, 0.694118, 0.694118, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="desktop" to="." method="_on_desktop_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

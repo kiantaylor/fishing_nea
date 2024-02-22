@@ -69,7 +69,7 @@ func _on_h_slider_value_changed(value):
 	
 	if get_node("left/voyage_display").voyage.get_populations().find(selected_fish)>-1:
 		get_node("left/voyage_display").voyage.set_ratio(value,get_node("left/voyage_display").voyage.get_populations().find(selected_fish))
-		print(get_node("left/voyage_display").voyage.get_ratio())
+		#(get_node("left/voyage_display").voyage.get_ratio())
 		
 	
 

@@ -15,3 +15,11 @@ func _on_ecotick_timeout():
 	FishData.tick()
 	VoyageData.tick()
 	EventData.tick()
+
+
+func _on_autosave_timeout():
+	BoatData.save_boats()
+	CrewData.save_crew()
+	BuildingData.save_buildings()
+	PlayerData.save_player_data()
+	Chat.add_chat('Saving...')

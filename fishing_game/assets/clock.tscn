@@ -8,4 +8,9 @@ script = ExtResource("1_vwpi6")
 [node name="ecotick" type="Timer" parent="."]
 autostart = true
 
+[node name="autosave" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [connection signal="timeout" from="ecotick" to="." method="_on_ecotick_timeout"]
+[connection signal="timeout" from="autosave" to="." method="_on_autosave_timeout"]

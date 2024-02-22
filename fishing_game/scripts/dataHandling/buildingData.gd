@@ -45,7 +45,8 @@ signal open_building_camera
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print('<building data initiated>')
-		
+	
+
 
 
 
@@ -56,12 +57,14 @@ func _process(delta):
 		emit_signal('open_building_camera')
 	if accessing:
 		building_camera=false
+	if Input.is_action_just_pressed('level_boost'):
+		save_buildings()
 func open_edit(building):
 	if not building_open and not accessing and (selected_building!=building or (selected_building==building and not editing)):
 		connect('open_edit_menu',build_edit_overlay.open)
 		editing=true
 		selected_building=building
-		print(selected_building.get_meta('building_type'))
+		#(selected_building.get_meta('building_type'))
 		emit_signal('open_edit_menu')
 	elif not building_open and not accessing and  selected_building==building and  editing:
 		var conns=get_signal_connection_list('open_building_camera')
@@ -75,3 +78,13 @@ func close_edit():
 	build_edit_overlay.get_node("AnimationPlayer").play('close')
 func close_info():
 	build_overlay.close_info()
+func load_buildings():
+	var file = FileAccess.open("user://building_data.dat", FileAccess.READ)
+	
+	build_map=file.get_var()
+		
+func save_buildings():
+	var file = FileAccess.open("user://building_data.dat", FileAccess.WRITE)
+	
+	file.store_var(build_map)
+	file.flush()

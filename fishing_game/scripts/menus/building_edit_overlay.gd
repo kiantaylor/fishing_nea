@@ -9,7 +9,6 @@ var shop_buildings=[
 var access_buildings=[
 	'harbour',
 	'voyage_building',
-	'light_house',
 	'market',
 	'fish_safe'
 
@@ -21,8 +20,6 @@ var upgrade_buildings=[
 	'test_building_1',
 	'test_building_2',
 	'light_house',
-	'market',
-	'fish_safe'
 ]
 var move_buildings=[
 	'harbour',
@@ -98,25 +95,28 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_demolish_pressed():
+	
 	if BuildingData.editing and not movement:
 		var count=0
 		for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:
 			if i[1]==BuildingData.selected_building.position and i[2]==BuildingData.selected_building.rotation:
 				BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')].remove_at(count)
 			count+=1
-		print( BuildingData.build_map)
+		#( BuildingData.build_map)
 		BuildingData.selected_building.queue_free()
 		BuildingData.building_camera=false
 		get_node("AnimationPlayer").play('close')
-
+	BuildingData.save_buildings()
+	PlayerData.save_player_data()
 
 func _on_upgrade_pressed():
+	
 	if PlayerData.money>=upgrade_cost and not movement:
 		for i in BuildingData.build_map[BuildingData.selected_building.get_meta('building_type')]:
 			if i[1]==BuildingData.selected_building.position and i[2]==BuildingData.selected_building.rotation:
 				i[0]+=1
 		BuildingData.selected_building.level+=1
-		print( BuildingData.build_map)
+		#( BuildingData.build_map)
 		PlayerData.money-=upgrade_cost
 		Chat.building_upgraded(BuildingData.selected_building.get_meta('building_type').capitalize(),BuildingData.selected_building.level)
 		upgrade_cost=int(BuildingData.selected_building.level*0.5*BuildingData.build_requirements[BuildingData.selected_building.get_meta('building_type')][0])
@@ -125,7 +125,8 @@ func _on_upgrade_pressed():
 	elif not movement:
 		get_node("error_box").text='Not enough money'
 		get_node("error_box").visible=true
-	
+	BuildingData.save_buildings()
+	PlayerData.save_player_data()
 
 
 func _on_movement_pressed():
@@ -139,7 +140,7 @@ func _on_movement_pressed():
 		BuildingData.position_backup=backup
 		BuildingData.selected_building.queue_free()
 		emit_signal("generate_ghost",BuildingData.selected_building.get_meta('building_type'),true,BuildingData.selected_building.position,BuildingData.selected_building.rotation)
-		print(backup)
+		#(backup)
 
 
 func _on_access_pressed():

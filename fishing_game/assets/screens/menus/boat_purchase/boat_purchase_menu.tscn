@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dodttvxcupy3g"]
+[gd_scene load_steps=15 format=3 uid="uid://dodttvxcupy3g"]
 
 [ext_resource type="Script" path="res://scripts/menus/boat_purchase_menu.gd" id="1_a1kp3"]
 [ext_resource type="Script" path="res://scripts/menus/3dSpace.gd" id="2_bhmld"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d4jwilcur04f0" path="res://assets/screens/menus/boat_purchase/value_bar.tscn" id="4_qx1ud"]
 [ext_resource type="PackedScene" uid="uid://d3kc1gyip1b5k" path="res://assets/screens/menus/stars.tscn" id="5_x1utr"]
 [ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="6_0ru87"]
+[ext_resource type="PackedScene" uid="uid://bh2bs4thllvj3" path="res://assets/screens/menus/pause_menu.tscn" id="9_icwje"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3eccs"]
 
@@ -251,6 +252,9 @@ environment = SubResource("Environment_vr6ro")
 
 [node name="error_box" parent="." instance=ExtResource("3_fhh2t")]
 visible = false
+
+[node name="pause_menu" parent="." instance=ExtResource("9_icwje")]
+layout_mode = 1
 
 [connection signal="pressed" from="right/purchase" to="." method="_on_purchase_pressed"]
 [connection signal="pressed" from="right/exit_button" to="." method="_on_exit_pressed"]

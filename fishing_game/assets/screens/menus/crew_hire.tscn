@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://de0rjpjof5mfe"]
+[gd_scene load_steps=21 format=3 uid="uid://de0rjpjof5mfe"]
 
 [ext_resource type="Script" path="res://scripts/menus/crew_management/crew_hire.gd" id="1_mqw50"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_o1ckd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="6_0qv2g"]
 [ext_resource type="PackedScene" uid="uid://3jkve0f4hvp" path="res://assets/screens/menus/error_box.tscn" id="6_phcgc"]
 [ext_resource type="PackedScene" uid="uid://b78jiiiihqpyh" path="res://assets/crew/crew_vis.tscn" id="7_1w8ga"]
+[ext_resource type="PackedScene" uid="uid://bh2bs4thllvj3" path="res://assets/screens/menus/pause_menu.tscn" id="9_ldxqv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6gndn"]
 
@@ -286,6 +287,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80623, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.83666, -7.7833)
+
+[node name="pause_menu" parent="." instance=ExtResource("9_ldxqv")]
 
 [connection signal="pressed" from="ui/right/hire" to="." method="_on_hire_pressed"]
 [connection signal="pressed" from="ui/right/exit_button" to="." method="_on_exit_pressed"]

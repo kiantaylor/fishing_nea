@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://wmc7rf7xqjwd"]
+[gd_scene load_steps=6 format=3 uid="uid://wmc7rf7xqjwd"]
 
 [ext_resource type="Script" path="res://scripts/menus/fish_inventory.gd" id="1_wsaud"]
 [ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="2_lfd2g"]
 [ext_resource type="PackedScene" uid="uid://f4rnkors1ame" path="res://assets/screens/menus/panel_test.tscn" id="2_t5y30"]
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="3_a6jty"]
+[ext_resource type="PackedScene" uid="uid://bh2bs4thllvj3" path="res://assets/screens/menus/pause_menu.tscn" id="5_py2wv"]
 
 [node name="fish_inventory" type="Control"]
 layout_mode = 3
@@ -126,5 +127,8 @@ offset_right = -517.0
 offset_bottom = 54.0
 theme_override_font_sizes/font_size = 40
 text = "Stats"
+
+[node name="pause_menu" parent="." instance=ExtResource("5_py2wv")]
+layout_mode = 1
 
 [connection signal="pressed" from="right/exit_button" to="." method="_on_exit_button_pressed"]

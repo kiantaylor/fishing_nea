@@ -27,6 +27,7 @@ func _process(delta):
 		close_access()
 	get_node("ui/left/boat_list").position.y=-get_node('ui/left/scroll').value*10
 	if selected_boat:
+		
 		get_node('ui/right/boat_stats/disable').visible=selected_boat.on_voyage
 		get_node('ui/right/boat_stats/upgrade').text= 'Upgrade : '+str(selected_boat.price)
 	
@@ -45,13 +46,14 @@ func open_access():
 		BuildingData.close_info()
 		BuildingData.close_edit()
 		get_parent().menu_accessed=true
-		print('opening harbour')
+		#('opening harbour')
 		get_node("access_camera").current=true
 		if len(BoatData.boats)==0:
 			_on_harbour_stats_pressed()
 		else:
 			
 			update_boat_list()
+			print(BoatData.boats[0],'        update')
 			boat_selected(BoatData.boats[0])
 		get_node("AnimationPlayer").play('open_ui')
 func close_access():
@@ -67,15 +69,16 @@ func close_access():
 func _on_warning_timeout():
 	close_access()
 func update_boat_list():
-	print(get_node("boats").get_child_count(),'   boats')
+	#print(BoatData.boats[0],'        update')
+	#(get_node("boats").get_child_count(),'   boats')
 	if get_node("boats").get_child_count()>0:
 		for j in get_node("boats").get_children():
 			j.free()
-			print(get_node("boats").get_child_count(),'   boats')
+			#(get_node("boats").get_child_count(),'   boats')
 	if get_node("ui/left/boat_list").get_child_count()>0:
 		for j in get_node("ui/left/boat_list").get_children():
 			j.free()
-	print(get_node("boats").get_child_count(),'   boats')
+	#(get_node("boats").get_child_count(),'   boats')
 	for i in BoatData.boats:
 		var button_load=load("res://assets/boats/boat_button.tscn")
 		var button_new=button_load.instantiate()
@@ -121,18 +124,18 @@ func boat_selected(boat_select):
 		bottom_open=false
 	var new_colour
 	var stars=boat_select.get_condition_rating()
-	print('stars:  ',stars)
+	#('stars:  ',stars)
 	get_node('ui/right/boat_stats/stars').update_colours(stars)
 	get_node("ui/right/boat_stats").visible=true
 	get_node("ui/right/harbour_stats").visible=false
 	get_node("ui/right/crew_select").visible=false
-	print(boat_select.get_boat_name())
+	#(boat_select.get_boat_name())
 	var vis
 	for i in get_node("boats").get_children():
 		if i.boat==boat_select:
 			vis=i
 			break
-	print(vis,' vis')
+	#(vis,' vis')
 	vis.get_node('Camera3D').current=true
 	get_node("ui/right/boat_stats/title").text=boat_select.get_boat_name()
 	get_node("ui/right/boat_stats/speed/value_bar").value=boat_select.get_speed()
@@ -165,9 +168,18 @@ func boat_selected(boat_select):
 
 func _on_upgrade_pressed():
 	if selected_boat:
-		selected_boat.upgrade()
-		boat_selected(selected_boat)
-
+		if PlayerData.money>=selected_boat.price:
+			if selected_boat.get_condition()<15:
+				PlayerData.money-=selected_boat.price
+				PlayerData.save_player_data()
+				selected_boat.upgrade()
+				boat_selected(selected_boat)
+			else:
+				get_node('ui/error_box').text='boat already max level'
+				get_node('ui/error_box').visible=true
+		else:
+			get_node('ui/error_box').text='not enough money to upgrade'
+			get_node('ui/error_box').visible=true
 
 func _on_rename_pressed():
 	if selected_boat:
@@ -339,6 +351,7 @@ func parent_press():
 	else:
 		current=true
 	crew_display(role_current)
+	
 
 
 func _on_assign_no_slot_error():
@@ -347,6 +360,7 @@ func _on_assign_no_slot_error():
 
 
 func _on_voyage_pressed():
+	print(selected_boat,'     press')
 	VoyageData.new_voyage=VoyageClass.new(selected_boat,'',false)
 	get_tree().change_scene_to_file('res://assets/screens/menus/voyage_menu.tscn')
 

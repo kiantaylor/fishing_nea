@@ -40,7 +40,7 @@ emission = Color(1, 0.482353, 0, 1)
 albedo_texture = ExtResource("8_pmm61")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fecrk"]
-height = 4.45397
+height = 4.84805
 radius = 1.26866
 
 [node name="lighthouse" type="StaticBody3D"]
@@ -90,7 +90,7 @@ light_energy = 16.0
 shadow_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45378, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68101, 0)
 shape = SubResource("CylinderShape3D_fecrk")
 
 [node name="building_selection_box" parent="." instance=ExtResource("9_mf5ed")]

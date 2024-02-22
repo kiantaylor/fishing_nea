@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dd7gwn5nb2c36"]
+[gd_scene load_steps=18 format=3 uid="uid://dd7gwn5nb2c36"]
 
 [ext_resource type="ArrayMesh" uid="uid://b0vmihqs5fte" path="res://models/map.obj" id="1_p02qx"]
 [ext_resource type="Script" path="res://scripts/menus/voyage_menu.gd" id="1_tdils"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://y4jaogs3dvof" path="res://assets/screens/menus/panel_top.tscn" id="9_0rsbw"]
 [ext_resource type="PackedScene" uid="uid://b8u5vpebrf6qf" path="res://assets/screens/menus/voyage_display.tscn" id="10_it618"]
 [ext_resource type="PackedScene" uid="uid://cw2jee0645raw" path="res://assets/screens/menus/exit_button.tscn" id="10_nptj3"]
+[ext_resource type="PackedScene" uid="uid://bh2bs4thllvj3" path="res://assets/screens/menus/pause_menu.tscn" id="11_0ai2i"]
 
 [sub_resource type="Environment" id="Environment_w2dlx"]
 glow_enabled = true
@@ -429,6 +430,9 @@ layout_mode = 0
 offset_right = 2485.0
 offset_bottom = 1420.0
 color = Color(0, 0, 0, 0)
+
+[node name="pause_menu" parent="." instance=ExtResource("11_0ai2i")]
+layout_mode = 1
 
 [connection signal="mouse_entered" from="the_shallows" to="the_shallows" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="the_shallows" to="the_shallows" method="_on_mouse_exited"]

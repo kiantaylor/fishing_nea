@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b5umwv6aukv3q"]
+[gd_scene load_steps=30 format=3 uid="uid://b5umwv6aukv3q"]
 
 [ext_resource type="PackedScene" uid="uid://cw1rd3krffxa7" path="res://assets/screens/menus/build_overlay.tscn" id="1_k2af2"]
 [ext_resource type="Script" path="res://assets/testing stuff/build_test_area.gd" id="1_m0cww"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cbulsiplx8sdo" path="res://Textures/spire.png" id="7_ayj1a"]
 [ext_resource type="PackedScene" uid="uid://clrpntycshu7j" path="res://assets/screens/wind_sprite.tscn" id="14_xpj1m"]
 [ext_resource type="PackedScene" uid="uid://catw6vg03oob6" path="res://assets/screens/wind_map.tscn" id="15_52xw4"]
+[ext_resource type="PackedScene" uid="uid://bh2bs4thllvj3" path="res://assets/screens/menus/pause_menu.tscn" id="16_24ihq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qn1lx"]
 
@@ -162,18 +163,20 @@ transform = Transform3D(1, 0, 0, 0, 0.897928, 0.440143, 0, -0.440143, 0.897928, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 124.413, 0)
 
 [node name="building_edit_overlay" parent="." instance=ExtResource("6_3qfhk")]
-offset_right = 185898.0
-offset_bottom = 105226.0
+offset_right = 202026.0
+offset_bottom = 114298.0
 
 [node name="build_overlay" parent="." instance=ExtResource("1_k2af2")]
-offset_right = 202752.0
-offset_bottom = 114305.0
+offset_right = 218880.0
+offset_bottom = 123377.0
 
 [node name="wind_sprite" parent="." instance=ExtResource("14_xpj1m")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 21.6911, 0)
 
 [node name="wind map" parent="." instance=ExtResource("15_52xw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.2782, 0)
+
+[node name="pause_menu" parent="." instance=ExtResource("16_24ihq")]
 
 [connection signal="generate_ghost" from="building_edit_overlay" to="." method="_on_build_overlay_generate_ghost"]
 [connection signal="generate_ghost" from="build_overlay" to="." method="_on_build_overlay_generate_ghost"]

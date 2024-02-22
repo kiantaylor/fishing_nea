@@ -11,6 +11,7 @@ var morale_effect=0
 var large_fish_effect=0
 var medium_fish_effect=0
 var small_fish_effect=0
+var key
 
 # Useful attributes
 var crew_type
@@ -25,12 +26,14 @@ var skin_colour
 var hair
 var moustache
 var bg
-func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
+
+func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik',rk=0):
 	crew_type=ct
 	crew_trait=ctr
 	#crew_type='coo'
 	#crew_trait=[0,25]
 	#crew_trait[1]=60
+	key=rk
 	experience=exp
 	crew_name=cn
 	generate_appearance()
@@ -39,6 +42,8 @@ func _init(ct='skp',ctr=[0,25],sal=100,exp=1,cn='erik'):
 	bg=randi_range(1,6)
 	apply_trait()
 	#debug_stat_display()
+func get_crew_trait():
+	return crew_trait
 func get_salary():
 	return salary
 func get_experience():

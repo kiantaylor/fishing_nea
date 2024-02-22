@@ -7,6 +7,12 @@ var build_camera=false
 var menu_accessed=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	CrewData.load_crew()
+	if BoatData.boats==[]:
+		BoatData.load_boats()
+	BuildingData.load_buildings()
+	PlayerData.load_player_data()
+	#(BuildingData.build_map)
 	Chat.playing=true
 	PlayerOverlay.playing=true
 	Chat.main_placement()
@@ -14,24 +20,25 @@ func _ready():
 	var load_rock1=load('res://assets/testing stuff/rock1.tscn')
 	var load_rock2=load('res://assets/testing stuff/rock2.tscn')
 	load_build_map()
-	for i in range(200):
-		for j in range(200):
-			var ping=randi_range(1,1200)
-			if ping<=100:
-				var new_grass=load_grass.instantiate()
-				new_grass.position=Vector3(j-72.0,randf_range(-0.18,-0.1),i-65.0)
-				new_grass.rotation.y=randf_range(0,6.28)
-				add_child(new_grass)
-			elif ping==101:
-				var new_grass=load_rock1.instantiate()
-				new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
-				new_grass.rotation.y=randf_range(0,6.28)
-				add_child(new_grass)
-			elif ping==102:
-				var new_grass=load_rock2.instantiate()
-				new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
-				new_grass.rotation.y=randf_range(0,6.28)
-				add_child(new_grass)
+	if PlayerData.grass:
+		for i in range(200):
+			for j in range(200):
+				var ping=randi_range(1,1200)
+				if ping<=100:
+					var new_grass=load_grass.instantiate()
+					new_grass.position=Vector3(j-72.0,randf_range(-0.18,-0.1),i-65.0)
+					new_grass.rotation.y=randf_range(0,6.28)
+					add_child(new_grass)
+				elif ping==101:
+					var new_grass=load_rock1.instantiate()
+					new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
+					new_grass.rotation.y=randf_range(0,6.28)
+					add_child(new_grass)
+				elif ping==102:
+					var new_grass=load_rock2.instantiate()
+					new_grass.position=Vector3(j-72.0,-0.18,i-65.0)
+					new_grass.rotation.y=randf_range(0,6.28)
+					add_child(new_grass)
 	BuildingData.editing=false
 	BuildingData.accessing=false
 
@@ -54,13 +61,13 @@ func load_build_map():
 			build_new.level=building[0]
 			add_child(build_new)
 func _on_build_overlay_generate_ghost(building,relocating,ghost_position,ghost_rotation):
-	print(building,ghost_type)
+	#(building,ghost_type)
 	if not ghost_present:
 		var ghost_load=load(str("res://assets/buildings/build_ghosts/"+building+"_ghost.tscn"))
 		var ghost_instance=ghost_load.instantiate()
 		ghost=ghost_instance
 		ghost_type=building
-		print(ghost_type,'    ghost_type')
+		#(ghost_type,'    ghost_type')
 		ghost_instance.relocation=relocating
 		ghost_instance.position=ghost_position
 		ghost_instance.rotation=ghost_rotation
@@ -82,6 +89,8 @@ func ghost_busted(building_name,build_rotation,build_position,relocation):
 		get_node("building_edit_overlay").movement=false
 	add_child(build_instance)
 	get_node("build_overlay").info_refresh()
+	BuildingData.save_buildings()
+	PlayerData.save_player_data()
 
 
 

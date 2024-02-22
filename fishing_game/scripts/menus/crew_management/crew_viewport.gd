@@ -43,7 +43,7 @@ func stat_update():
 		var new_colour
 		get_node("crew_vis").update_skin(selected_crew_member)
 		var stars=selected_crew_member.get_experience()
-		print('stars:  ',stars)
+		#('stars:  ',stars)
 		get_node('ui/right/stars').update_colours(stars)
 		get_node('ui/right/title').text=selected_crew_member.get_crew_name()
 		get_node('ui/right/type').text=selected_crew_member.get_type_name()

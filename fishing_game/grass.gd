@@ -13,5 +13,10 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if not get_node("RayCast3D").is_colliding():
-		print('dying')
+	
 		queue_free()
+	else: 
+		if get_node("RayCast3D").get_collider().has_meta('building_type'):
+			
+			if get_node("RayCast3D").get_collider().get_meta('building_type')=='harbour':
+				queue_free()

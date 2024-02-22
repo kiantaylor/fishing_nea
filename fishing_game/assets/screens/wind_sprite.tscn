@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bo5hhvhv5lmk0" path="res://assets/screens/wind.tscn" id="2_stbra"]
 
 [node name="wind_sprite" type="Sprite3D"]
-billboard = 1
 script = ExtResource("1_hsfih")
 
 [node name="viewport" type="SubViewport" parent="."]

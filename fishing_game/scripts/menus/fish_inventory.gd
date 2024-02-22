@@ -30,7 +30,7 @@ func update_fish():
 		fish_select(FishData.inventory.keys()[0])
 		
 func fish_select(fish):
-	print(fish)
+	#(fish)
 	get_node('right/count').text='Count : '+str(FishData.inventory[fish])
 	get_node('right/price').text='Price per Unit : '+str(FishData.fish_stats[fish][5])
 	get_node('right/total').text='Total Worth : '+str(FishData.fish_stats[fish][5]*FishData.inventory[fish])

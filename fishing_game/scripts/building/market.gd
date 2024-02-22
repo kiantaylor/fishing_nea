@@ -24,7 +24,7 @@ func open_access():
 		BuildingData.close_edit()
 		BuildingData.close_info()
 		get_parent().menu_accessed=true
-		print('opening market')
+		#('opening market')
 		get_node("access_camera").current=true
 func close_access():
 	accessing=false
@@ -95,3 +95,4 @@ func _on_timer_timeout():
 	for i in stock:
 		FishData.inventory[i]-=1
 		PlayerData.money+=FishData.fish_stats[i][5]
+		PlayerData.save_player_data()

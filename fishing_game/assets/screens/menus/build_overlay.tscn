@@ -131,8 +131,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 698.0
-offset_right = 158976.0
-offset_bottom = 89681.0
+offset_right = 172800.0
+offset_bottom = 97457.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -235,14 +235,14 @@ libraries = {
 "": SubResource("AnimationLibrary_7p1e5")
 }
 
+[node name="info_box" parent="." instance=ExtResource("3_ophdk")]
+position = Vector2(-160, -53)
+
 [node name="error_box" parent="." instance=ExtResource("4_cxp3j")]
 visible = false
 offset_top = -450.0
 offset_bottom = 855.0
 scale = Vector2(0.5, 0.5)
-
-[node name="info_box" parent="." instance=ExtResource("3_ophdk")]
-position = Vector2(-160, -53)
 
 [connection signal="pressed" from="testing" to="." method="_on_testing_pressed"]
 [connection signal="pressed" from="decor" to="." method="_on_decor_pressed"]

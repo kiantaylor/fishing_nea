@@ -31,9 +31,9 @@ func build_button_update():
 		if i.get_child_count()>0:
 			for n in i.get_children():
 				n.free()
-		print(i.name)
+		#(i.name)
 		for j in button_map[i.name]:
-			print(j)
+			#(j)
 			var button_load=load("res://assets/buildings/build_button.tscn")
 			var button_new=button_load.instantiate()
 			button_new.building_name=j

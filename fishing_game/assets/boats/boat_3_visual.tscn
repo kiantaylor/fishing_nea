@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://y8ydv4yi086j"]
+
+[ext_resource type="Script" path="res://scripts/boats/boat_1_visual.gd" id="1_ntipl"]
+[ext_resource type="ArrayMesh" uid="uid://ccfg3t8ntfnhn" path="res://models/boats/bt2.obj" id="2_gynbs"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_nb31a"]
+
+[node name="boat_3_visual" type="Marker3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_ntipl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.02171, 0, -8.93206e-08, 0, 1.02171, 0, 8.93206e-08, 0, -1.02171, 0, 0.607779, -6.27308)
+mesh = ExtResource("2_gynbs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.07924)
+visible = false
+mesh = SubResource("PrismMesh_nb31a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-8.74228e-08, -2, -8.74228e-08, 0, -8.74228e-08, 2, -2, 8.74228e-08, 3.82137e-15, 0.599747, 16.7726, -4.75031)

@@ -18,9 +18,9 @@ func tick():
 	for i in current_voyages:
 		i.tick()
 func voyage_ended(boat,zone):
-	print('voyage end',boat,zone)
+	#('voyage end',boat,zone)
 	emit_signal('voy_end_chat',boat,zone)
 func voyage_started(boat,zone):
-	print('voyage_start',boat,zone)
+	#('voyage_start',boat,zone)
 	emit_signal('voy_start_chat',boat,zone)
 

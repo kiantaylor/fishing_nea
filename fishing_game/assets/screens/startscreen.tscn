@@ -936,18 +936,46 @@ outline_modulate = Color(1, 1, 1, 1)
 text = "Press Space to Start"
 outline_size = 0
 
-[node name="start" type="Label3D" parent="."]
+[node name="new" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68016, 2.55822, 4.76837e-07)
 billboard = 1
-text = "Start"
+text = "New"
 font_size = 50
 
-[node name="start_button" type="Area3D" parent="."]
+[node name="load" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50248, 2.55822, 4.76837e-07)
+billboard = 1
+text = "Load"
+font_size = 50
+
+[node name="quit" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.91344, 2.55822, 4.76837e-07)
+billboard = 1
+text = "Quit"
+font_size = 50
+
+[node name="new_button" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73833, 2.26185, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="start_button"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="new_button"]
+shape = SubResource("BoxShape3D_dk3tl")
+
+[node name="load_button" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50457, 2.26185, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="load_button"]
+shape = SubResource("BoxShape3D_dk3tl")
+
+[node name="quit_button" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94083, 2.26185, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="quit_button"]
 shape = SubResource("BoxShape3D_dk3tl")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="mouse_entered" from="start_button" to="." method="_on_start_button_mouse_entered"]
-[connection signal="mouse_exited" from="start_button" to="." method="_on_start_button_mouse_exited"]
+[connection signal="mouse_entered" from="new_button" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="new_button" to="." method="_on_start_button_mouse_exited"]
+[connection signal="mouse_entered" from="load_button" to="." method="_on_load_button_mouse_entered"]
+[connection signal="mouse_exited" from="load_button" to="." method="_on_load_button_mouse_exited"]
+[connection signal="mouse_entered" from="quit_button" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="quit_button" to="." method="_on_quit_button_mouse_exited"]

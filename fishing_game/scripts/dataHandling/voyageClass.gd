@@ -56,23 +56,33 @@ func sum(accum,item):
 	return accum+item
 func activate():
 	active=true
-	print('shjould be emmitting here for start')
+	#('shjould be emmitting here for start')
 	emit_signal('voyage_start',boat.get_boat_name(),fishing_zone.capitalize())
 	var speed=boat.get_speed()*boat.speed_boost
 	time=(FishData.map[get_zone()].distance/speed+boat.get_size())*10
-	print(time)
+	#(time)
 	boat.total_time=time
 	boat.time_left=0
 	boat.on_voyage=true
+	BoatData.save_boats()
 func tick():
 	if active:
-		print('tick  ',time)
+		#('tick  ',time)
 		
 		time-=1
 		boat.time_left=boat.total_time-time
+		boat.voyage_tick()
+		#(boat.time_left,'    ',boat.total_time)
 		if time<=0:
 			active=false
 			harvest(true)
+		for i in BoatData.boats:
+			if boat.get_boat_name()==i.get_boat_name():
+				i=boat
+		if boat==BoatData.boats[0]:
+			print('yes2')
+		else:
+			print(BoatData.boats,'         ',boat)
 func storm_hit(failure):
 	recurring=false
 	if failure:
@@ -103,7 +113,7 @@ func harvest(success):
 			var yield_fish=int(yield_mass/target_fish_populations[count].size_per)*1
 			target_fish_populations[count].debug_display()
 			
-			print(yield_fish,'    ',target_fish_populations[count].get_species())
+			#(yield_fish,'    ',target_fish_populations[count].get_species())
 			Chat.fish_added(target_fish_populations[count].get_species(),yield_fish)
 			if target_fish_populations[count].get_species() in FishData.inventory.keys():
 				FishData.inventory[target_fish_populations[count].get_species()]+=yield_fish
@@ -113,15 +123,18 @@ func harvest(success):
 			count+=1
 	
 	boat.on_voyage=false
-	print(FishData.inventory)
+	for i in BoatData.boats:
+			if boat.get_boat_name()==i.get_boat_name():
+				i=boat
+	#(FishData.inventory)
 	if recurring:
 		emit_signal('voyage_end',boat.get_boat_name(),fishing_zone.capitalize())
 		activate()
 		
 	else:
-		print('should be emmitting here for end')
+		#('should be emmitting here for end')
 		VoyageData.voyage_ended(boat.get_boat_name(),fishing_zone.capitalize())
 		
 		VoyageData.current_voyages.remove_at(VoyageData.current_voyages.find(self))
-	print(VoyageData.current_voyages)
+	#(VoyageData.current_voyages)
 
